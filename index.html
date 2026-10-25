@@ -20,8 +20,8 @@
                     colors: {
                         void: '#070709',
                         obsidian: '#0d0d11',
-                        surface: '#13131a',
-                        'surface-light': '#1b1b24',
+                        surface: 'rgba(19, 19, 26, 0.65)',
+                        'surface-light': 'rgba(27, 27, 36, 0.8)',
                         accent: '#ff5500',
                         'accent-glow': '#ff7700',
                         'tech-gray': '#737380'
@@ -30,9 +30,6 @@
                         sans: ['Inter', 'sans-serif'],
                         tech: ['"JetBrains Mono"', 'monospace'],
                         display: ['"Chakra Petch"', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'grid-pattern': "radial-gradient(circle at 1px 1px, rgba(255, 85, 0, 0.08) 1px, transparent 0)",
                     }
                 }
             }
@@ -52,9 +49,79 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #ff5500;
         }
-        .glow-orange {
-            box-shadow: 0 0 25px -4px rgba(255, 85, 0, 0.35);
+        
+        /* Fondo de nubes oscuras y grises borrosas en movimiento con parallax de scroll */
+        .cloud-bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+            background: #050507;
         }
+
+        .cloud-layer {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(ellipse at 20% 30%, rgba(45, 45, 55, 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(30, 30, 40, 0.3) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 50%, rgba(20, 20, 28, 0.35) 0%, transparent 70%),
+                radial-gradient(ellipse at 70% 20%, rgba(55, 55, 68, 0.15) 0%, transparent 40%);
+            filter: blur(80px);
+            opacity: 0.85;
+            animation: cloudDrift 25s ease-in-out infinite alternate;
+        }
+
+        .cloud-layer-2 {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(ellipse at 30% 80%, rgba(35, 35, 45, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 75% 35%, rgba(50, 50, 60, 0.2) 0%, transparent 55%);
+            filter: blur(110px);
+            opacity: 0.6;
+            animation: cloudDriftAlt 35s ease-in-out infinite alternate;
+        }
+
+        @keyframes cloudDrift {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-3%, 4%) scale(1.05); }
+            100% { transform: translate(3%, -3%) scale(1); }
+        }
+
+        @keyframes cloudDriftAlt {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(4%, -4%) scale(1.08); }
+            100% { transform: translate(-3%, 3%) scale(0.95); }
+        }
+
+        /* Glassmorphism oscuro avanzado */
+        .glass-panel {
+            background: rgba(13, 13, 17, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-panel-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-panel-hover:hover {
+            border-color: rgba(255, 85, 0, 0.4);
+            box-shadow: 0 12px 40px 0 rgba(255, 85, 0, 0.15);
+        }
+
         .tilt-card {
             transform-style: preserve-3d;
             perspective: 1000px;
@@ -64,11 +131,14 @@
 </head>
 <body class="bg-void text-neutral-200 font-sans selection:bg-accent selection:text-black overflow-x-hidden relative">
 
-    <!-- Ambient Grid Background -->
-    <div class="fixed inset-0 bg-grid-pattern [background-size:24px_24px] pointer-events-none opacity-40 z-0"></div>
+    <!-- Fondo de nubes dinámicas -->
+    <div class="cloud-bg-container">
+        <div id="cloudParallax1" class="cloud-layer"></div>
+        <div id="cloudParallax2" class="cloud-layer-2"></div>
+    </div>
 
-    <!-- 1. HEADER / NAVIGATION -->
-    <header class="sticky top-0 z-50 bg-void/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+    <!-- 1. HEADER / NAVIGATION (Glassmorphism) -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center group py-2" aria-label="JEGALUX Home">
                 <img 
@@ -98,7 +168,7 @@
             <div class="flex items-center space-x-4">
                 <button 
                     onclick="triggerToast('CART UPDATED (1 ITEM RESERVED)')"
-                    class="relative p-2.5 rounded-lg bg-surface hover:bg-surface-light border border-white/5 hover:border-accent/40 text-neutral-300 hover:text-white transition-all duration-200"
+                    class="relative p-2.5 rounded-lg glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200"
                     aria-label="View Cart"
                 >
                     <i data-lucide="shopping-bag" class="w-4 h-4 text-accent"></i>
@@ -107,7 +177,7 @@
 
                 <a 
                     href="#product"
-                    class="hidden sm:inline-flex items-center font-tech text-xs tracking-widest px-4 py-2.5 rounded-md bg-accent/10 border border-accent/60 text-accent hover:bg-accent hover:text-black transition-all duration-200"
+                    class="hidden sm:inline-flex items-center font-tech text-xs tracking-widest px-4 py-2.5 rounded-md bg-accent/10 border border-accent/60 text-accent hover:bg-accent hover:text-black transition-all duration-200 shadow-lg"
                 >
                     ORDER NOW
                 </a>
@@ -118,7 +188,7 @@
             </div>
         </div>
 
-        <div id="mobileMenu" class="hidden md:hidden bg-obsidian/95 border-b border-white/10 px-6 py-5 font-tech text-xs tracking-widest space-y-4">
+        <div id="mobileMenu" class="hidden md:hidden glass-panel border-b border-white/10 px-6 py-5 font-tech text-xs tracking-widest space-y-4">
             <a href="#product" class="block text-neutral-300 hover:text-accent">01// PRODUCTS</a>
             <a href="#process" class="block text-neutral-300 hover:text-accent">02// PROCESS</a>
             <a href="#manifesto" class="block text-neutral-300 hover:text-accent">03// MANIFESTO</a>
@@ -127,9 +197,9 @@
     </header>
 
     <!-- 2. STREAMLINED HERO BANNER -->
-    <section class="relative z-10 border-b border-white/5 py-16 md:py-24 bg-gradient-to-b from-void via-obsidian to-void overflow-hidden">
+    <section class="relative z-10 border-b border-white/5 py-16 md:py-24 overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-accent/30 text-accent font-tech text-[11px] uppercase tracking-widest mb-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-accent/30 text-accent font-tech text-[11px] uppercase tracking-widest mb-6">
                 <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
                 AUTUMN/WINTER PROTOCOL — EDITION 0.94
             </div>
@@ -138,32 +208,32 @@
                 <img 
                     src="logo.png" 
                     alt="Emblem" 
-                    class="h-16 md:h-20 w-auto object-contain opacity-90 drop-shadow-[0_0_20px_rgba(255,85,0,0.25)]"
+                    class="h-16 md:h-20 w-auto object-contain opacity-95 drop-shadow-[0_0_20px_rgba(255,85,0,0.3)]"
                     onerror="this.onerror=null; this.src='https://placehold.co/240x80/08080a/ff5500?text=JEGALUX+CORP';"
                 />
             </div>
 
-            <h1 class="text-3xl md:text-5xl lg:text-6xl font-display font-extrabold uppercase tracking-tight text-white mb-6">
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-display font-extrabold uppercase tracking-tight text-white mb-6 drop-shadow-md">
                 Engineered In Darkness. <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent-glow to-amber-200">Refined For Power.</span>
             </h1>
 
-            <p class="max-w-2xl mx-auto text-neutral-400 font-sans text-sm md:text-base leading-relaxed tracking-wide mb-8">
+            <p class="max-w-2xl mx-auto text-neutral-300 font-sans text-sm md:text-base leading-relaxed tracking-wide mb-8">
                 Underground silhouettes, obscure textures and premium comfort for those who move in the shadow.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 font-tech text-xs tracking-widest">
-                <a href="#product" class="w-full sm:w-auto px-8 py-3.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_20px_rgba(255,85,0,0.35)]">
+                <a href="#product" class="w-full sm:w-auto px-8 py-3.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_25px_rgba(255,85,0,0.4)]">
                     EXPLORE COLLECTION
                 </a>
-                <a href="#manifesto" class="w-full sm:w-auto px-8 py-3.5 rounded bg-surface border border-white/10 hover:border-accent/50 text-neutral-300 hover:text-white transition-all duration-200">
+                <a href="#manifesto" class="w-full sm:w-auto px-8 py-3.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200">
                     READ MANIFESTO
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- 3. FLAGSHIP PRODUCT SHOWCASE (Con el producto añadido: Untitled Product / Sudadera Black Edition) -->
+    <!-- 3. FLAGSHIP PRODUCT SHOWCASE -->
     <section id="product" class="py-20 md:py-28 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center gap-3 mb-10 font-tech text-xs text-accent uppercase tracking-widest">
@@ -176,22 +246,22 @@
                 <!-- Garment Image Column -->
                 <div class="lg:col-span-7 relative group">
                     <div class="absolute -inset-1 bg-gradient-to-r from-accent/20 to-transparent rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="relative bg-surface rounded-xl overflow-hidden border border-white/10 shadow-2xl">
+                    <div class="relative glass-panel rounded-xl overflow-hidden shadow-2xl">
                         <img 
                             src="Sudadera negra premium en estu...png" 
                             alt="Untitled Product - JEGALUX Heavy Blend Hoodie" 
                             class="w-full h-[520px] md:h-[620px] object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
                             onerror="this.onerror=null; this.src='https://placehold.co/900x1200/121217/ff5500?text=UNTITLED+PRODUCT+HOODIE';"
                         />
-                        <div class="absolute bottom-4 left-4 right-4 bg-obsidian/80 backdrop-blur-md border border-white/10 p-3 rounded-lg flex items-center justify-between font-tech text-xs">
+                        <div class="absolute bottom-4 left-4 right-4 glass-panel p-3 rounded-lg flex items-center justify-between font-tech text-xs">
                             <span class="text-neutral-400">AMAZE PLATFORM CATALOGUE</span>
                             <span class="text-accent">COLOR: BLACK // UNISEX</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Garment Specs Column (Bloque con 3D Sutil) -->
-                <div class="lg:col-span-5 space-y-6 bg-surface/60 backdrop-blur-md p-8 rounded-2xl border border-white/10 tilt-card relative overflow-hidden" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                <!-- Garment Specs Column (Glassmorphism & Tilt Card) -->
+                <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl tilt-card relative overflow-hidden" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
                     <div class="border-b border-white/10 pb-5">
                         <div class="flex justify-between items-baseline mb-2">
                             <h2 class="text-2xl md:text-3xl font-display font-bold tracking-tight text-white uppercase">UNTITLED PRODUCT (HEAVY BLEND HOODIE)</h2>
@@ -202,7 +272,7 @@
                         </div>
                     </div>
 
-                    <p class="text-neutral-400 text-sm leading-relaxed">
+                    <p class="text-neutral-300 text-sm leading-relaxed">
                         Unisex heavy blend hoodie integrated directly from your Amaze catalog. Crafted for absolute comfort and structured drape under minimalist specifications.
                     </p>
 
@@ -224,11 +294,11 @@
                             <span class="text-[11px] text-accent">S TO 5XL AVAILABLE</span>
                         </div>
                         <div class="grid grid-cols-5 gap-2 font-tech text-xs">
-                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition">S</button>
+                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition">S</button>
                             <button onclick="selectSize(this)" class="size-btn py-2.5 border border-accent rounded bg-accent/10 text-accent font-bold transition">M</button>
-                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition">L</button>
-                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition">XL</button>
-                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition">2XL</button>
+                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition">L</button>
+                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition">XL</button>
+                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition">2XL</button>
                         </div>
                     </div>
 
@@ -243,7 +313,7 @@
                         </button>
                         <button 
                             onclick="triggerToast('REDIRECTING TO AMAZE STORE CHECKOUT...')" 
-                            class="w-full py-3.5 rounded bg-surface hover:bg-surface-light border border-white/10 hover:border-white/20 text-white font-tech text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2"
+                            class="w-full py-3.5 rounded glass-panel glass-panel-hover text-white font-tech text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2"
                         >
                             BUY NOW VIA AMAZE SHOP
                         </button>
@@ -254,7 +324,7 @@
     </section>
 
     <!-- 4. CRAFTED WITH INTENT / PROCESS -->
-    <section id="process" class="py-20 md:py-28 bg-obsidian/70 border-y border-white/5 relative z-10">
+    <section id="process" class="py-20 md:py-28 relative z-10 border-y border-white/5 bg-black/30 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// RIGOROUS PRODUCTION ARCHITECTURE</span>
@@ -263,41 +333,41 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- STAGE 01 -->
-                <div class="bg-surface rounded-xl border border-white/5 overflow-hidden flex flex-col tilt-card group hover:border-accent/40 transition-all duration-300" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
                     <div class="h-64 overflow-hidden relative">
                         <img src="1e85e61a-723b-4751-b081-961a9c9bf287.jpg" alt="Embroidery" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                        <div class="absolute top-3 left-3 bg-void/90 px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 01</div>
+                        <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 01</div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
                             <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">INDUSTRIAL EMBROIDERY</h3>
-                            <p class="text-neutral-400 text-xs leading-relaxed">Precision computerized micro-stitching guarantees millimeter-perfect tension across heavy textiles.</p>
+                            <p class="text-neutral-300 text-xs leading-relaxed">Precision computerized micro-stitching guarantees millimeter-perfect tension across heavy textiles.</p>
                         </div>
                     </div>
                 </div>
                 <!-- STAGE 02 -->
-                <div class="bg-surface rounded-xl border border-white/5 overflow-hidden flex flex-col tilt-card group hover:border-accent/40 transition-all duration-300" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=800&q=80" alt="Atelier" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                        <div class="absolute top-3 left-3 bg-void/90 px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 02</div>
+                        <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 02</div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
                             <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">OBSCURE ATELIER</h3>
-                            <p class="text-neutral-400 text-xs leading-relaxed">Developed within shadow and controlled light setups to balance deep matte absorption.</p>
+                            <p class="text-neutral-300 text-xs leading-relaxed">Developed within shadow and controlled light setups to balance deep matte absorption.</p>
                         </div>
                     </div>
                 </div>
                 <!-- STAGE 03 -->
-                <div class="bg-surface rounded-xl border border-white/5 overflow-hidden flex flex-col tilt-card group hover:border-accent/40 transition-all duration-300" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
                     <div class="h-64 overflow-hidden relative">
                         <img src="accb1452-469b-4746-9017-64ce56cf296b.jpg" alt="Detail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                        <div class="absolute top-3 left-3 bg-void/90 px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 03</div>
+                        <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 03</div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
                             <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">ABSOLUTE DETAIL</h3>
-                            <p class="text-neutral-400 text-xs leading-relaxed">Individual numbered authenticity tags, reinforced drop-shoulder seam bindings, and raw artisan touches.</p>
+                            <p class="text-neutral-300 text-xs leading-relaxed">Individual numbered authenticity tags, reinforced drop-shoulder seam bindings, and raw artisan touches.</p>
                         </div>
                     </div>
                 </div>
@@ -308,7 +378,7 @@
     <!-- 5. PHILOSOPHY SECTION -->
     <section id="manifesto" class="py-20 md:py-28 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-surface/80 rounded-2xl border border-white/10 p-8 md:p-14 relative overflow-hidden backdrop-blur-xl tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+            <div class="glass-panel rounded-2xl p-8 md:p-14 relative overflow-hidden tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                     <div class="lg:col-span-6 space-y-6">
                         <span class="font-tech text-xs text-accent tracking-widest uppercase">// CORE MANIFESTO</span>
@@ -326,19 +396,19 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-void border-t border-white/5 py-12 relative z-10">
+    <footer class="glass-panel border-t border-white/5 py-12 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
                 <img src="logo.png" alt="JEGALUX" class="h-7 w-auto object-contain" />
-                <span class="text-neutral-600 font-tech text-xs">/ SHADOW ATELIER 2026</span>
+                <span class="text-neutral-400 font-tech text-xs">/ SHADOW ATELIER 2026</span>
             </div>
-            <div class="font-tech text-xs text-neutral-600">ALL RIGHTS RESERVED // AMAZE PLATFORM CONNECTED</div>
+            <div class="font-tech text-xs text-neutral-400">ALL RIGHTS RESERVED // AMAZE PLATFORM CONNECTED</div>
         </div>
     </footer>
 
     <!-- Toast Notification -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
-        <div class="bg-surface border border-accent text-white px-5 py-3 rounded-lg shadow-2xl flex items-center gap-3 font-tech text-xs">
+        <div class="glass-panel border-accent text-white px-5 py-3 rounded-lg shadow-2xl flex items-center gap-3 font-tech text-xs">
             <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
             <span id="toastMsg">ACTION CONFIRMED</span>
         </div>
@@ -353,9 +423,20 @@
             mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
         }
 
+        // Efecto Parallax en las nubes según el scroll de la página
+        window.addEventListener('scroll', () => {
+            const scrollY = window.pageYOffset;
+            const cloud1 = document.getElementById('cloudParallax1');
+            const cloud2 = document.getElementById('cloudParallax2');
+            if (cloud1 && cloud2) {
+                cloud1.style.transform = `translateY(${scrollY * 0.25}px)`;
+                cloud2.style.transform = `translateY(${scrollY * 0.15}px)`;
+            }
+        });
+
         function selectSize(btn) {
             document.querySelectorAll('.size-btn').forEach(b => {
-                b.className = 'size-btn py-2.5 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition';
+                b.className = 'size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition';
             });
             btn.className = 'size-btn py-2.5 border border-accent rounded bg-accent/10 text-accent font-bold transition';
             triggerToast(`SIZE SELECTED: ${btn.textContent.trim()}`);
@@ -381,9 +462,9 @@
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -3;
-            const rotateY = ((x - centerX) / centerX) * 3;
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+            const rotateX = ((y - centerY) / centerY) * -2.5;
+            const rotateY = ((x - centerX) / centerX) * 2.5;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.005, 1.005, 1.005)`;
         }
 
         function resetTilt(card) {
