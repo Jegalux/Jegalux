@@ -128,7 +128,6 @@
             transition: transform 0.1s ease-out, border-color 0.3s ease;
         }
 
-        /* Efecto Zoom en el Banner al hacer scroll */
         #bannerContent {
             transition: transform 0.1s ease-out;
         }
@@ -202,20 +201,20 @@
     </header>
 
     <!-- 2. STREAMLINED & NARROW BANNER WITH ZOOM ON SCROLL -->
-    <section class="relative z-10 border-b border-white/5 py-10 md:py-14 overflow-hidden">
+    <section class="relative z-10 border-b border-white/5 py-12 md:py-16 overflow-hidden">
         <div id="bannerContent" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-accent/30 text-accent font-tech text-[10px] uppercase tracking-widest mb-4">
                 <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
                 AUTUMN/WINTER PROTOCOL — EDITION 0.94
             </div>
 
-            <!-- Logo agrandado en el banner -->
-            <div class="flex justify-center mb-4">
+            <!-- Logo mucho más grande -->
+            <div class="flex justify-center mb-5">
                 <img 
                     src="logo.png" 
                     alt="Emblem" 
-                    class="h-24 md:h-32 w-auto object-contain opacity-95 drop-shadow-[0_0_25px_rgba(255,85,0,0.4)]"
-                    onerror="this.onerror=null; this.src='https://placehold.co/320x100/08080a/ff5500?text=JEGALUX+CORP';"
+                    class="h-32 md:h-44 w-auto object-contain opacity-95 drop-shadow-[0_0_35px_rgba(255,85,0,0.5)]"
+                    onerror="this.onerror=null; this.src='https://placehold.co/400x140/08080a/ff5500?text=JEGALUX+CORP';"
                 />
             </div>
 
@@ -239,7 +238,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center gap-3 mb-10 font-tech text-xs text-accent uppercase tracking-widest">
                 <span class="w-8 h-px bg-accent"></span>
-                AMAZE SHOP // UNTITLED PRODUCT DROP
+                JEGALUX // JEGALUX OSCURO
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -265,16 +264,16 @@
                 <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl tilt-card relative overflow-hidden" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
                     <div class="border-b border-white/10 pb-5">
                         <div class="flex justify-between items-baseline mb-2">
-                            <h2 class="text-2xl md:text-3xl font-display font-bold tracking-tight text-white uppercase">UNTITLED PRODUCT (HEAVY BLEND HOODIE)</h2>
+                            <h2 class="text-2xl md:text-3xl font-display font-bold tracking-tight text-white uppercase">JEGALUX OSCURO</h2>
                         </div>
                         <div class="flex items-center gap-3">
                             <span class="font-display text-2xl text-accent font-bold">$37.22 USD</span>
-                            <span class="px-2 py-0.5 rounded bg-accent/20 text-accent font-tech text-[10px] tracking-wider uppercase">AMAZE SHOP EXCLUSIVE</span>
+                            <span class="px-2 py-0.5 rounded bg-accent/20 text-accent font-tech text-[10px] tracking-wider uppercase">EXCLUSIVE EDITION</span>
                         </div>
                     </div>
 
                     <p class="text-neutral-300 text-sm leading-relaxed">
-                        Unisex heavy blend hoodie integrated directly from your Amaze catalog. Crafted for absolute comfort and structured drape under minimalist specifications.
+                        Unisex heavy blend hoodie integrated directly from your catalog. Crafted for absolute comfort and structured drape under minimalist specifications.
                     </p>
 
                     <div class="space-y-2 font-tech text-xs text-neutral-300">
@@ -306,17 +305,17 @@
                     <!-- Primary Actions -->
                     <div class="space-y-3 pt-3">
                         <button 
-                            onclick="triggerToast('ADDED TO CART: UNTITLED PRODUCT ($37.22)')" 
+                            onclick="triggerToast('ADDED TO CART: JEGALUX OSCURO ($37.22)')" 
                             class="w-full py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 shadow-lg shadow-accent/20"
                         >
                             <i data-lucide="plus" class="w-4 h-4"></i>
                             ADD TO CART ($37.22)
                         </button>
                         <button 
-                            onclick="triggerToast('REDIRECTING TO AMAZE STORE CHECKOUT...')" 
+                            onclick="triggerToast('REDIRECTING TO STORE CHECKOUT...')" 
                             class="w-full py-3.5 rounded glass-panel glass-panel-hover text-white font-tech text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2"
                         >
-                            BUY NOW VIA AMAZE SHOP
+                            BUY NOW VIA STORE
                         </button>
                     </div>
                 </div>
@@ -403,7 +402,7 @@
                 <img src="logo.png" alt="JEGALUX" class="h-7 w-auto object-contain" />
                 <span class="text-neutral-400 font-tech text-xs">/ SHADOW ATELIER 2026</span>
             </div>
-            <div class="font-tech text-xs text-neutral-400">ALL RIGHTS RESERVED // AMAZE PLATFORM CONNECTED</div>
+            <div class="font-tech text-xs text-neutral-400">ALL RIGHTS RESERVED // SECURED BY PROVENANCE</div>
         </div>
     </footer>
 
