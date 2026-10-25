@@ -36,6 +36,11 @@
         }
     </script>
     <style>
+        /* Smooth Scrolling avanzado */
+        html {
+            scroll-behavior: smooth;
+        }
+
         ::-webkit-scrollbar {
             width: 5px;
         }
@@ -122,10 +127,11 @@
             box-shadow: 0 12px 40px 0 rgba(255, 85, 0, 0.15);
         }
 
+        /* Tarjetas con profundidad 3D mejorada */
         .tilt-card {
             transform-style: preserve-3d;
             perspective: 1000px;
-            transition: transform 0.1s ease-out, border-color 0.3s ease;
+            transition: transform 0.15s cubic-bezier(0.03, 0.98, 0.52, 0.99), border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         #bannerContent {
@@ -144,7 +150,7 @@
     <!-- 1. HEADER / NAVIGATION -->
     <header class="sticky top-0 z-50 glass-panel border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center group py-2" aria-label="JEGALUX Home">
+            <a href="#" class="flex items-center group py-2" aria-label="JEGALUX Home" onmouseenter="playFuturisticSound('hover')">
                 <img 
                     src="logo.png" 
                     alt="JEGALUX Logo" 
@@ -154,16 +160,16 @@
             </a>
 
             <nav class="hidden md:flex items-center space-x-8 font-tech text-xs tracking-[0.22em] text-neutral-400">
-                <a href="#product" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1">
+                <a href="#product" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playFuturisticSound('hover')">
                     <span class="text-accent/60 text-[10px]">01//</span>PRODUCTS
                 </a>
-                <a href="#process" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1">
+                <a href="#process" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playFuturisticSound('hover')">
                     <span class="text-accent/60 text-[10px]">02//</span>PROCESS
                 </a>
-                <a href="#manifesto" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1">
+                <a href="#manifesto" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playFuturisticSound('hover')">
                     <span class="text-accent/60 text-[10px]">03//</span>MANIFESTO
                 </a>
-                <a href="#vip" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1">
+                <a href="#vip" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playFuturisticSound('hover')">
                     <span class="w-1.5 h-1.5 rounded-full bg-accent animate-ping"></span>
                     VIP ACCESS
                 </a>
@@ -171,9 +177,10 @@
 
             <div class="flex items-center space-x-4">
                 <button 
-                    onclick="triggerToast('CART UPDATED (1 ITEM RESERVED)')"
+                    onclick="playFuturisticSound('click'); triggerToast('CART UPDATED (1 ITEM RESERVED)')"
                     class="relative p-2.5 rounded-lg glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200"
                     aria-label="View Cart"
+                    onmouseenter="playFuturisticSound('hover')"
                 >
                     <i data-lucide="shopping-bag" class="w-4 h-4 text-accent"></i>
                     <span class="absolute -top-1 -right-1 w-4 h-4 bg-accent text-black font-tech font-bold text-[10px] rounded-full flex items-center justify-center">1</span>
@@ -182,21 +189,23 @@
                 <a 
                     href="#product"
                     class="hidden sm:inline-flex items-center font-tech text-xs tracking-widest px-4 py-2.5 rounded-md bg-accent/10 border border-accent/60 text-accent hover:bg-accent hover:text-black transition-all duration-200 shadow-lg"
+                    onmouseenter="playFuturisticSound('hover')"
+                    onclick="playFuturisticSound('click')"
                 >
                     ORDER NOW
                 </a>
 
-                <button id="mobileMenuBtn" class="md:hidden p-2 text-neutral-400 hover:text-white">
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-neutral-400 hover:text-white" onmouseenter="playFuturisticSound('hover')" onclick="playFuturisticSound('click')">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
 
         <div id="mobileMenu" class="hidden md:hidden glass-panel border-b border-white/10 px-6 py-5 font-tech text-xs tracking-widest space-y-4">
-            <a href="#product" class="block text-neutral-300 hover:text-accent">01// PRODUCTS</a>
-            <a href="#process" class="block text-neutral-300 hover:text-accent">02// PROCESS</a>
-            <a href="#manifesto" class="block text-neutral-300 hover:text-accent">03// MANIFESTO</a>
-            <a href="#vip" class="block text-accent">● VIP ACCESS</a>
+            <a href="#product" class="block text-neutral-300 hover:text-accent" onmouseenter="playFuturisticSound('hover')">01// PRODUCTS</a>
+            <a href="#process" class="block text-neutral-300 hover:text-accent" onmouseenter="playFuturisticSound('hover')">02// PROCESS</a>
+            <a href="#manifesto" class="block text-neutral-300 hover:text-accent" onmouseenter="playFuturisticSound('hover')">03// MANIFESTO</a>
+            <a href="#vip" class="block text-accent" onmouseenter="playFuturisticSound('hover')">● VIP ACCESS</a>
         </div>
     </header>
 
@@ -213,8 +222,9 @@
                 <img 
                     src="logo.png" 
                     alt="Emblem" 
-                    class="h-32 md:h-44 w-auto object-contain opacity-95 drop-shadow-[0_0_35px_rgba(255,85,0,0.5)]"
+                    class="h-32 md:h-44 w-auto object-contain opacity-95 drop-shadow-[0_0_35px_rgba(255,85,0,0.5)] transition-transform duration-300 hover:scale-105"
                     onerror="this.onerror=null; this.src='https://placehold.co/400x140/08080a/ff5500?text=JEGALUX+CORP';"
+                    onmouseenter="playFuturisticSound('hover')"
                 />
             </div>
 
@@ -223,10 +233,10 @@
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3 font-tech text-xs tracking-widest">
-                <a href="#product" class="w-full sm:w-auto px-6 py-2.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_20px_rgba(255,85,0,0.35)]">
+                <a href="#product" class="w-full sm:w-auto px-6 py-2.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_20px_rgba(255,85,0,0.35)]" onmouseenter="playFuturisticSound('hover')" onclick="playFuturisticSound('click')">
                     EXPLORE COLLECTION
                 </a>
-                <a href="#manifesto" class="w-full sm:w-auto px-6 py-2.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200">
+                <a href="#manifesto" class="w-full sm:w-auto px-6 py-2.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200" onmouseenter="playFuturisticSound('hover')" onclick="playFuturisticSound('click')">
                     READ MANIFESTO
                 </a>
             </div>
@@ -244,7 +254,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
                 <!-- Garment Image Column -->
-                <div class="lg:col-span-7 relative group">
+                <div class="lg:col-span-7 relative group tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
                     <div class="absolute -inset-1 bg-gradient-to-r from-accent/20 to-transparent rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity"></div>
                     <div class="relative glass-panel rounded-xl overflow-hidden shadow-2xl">
                         <img 
@@ -294,26 +304,28 @@
                             <span class="text-[11px] text-accent">S TO 5XL AVAILABLE</span>
                         </div>
                         <div class="grid grid-cols-5 gap-2 font-tech text-xs">
-                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition">S</button>
-                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-accent rounded bg-accent/10 text-accent font-bold transition">M</button>
-                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition">L</button>
-                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition">XL</button>
-                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition">2XL</button>
+                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playFuturisticSound('hover')" onclick="playFuturisticSound('click')">S</button>
+                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-accent rounded bg-accent/10 text-accent font-bold transition" onmouseenter="playFuturisticSound('hover')" onclick="playFuturisticSound('click')">M</button>
+                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playFuturisticSound('hover')" onclick="playFuturisticSound('click')">L</button>
+                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playFuturisticSound('hover')" onclick="playFuturisticSound('click')">XL</button>
+                            <button onclick="selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playFuturisticSound('hover')" onclick="playFuturisticSound('click')">2XL</button>
                         </div>
                     </div>
 
                     <!-- Primary Actions -->
                     <div class="space-y-3 pt-3">
                         <button 
-                            onclick="triggerToast('ADDED TO CART: JEGALUX OSCURO ($37.22)')" 
+                            onclick="playFuturisticSound('click'); triggerToast('ADDED TO CART: JEGALUX OSCURO ($37.22)')" 
                             class="w-full py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 shadow-lg shadow-accent/20"
+                            onmouseenter="playFuturisticSound('hover')"
                         >
                             <i data-lucide="plus" class="w-4 h-4"></i>
                             ADD TO CART ($37.22)
                         </button>
                         <button 
-                            onclick="triggerToast('REDIRECTING TO STORE CHECKOUT...')" 
+                            onclick="playFuturisticSound('click'); triggerToast('REDIRECTING TO STORE CHECKOUT...')" 
                             class="w-full py-3.5 rounded glass-panel glass-panel-hover text-white font-tech text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2"
+                            onmouseenter="playFuturisticSound('hover')"
                         >
                             BUY NOW VIA STORE
                         </button>
@@ -323,7 +335,7 @@
         </div>
     </section>
 
-    <!-- 4. CRAFTED WITH INTENT / PROCESS (Con la nueva foto de Obscure Atelier) -->
+    <!-- 4. CRAFTED WITH INTENT / PROCESS -->
     <section id="process" class="py-20 md:py-28 relative z-10 border-y border-white/5 bg-black/30 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
@@ -333,7 +345,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- STAGE 01 -->
-                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playFuturisticSound('hover')">
                     <div class="h-64 overflow-hidden relative">
                         <img src="1e85e61a-723b-4751-b081-961a9c9bf287.jpg" alt="Embroidery" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                         <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 01</div>
@@ -345,8 +357,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- STAGE 02 (Foto Obscure Atelier Actualizada) -->
-                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                <!-- STAGE 02 -->
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playFuturisticSound('hover')">
                     <div class="h-64 overflow-hidden relative">
                         <img src="ea5e7534-dd0e-4d1c-84c2-a8f7543243a1.jpg" alt="Obscure Atelier Studio" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                         <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 02</div>
@@ -359,7 +371,7 @@
                     </div>
                 </div>
                 <!-- STAGE 03 -->
-                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playFuturisticSound('hover')">
                     <div class="h-64 overflow-hidden relative">
                         <img src="accb1452-469b-4746-9017-64ce56cf296b.jpg" alt="Detail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                         <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 03</div>
@@ -378,7 +390,7 @@
     <!-- 5. PHILOSOPHY SECTION -->
     <section id="manifesto" class="py-20 md:py-28 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="glass-panel rounded-2xl p-8 md:p-14 relative overflow-hidden tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+            <div class="glass-panel rounded-2xl p-8 md:p-14 relative overflow-hidden tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playFuturisticSound('hover')">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                     <div class="lg:col-span-6 space-y-6">
                         <span class="font-tech text-xs text-accent tracking-widest uppercase">// CORE MANIFESTO</span>
@@ -423,6 +435,44 @@
             mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
         }
 
+        // Sistema de Sonido Sci-Fi / Web Audio API avanzado
+        let audioCtx = null;
+        function playFuturisticSound(type) {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                if (type === 'hover') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(580, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(740, audioCtx.currentTime + 0.04);
+                    gain.gain.setValueAtTime(0.012, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.04);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.04);
+                } else if (type === 'click') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(330, audioCtx.currentTime + 0.08);
+                    gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.08);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.08);
+                }
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+            } catch (e) {
+                // Previene restricciones de audio del navegador
+            }
+        }
+
         // Efecto Parallax en las nubes y zoom en el banner al hacer scroll
         window.addEventListener('scroll', () => {
             const scrollY = window.pageYOffset;
@@ -463,15 +513,16 @@
             }
         }
 
+        // Movimiento 3D fluido e interactivo en tarjetas
         function handleTilt(e, card) {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -2.5;
-            const rotateY = ((x - centerX) / centerX) * 2.5;
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.005, 1.005, 1.005)`;
+            const rotateX = ((y - centerY) / centerY) * -4;
+            const rotateY = ((x - centerX) / centerX) * 4;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
         }
 
         function resetTilt(card) {
