@@ -36,7 +36,6 @@
         }
     </script>
     <style>
-        /* Smooth Scrolling avanzado */
         html {
             scroll-behavior: smooth;
         }
@@ -211,7 +210,7 @@
 
     <!-- 2. STREAMLINED & NARROW BANNER WITH ZOOM ON SCROLL -->
     <section class="relative z-10 border-b border-white/5 py-12 md:py-16 overflow-hidden">
-        <div id="bannerContent" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+        <div id="bannerContent" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative" onmouseenter="playFuturisticSound('block')">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-accent/30 text-accent font-tech text-[10px] uppercase tracking-widest mb-4">
                 <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
                 AUTUMN/WINTER PROTOCOL — EDITION 0.94
@@ -254,7 +253,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
                 <!-- Garment Image Column -->
-                <div class="lg:col-span-7 relative group tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                <div class="lg:col-span-7 relative group tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playFuturisticSound('block')">
                     <div class="absolute -inset-1 bg-gradient-to-r from-accent/20 to-transparent rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity"></div>
                     <div class="relative glass-panel rounded-xl overflow-hidden shadow-2xl">
                         <img 
@@ -271,7 +270,7 @@
                 </div>
 
                 <!-- Garment Specs Column -->
-                <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl tilt-card relative overflow-hidden" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl tilt-card relative overflow-hidden" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playFuturisticSound('block')">
                     <div class="border-b border-white/10 pb-5">
                         <div class="flex justify-between items-baseline mb-2">
                             <h2 class="text-2xl md:text-3xl font-display font-bold tracking-tight text-white uppercase">JEGALUX OSCURO</h2>
@@ -338,14 +337,14 @@
     <!-- 4. CRAFTED WITH INTENT / PROCESS -->
     <section id="process" class="py-20 md:py-28 relative z-10 border-y border-white/5 bg-black/30 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
+            <div class="text-center max-w-2xl mx-auto mb-16" onmouseenter="playFuturisticSound('block')">
                 <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// RIGOROUS PRODUCTION ARCHITECTURE</span>
                 <h2 class="text-3xl md:text-4xl font-display font-bold uppercase text-white tracking-tight">CRAFTED WITH INTENT</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- STAGE 01 -->
-                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playFuturisticSound('hover')">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playFuturisticSound('block')">
                     <div class="h-64 overflow-hidden relative">
                         <img src="1e85e61a-723b-4751-b081-961a9c9bf287.jpg" alt="Embroidery" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                         <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 01</div>
@@ -358,7 +357,7 @@
                     </div>
                 </div>
                 <!-- STAGE 02 -->
-                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playFuturisticSound('hover')">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playFuturisticSound('block')">
                     <div class="h-64 overflow-hidden relative">
                         <img src="ea5e7534-dd0e-4d1c-84c2-a8f7543243a1.jpg" alt="Obscure Atelier Studio" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                         <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 02</div>
@@ -371,7 +370,7 @@
                     </div>
                 </div>
                 <!-- STAGE 03 -->
-                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playFuturisticSound('hover')">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playFuturisticSound('block')">
                     <div class="h-64 overflow-hidden relative">
                         <img src="accb1452-469b-4746-9017-64ce56cf296b.jpg" alt="Detail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                         <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 03</div>
@@ -390,7 +389,7 @@
     <!-- 5. PHILOSOPHY SECTION -->
     <section id="manifesto" class="py-20 md:py-28 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="glass-panel rounded-2xl p-8 md:p-14 relative overflow-hidden tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playFuturisticSound('hover')">
+            <div class="glass-panel rounded-2xl p-8 md:p-14 relative overflow-hidden tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playFuturisticSound('block')">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                     <div class="lg:col-span-6 space-y-6">
                         <span class="font-tech text-xs text-accent tracking-widest uppercase">// CORE MANIFESTO</span>
@@ -408,7 +407,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="glass-panel border-t border-white/5 py-12 relative z-10">
+    <footer class="glass-panel border-t border-white/5 py-12 relative z-10" onmouseenter="playFuturisticSound('block')">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
                 <img src="logo.png" alt="JEGALUX" class="h-7 w-auto object-contain" />
@@ -435,7 +434,7 @@
             mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
         }
 
-        // Sistema de Sonido Sci-Fi / Web Audio API avanzado
+        // Sistema de Sonido Sci-Fi / Web Audio API avanzado con efectos por bloque
         let audioCtx = null;
         function playFuturisticSound(type) {
             try {
@@ -452,15 +451,23 @@
                     osc.type = 'sine';
                     osc.frequency.setValueAtTime(580, audioCtx.currentTime);
                     osc.frequency.exponentialRampToValueAtTime(740, audioCtx.currentTime + 0.04);
-                    gain.gain.setValueAtTime(0.012, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.01, audioCtx.currentTime);
                     gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.04);
                     osc.start();
                     osc.stop(audioCtx.currentTime + 0.04);
+                } else if (type === 'block') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(320, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(420, audioCtx.currentTime + 0.06);
+                    gain.gain.setValueAtTime(0.008, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.06);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.06);
                 } else if (type === 'click') {
                     osc.type = 'triangle';
                     osc.frequency.setValueAtTime(880, audioCtx.currentTime);
                     osc.frequency.exponentialRampToValueAtTime(330, audioCtx.currentTime + 0.08);
-                    gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.025, audioCtx.currentTime);
                     gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.08);
                     osc.start();
                     osc.stop(audioCtx.currentTime + 0.08);
