@@ -1,275 +1,548 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEGALUX — Dark Luxury Wear</title>
-    <style>
-        :root {
-            --bg-color: #0b0b0b;
-            --panel-bg: #121212;
-            --accent-orange: #ff5500;
-            --text-main: #f0f0f0;
-            --text-muted: #888888;
-            --border-color: #222222;
-        }
+    <title>JEGALUX | Obscure Luxury Streetwear</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
-
-        /* Header Minimalista */
-        header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2.5rem 2rem;
-            border-bottom: 1px solid var(--border-color);
-            background: var(--bg-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo-container img {
-            height: 48px;
-            object-fit: contain;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 6rem 2rem 4rem 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero-logo {
-            max-width: 450px;
-            width: 100%;
-            margin-bottom: 2rem;
-            filter: drop-shadow(0 0 25px rgba(255, 85, 0, 0.2));
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 2.5rem;
-            letter-spacing: 0.05em;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 0.9rem 2.2rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            border: 1px solid var(--accent-orange);
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-orange);
-            color: #000;
-        }
-
-        .btn-primary:hover {
-            background-color: transparent;
-            color: var(--accent-orange);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text-main);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--accent-orange);
-            color: #000;
-            border-color: var(--accent-orange);
-        }
-
-        /* Sections General */
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 3rem;
-            color: var(--text-main);
-        }
-
-        /* Product Showcase */
-        .product-showcase {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .product-image img {
-            width: 100%;
-            border-radius: 4px;
-            border: 1px solid var(--border-color);
-        }
-
-        .product-details {
-            background: var(--panel-bg);
-            padding: 3rem;
-            border: 1px solid var(--border-color);
-        }
-
-        .product-price {
-            font-size: 2.2rem;
-            color: var(--accent-orange);
-            font-weight: 700;
-            margin: 1.5rem 0;
-        }
-
-        /* Process Grid */
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .process-card {
-            background: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .process-card h3 {
-            color: var(--accent-orange);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            letter-spacing: 0.1em;
-        }
-
-        .process-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* Philosophy */
-        .philosophy-content {
-            max-width: 800px;
-        }
-
-        .philosophy-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.05em;
-        }
-
-        .philosophy-content p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        @media (max-width: 900px) {
-            .product-showcase, .process-grid {
-                grid-template-columns: 1fr;
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        void: '#070709',
+                        obsidian: '#0d0d11',
+                        surface: '#13131a',
+                        'surface-light': '#1b1b24',
+                        accent: '#ff5500',
+                        'accent-glow': '#ff7700',
+                        'tech-gray': '#737380'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['"JetBrains Mono"', 'monospace'],
+                        display: ['"Chakra Petch"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "radial-gradient(circle at 1px 1px, rgba(255, 85, 0, 0.08) 1px, transparent 0)",
+                    }
+                }
             }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar and subtle cyber grit */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070709;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #23232e;
+            border-radius: 2px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff5500;
+        }
+        .glow-orange {
+            box-shadow: 0 0 25px -4px rgba(255, 85, 0, 0.35);
+        }
+        .glow-text {
+            text-shadow: 0 0 16px rgba(255, 85, 0, 0.5);
         }
     </style>
 </head>
-<body>
+<body class="bg-void text-neutral-200 font-sans selection:bg-accent selection:text-black overflow-x-hidden relative">
 
-    <!-- Header -->
-    <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="JEGALUX Logo">
+    <!-- Ambient Grid Background -->
+    <div class="fixed inset-0 bg-grid-pattern [background-size:24px_24px] pointer-events-none opacity-40 z-0"></div>
+
+    <!-- 1. HEADER / NAVIGATION (Cleaned up: Logo only, no badge, no border, no JEGALUX text) -->
+    <header class="sticky top-0 z-50 bg-void/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Clean Header Logo (Only logo.png, no enclosing box, no JEGALUX text, no DARK LUXURY subtext) -->
+            <a href="#" class="flex items-center group py-2" aria-label="JEGALUX Home">
+                <img 
+                    src="logo.png" 
+                    alt="JEGALUX Logo" 
+                    class="h-9 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_8px_rgba(255,85,0,0.3)]"
+                    onerror="this.onerror=null; this.src='https://placehold.co/180x44/0d0d11/ff5500?text=J+E+G+A+L+U+X';"
+                />
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-tech text-xs tracking-[0.22em] text-neutral-400">
+                <a href="#product" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1">
+                    <span class="text-accent/60 text-[10px]">01//</span>PRODUCTS
+                </a>
+                <a href="#process" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1">
+                    <span class="text-accent/60 text-[10px]">02//</span>PROCESS
+                </a>
+                <a href="#manifesto" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1">
+                    <span class="text-accent/60 text-[10px]">03//</span>MANIFESTO
+                </a>
+                <a href="#vip" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-ping"></span>
+                    VIP ACCESS
+                </a>
+            </nav>
+
+            <!-- Actions: Cart & Quick Buy -->
+            <div class="flex items-center space-x-4">
+                <button 
+                    onclick="triggerToast('CART UPDATED (1 ITEM RESERVED)')"
+                    class="relative p-2.5 rounded-lg bg-surface hover:bg-surface-light border border-white/5 hover:border-accent/40 text-neutral-300 hover:text-white transition-all duration-200"
+                    aria-label="View Cart"
+                >
+                    <i data-lucide="shopping-bag" class="w-4 h-4 text-accent"></i>
+                    <span class="absolute -top-1 -right-1 w-4 h-4 bg-accent text-black font-tech font-bold text-[10px] rounded-full flex items-center justify-center">1</span>
+                </button>
+
+                <a 
+                    href="#product"
+                    class="hidden sm:inline-flex items-center font-tech text-xs tracking-widest px-4 py-2.5 rounded-md bg-accent/10 border border-accent/60 text-accent hover:bg-accent hover:text-black transition-all duration-200"
+                >
+                    ORDER NOW
+                </a>
+
+                <!-- Mobile menu toggle button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-neutral-400 hover:text-white">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-obsidian/95 border-b border-white/10 px-6 py-5 font-tech text-xs tracking-widest space-y-4">
+            <a href="#product" class="block text-neutral-300 hover:text-accent">01// PRODUCTS</a>
+            <a href="#process" class="block text-neutral-300 hover:text-accent">02// PROCESS</a>
+            <a href="#manifesto" class="block text-neutral-300 hover:text-accent">03// MANIFESTO</a>
+            <a href="#vip" class="block text-accent">● VIP ACCESS</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <img src="logo.png" alt="JEGALUX Emblem" class="hero-logo">
-        <p>Underground silhouettes, obscure textures and premium comfort for those who move in the shadow.</p>
-        <div class="hero-buttons">
-            <button class="btn btn-primary">Explore</button>
-            <button class="btn btn-secondary">Manifesto</button>
+    <!-- 2. STREAMLINED HERO BANNER -->
+    <section class="relative z-10 border-b border-white/5 py-16 md:py-24 bg-gradient-to-b from-void via-obsidian to-void overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+            
+            <!-- Tech HUD indicator -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-accent/30 text-accent font-tech text-[11px] uppercase tracking-widest mb-6">
+                <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                AUTUMN/WINTER PROTOCOL — EDITION 0.94
+            </div>
+
+            <!-- Hero Emblem / Clean Graphic -->
+            <div class="flex justify-center mb-6">
+                <img 
+                    src="logo.png" 
+                    alt="Emblem" 
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 drop-shadow-[0_0_20px_rgba(255,85,0,0.25)]"
+                    onerror="this.onerror=null; this.src='https://placehold.co/240x80/08080a/ff5500?text=JEGALUX+CORP';"
+                />
+            </div>
+
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-display font-extrabold uppercase tracking-tight text-white mb-6">
+                Engineered In Darkness. <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent-glow to-amber-200">Refined For Power.</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-neutral-400 font-sans text-sm md:text-base leading-relaxed tracking-wide mb-8">
+                Underground silhouettes, obscure textures and premium comfort for those who move in the shadow.
+            </p>
+
+            <!-- CTA Actions -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 font-tech text-xs tracking-widest">
+                <a 
+                    href="#product" 
+                    class="w-full sm:w-auto px-8 py-3.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_20px_rgba(255,85,0,0.35)]"
+                >
+                    EXPLORE COLLECTION
+                </a>
+                <a 
+                    href="#manifesto" 
+                    class="w-full sm:w-auto px-8 py-3.5 rounded bg-surface border border-white/10 hover:border-accent/50 text-neutral-300 hover:text-white transition-all duration-200"
+                >
+                    READ MANIFESTO
+                </a>
+            </div>
+
+            <!-- Brutalist Status Ticker -->
+            <div class="mt-12 pt-6 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-4 text-center font-tech text-[10px] text-neutral-500 uppercase tracking-widest">
+                <div>SPEC: <span class="text-neutral-300">550 GSM FRENCH TERRY</span></div>
+                <div>THREAD: <span class="text-neutral-300">REINFORCED KEVLAR FIBER</span></div>
+                <div>ORIGIN: <span class="text-neutral-300">MADRID // TOKYO</span></div>
+                <div>STATUS: <span class="text-accent">LIMITED BATCH (75 PIECES)</span></div>
+            </div>
         </div>
     </section>
 
-    <!-- Product Showcase -->
-    <section>
-        <h2 class="section-title">Flagship Garment</h2>
-        <div class="product-showcase">
-            <div class="product-image">
-                <img src="Sudadera EGALUX en showroom futurista (1).jpg" alt="Sudadera EGALUX">
+    <!-- 3. FLAGSHIP PRODUCT SHOWCASE -->
+    <section id="product" class="py-20 md:py-28 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-3 mb-10 font-tech text-xs text-accent uppercase tracking-widest">
+                <span class="w-8 h-px bg-accent"></span>
+                FLAGSHIP PIECE // 001
             </div>
-            <div class="product-details">
-                <span style="color: var(--accent-orange); font-size: 0.8rem; letter-spacing: 0.2em;">ONLY PIECE</span>
-                <h3 style="font-size: 1.8rem; margin-top: 0.5rem;">JEGALUX — DARK LUXURY</h3>
-                <p style="color: var(--text-muted); margin-top: 0.5rem;">Heavyweight Obsidian Edition</p>
-                <div class="product-price">$290 USD</div>
-                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">
-                    A garment created for those who need to prove nothing. Brutal silhouette, spine logo and a premium sensation that turns every outfit into armor.
-                </p>
-                <button class="btn btn-primary" style="width: 100%;">Add to Cart</button>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Garment Image Column -->
+                <div class="lg:col-span-7 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-accent/20 to-transparent rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative bg-surface rounded-xl overflow-hidden border border-white/10 shadow-2xl">
+                        <img 
+                            src="Sudadera EGALUX en showroom futurista (1).jpg" 
+                            alt="Sudadera JEGALUX Flagship Showroom" 
+                            class="w-full h-[520px] md:h-[620px] object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
+                            onerror="this.onerror=null; this.src='https://placehold.co/900x1200/121217/ff5500?text=JEGALUX+FLAGSHIP+HOODIE';"
+                        />
+                        <div class="absolute bottom-4 left-4 right-4 bg-obsidian/80 backdrop-blur-md border border-white/10 p-3 rounded-lg flex items-center justify-between font-tech text-xs">
+                            <span class="text-neutral-400">ARCHIVE: FUTURISTIC SHOWROOM</span>
+                            <span class="text-accent">MODEL: 01-PROTOTYPE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Garment Specs Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="border-b border-white/10 pb-5">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h2 class="text-2xl md:text-4xl font-display font-bold tracking-tight text-white uppercase">JEGALUX OBSCURE OVERSIZED HOODIE</h2>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="font-display text-2xl text-accent font-bold">$290 USD</span>
+                            <span class="text-neutral-500 font-tech text-xs tracking-wider line-through">$380</span>
+                            <span class="px-2 py-0.5 rounded bg-accent/20 text-accent font-tech text-[10px] tracking-wider uppercase">ARCHIVE EXCLUSIVE</span>
+                        </div>
+                    </div>
+
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Constructed from double-milled 550 GSM Portuguese organic cotton. Features an elongated boxy silhouette, concealed forearm cyber-mesh pocket, and high-density industrial rear typography. Pre-shrunk via dark volcanic wash.
+                    </p>
+
+                    <!-- Technical Bullet points -->
+                    <div class="space-y-2 font-tech text-xs text-neutral-300">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-accent"></i>
+                            <span>Heavyweight structured thermal drape</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-accent"></i>
+                            <span>Tactile silicone and matte embroidery blend</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-accent"></i>
+                            <span>Individually serialized metallic tag</span>
+                        </div>
+                    </div>
+
+                    <!-- Size Selection -->
+                    <div class="pt-2">
+                        <div class="flex justify-between items-center mb-2 font-tech text-xs text-neutral-400">
+                            <span>SELECT FIT:</span>
+                            <button class="hover:text-accent underline text-[11px]" onclick="triggerToast('SIZING GUIDE: OVERSIZED DROPPED SHOULDERS')">SIZE MATRIX</button>
+                        </div>
+                        <div class="grid grid-cols-4 gap-2 font-tech text-xs">
+                            <button onclick="selectSize(this)" class="size-btn py-3 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition">S</button>
+                            <button onclick="selectSize(this)" class="size-btn py-3 border border-accent rounded bg-accent/10 text-accent font-bold transition">M</button>
+                            <button onclick="selectSize(this)" class="size-btn py-3 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition">L</button>
+                            <button onclick="selectSize(this)" class="size-btn py-3 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition">XL</button>
+                        </div>
+                    </div>
+
+                    <!-- Primary Actions -->
+                    <div class="space-y-3 pt-3">
+                        <button 
+                            onclick="triggerToast('ADDED TO CART: JEGALUX OVERSIZED HOODIE')" 
+                            class="w-full py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 shadow-lg shadow-accent/20"
+                        >
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                            ADD TO CART
+                        </button>
+                        <button 
+                            onclick="triggerToast('INITIALIZING DIRECT CRYPTO/CARD CHECKOUT...')" 
+                            class="w-full py-3.5 rounded bg-surface hover:bg-surface-light border border-white/10 hover:border-white/20 text-white font-tech text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2"
+                        >
+                            BUY NOW VIA ESCROW
+                        </button>
+                    </div>
+
+                    <div class="flex items-center justify-between text-neutral-500 font-tech text-[10px] pt-2">
+                        <span>🔒 256-BIT ENCRYPTED VAULT</span>
+                        <span>✈ GLOBAL COURIER EXPRESS (2-4 DAYS)</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section>
-        <h2 class="section-title">Crafted with Intent</h2>
-        <div class="process-grid">
-            <div class="process-card">
-                <h3>01. INDUSTRIAL EMBROIDERY</h3>
-                <p>Precision computerized micro-stitching guarantees millimeter-perfect tension across heavy textiles without warp or puckering.</p>
+    <!-- 4. CRAFTED WITH INTENT / PROCESS (3 STAGES) -->
+    <section id="process" class="py-20 md:py-28 bg-obsidian/70 border-y border-white/5 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// RIGOROUS PRODUCTION ARCHITECTURE</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold uppercase text-white tracking-tight">CRAFTED WITH INTENT</h2>
+                <p class="text-neutral-400 text-sm mt-3">From algorithmic pattern creation to high-caliber needle precision, each garment is executed through a closed-loop underground chain.</p>
             </div>
-            <div class="process-card">
-                <h3>02. OBSCURA ATELIER</h3>
-                <p>Developed within shadow and controlled light setups to balance deep matte absorption against subtle luster under night illumination.</p>
-            </div>
-            <div class="process-card">
-                <h3>03. ABSOLUTE DETAIL</h3>
-                <p>Individual numbered authenticity tags, reinforced drop-shoulder seam bindings, and raw artisan touches that turn fabric into armor.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- STAGE 01: INDUSTRIAL EMBROIDERY -->
+                <div class="bg-surface rounded-xl border border-white/5 overflow-hidden flex flex-col group hover:border-accent/40 transition-all duration-300">
+                    <div class="h-64 overflow-hidden relative">
+                        <img 
+                            src="1e85e61a-723b-4751-b081-961a9c9bf287.jpg" 
+                            alt="Industrial Embroidery Process" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x450/0f0f14/ff5500?text=STAGE+01+EMBROIDERY';"
+                        />
+                        <div class="absolute top-3 left-3 bg-void/90 px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">
+                            STAGE 01
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">INDUSTRIAL EMBROIDERY</h3>
+                            <p class="text-neutral-400 text-xs leading-relaxed">
+                                Calibrated on 15-needle Tajima industrial looms. 82,000 dense passes per crest produce an impenetrable 3D tactical relief that will outlast synthetic fabrics.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-white/5 font-tech text-[10px] text-accent/80 flex items-center justify-between">
+                            <span>DENSITY: 82K STITCHES</span>
+                            <span>PRECISION: 0.05MM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STAGE 02: OBSCURE ATELIER -->
+                <div class="bg-surface rounded-xl border border-white/5 overflow-hidden flex flex-col group hover:border-accent/40 transition-all duration-300">
+                    <div class="h-64 overflow-hidden relative">
+                        <img 
+                            src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=800&q=80" 
+                            alt="Obscure Atelier Design Studio" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x450/0f0f14/ff5500?text=STAGE+02+ATELIER';"
+                        />
+                        <div class="absolute top-3 left-3 bg-void/90 px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">
+                            STAGE 02
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">OBSCURE ATELIER</h3>
+                            <p class="text-neutral-400 text-xs leading-relaxed">
+                                Zero commercial pressure. Pattern drafting occurs in our clandestine studio with hand-cut patterns tuned for ergonomic drape and anti-surveillance profiles.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-white/5 font-tech text-[10px] text-accent/80 flex items-center justify-between">
+                            <span>GEOMETRY: ANATOMIC DROP</span>
+                            <span>PROTOTYPES: 14 ITERATIONS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STAGE 03: ABSOLUTE DETAIL -->
+                <div class="bg-surface rounded-xl border border-white/5 overflow-hidden flex flex-col group hover:border-accent/40 transition-all duration-300">
+                    <div class="h-64 overflow-hidden relative">
+                        <img 
+                            src="accb1452-469b-4746-9017-64ce56cf296b.jpg" 
+                            alt="Absolute Detail Quality Control" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x450/0f0f14/ff5500?text=STAGE+03+DETAILS';"
+                        />
+                        <div class="absolute top-3 left-3 bg-void/90 px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">
+                            STAGE 03
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">ABSOLUTE DETAIL</h3>
+                            <p class="text-neutral-400 text-xs leading-relaxed">
+                                Triple seam binding, black chrome eyelets, and silicone dipped drawstrings. Every unit undergoes manual tension inspection before sealing into vacuum packs.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-white/5 font-tech text-[10px] text-accent/80 flex items-center justify-between">
+                            <span>HARDWARE: MATTE BLACK BRASS</span>
+                            <span>QC INSPECTION: 100% MANUAL</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Philosophy Section -->
-    <section>
-        <div class="philosophy-content">
-            <span style="color: var(--accent-orange); font-size: 0.8rem; letter-spacing: 0.2em;">THE CORE PHILOSOPHY</span>
-            <h2>LUXURY BUILT IN THE DARK.</h2>
-            <p>JEGALUX does not participate in fast cycles. We craft timeless darkness for an elite cohort who prioritize presence over superficial noise.</p>
-            <img src="Sudadera JEGALUX de lujo oscuro (1).png" alt="Dark Atelier" style="width: 100%; margin-top: 2rem; border-radius: 4px; border: 1px solid var(--border-color);">
+    <!-- 5. PHILOSOPHY SECTION (LUXURY BUILT IN THE DARK) -->
+    <section id="manifesto" class="py-20 md:py-28 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-surface/80 rounded-2xl border border-white/10 p-8 md:p-14 relative overflow-hidden backdrop-blur-xl">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    
+                    <div class="lg:col-span-6 space-y-6">
+                        <span class="font-tech text-xs text-accent tracking-widest uppercase">// CORE MANIFESTO</span>
+                        <h2 class="text-3xl md:text-5xl font-display font-bold uppercase text-white leading-tight">
+                            LUXURY BUILT IN THE DARK
+                        </h2>
+                        <p class="text-neutral-300 text-sm md:text-base leading-relaxed font-sans">
+                            Mainstream luxury thrives on superficial noise and fleeting logos. JEGALUX was born from counter-culture conviction: true luxury is stealthy, architectural, and defiant.
+                        </p>
+                        <p class="text-neutral-400 text-xs md:text-sm leading-relaxed">
+                            We manufacture weapons of everyday elegance for high-frequency thinkers, nocturnal creatives, and individuals who command presence without saying a single syllable.
+                        </p>
+
+                        <div class="pt-4 flex flex-wrap gap-4 font-tech text-xs text-neutral-400">
+                            <div class="px-3 py-2 bg-obsidian rounded border border-white/5">
+                                <span class="text-accent font-bold">01</span> NO MASS PRODUCTION
+                            </div>
+                            <div class="px-3 py-2 bg-obsidian rounded border border-white/5">
+                                <span class="text-accent font-bold">02</span> RAW MONOCHROME
+                            </div>
+                            <div class="px-3 py-2 bg-obsidian rounded border border-white/5">
+                                <span class="text-accent font-bold">03</span> ARCHIVAL QUALITY
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dark Atelier Sanctum Card with Sudadera JEGALUX de lujo oscuro (1).png -->
+                    <div class="lg:col-span-6">
+                        <div class="relative rounded-xl overflow-hidden border border-accent/30 shadow-[0_0_35px_rgba(255,85,0,0.15)] group">
+                            <img 
+                                src="Sudadera JEGALUX de lujo oscuro (1).png" 
+                                alt="Sudadera JEGALUX de Lujo Oscuro Atelier Sanctum" 
+                                class="w-full h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
+                                onerror="this.onerror=null; this.src='https://placehold.co/800x600/0c0c10/ff5500?text=ATELIER+SANCTUM+JEGALUX';"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <div class="font-tech text-[11px] text-accent uppercase tracking-widest mb-1">ATELIER SANCTUM // 2026</div>
+                                <div class="font-display text-lg text-white font-semibold">The Unforgiving Standard of Darkness.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- 6. VIP ACCESS / SUBSCRIPTION -->
+    <section id="vip" class="py-16 bg-obsidian border-t border-white/5 relative z-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">RESTRICTED FREQUENCY</span>
+            <h3 class="text-2xl md:text-3xl font-display font-bold uppercase text-white mb-4">JOIN THE UNDERGROUND REGISTRY</h3>
+            <p class="text-neutral-400 text-xs md:text-sm max-w-lg mx-auto mb-6">
+                Receive secret password hashes for unannounced vault releases, private runway streams, and personalized atelier bespoke runs.
+            </p>
+
+            <form onsubmit="handleVipSubmit(event)" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input 
+                    type="email" 
+                    required 
+                    placeholder="ENTER YOUR PROTOCOL ADDRESS (EMAIL)" 
+                    class="flex-1 px-4 py-3 bg-surface border border-white/10 rounded font-tech text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-accent"
+                />
+                <button 
+                    type="submit" 
+                    class="px-6 py-3 bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs uppercase tracking-widest rounded transition duration-200"
+                >
+                    REQUEST ACCESS
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-void border-t border-white/5 py-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <img 
+                    src="logo.png" 
+                    alt="JEGALUX" 
+                    class="h-7 w-auto object-contain"
+                    onerror="this.onerror=null; this.src='https://placehold.co/100x30/08080a/ff5500?text=JEGALUX';"
+                />
+                <span class="text-neutral-600 font-tech text-xs">/ SHADOW ATELIER 2026</span>
+            </div>
+
+            <div class="flex items-center space-x-6 font-tech text-xs text-neutral-500">
+                <a href="#" class="hover:text-accent transition">TERMS</a>
+                <a href="#" class="hover:text-accent transition">VAULT POLICY</a>
+                <a href="#" class="hover:text-accent transition">ENCRYPTED SUPPORT</a>
+            </div>
+
+            <div class="font-tech text-xs text-neutral-600">
+                ALL RIGHTS RESERVED // SECURED BY PROVENANCE
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Feedback Toast (No alert() used) -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-surface border border-accent text-white px-5 py-3 rounded-lg shadow-2xl flex items-center gap-3 font-tech text-xs">
+            <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
+            <span id="toastMsg">ACTION CONFIRMED</span>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        window.addEventListener('load', () => {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Size selector interaction
+        function selectSize(btn) {
+            document.querySelectorAll('.size-btn').forEach(b => {
+                b.className = 'size-btn py-3 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition';
+            });
+            btn.className = 'size-btn py-3 border border-accent rounded bg-accent/10 text-accent font-bold transition';
+            triggerToast(`SIZE SELECTED: ${btn.textContent.trim()}`);
+        }
+
+        // Custom Toast Notification System
+        function triggerToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            if (toast && toastMsg) {
+                toastMsg.innerText = message;
+                toast.classList.remove('translate-y-24', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+                
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                    toast.classList.add('translate-y-24', 'opacity-0');
+                }, 3200);
+            }
+        }
+
+        // VIP Newsletter Form Handler
+        function handleVipSubmit(e) {
+            e.preventDefault();
+            triggerToast('REQUEST LOGGED. CIPHER TOKEN SENT TO INBOX.');
+            e.target.reset();
+        }
+    </script>
 </body>
 </html>
