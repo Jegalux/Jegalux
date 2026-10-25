@@ -18,7 +18,6 @@
     h1, h2, h3, .font-serif {
       font-family: 'Cinzel', serif;
     }
-    /* Smooth 3D Scroll & Zoom Animations */
     .reveal-on-scroll {
       opacity: 0;
       transform: translateY(40px) perspective(1000px) rotateX(8deg);
@@ -37,11 +36,22 @@
     .img-zoom-hover:hover img {
       transform: scale(1.08);
     }
+    .grain::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 12px 12px;
+      opacity: 0.14;
+      pointer-events: none;
+    }
+    .shadow-ornament {
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
   </style>
 </head>
 <body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-amber-500 selection:text-black">
 
-  <!-- Header -->
   <header class="sticky top-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <a href="#" class="flex items-center gap-2">
@@ -60,9 +70,246 @@
     </div>
   </header>
 
-  <!-- Hero Section (Narrow, Darker Banner with Gothic Emblem Background & Zoom) -->
   <section class="relative min-h-[65vh] flex items-center justify-center text-center px-4 overflow-hidden border-b border-zinc-800">
     <div class="absolute inset-0 z-0 overflow-hidden">
-      <img src="Emblema%20g%C3%B3tico%20de%20hueso%20sobre%20negro.png" alt="Gothic Emblem Background" class="w-full h-full object-cover opacity-60 brightness-110 scale-100 hover:scale-105 transition-transform duration-1000">
+      <img src="Emblema%20g%C3%B3tico%20de%20hueso%20sobre%20negro.png" alt="Gothic Emblem Background" class="w-full h-full object-cover opacity-60 brightness-110 scale-100 hover:scale-105 transition-transform duration-1000 ease-out">
     </div>
-    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent">
+    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent"></div>
+    <div class="relative z-10 max-w-4xl mx-auto py-20">
+      <p class="mb-6 text-xs uppercase tracking-[0.5em] text-amber-400">Dark luxury wear</p>
+      <h1 class="text-5xl md:text-7xl font-bold uppercase tracking-[0.18em] text-white drop-shadow-[0_0_30px_rgba(245,158,11,0.2)]">
+        JEGALUX
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto">
+        Underground silhouettes. Obscure textures. Extreme comfort for those who move unseen.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#catalog" class="bg-amber-500 text-black px-8 py-3 text-xs font-bold uppercase tracking-widest hover:bg-amber-400 transition-colors">
+          Explore the collection
+        </a>
+        <a href="#manifesto" class="border border-zinc-700 px-8 py-3 text-xs font-bold uppercase tracking-widest text-zinc-200 hover:border-amber-500 hover:text-amber-400 transition-colors">
+          Read the manifesto
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="catalog" class="max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
+      <div class="reveal-on-scroll mb-12 flex flex-col md:flex-row items-end justify-between gap-6">
+        <div>
+          <p class="text-xs uppercase tracking-[0.4em] text-amber-500 mb-4">Catalog</p>
+          <h2 class="text-4xl md:text-5xl font-bold uppercase text-white">Built for the night shift</h2>
+        </div>
+        <a href="#vip" class="text-sm uppercase tracking-[0.25em] text-zinc-300 hover:text-amber-400 transition-colors">Request private access</a>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <article class="reveal-on-scroll group bg-zinc-900/80 border border-zinc-800 rounded-2xl overflow-hidden shadow-ornament">
+          <div class="img-zoom-hover">
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80" alt="Nocturne leather jacket" class="w-full h-80 object-cover">
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-2xl font-semibold text-white">Nocturne</h3>
+              <span class="text-amber-400 font-semibold">$290</span>
+            </div>
+            <p class="text-zinc-400 leading-relaxed">Heavy grain leather, matte hardware, and a slim silhouette built for ritual nights.</p>
+            <button class="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-amber-400 hover:text-amber-300 transition-colors">
+              Add to cart <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </article>
+
+        <article class="reveal-on-scroll group bg-zinc-900/80 border border-zinc-800 rounded-2xl overflow-hidden shadow-ornament">
+          <div class="img-zoom-hover">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80" alt="Ashen cargo set" class="w-full h-80 object-cover">
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-2xl font-semibold text-white">Ashen</h3>
+              <span class="text-amber-400 font-semibold">$240</span>
+            </div>
+            <p class="text-zinc-400 leading-relaxed">Utility layers engineered with a dark luxury edge and cold-weather resilience.</p>
+            <button class="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-amber-400 hover:text-amber-300 transition-colors">
+              Add to cart <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </article>
+
+        <article class="reveal-on-scroll group bg-zinc-900/80 border border-zinc-800 rounded-2xl overflow-hidden shadow-ornament">
+          <div class="img-zoom-hover">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" alt="Obsidian monochrome essentials" class="w-full h-80 object-cover">
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-2xl font-semibold text-white">Obsidian</h3>
+              <span class="text-amber-400 font-semibold">$180</span>
+            </div>
+            <p class="text-zinc-400 leading-relaxed">Essential monochrome staples cut from premium fabrics and meant to outlast trends.</p>
+            <button class="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-amber-400 hover:text-amber-300 transition-colors">
+              Add to cart <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="lookbook" class="border-y border-zinc-800 bg-zinc-950/80">
+      <div class="max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
+        <div class="reveal-on-scroll mb-12 text-center">
+          <p class="text-xs uppercase tracking-[0.45em] text-amber-500 mb-4">Lookbook</p>
+          <h2 class="text-4xl md:text-5xl font-bold uppercase text-white">A study in contrast</h2>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+          <div class="reveal-on-scroll relative overflow-hidden rounded-3xl border border-zinc-800 shadow-ornament">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80" alt="JEGALUX styling portrait" class="w-full h-full min-h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-8">
+              <p class="text-xs uppercase tracking-[0.4em] text-amber-400 mb-3">Editorial 01</p>
+              <h3 class="text-3xl font-bold uppercase text-white">Midnight form</h3>
+            </div>
+          </div>
+
+          <div class="grid gap-8">
+            <div class="reveal-on-scroll overflow-hidden rounded-3xl border border-zinc-800 shadow-ornament">
+              <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80" alt="JEGALUX styling detail" class="w-full h-64 object-cover">
+            </div>
+            <div class="reveal-on-scroll bg-zinc-900/80 border border-zinc-800 rounded-3xl p-8 shadow-ornament">
+              <p class="text-xs uppercase tracking-[0.4em] text-amber-500 mb-3">Craft</p>
+              <h3 class="text-3xl font-semibold text-white mb-4">Precision in every layer</h3>
+              <p class="text-zinc-400 leading-relaxed">
+                Each piece is designed around texture, silhouette, and presence. We favor contrast over noise, depth over excess, and luxury that feels lived in.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="limited" class="max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
+      <div class="reveal-on-scroll mb-12 flex flex-col md:flex-row items-end justify-between gap-6">
+        <div>
+          <p class="text-xs uppercase tracking-[0.4em] text-amber-500 mb-4">Limited editions</p>
+          <h2 class="text-4xl md:text-5xl font-bold uppercase text-white">Drop locked to rarity</h2>
+        </div>
+        <span class="text-sm uppercase tracking-[0.25em] text-zinc-400">Only 48 units</span>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        <div class="reveal-on-scroll bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-ornament">
+          <p class="text-xs uppercase tracking-[0.35em] text-amber-400">01 / Bone edition</p>
+          <h3 class="mt-5 text-3xl font-semibold text-white">Gallow</h3>
+          <p class="mt-4 text-zinc-400">Monochrome armor-inspired layering with bone-toned detailing and hand-finished edges.</p>
+          <div class="mt-6 flex items-center justify-between border-t border-zinc-800 pt-4">
+            <span class="text-zinc-300">Restock: none</span>
+            <span class="text-amber-400 font-semibold">$360</span>
+          </div>
+        </div>
+
+        <div class="reveal-on-scroll bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-ornament">
+          <p class="text-xs uppercase tracking-[0.35em] text-amber-400">02 / Terrain</p>
+          <h3 class="mt-5 text-3xl font-semibold text-white">Abyssal</h3>
+          <p class="mt-4 text-zinc-400">Field-tested textures with luxurious tailoring and a near-black palette tuned for night movement.</p>
+          <div class="mt-6 flex items-center justify-between border-t border-zinc-800 pt-4">
+            <span class="text-zinc-300">Restock: none</span>
+            <span class="text-amber-400 font-semibold">$420</span>
+          </div>
+        </div>
+
+        <div class="reveal-on-scroll bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-ornament">
+          <p class="text-xs uppercase tracking-[0.35em] text-amber-400">03 / Signature</p>
+          <h3 class="mt-5 text-3xl font-semibold text-white">Vanta</h3>
+          <p class="mt-4 text-zinc-400">A release reserved for close clients and collectors: low-light luxury with subtle silver accents.</p>
+          <div class="mt-6 flex items-center justify-between border-t border-zinc-800 pt-4">
+            <span class="text-zinc-300">Restock: none</span>
+            <span class="text-amber-400 font-semibold">$510</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="manifesto" class="bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950 border-y border-zinc-800">
+      <div class="max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+          <div class="reveal-on-scroll">
+            <p class="text-xs uppercase tracking-[0.4em] text-amber-500 mb-4">Manifesto</p>
+            <h2 class="text-4xl md:text-5xl font-bold uppercase text-white">Luxury without spectacle.</h2>
+            <p class="mt-6 text-lg text-zinc-300 leading-relaxed">
+              JEGALUX was built for people who prefer depth over display. We create dark, tactile garments that whisper power rather than demand attention. Loudness is noise. Presence is intention.
+            </p>
+            <p class="mt-4 text-zinc-400 leading-relaxed">
+              Our identity is rooted in hidden culture, underground energy, and the discipline of high-end tailoring. We design for nights that matter and rituals that endure.
+            </p>
+          </div>
+
+          <div class="reveal-on-scroll grid gap-5">
+            <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+              <p class="text-amber-400 text-xs uppercase tracking-[0.3em]">01</p>
+              <h3 class="mt-3 text-2xl font-semibold text-white">Quiet power</h3>
+            </div>
+            <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+              <p class="text-amber-400 text-xs uppercase tracking-[0.3em]">02</p>
+              <h3 class="mt-3 text-2xl font-semibold text-white">Extreme textures</h3>
+            </div>
+            <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+              <p class="text-amber-400 text-xs uppercase tracking-[0.3em]">03</p>
+              <h3 class="mt-3 text-2xl font-semibold text-white">Forged for ritual</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vip" class="max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
+      <div class="reveal-on-scroll bg-gradient-to-r from-zinc-900 to-zinc-800 border border-zinc-700 rounded-[2rem] p-8 md:p-12 shadow-ornament">
+        <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
+          <div>
+            <p class="text-xs uppercase tracking-[0.45em] text-amber-500 mb-4">VIP access</p>
+            <h2 class="text-4xl md:text-5xl font-bold uppercase text-white">Join the private list</h2>
+            <p class="mt-4 text-zinc-300 leading-relaxed max-w-xl">
+              Be first to know about drop releases, collector previews, and private access to limited pieces before they disappear.
+            </p>
+          </div>
+
+          <form class="bg-zinc-950/60 border border-zinc-700 rounded-2xl p-5">
+            <label class="block text-xs uppercase tracking-[0.25em] text-zinc-400 mb-3">Email</label>
+            <input type="email" placeholder="name@email.com" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder:text-zinc-500 focus:outline-none focus:border-amber-500">
+            <button type="submit" class="mt-5 w-full bg-amber-500 text-black px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-amber-400 transition-colors">
+              Request invitation
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-zinc-800 bg-zinc-950">
+    <div class="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="JEGALUX logo" class="h-8 w-auto object-contain">
+        <span class="text-zinc-400 text-sm uppercase tracking-[0.3em]">JEGALUX</span>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-zinc-400">
+        <a href="#catalog" class="hover:text-amber-400 transition-colors">Catalog</a>
+        <a href="#lookbook" class="hover:text-amber-400 transition-colors">Lookbook</a>
+        <a href="#vip" class="hover:text-amber-400 transition-colors">VIP</a>
+      </div>
+      <div class="text-zinc-500 text-sm">© 2026 JEGALUX</div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal-on-scroll').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
