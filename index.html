@@ -1,882 +1,351 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JEGALUX | Dark Luxury Wear</title>
-  <link rel="icon" type="image/png" href="logo.png" />
-  <meta name="description" content="JEGALUX — dark luxury, premium streetwear and limited editions." />
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #050505;
-      --bg-2: #0d0d0d;
-      --panel: rgba(255,255,255,0.03);
-      --line: rgba(255,255,255,0.12);
-      --text: #f4f4f4;
-      --muted: rgba(255,255,255,0.72);
-      --soft: rgba(255,255,255,0.45);
-      --shadow: rgba(0,0,0,0.75);
-    }
-
-    * { box-sizing: border-box; }
-
-    html, body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Montserrat', sans-serif;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background:
-        radial-gradient(circle at 50% 12%, rgba(255,255,255,0.12), transparent 18%),
-        linear-gradient(90deg, rgba(255,255,255,0.02), transparent 15%, transparent 85%, rgba(255,255,255,0.02)),
-        var(--bg);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    .marble {
-      position: relative;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01) 30%, rgba(255,255,255,0.04)),
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.03) 2px, transparent 2px, transparent 16px),
-        #040404;
-    }
-
-    .marble::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255,255,255,0.08), transparent 15%),
-        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.05), transparent 18%),
-        radial-gradient(circle at 30% 70%, rgba(255,255,255,0.04), transparent 18%);
-      opacity: 0.8;
-      pointer-events: none;
-    }
-
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(30px) rotateX(8deg);
-      transition: opacity 0.8s cubic-bezier(.16,1,.3,1), transform 0.8s cubic-bezier(.16,1,.3,1);
-      will-change: transform, opacity;
-    }
-
-    .reveal-on-scroll.active {
-      opacity: 1;
-      transform: translateY(0) rotateX(0deg);
-    }
-
-    .hero-shell {
-      position: relative;
-      min-height: 100vh;
-      overflow: hidden;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .spotlight {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 35%, transparent 60%, rgba(255,255,255,0.05));
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      max-width: 1500px;
-      margin: 0 auto;
-      padding: 30px 20px 80px;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 24px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 12px;
-      letter-spacing: 0.6em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.86);
-      text-decoration: none;
-    }
-
-    .buy-pill,
-    .cta-primary,
-    .cta-secondary,
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: 0.25s ease;
-      white-space: nowrap;
-    }
-
-    .buy-pill {
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: 12px 18px;
-      border-radius: 9999px;
-      color: #fff;
-      background: rgba(255,255,255,0.02);
-      font-size: 11px;
-      letter-spacing: 0.36em;
-      text-transform: uppercase;
-    }
-
-    .buy-pill:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.24);
-      transform: translateY(-1px);
-    }
-
-    .hero-banner {
-      position: relative;
-      min-height: 68vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(8,8,8,0.35), rgba(8,8,8,0.86)),
-        url('Emblema%20g%C3%B3tico%20de%20hueso%20sobre%20negro.png') center/cover no-repeat;
-      box-shadow: inset 0 0 80px rgba(0,0,0,0.7);
-    }
-
-    .hero-banner::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.72));
-    }
-
-    .hero-copy {
-      position: relative;
-      z-index: 2;
-      max-width: 980px;
-      padding: 60px 20px 80px;
-    }
-
-    .eyebrow {
-      font-size: 10px;
-      letter-spacing: 0.48em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.74);
-    }
-
-    .hero-copy h1 {
-      margin: 24px 0 16px;
-      font-size: clamp(3rem, 6vw, 8rem);
-      line-height: 0.95;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-family: 'Cinzel', serif;
-      text-shadow: 0 0 30px rgba(255,255,255,0.08);
-    }
-
-    .hero-copy p {
-      max-width: 720px;
-      margin: 0 auto;
-      font-size: clamp(1rem, 1.5vw, 1.3rem);
-      line-height: 1.8;
-      color: var(--muted);
-    }
-
-    .cta-row {
-      margin-top: 30px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-    }
-
-    .cta-primary, .cta-secondary {
-      padding: 16px 22px;
-      border-radius: 999px;
-      font-size: 11px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .cta-primary {
-      background: rgba(255,255,255,0.96);
-      color: #050505;
-    }
-
-    .cta-secondary {
-      background: transparent;
-      border: 1px solid var(--line);
-      color: rgba(255,255,255,0.9);
-    }
-
-    .product-showcase {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 26px;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 120px 20px;
-    }
-
-    .showcase-copy {
-      padding: 46px 28px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line);
-      min-height: 520px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      box-shadow: 0 25px 70px rgba(0,0,0,0.38);
-    }
-
-    .showcase-copy h3 {
-      margin-top: 16px;
-      font-size: clamp(2.4rem, 4vw, 5rem);
-      line-height: 0.9;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-family: 'Cinzel', serif;
-    }
-
-    .showcase-copy p {
-      margin-top: 22px;
-      max-width: 680px;
-      font-size: 18px;
-      line-height: 1.8;
-      color: var(--muted);
-    }
-
-    .meta-row {
-      margin-top: 28px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .chip {
-      border: 1px solid var(--line);
-      color: rgba(255,255,255,0.8);
-      background: rgba(255,255,255,0.01);
-      padding: 12px 16px;
-      font-size: 10px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-    }
-
-    .showcase-visual {
-      position: relative;
-      min-height: 520px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
-        #0a0a0a;
-      overflow: hidden;
-      perspective: 1200px;
-    }
-
-    .tilt-card {
-      position: relative;
-      width: min(80%, 540px);
-      height: 430px;
-      transform-style: preserve-3d;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      filter: drop-shadow(0 50px 80px rgba(0,0,0,0.8));
-    }
-
-    .hoodie-card {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(10,10,10,1), rgba(2,2,2,1));
-      border-radius: 28px 28px 32px 32px;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
-      transform: translateZ(30px);
-      animation: float 5s ease-in-out infinite;
-    }
-
-    .hoodie-card::before {
-      content: "";
-      position: absolute;
-      width: 58%;
-      height: 32%;
-      left: 50%;
-      top: -18%;
-      transform: translateX(-50%);
-      background: linear-gradient(180deg, rgba(18,18,18,1), rgba(7,7,7,1));
-      border-radius: 52% 52% 36% 36% / 62% 62% 36% 36%;
-      transform-style: preserve-3d;
-    }
-
-    .hoodie-card::after {
-      content: "";
-      position: absolute;
-      width: 18%;
-      height: 18%;
-      left: 50%;
-      top: 7%;
-      transform: translateX(-50%);
-      border-radius: 50%;
-      background: rgba(255,255,255,0.02);
-      filter: blur(18px);
-    }
-
-    .hoodie-card .tag {
-      position: absolute;
-      left: 50%;
-      top: 14px;
-      transform: translateX(-50%);
-      padding: 4px 10px 2px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.96);
-      color: #050505;
-      font-size: 9px;
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      font-weight: 700;
-      box-shadow: 0 0 12px rgba(255,255,255,0.18);
-    }
-
-    .hoodie-card .tag small {
-      display: block;
-      letter-spacing: 0.18em;
-      font-size: 6px;
-      margin-top: 2px;
-    }
-
-    .hoodie-card .sleeve {
-      position: absolute;
-      width: 150px;
-      height: 260px;
-      top: 78px;
-      background: linear-gradient(180deg, rgba(12,12,12,1), rgba(4,4,4,1));
-      border-radius: 28px;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
-    }
-
-    .hoodie-card .sleeve.left {
-      left: -54px;
-      transform: rotate(24deg);
-    }
-
-    .hoodie-card .sleeve.right {
-      right: -54px;
-      transform: rotate(-24deg);
-    }
-
-    .hoodie-card .body {
-      position: absolute;
-      inset: 104px 80px 36px 80px;
-      background: linear-gradient(180deg, rgba(10,10,10,1), rgba(3,3,3,1));
-      border-radius: 18px;
-    }
-
-    .hoodie-card .pocket {
-      position: absolute;
-      left: 50%;
-      bottom: 35px;
-      transform: translateX(-50%);
-      width: 110px;
-      height: 82px;
-      background: rgba(8,8,8,1);
-      border-radius: 18px 18px 22px 22px;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
-    }
-
-    .hoodie-card .print {
-      position: absolute;
-      left: 50%;
-      top: 44%;
-      transform: translate(-50%, -50%);
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      font-size: clamp(80px, 6vw, 152px);
-      letter-spacing: -0.08em;
-      line-height: 0.8;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.94);
-      text-shadow:
-        0 0 0 rgba(255,255,255,0.5),
-        3px 0 0 rgba(255,255,255,0.9),
-        -3px 0 0 rgba(255,255,255,0.9),
-        0 3px 0 rgba(255,255,255,0.85),
-        0 -3px 0 rgba(255,255,255,0.85),
-        4px 4px 0 rgba(255,255,255,0.2),
-        -4px 4px 0 rgba(255,255,255,0.2),
-        6px 0 18px rgba(255,255,255,0.10);
-      user-select: none;
-    }
-
-    .section-shell {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 120px 20px;
-    }
-
-    .section-head {
-      margin-bottom: 38px;
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 20px;
-    }
-
-    .section-head h2 {
-      margin-top: 12px;
-      font-size: clamp(2.2rem, 3vw, 4rem);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      line-height: 1.1;
-      font-family: 'Cinzel', serif;
-    }
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
-    }
-
-    .photo-card {
-      position: relative;
-      min-height: 420px;
-      border: 1px solid var(--line);
-      overflow: hidden;
-      background: #0a0a0a;
-      box-shadow: 0 24px 50px rgba(0,0,0,0.3);
-    }
-
-    .photo-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: saturate(0.8) contrast(1.08);
-      transition: transform 0.9s cubic-bezier(.16,1,.3,1);
-    }
-
-    .photo-card:hover img {
-      transform: scale(1.06);
-    }
-
-    .photo-card .caption {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 20px 18px 16px;
-      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.8));
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-      color: rgba(255,255,255,0.9);
-    }
-
-    .about-layout {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .story-panel {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-      padding: 36px 30px;
-    }
-
-    .story-panel h3 {
-      margin-top: 14px;
-      font-size: clamp(2.2rem, 3vw, 3rem);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      line-height: 1.1;
-      font-family: 'Cinzel', serif;
-    }
-
-    .story-panel p {
-      margin-top: 18px;
-      font-size: 17px;
-      line-height: 1.9;
-      color: var(--muted);
-    }
-
-    .facts {
-      display: grid;
-      gap: 18px;
-      margin-top: 28px;
-    }
-
-    .fact {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      border-top: 1px solid var(--line);
-      padding-top: 18px;
-    }
-
-    .fact .num {
-      min-width: 54px;
-      font-size: 11px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-    }
-
-    .fact .text {
-      font-size: 12px;
-      line-height: 1.8;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.82);
-    }
-
-    .portrait {
-      min-height: 560px;
-      border: 1px solid var(--line);
-      background: #090909;
-      overflow: hidden;
-    }
-
-    .portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: grayscale(0.18) contrast(1.08);
-    }
-
-    .cta-banner {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 20px 120px;
-    }
-
-    .cta-box {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
-      align-items: center;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-      padding: 40px 30px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.32);
-    }
-
-    .cta-box h3 {
-      margin-top: 12px;
-      font-size: clamp(2rem, 3vw, 4rem);
-      font-family: 'Cinzel', serif;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      line-height: 1.1;
-    }
-
-    .cta-box p {
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.8;
-    }
-
-    .cta-form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      width: 100%;
-    }
-
-    .cta-form input {
-      width: 100%;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line);
-      padding: 16px 18px;
-      color: var(--text);
-      outline: none;
-      font: inherit;
-    }
-
-    .cta-form input::placeholder { color: rgba(255,255,255,0.45); }
-
-    .cta-form button {
-      border: 0;
-      background: rgba(255,255,255,0.96);
-      color: #090909;
-      padding: 18px 20px;
-      font-size: 11px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .cta-form button:hover { transform: translateY(-1px); }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) translateZ(30px); }
-      50% { transform: translateY(-10px) translateZ(30px); }
-    }
-
-    @media (max-width: 1100px) {
-      .product-showcase,
-      .about-layout,
-      .cta-box,
-      .photo-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .hero-copy h1 {
-        letter-spacing: 0.08em;
-      }
-
-      .hero-banner {
-        min-height: 55vh;
-      }
-
-      .showcase-copy,
-      .story-panel,
-      .cta-box {
-        padding: 28px 20px;
-      }
-
-      .tilt-card {
-        width: min(88%, 440px);
-        height: 360px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header class="hero-shell marble">
-    <div class="spotlight"></div>
-
-    <div class="hero-inner">
-      <div class="topbar">
-        <a href="#" class="brand" aria-label="Inicio JEGALUX">
-          <span>JEGALUX</span>
-        </a>
-        <a href="https://app.amazecommerce.com/shop/jegalux" class="buy-pill" target="_blank" rel="noopener">Buy now</a>
-      </div>
-
-      <div class="hero-banner">
-        <div class="hero-copy reveal-on-scroll">
-          <div class="eyebrow">Dark luxury wear</div>
-          <h1>JEGALUX</h1>
-          <p>
-            Underground silhouettes, obscure textures and premium comfort for those who move in the shadows.
-          </p>
-          <div class="cta-row">
-            <a href="#single-piece" class="cta-primary">Explore</a>
-            <a href="#about" class="cta-secondary">Manifesto</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section id="single-piece" class="product-showcase reveal-on-scroll">
-      <div class="showcase-copy">
-        <div class="eyebrow">Only piece</div>
-        <h3>Jegalux Oscuro</h3>
-        <p>
-          Una prenda creada para quien no necesita demostrar nada. Silueta brutal, logo de espinas y una sensación premium que convierte cada outfit en presencia.
-        </p>
-
-        <div class="meta-row">
-          <span class="chip">Heavyweight</span>
-          <span class="chip">Premium cotton</span>
-          <span class="chip">Limited run</span>
-        </div>
-
-        <div class="cta-row" style="justify-content:flex-start; margin-top:30px;">
-          <a href="https://app.amazecommerce.com/shop/jegalux" class="cta-primary" target="_blank" rel="noopener">Comprar</a>
-          <a href="#story" class="cta-secondary">Proceso</a>
-        </div>
-      </div>
-
-      <div class="showcase-visual">
-        <div class="tilt-card" data-tilt>
-          <div class="hoodie-card">
-            <div class="tag">JEGALUX <small>Dark luxury</small></div>
-            <div class="sleeve left"></div>
-            <div class="sleeve right"></div>
-            <div class="body"></div>
-            <div class="pocket"></div>
-            <div class="print">JEGALUX</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="story" class="section-shell reveal-on-scroll">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Process</div>
-          <h2>Crafted with intent.</h2>
-        </div>
-      </div>
-
-      <div class="photo-grid">
-        <article class="photo-card">
-          <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80" alt="Máquina de bordado industrial" />
-          <div class="caption">Embroidery</div>
-        </article>
-
-        <article class="photo-card">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="Diseño del logo" />
-          <div class="caption">Design</div>
-        </article>
-
-        <article class="photo-card">
-          <img src="https://images.unsplash.com/photo-1521341057461-6eb5f40b07ab?auto=format&fit=crop&w=900&q=80" alt="Acabados premium" />
-          <div class="caption">Finish</div>
-        </article>
-      </div>
-    </section>
-
-    <section id="about" class="section-shell reveal-on-scroll">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">About us</div>
-          <h2>More than clothes. It’s a lifestyle.</h2>
-        </div>
-      </div>
-
-      <div class="about-layout">
-        <div class="story-panel">
-          <div class="eyebrow">JEGALUX</div>
-          <h3>Luxury built in the dark.</h3>
-          <p>
-            Nacimos para crear piezas con carácter, presencia y concepto. No hablamos de exceso ni de ruido, sino de producción sobria, textura y identidad. Cada prenda refleja la actitud de quienes prefieren la profundidad a la atención fácil.
-          </p>
-
-          <div class="facts">
-            <div class="fact">
-              <div class="num">01</div>
-              <div class="text">Diseño bajo criterio, no por tendencia.</div>
-            </div>
-            <div class="fact">
-              <div class="num">02</div>
-              <div class="text">Materiales premium con intención y resistencia.</div>
-            </div>
-            <div class="fact">
-              <div class="num">03</div>
-              <div class="text">Un enfoque brutal, elegante y auténtico.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="portrait">
-          <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80" alt="Estudio de diseño JEGALUX" />
-        </div>
-      </div>
-    </section>
-
-    <section class="section-shell reveal-on-scroll">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Gallery</div>
-          <h2>Behind the brand.</h2>
-        </div>
-      </div>
-
-      <div class="photo-grid">
-        <article class="photo-card">
-          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Estudio de diseño" />
-          <div class="caption">Studio</div>
-        </article>
-
-        <article class="photo-card">
-          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Branding JEGALUX" />
-          <div class="caption">Brand</div>
-        </article>
-
-        <article class="photo-card">
-          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80" alt="Atelier premium" />
-          <div class="caption">Atelier</div>
-        </article>
-      </div>
-    </section>
-
-    <div class="cta-banner reveal-on-scroll">
-      <div class="cta-box">
-        <div>
-          <div class="eyebrow">VIP access</div>
-          <h3>Join the private list.</h3>
-          <p>
-            Early access to drops, collector previews and limited releases before they disappear.
-          </p>
-        </div>
-
-        <form class="cta-form" action="#" method="post">
-          <input type="email" placeholder="email@domain.com" aria-label="Email" />
-          <button type="submit">Request invite</button>
-        </form>
-      </div>
-    </div>
-  </main>
-
-  <footer class="border-t border-white/10 bg-neutral-950">
-    <div class="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <img src="logo.png" alt="JEGALUX logo" class="h-8 w-auto object-contain" />
-        <span class="text-neutral-400 text-[10px] uppercase tracking-[0.35em]">JEGALUX</span>
-      </div>
-      <div class="flex items-center gap-6 text-[10px] uppercase tracking-[0.25em] text-neutral-400">
-        <a href="#single-piece" class="hover:text-amber-400 transition-colors">Prenda</a>
-        <a href="#about" class="hover:text-amber-400 transition-colors">Nosotros</a>
-        <a href="https://app.amazecommerce.com/shop/jegalux" target="_blank" rel="noopener" class="hover:text-amber-400 transition-colors">Shop</a>
-      </div>
-      <div class="text-neutral-500 text-sm">© 2026 JEGALUX</div>
-    </div>
-  </footer>
-
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEGALUX | Dark Luxury Wear</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0a0a0a',
+                        cardbg: '#121212',
+                        accent: '#ff8c00',
+                        firegold: '#f59e0b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
         }
-      });
-    }, { threshold: 0.12 });
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #e5e7eb;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff8c00;
+        }
+        /* Glow effects */
+        .glow-orange {
+            box-shadow: 0 0 25px rgba(255, 140, 0, 0.2);
+        }
+        .glow-text {
+            text-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+        }
+        /* 3D tilt card effect simulation */
+        .card-3d {
+            transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.4s ease;
+        }
+        .card-3d:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 20px 40px rgba(255, 140, 0, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-darkbg text-gray-200 antialiased selection:bg-accent selection:text-white">
 
-    document.querySelectorAll('.reveal-on-scroll').forEach((el) => observer.observe(el));
+    <!-- Message Box alternative to alert -->
+    <div id="msgBox" class="fixed bottom-6 right-6 z-50 hidden bg-cardbg border border-accent text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-3 transition-all duration-300">
+        <span class="text-accent font-bold">✦</span>
+        <p id="msgText" class="text-sm font-medium"></p>
+    </div>
 
-    document.querySelectorAll('[data-tilt]').forEach((card) => {
-      card.addEventListener('pointermove', (event) => {
-        const rect = card.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width;
-        const y = (event.clientY - rect.top) / rect.height;
-        const rotateY = (x - 0.5) * 18;
-        const rotateX = (0.5 - y) * 18;
+    <!-- 1. Top Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-darkbg/90 backdrop-blur-md border-b border-zinc-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#hero" class="flex items-center space-x-3 group">
+                <img src="logo.png" alt="JEGALUX Logo" class="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/120x40/121212/ff8c00?text=JEGALUX';">
+                <span class="tracking-widest font-bold text-lg text-white uppercase hidden sm:inline">JEGALUX</span>
+            </a>
 
-        card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-      });
+            <!-- Nav Links with 3D-like hover effect -->
+            <nav class="hidden md:flex items-center space-x-8 text-xs font-medium tracking-widest uppercase text-zinc-400">
+                <a href="#products" class="hover:text-accent transition-all duration-300 hover:-translate-y-0.5">Products</a>
+                <a href="#crafted" class="hover:text-accent transition-all duration-300 hover:-translate-y-0.5">Process</a>
+                <a href="#luxury" class="hover:text-accent transition-all duration-300 hover:-translate-y-0.5">Manifesto</a>
+                <a href="#gallery" class="hover:text-accent transition-all duration-300 hover:-translate-y-0.5">Gallery</a>
+                <a href="#private-list" class="hover:text-accent transition-all duration-300 hover:-translate-y-0.5">Private List</a>
+            </nav>
 
-      card.addEventListener('pointerleave', () => {
-        card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
-      });
-    });
-  </script>
+            <!-- Buy Now CTA -->
+            <a href="#products" class="px-5 py-2.5 rounded-full border border-accent/60 bg-accent/10 text-accent font-semibold text-xs uppercase tracking-wider hover:bg-accent hover:text-white transition-all duration-300 glow-orange">
+                Buy Now
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="pt-20">
+
+        <!-- 2. Hero Section -->
+        <section id="hero" class="relative min-h-[90vh] flex items-center justify-center px-6 py-20 overflow-hidden border-b border-zinc-800/60">
+            <!-- Background glow circles -->
+            <div class="absolute w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none -top-20 -left-20"></div>
+            <div class="absolute w-[400px] h-[400px] bg-firegold/5 rounded-full blur-[100px] pointer-events-none -bottom-20 -right-20"></div>
+
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-accent mb-4 glow-text">Dark Luxury Wear</p>
+                <h1 class="text-5xl md:text-8xl font-black tracking-tighter text-white mb-6 uppercase">JEGALUX</h1>
+                <p class="text-sm md:text-base text-zinc-400 max-w-xl mx-auto font-light leading-relaxed mb-10">
+                    Underground silhouettes, obscure textures and premium comfort for those who move in the shadow.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#products" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-accent text-darkbg font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-darkbg transition-all duration-300 shadow-lg shadow-accent/20">
+                        Explore
+                    </a>
+                    <a href="#luxury" class="w-full sm:w-auto px-8 py-4 rounded-xl border border-zinc-700 bg-zinc-900/50 text-white font-bold text-xs uppercase tracking-widest hover:border-accent hover:text-accent transition-all duration-300">
+                        Manifesto
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Products / Featured Piece Section -->
+        <section id="products" class="py-24 px-6 max-w-7xl mx-auto border-b border-zinc-800/60">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: Product info & specifications -->
+                <div class="bg-cardbg border border-zinc-800 rounded-2xl p-8 md:p-12 card-3d">
+                    <span class="text-xs uppercase tracking-[0.25em] text-accent font-semibold">Only Piece</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-2 mb-4 tracking-tight">JEGALUX — DARK LUXURY</h2>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-8">
+                        A garment created for those who need to prove nothing. Brutal silhouette, spine logo and a premium sensation that turns every outfit into presence.
+                    </p>
+                    
+                    <!-- Tags / specs -->
+                    <div class="flex flex-wrap gap-3 mb-10">
+                        <span class="px-4 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-xs text-zinc-300 font-medium uppercase tracking-wider">Heavyweight</span>
+                        <span class="px-4 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-xs text-zinc-300 font-medium uppercase tracking-wider">Premium Cotton</span>
+                        <span class="px-4 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-xs text-zinc-300 font-medium uppercase tracking-wider">Limited Run</span>
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="showNotification('Added to cart successfully.')" class="flex-1 py-4 rounded-xl bg-accent text-darkbg font-bold text-xs uppercase tracking-widest hover:bg-white transition-all duration-300 shadow-md">
+                            Comprar
+                        </button>
+                        <a href="#crafted" class="flex-1 py-4 text-center rounded-xl border border-zinc-700 bg-zinc-900 text-white font-bold text-xs uppercase tracking-widest hover:border-accent hover:text-accent transition-all duration-300">
+                            Proceso
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Showroom futurista Image -->
+                <div class="relative rounded-2xl overflow-hidden border border-zinc-800 bg-cardbg card-3d group">
+                    <div class="absolute top-4 left-4 z-10 bg-darkbg/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-zinc-800">
+                        <span class="text-[10px] uppercase tracking-widest text-accent font-bold">Showroom 3D Preview</span>
+                    </div>
+                    <img src="Sudadera JEGALUX en showroom futurista (1).png" alt="Sudadera JEGALUX Showroom" class="w-full h-[400px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/600x700/121212/ff8c00?text=JEGALUX+Showroom';">
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Crafted With Intent Section -->
+        <section id="crafted" class="py-24 px-6 max-w-7xl mx-auto border-b border-zinc-800/60">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-[0.3em] text-accent font-semibold">Process</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-white mt-2 tracking-tight">CRAFTED WITH INTENT.</h2>
+            </div>
+
+            <!-- Grid of 3 Process Images -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-cardbg border border-zinc-800 rounded-2xl overflow-hidden card-3d group">
+                    <div class="h-72 overflow-hidden">
+                        <img src="1e85e61a-723b-4751-b081-961a9c9f8287.jpg" alt="Process 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/400x300/121212/ff8c00?text=Process+1';">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] tracking-widest uppercase text-accent font-semibold">Embroidery</span>
+                        <h3 class="text-white font-semibold mt-1 text-sm">Precision Crafting</h3>
+                    </div>
+                </div>
+
+                <div class="bg-cardbg border border-zinc-800 rounded-2xl overflow-hidden card-3d group">
+                    <div class="h-72 overflow-hidden">
+                        <img src="Sudadera negra premium en estudio de lujo oscura.jpg" alt="Process 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/400x300/121212/ff8c00?text=Process+2';">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] tracking-widest uppercase text-accent font-semibold">Studio</span>
+                        <h3 class="text-white font-semibold mt-1 text-sm">Dark Aesthetics</h3>
+                    </div>
+                </div>
+
+                <div class="bg-cardbg border border-zinc-800 rounded-2xl overflow-hidden card-3d group">
+                    <div class="h-72 overflow-hidden">
+                        <img src="accb1452-469b-4746-9017-64ce56cf296b.jpg" alt="Process 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/400x300/121212/ff8c00?text=Process+3';">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] tracking-widest uppercase text-accent font-semibold">Finishing</span>
+                        <h3 class="text-white font-semibold mt-1 text-sm">Absolute Detail</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Luxury Built in the Dark Section -->
+        <section id="luxury" class="py-24 px-6 max-w-7xl mx-auto border-b border-zinc-800/60">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-xs uppercase tracking-[0.3em] text-accent font-semibold">Details</span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mt-2 mb-6 tracking-tight">LUXURY BUILT IN THE DARK.</h2>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-8">
+                        Born to create pieces with character, presence, and concept. We do not speak of excess noise, but of thoughtful production, texture, and identity. Each garment reflects the attitude of those who prefer depth over easy access.
+                    </p>
+
+                    <!-- 3 Numbered Features Translated to English -->
+                    <div class="space-y-6">
+                        <div class="border-b border-zinc-800 pb-4">
+                            <span class="text-xs text-accent font-bold mr-3">01</span>
+                            <span class="text-white font-semibold text-sm uppercase tracking-wider">CRITICAL DESIGN, NOT TREND-DRIVEN.</span>
+                        </div>
+                        <div class="border-b border-zinc-800 pb-4">
+                            <span class="text-xs text-accent font-bold mr-3">02</span>
+                            <span class="text-white font-semibold text-sm uppercase tracking-wider">PREMIUM MATERIALS WITH INTENTION & RESISTANCE.</span>
+                        </div>
+                        <div class="border-b border-zinc-800 pb-4">
+                            <span class="text-xs text-accent font-bold mr-3">03</span>
+                            <span class="text-white font-semibold text-sm uppercase tracking-wider">A BRUTAL, ELEGANT AND AUTHENTIC APPROACH.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Hoodie Image -->
+                <div class="relative rounded-2xl overflow-hidden border border-zinc-800 bg-cardbg card-3d">
+                    <img src="Sudadera JEGALUX de lujo oscura (1).png" alt="Sudadera JEGALUX Lujo Oscura" class="w-full h-[450px] md:h-[550px] object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x700/121212/ff8c00?text=Dark+Luxury+Hoodie';">
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Garment Quality Characteristics Section -->
+        <section class="py-24 px-6 max-w-7xl mx-auto border-b border-zinc-800/60">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-[0.3em] text-accent font-semibold">Specifications</span>
+                <h2 class="text-3xl font-bold text-white mt-2 tracking-tight">ENGINEERED FOR SHADOWS</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Characteristic 1 -->
+                <div class="bg-cardbg border border-zinc-800 p-8 rounded-2xl text-center card-3d">
+                    <div class="w-12 h-12 mx-auto mb-6 rounded-full bg-accent/10 border border-accent/40 flex items-center justify-center text-accent font-bold">✦</div>
+                    <h3 class="text-white font-bold text-base mb-3 uppercase tracking-wider">PREMIUM COTTON</h3>
+                    <p class="text-zinc-400 text-xs leading-relaxed">High-density cotton engineered for soft texture, thermal resistance, and long-lasting durability.</p>
+                </div>
+
+                <!-- Characteristic 2 -->
+                <div class="bg-cardbg border border-zinc-800 p-8 rounded-2xl text-center card-3d">
+                    <div class="w-12 h-12 mx-auto mb-6 rounded-full bg-accent/10 border border-accent/40 flex items-center justify-center text-accent font-bold">✦</div>
+                    <h3 class="text-white font-bold text-base mb-3 uppercase tracking-wider">HEAVYWEIGHT</h3>
+                    <p class="text-zinc-400 text-xs leading-relaxed">Exceptional weight ratio delivering structure, dramatic drape, and absolute comfort at all times.</p>
+                </div>
+
+                <!-- Characteristic 3 -->
+                <div class="bg-cardbg border border-zinc-800 p-8 rounded-2xl text-center card-3d">
+                    <div class="w-12 h-12 mx-auto mb-6 rounded-full bg-accent/10 border border-accent/40 flex items-center justify-center text-accent font-bold">✦</div>
+                    <h3 class="text-white font-bold text-base mb-3 uppercase tracking-wider">PREMIUM FINISH</h3>
+                    <p class="text-zinc-400 text-xs leading-relaxed">Reinforced stitching and custom luxury hardware accents carefully integrated into every detail.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Gallery Section ("Behind the Brand") & Private List Form -->
+        <section id="gallery" class="py-24 px-6 max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-[0.3em] text-accent font-semibold">Gallery</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-white mt-2 tracking-tight">BEHIND THE BRAND.</h2>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+                <div class="rounded-xl overflow-hidden border border-zinc-800 bg-cardbg h-72 card-3d">
+                    <img src="1e85e61a-723b-4751-b081-961a9c9f8287.jpg" alt="Gallery 1" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x300/121212/ff8c00?text=Gallery+1';">
+                </div>
+                <div class="rounded-xl overflow-hidden border border-zinc-800 bg-cardbg h-72 card-3d">
+                    <img src="Sudadera negra premium en estudio de lujo oscura.jpg" alt="Gallery 2" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x300/121212/ff8c00?text=Gallery+2';">
+                </div>
+                <div class="rounded-xl overflow-hidden border border-zinc-800 bg-cardbg h-72 card-3d">
+                    <img src="accb1452-469b-4746-9017-64ce56cf296b.jpg" alt="Gallery 3" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x300/121212/ff8c00?text=Gallery+3';">
+                </div>
+            </div>
+
+            <!-- Private List Subscription Section -->
+            <div id="private-list" class="bg-cardbg border border-zinc-800 rounded-3xl p-8 md:p-16 relative overflow-hidden card-3d">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
+                
+                <div class="max-w-xl relative z-10">
+                    <span class="text-xs uppercase tracking-[0.3em] text-accent font-semibold">VIP Access</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-2 mb-4 tracking-tight">JOIN THE PRIVATE LIST.</h2>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-8">
+                        Early access to drops, collector previews and limited releases before they disappear.
+                    </p>
+
+                    <form onsubmit="handleSubscribe(event)" class="flex flex-col sm:flex-row gap-3">
+                        <input type="email" id="subscriberEmail" placeholder="email@domain.com" required class="flex-1 bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-accent transition-colors">
+                        <button type="submit" class="px-8 py-4 rounded-xl bg-accent text-darkbg font-bold text-xs uppercase tracking-widest hover:bg-white transition-all duration-300 shadow-md">
+                            Request Invite
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-800 py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-zinc-500 tracking-wider">
+            <div class="flex items-center space-x-3">
+                <img src="logo.png" alt="Logo" class="h-6 w-auto" onerror="this.style.display='none';">
+                <span class="uppercase text-zinc-400 font-bold">JEGALUX</span>
+            </div>
+            <div class="flex space-x-6 uppercase">
+                <a href="#products" class="hover:text-accent transition-colors">Products</a>
+                <a href="#crafted" class="hover:text-accent transition-colors">Process</a>
+                <a href="#gallery" class="hover:text-accent transition-colors">Shop</a>
+            </div>
+            <p>© 2026 JEGALUX. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Script handling custom notification and form feedback -->
+    <script>
+        function showNotification(text) {
+            const box = document.getElementById('msgBox');
+            const txt = document.getElementById('msgText');
+            txt.innerText = text;
+            box.classList.remove('hidden');
+            setTimeout(() => {
+                box.classList.add('hidden');
+            }, 3500);
+        }
+
+        function handleSubscribe(e) {
+            e.preventDefault();
+            const email = document.getElementById('subscriberEmail').value;
+            if(email) {
+                showNotification('Invite request received. Welcome to the private list.');
+                document.getElementById('subscriberEmail').value = '';
+            }
+        }
+    </script>
 </body>
 </html>
