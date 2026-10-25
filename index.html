@@ -54,59 +54,29 @@
             background: #ff5500;
         }
         
-        /* Fondo de nubes oscuras y grises borrosas en movimiento con parallax de scroll */
+        /* Fondo de nubes oscuras apocalípticas fijo detrás de todo con blur y parallax */
         .cloud-bg-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
-            height: 100vh;
+            height: 120vh;
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
             background: #050507;
         }
 
-        .cloud-layer {
+        .cloud-bg-image {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background-image: 
-                radial-gradient(ellipse at 20% 30%, rgba(45, 45, 55, 0.25) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 70%, rgba(30, 30, 40, 0.3) 0%, transparent 60%),
-                radial-gradient(ellipse at 50% 50%, rgba(20, 20, 28, 0.35) 0%, transparent 70%),
-                radial-gradient(ellipse at 70% 20%, rgba(55, 55, 68, 0.15) 0%, transparent 40%);
-            filter: blur(80px);
-            opacity: 0.85;
-            animation: cloudDrift 25s ease-in-out infinite alternate;
-        }
-
-        .cloud-layer-2 {
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background-image: 
-                radial-gradient(ellipse at 30% 80%, rgba(35, 35, 45, 0.2) 0%, transparent 50%),
-                radial-gradient(ellipse at 75% 35%, rgba(50, 50, 60, 0.2) 0%, transparent 55%);
-            filter: blur(110px);
-            opacity: 0.6;
-            animation: cloudDriftAlt 35s ease-in-out infinite alternate;
-        }
-
-        @keyframes cloudDrift {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-3%, 4%) scale(1.05); }
-            100% { transform: translate(3%, -3%) scale(1); }
-        }
-
-        @keyframes cloudDriftAlt {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(4%, -4%) scale(1.08); }
-            100% { transform: translate(-3%, 3%) scale(0.95); }
+            top: -10%;
+            left: -10%;
+            width: 120vw;
+            height: 120vh;
+            object-fit: cover;
+            filter: blur(14px) brightness(0.25) contrast(1.2);
+            transform: scale(1.1);
+            will-change: transform;
         }
 
         /* Glassmorphism oscuro avanzado */
@@ -140,10 +110,9 @@
 </head>
 <body class="bg-void text-neutral-200 font-sans selection:bg-accent selection:text-black overflow-x-hidden relative">
 
-    <!-- Fondo de nubes dinámicas -->
+    <!-- Fondo de nubes oscuras apocalípticas con parallax de scroll -->
     <div class="cloud-bg-container">
-        <div id="cloudParallax1" class="cloud-layer"></div>
-        <div id="cloudParallax2" class="cloud-layer-2"></div>
+        <img id="cloudParallax" src="view-apocalyptic-dark-stormy-clouds_23-2151065786.jpg" alt="Apocalyptic Dark Stormy Clouds Background" class="cloud-bg-image" />
     </div>
 
     <!-- 1. HEADER / NAVIGATION -->
@@ -494,16 +463,14 @@
             }
         }
 
-        // Efecto Parallax en las nubes y zoom en el banner al hacer scroll
+        // Efecto Parallax en el fondo de nubes y zoom en el banner al hacer scroll
         window.addEventListener('scroll', () => {
             const scrollY = window.pageYOffset;
-            const cloud1 = document.getElementById('cloudParallax1');
-            const cloud2 = document.getElementById('cloudParallax2');
+            const cloudBg = document.getElementById('cloudParallax');
             const bannerContainer = document.getElementById('bannerContainer');
             
-            if (cloud1 && cloud2) {
-                cloud1.style.transform = `translateY(${scrollY * 0.25}px)`;
-                cloud2.style.transform = `translateY(${scrollY * 0.15}px)`;
+            if (cloudBg) {
+                cloudBg.style.transform = `translateY(${scrollY * 0.3}px) scale(1.1)`;
             }
 
             if (bannerContainer) {
