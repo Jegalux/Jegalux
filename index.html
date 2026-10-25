@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JEGALUX | Dark Luxury Wear</title>
-  <link rel="icon" type="image/png" href="Sin%20titulo.png">
+  <link rel="icon" type="image/png" href="logo.png">
   <meta name="description" content="Underground, obscure and extreme textures. More than clothes, it's a lifestyle.">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,6 +18,16 @@
     h1, h2, h3, .font-serif {
       font-family: 'Cinzel', serif;
     }
+    /* Smooth 3D Scroll Animations */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(30px) perspective(1000px) rotateX(5deg);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .reveal-on-scroll.active {
+      opacity: 1;
+      transform: translateY(0) perspective(1000px) rotateX(0deg);
+    }
   </style>
 </head>
 <body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-amber-500 selection:text-black">
@@ -26,7 +36,7 @@
   <header class="sticky top-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <a href="#" class="flex items-center gap-2">
-        <img src="Sin%20titulo.png" alt="JEGALUX Logo" class="h-10 w-auto object-contain">
+        <img src="logo.png" alt="JEGALUX Logo" class="h-10 w-auto object-contain">
       </a>
       <nav class="hidden md:flex items-center gap-8 text-sm tracking-widest uppercase font-medium">
         <a href="#catalog" class="hover:text-amber-500 transition-colors">Catalog</a>
@@ -44,144 +54,8 @@
   <!-- Hero Section with Zoom Effect -->
   <section class="relative min-h-[85vh] flex items-center justify-center text-center px-4 overflow-hidden border-b border-zinc-800">
     <div class="absolute inset-0 z-0 overflow-hidden">
-      <img src="Sudadera%20JEGALUX%20en%20showroom%20futurista%20(1).png" alt="Mountains Background" class="w-full h-full object-cover opacity-40 scale-100 hover:scale-105 transition-transform duration-1000">
+      <img src="Sudadera%20EGALUX%20en%20showroom%20futurista%20(1).png" alt="Hero Background" class="w-full h-full object-cover opacity-40 scale-100 hover:scale-105 transition-transform duration-1000">
     </div>
     <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent"></div>
-    <div class="relative z-10 max-w-3xl mx-auto space-y-6">
-      <img src="Sin%20titulo.png" alt="JEGALUX Logo" class="h-20 mx-auto object-contain mb-4">
-      <p class="text-xs uppercase tracking-[0.3em] text-amber-500 font-semibold">Underground, obscure and extreme textures. More than clothes, it's a lifestyle.</p>
-      <div>
-        <a href="#catalog" class="inline-block border border-amber-500 text-amber-500 px-8 py-3 text-xs tracking-widest uppercase font-bold hover:bg-amber-500 hover:text-black transition-all">
-          Explore Pieces
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Catalog Section -->
-  <section id="catalog" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-zinc-900">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold tracking-wider uppercase mb-2">Catalog</h2>
-      <p class="text-xs uppercase tracking-widest text-zinc-400">Active Collection Archive</p>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-      <!-- Gallery Column -->
-      <div class="space-y-4">
-        <div class="relative bg-zinc-900 border border-zinc-800 overflow-hidden aspect-square">
-          <img src="Sudadera%20JEGALUX%20en%20showroom%20futurista%20(1).png" alt="Showroom Display" class="w-full h-full object-cover">
-          <span class="absolute top-4 left-4 bg-black/70 backdrop-blur-sm text-amber-500 text-[10px] uppercase tracking-widest px-3 py-1 border border-amber-500/30 flex items-center gap-1.5">
-            <i class="fa-solid fa-magnifying-glass"></i> Zoom Active
-          </span>
-        </div>
-        <div class="grid grid-cols-3 gap-4">
-          <div class="border border-zinc-800 bg-zinc-900 aspect-square overflow-hidden cursor-pointer hover:border-amber-500 transition-colors">
-            <img src="Sudadera%20JEGALUX%20en%20showroom%20futurista%20(1).png" alt="Thumb 1" class="w-full h-full object-cover">
-          </div>
-          <div class="border border-zinc-800 bg-zinc-900 aspect-square overflow-hidden cursor-pointer hover:border-amber-500 transition-colors">
-            <img src="Sudadera%20JEGALUX%20de%20lujo%20oscuro%20(1).png" alt="Thumb 2" class="w-full h-full object-cover">
-          </div>
-          <div class="border border-zinc-800 bg-zinc-900 aspect-square overflow-hidden cursor-pointer hover:border-amber-500 transition-colors">
-            <img src="Sudadera%20negra%20premium%20en%20estudio%20de%20lujo.png" alt="Thumb 3" class="w-full h-full object-cover">
-          </div>
-        </div>
-      </div>
-
-      <!-- Details Column -->
-      <div class="space-y-6 bg-zinc-900/50 border border-zinc-800 p-8">
-        <div>
-          <span class="text-xs uppercase tracking-widest text-amber-500 font-semibold">Single Archive Piece</span>
-          <h1 class="text-2xl sm:text-3xl font-bold uppercase mt-1">Sudadera Showroom Dark Luxury</h1>
-          <p class="text-2xl font-semibold text-amber-500 mt-2">€220</p>
-          <p class="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Singular Edition 850 GSM</p>
-        </div>
-
-        <p class="text-sm text-zinc-300 leading-relaxed">
-          Designed in our underground studios. Crafted with high-density organic cotton and custom metallic sculptural hardware details. An urban armor for the dark night.
-        </p>
-
-        <!-- Sizes -->
-        <div class="space-y-2">
-          <label class="block text-xs uppercase tracking-widest text-zinc-400">Select Size (Oversized Fit):</label>
-          <div class="grid grid-cols-4 gap-3">
-            <button class="border border-zinc-700 py-2.5 text-xs font-bold uppercase hover:border-amber-500 transition-colors">S</button>
-            <button class="border border-zinc-700 py-2.5 text-xs font-bold uppercase hover:border-amber-500 transition-colors">M</button>
-            <button class="border border-zinc-700 py-2.5 text-xs font-bold uppercase hover:border-amber-500 transition-colors">L</button>
-            <button class="border border-zinc-700 py-2.5 text-xs font-bold uppercase hover:border-amber-500 transition-colors">XL</button>
-          </div>
-        </div>
-
-        <button class="w-full bg-amber-500 text-black py-4 font-bold text-xs uppercase tracking-[0.2em] hover:bg-amber-400 transition-colors">
-          Request Order
-        </button>
-
-        <!-- Materials & Care -->
-        <div class="border-t border-zinc-800 pt-6 space-y-3 text-xs text-zinc-400">
-          <h3 class="uppercase font-bold tracking-widest text-zinc-200">Materials & Care Engineering</h3>
-          <p><strong class="text-zinc-300">Composition:</strong> 100% Organic Heavyweight Cotton.</p>
-          <p><strong class="text-zinc-300">Weight:</strong> 850 GSM Extreme Heavyweight for structure.</p>
-          <p><strong class="text-zinc-300">Details:</strong> Custom metallic hardware with three-dimensional effect.</p>
-          <p><strong class="text-zinc-300">Care Instructions:</strong> Hand wash cold or dry clean only. Do not iron directly on prints.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lookbook Section -->
-  <section id="lookbook" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-zinc-900">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold tracking-wider uppercase mb-2">Lookbook</h2>
-      <p class="text-xs uppercase tracking-widest text-amber-500 font-semibold">Visual Atmosphere</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="bg-zinc-900 border border-zinc-800 p-6 space-y-4">
-        <img src="Sudadera%20JEGALUX%20de%20lujo%20oscuro%20(1).png" alt="Lookbook 1" class="w-full h-80 object-cover border border-zinc-800">
-        <h3 class="text-lg font-bold uppercase tracking-wider">Series I: Industrial Duality</h3>
-        <p class="text-xs text-zinc-400 leading-relaxed">Exploring extreme textures and architectural volumes designed for nocturnal urban exploration.</p>
-      </div>
-      <div class="bg-zinc-900 border border-zinc-800 p-6 space-y-4">
-        <img src="Sudadera%20negra%20premium%20en%20estudio%20de%20lujo.png" alt="Lookbook 2" class="w-full h-80 object-cover border border-zinc-800">
-        <h3 class="text-lg font-bold uppercase tracking-wider">Series II: Absolute Obscurity</h3>
-        <p class="text-xs text-zinc-400 leading-relaxed">Heavyweight finishes combined with minimalist subversion, defining a new standard in dark luxury wear.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Limited Editions Section -->
-  <section id="limited" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-zinc-900">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold tracking-wider uppercase mb-2">Limited Editions</h2>
-      <p class="text-xs uppercase tracking-widest text-amber-500 font-semibold">Scarce Availability</p>
-    </div>
-    <div class="max-w-3xl mx-auto bg-zinc-900/50 border border-zinc-800 p-8 text-center space-y-6">
-      <h3 class="text-xl font-bold uppercase tracking-widest">Numbered Archive Drops</h3>
-      <p class="text-sm text-zinc-300 leading-relaxed">
-        Each drop is strictly limited to ensure exclusivity. Once an edition sells out, it will never be re-released. Secure your piece of the underground legacy.
-      </p>
-      <div class="inline-block border border-amber-500 text-amber-500 px-6 py-2 text-xs uppercase tracking-widest font-bold">
-        Next Drop: TBA
-      </div>
-    </div>
-  </section>
-
-  <!-- Manifesto Section -->
-  <section id="manifesto" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-zinc-900">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold tracking-wider uppercase mb-2">Manifesto</h2>
-      <p class="text-xs uppercase tracking-widest text-amber-500 font-semibold">Our Philosophy</p>
-    </div>
-    <div class="max-w-3xl mx-auto space-y-6 text-center text-zinc-300 text-sm leading-relaxed">
-      <p>We reject fast trends and seasonal uniformity. JEGALUX is born from the shadows, merging brutalist architecture with high-end luxury streetwear.</p>
-      <p>Every piece functions as an armor—crafted for those who navigate the underground currents and demand absolute individuality in their aesthetic expression.</p>
-    </div>
-  </section>
-
-  <!-- VIP Section -->
-  <section id="vip" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold tracking-wider uppercase mb-2">VIP Access</h2>
-      <p class="text-xs uppercase tracking-widest text-amber-500 font-semibold">Private Registry</p>
-    </div>
-    <div class="max-w-md mx-auto bg-zinc-900 border border-zinc-800 p-8 space-y-4">
-      <p class="text-xs text-zinc-400 text-center uppercase tracking-wider">Join the inner circle for private link alerts and early drops.</p>
-      <input type="email" placeholder
+    <div class="relative z-10 max-w-3xl mx-auto space-y-6 reveal-on-scroll active">
+      <img src="logo.
