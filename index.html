@@ -127,6 +127,11 @@
             perspective: 1000px;
             transition: transform 0.1s ease-out, border-color 0.3s ease;
         }
+
+        /* Efecto Zoom en el Banner al hacer scroll */
+        #bannerContent {
+            transition: transform 0.1s ease-out;
+        }
     </style>
 </head>
 <body class="bg-void text-neutral-200 font-sans selection:bg-accent selection:text-black overflow-x-hidden relative">
@@ -196,37 +201,33 @@
         </div>
     </header>
 
-    <!-- 2. STREAMLINED HERO BANNER -->
-    <section class="relative z-10 border-b border-white/5 py-16 md:py-24 overflow-hidden">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-accent/30 text-accent font-tech text-[11px] uppercase tracking-widest mb-6">
+    <!-- 2. STREAMLINED & NARROW BANNER WITH ZOOM ON SCROLL -->
+    <section class="relative z-10 border-b border-white/5 py-10 md:py-14 overflow-hidden">
+        <div id="bannerContent" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-accent/30 text-accent font-tech text-[10px] uppercase tracking-widest mb-4">
                 <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
                 AUTUMN/WINTER PROTOCOL — EDITION 0.94
             </div>
 
-            <div class="flex justify-center mb-6">
+            <!-- Logo agrandado en el banner -->
+            <div class="flex justify-center mb-4">
                 <img 
                     src="logo.png" 
                     alt="Emblem" 
-                    class="h-16 md:h-20 w-auto object-contain opacity-95 drop-shadow-[0_0_20px_rgba(255,85,0,0.3)]"
-                    onerror="this.onerror=null; this.src='https://placehold.co/240x80/08080a/ff5500?text=JEGALUX+CORP';"
+                    class="h-24 md:h-32 w-auto object-contain opacity-95 drop-shadow-[0_0_25px_rgba(255,85,0,0.4)]"
+                    onerror="this.onerror=null; this.src='https://placehold.co/320x100/08080a/ff5500?text=JEGALUX+CORP';"
                 />
             </div>
 
-            <h1 class="text-3xl md:text-5xl lg:text-6xl font-display font-extrabold uppercase tracking-tight text-white mb-6 drop-shadow-md">
-                Engineered In Darkness. <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent-glow to-amber-200">Refined For Power.</span>
-            </h1>
-
-            <p class="max-w-2xl mx-auto text-neutral-300 font-sans text-sm md:text-base leading-relaxed tracking-wide mb-8">
+            <p class="max-w-lg mx-auto text-neutral-300 font-sans text-xs md:text-sm leading-relaxed tracking-wide mb-6">
                 Underground silhouettes, obscure textures and premium comfort for those who move in the shadow.
             </p>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 font-tech text-xs tracking-widest">
-                <a href="#product" class="w-full sm:w-auto px-8 py-3.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_25px_rgba(255,85,0,0.4)]">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 font-tech text-xs tracking-widest">
+                <a href="#product" class="w-full sm:w-auto px-6 py-2.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_20px_rgba(255,85,0,0.35)]">
                     EXPLORE COLLECTION
                 </a>
-                <a href="#manifesto" class="w-full sm:w-auto px-8 py-3.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200">
+                <a href="#manifesto" class="w-full sm:w-auto px-6 py-2.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200">
                     READ MANIFESTO
                 </a>
             </div>
@@ -243,7 +244,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
-                <!-- Garment Image Column (Sudadera EGALUX en showroom futurista.png) -->
+                <!-- Garment Image Column -->
                 <div class="lg:col-span-7 relative group">
                     <div class="absolute -inset-1 bg-gradient-to-r from-accent/20 to-transparent rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity"></div>
                     <div class="relative glass-panel rounded-xl overflow-hidden shadow-2xl">
@@ -260,7 +261,7 @@
                     </div>
                 </div>
 
-                <!-- Garment Specs Column (Amaze Shop Product Details & Price $37.22) -->
+                <!-- Garment Specs Column -->
                 <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl tilt-card relative overflow-hidden" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
                     <div class="border-b border-white/10 pb-5">
                         <div class="flex justify-between items-baseline mb-2">
@@ -423,14 +424,21 @@
             mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
         }
 
-        // Efecto Parallax en las nubes según el scroll de la página
+        // Efecto Parallax en las nubes y zoom en el banner al hacer scroll
         window.addEventListener('scroll', () => {
             const scrollY = window.pageYOffset;
             const cloud1 = document.getElementById('cloudParallax1');
             const cloud2 = document.getElementById('cloudParallax2');
+            const bannerContent = document.getElementById('bannerContent');
+            
             if (cloud1 && cloud2) {
                 cloud1.style.transform = `translateY(${scrollY * 0.25}px)`;
                 cloud2.style.transform = `translateY(${scrollY * 0.15}px)`;
+            }
+
+            if (bannerContent) {
+                const zoomScale = 1 + (scrollY * 0.0008);
+                bannerContent.style.transform = `scale(${Math.min(zoomScale, 1.15)})`;
             }
         });
 
