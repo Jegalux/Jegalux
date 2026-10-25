@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JEGALUX | Dark Luxury Wear</title>
-    <!-- Favicon de lujo -->
+    <!-- Favicon de lujo gótico -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23ffffff%22>✦</text></svg>">
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Cinzel & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -16,7 +20,8 @@
                     colors: {
                         dark: '#000000',
                         surface: '#0a0a0a',
-                        card: '#121212',
+                        card: '#111111',
+                        bordercolor: '#222222',
                         chrome: '#e5e7eb',
                         accent: '#ffffff',
                     },
@@ -28,46 +33,70 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Efecto Zoom en la prenda al pasar el cursor */
-        .zoom-container {
-            overflow: hidden;
-        }
-        .zoom-img {
-            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .zoom-container:hover .zoom-img {
-            transform: scale(1.15);
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* Efecto Zoom en el banner al hacer scroll */
+        /* Banner de montaña con zoom al hacer scroll */
         .banner-zoom {
             animation: heroZoom linear forwards;
             animation-timeline: scroll();
         }
         @keyframes heroZoom {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.25);
-            }
+            0% { transform: scale(1); }
+            100% { transform: scale(1.25); }
+        }
+
+        /* Scrollbar personalizado */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #404040;
+        }
+
+        /* Lupa de zoom interactiva para las imágenes */
+        .zoom-box {
+            position: relative;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+        .zoom-box img {
+            transition: transform 0.1s ease-out;
         }
     </style>
 </head>
 <body class="bg-dark text-chrome font-sans min-h-screen selection:bg-white selection:text-black">
 
-    <!-- Header / Navegación -->
-    <header class="fixed top-0 left-0 w-full z-50 bg-dark/80 backdrop-blur-md border-b border-neutral-900">
+    <!-- Notificación emergente flotante personalizada -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-neutral-900 border border-neutral-700 text-chrome px-6 py-4 shadow-2xl transform translate-y-32 opacity-0 transition-all duration-300 flex items-center gap-4">
+        <i class="fa-solid fa-gem text-accent text-lg"></i>
+        <div>
+            <h4 class="font-gothic text-xs tracking-widest uppercase font-bold text-accent">JEGALUX ARCHIVE</h4>
+            <p id="toast-msg" class="text-xs text-neutral-400 mt-0.5">Operación completada con éxito.</p>
+        </div>
+    </div>
+
+    <!-- 1. Header / Navegación Superior -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-dark/90 backdrop-blur-md border-b border-bordercolor">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo principal a la izquierda -->
             <div class="flex items-center gap-3">
-                <a href="#" class="font-gothic text-xl md:text-2xl tracking-widest text-accent font-bold hover:opacity-80 transition-opacity">
+                <a href="#inicio" class="font-gothic text-xl md:text-2xl tracking-widest text-accent font-bold hover:opacity-80 transition-opacity">
                     JEGALUX
                 </a>
             </div>
             
-            <nav class="hidden lg:flex items-center gap-6 text-xs tracking-widest uppercase">
+            <!-- Pestañas de navegación -->
+            <nav class="hidden lg:flex items-center gap-8 text-xs tracking-widest uppercase font-medium">
                 <a href="#catalogo" class="hover:text-accent transition-colors">Catálogo</a>
                 <a href="#lookbook" class="hover:text-accent transition-colors">Lookbook</a>
                 <a href="#limitadas" class="hover:text-accent transition-colors">Ediciones Limitadas</a>
@@ -76,66 +105,274 @@
             </nav>
 
             <div class="flex items-center gap-4">
-                <a href="#catalogo" class="bg-accent text-dark px-5 py-2 text-xs uppercase tracking-widest font-bold hover:bg-neutral-200 transition-colors">
-                    Ver Colección
+                <a href="https://app.amazecommerce.com/shop/jegalux/untitled-product" target="_blank" class="border border-neutral-800 bg-neutral-950 px-5 py-2.5 text-xs uppercase tracking-widest hover:border-accent transition-colors font-bold text-accent flex items-center gap-2">
+                    <i class="fa-solid fa-store text-xs"></i> Tienda Amaze
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section con Banner de Montaña Oscura y Zoom al bajar -->
-    <section class="relative pt-32 pb-24 md:pt-48 md:pb-36 flex flex-col items-center justify-center text-center px-6 border-b border-neutral-900 overflow-hidden min-h-[85vh]">
+    <!-- 2. Hero Banner: Montaña oscura con zoom en scroll y logotipo metálico superpuesto -->
+    <section id="inicio" class="relative pt-32 pb-24 md:pt-48 md:pb-36 flex flex-col items-center justify-center text-center px-6 border-b border-bordercolor overflow-hidden min-h-[90vh]">
         <div class="absolute inset-0 z-0 overflow-hidden">
-            <!-- Imagen de montaña oscura de fondo con efecto zoom automático al hacer scroll -->
+            <!-- Fondo de montaña oscura con animación de zoom al bajar -->
             <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=1920&auto=format&fit=crop" alt="Montaña Oscura JEGALUX" class="banner-zoom w-full h-full object-cover opacity-50 filter brightness-50 contrast-125">
             <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
         </div>
 
-        <div class="relative z-10 max-w-4xl mx-auto space-y-6">
-            <h1 class="font-gothic text-4xl md:text-7xl tracking-wider text-accent font-extrabold uppercase drop-shadow-2xl">
-                JEGALUX <br><span class="text-neutral-400 text-2xl md:text-4xl">Dark Luxury</span>
-            </h1>
-            <p class="text-neutral-300 max-w-xl mx-auto text-sm md:text-base tracking-wide font-light">
+        <div class="relative z-10 max-w-4xl mx-auto space-y-8 flex flex-col items-center">
+            <!-- Logotipo metálico gótico superpuesto con efecto de pulso -->
+            <div class="animate-pulse">
+                <span class="font-gothic text-4xl md:text-7xl font-black tracking-[0.2em] text-accent drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)] border-b-2 border-accent/20 pb-2 inline-block">
+                    JEGALUX
+                </span>
+            </div>
+            
+            <p class="text-neutral-300 max-w-xl mx-auto text-sm md:text-base tracking-widest font-light uppercase">
                 Indumentaria underground, oscura y texturas extremas. More than clothes, it's a lifestyle.
             </p>
+            
             <div class="pt-4">
-                <a href="#catalogo" class="bg-accent text-dark px-8 py-3 text-xs tracking-widest uppercase font-bold hover:bg-neutral-200 transition-all duration-300 shadow-2xl">
+                <a href="#catalogo" class="bg-accent text-dark px-8 py-3.5 text-xs tracking-[0.2em] uppercase font-bold hover:bg-neutral-200 transition-all duration-300 shadow-2xl inline-block">
                     Explorar Piezas
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Catálogo de Prendas con Zoom al pasar el cursor -->
-    <section id="catalogo" class="py-20 px-6 max-w-7xl mx-auto border-b border-neutral-900">
-        <h2 class="font-gothic text-2xl md:text-3xl tracking-widest mb-12 uppercase text-center">Catálogo / Colección Activa</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <!-- Producto con Zoom al pasar el cursor -->
-            <div class="bg-card border border-neutral-900 p-6 flex flex-col justify-between group cursor-pointer">
-                <div class="zoom-container relative h-96 bg-neutral-950 flex items-center justify-center overflow-hidden border border-neutral-900">
-                    <img src="producto-sudadera.png" alt="Sudadera JEGALUX de lujo oscuro" class="zoom-img w-full h-full object-cover">
-                    <span class="absolute bottom-3 right-3 text-[10px] tracking-widest uppercase bg-dark/90 text-accent px-3 py-1.5 border border-neutral-700 shadow-lg flex items-center gap-2 z-10">
-                        <i class="fa-solid fa-magnifying-glass-plus"></i> Zoom Activo
+    <!-- 3. Catálogo Activo: Exclusivo con el único producto insignia -->
+    <section id="catalogo" class="py-24 px-6 max-w-7xl mx-auto border-b border-bordercolor">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <span class="text-[10px] tracking-[0.3em] uppercase bg-neutral-900 border border-neutral-800 px-3 py-1 text-neutral-400">Archivo Principal</span>
+            <h2 class="font-gothic text-2xl md:text-4xl tracking-widest uppercase">Catálogo Activo</h2>
+        </div>
+
+        <div class="max-w-md mx-auto">
+            <div class="bg-card border border-bordercolor p-6 flex flex-col justify-between group cursor-pointer hover:border-neutral-600 transition-all duration-300 shadow-2xl" onclick="document.getElementById('detalle-producto').scrollIntoView({behavior: 'smooth'})">
+                <div class="relative h-[420px] bg-neutral-950 flex items-center justify-center overflow-hidden border border-neutral-900">
+                    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=900&auto=format&fit=crop" onerror="this.src='https://placehold.co/800x900/111111/ffffff?text=JEGALUX+Showroom'" alt="Sudadera Showroom" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                    <span class="absolute bottom-4 right-4 text-[10px] tracking-widest uppercase bg-dark/90 text-accent px-3 py-2 border border-neutral-700 shadow-lg flex items-center gap-2">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i> Ver Detalles & Zoom
                     </span>
                 </div>
                 <div class="mt-6 flex justify-between items-center">
                     <div>
-                        <h3 class="font-gothic text-lg tracking-wide uppercase">Sudadera JEGALUX Lujo Oscuro</h3>
-                        <p class="text-xs text-neutral-500 tracking-wider mt-1">Textura extrema / Algodón pesado</p>
+                        <h3 class="font-gothic text-lg tracking-wide uppercase">Sudadera Showroom Dark Luxury</h3>
+                        <p class="text-xs text-neutral-500 tracking-wider mt-1">Edición Singular 650 GSM</p>
                     </div>
-                    <span class="font-gothic text-accent text-lg">€195</span>
+                    <span class="font-gothic text-accent text-xl font-bold">€220</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Página de Detalle de Prenda con Zoom Interactivo y Especificaciones -->
+    <section id="detalle-producto" class="py-24 px-6 max-w-7xl mx-auto border-b border-bordercolor">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            <!-- Columna Izquierda: Galería y Lupa de Zoom Interactiva -->
+            <div class="lg:col-span-7 space-y-6">
+                <!-- Visor con lupa de zoom que sigue el cursor -->
+                <div id="zoom-stage" class="zoom-box relative h-[480px] md:h-[600px] bg-neutral-950 border border-bordercolor overflow-hidden flex items-center justify-center">
+                    <img id="active-detail-img" src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1000&auto=format&fit=crop" alt="Detalle Prenda JEGALUX" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-dark/80 backdrop-blur-md px-3 py-1.5 border border-neutral-800 text-[10px] tracking-widest uppercase text-accent">
+                        Lupa Interactiva Activa
+                    </div>
+                </div>
+
+                <!-- 3 Miniaturas interactivas (Showroom, Pecho/Logo, Manga/Material) -->
+                <div class="grid grid-cols-3 gap-4">
+                    <button onclick="switchThumbnail('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1000&auto=format&fit=crop', this)" class="thumb-btn border-2 border-accent h-24 bg-neutral-950 overflow-hidden relative group">
+                        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=300&auto=format&fit=crop" alt="Showroom View" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                        <span class="absolute bottom-1 left-1 bg-black/80 text-[8px] uppercase px-1.5 text-chrome">Showroom</span>
+                    </button>
+                    <button onclick="switchThumbnail('https://images.unsplash.com/photo-1578587018452-892bacefd3f2?q=80&w=1000&auto=format&fit=crop', this)" class="thumb-btn border-2 border-bordercolor h-24 bg-neutral-950 overflow-hidden relative group">
+                        <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?q=80&w=300&auto=format&fit=crop" alt="Close-up Chest View" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                        <span class="absolute bottom-1 left-1 bg-black/80 text-[8px] uppercase px-1.5 text-chrome">Pecho / Logo</span>
+                    </button>
+                    <button onclick="switchThumbnail('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1000&auto=format&fit=crop', this)" class="thumb-btn border-2 border-bordercolor h-24 bg-neutral-950 overflow-hidden relative group">
+                        <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=300&auto=format&fit=crop" alt="Sleeve / Material View" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                        <span class="absolute bottom-1 left-1 bg-black/80 text-[8px] uppercase px-1.5 text-chrome">Manga / Tejido</span>
+                    </button>
                 </div>
             </div>
 
-            <!-- Producto 2 (Abrigo) -->
-            <div class="bg-card border border-neutral-900 p-6 flex flex-col justify-between group">
-                <div class="zoom-container relative h-96 bg-neutral-950 flex items-center justify-center overflow-hidden border border-neutral-900">
-                    <span class="font-gothic text-xl tracking-widest text-neutral-400 group-hover:scale-105 transition-transform duration-500">
-                        Abrigo Gótico Estructurado
-                    </span>
-                    <span class="absolute bottom-3 right-3 text-[10px] tracking-widest uppercase bg-dark/90 text-accent px-3 py-1.5 border border-neutral-700 shadow-lg flex items-center gap-2 z-10">
-                        <i class="fa-solid fa-magnifying-glass-plus"></i> Zoom Activo
-                    </span>
+            <!-- Columna Derecha: Información, Tallas, Especificaciones y Enlace a Amaze -->
+            <div class="lg:col-span-5 space-y-8 bg-surface border border-bordercolor p-8">
+                <div>
+                    <span class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">Pieza Única del Archivo</span>
+                    <h1 class="font-gothic text-2xl md:text-3xl tracking-wide text-accent font-bold mt-1 uppercase">Sudadera Showroom Dark Luxury</h1>
+                    <p class="font-gothic text-2xl text-accent mt-3">€220</p>
                 </div>
-                <div class="mt-6 flex justify-between items-center">
+
+                <p class="text-neutral-400 text-xs md:text-sm tracking-wide leading-relaxed">
+                    Confeccionada artesanalmente en talleres subterráneos. Estructura rígida de alto gramaje con emblema de espinas tridimensionales en aleación metálica cromada.
+                </p>
+
+                <!-- Selector de Tallas (S, M, L, XL) -->
+                <div class="space-y-3">
+                    <label class="text-[10px] uppercase tracking-widest text-neutral-400 block">Seleccionar Talla (Oversized Fit):</label>
+                    <div class="grid grid-cols-4 gap-3">
+                        <button onclick="selectSize('S', this)" class="size-btn border border-neutral-800 bg-dark py-3 text-xs uppercase tracking-widest hover:border-accent transition-all font-medium">S</button>
+                        <button onclick="selectSize('M', this)" class="size-btn border border-neutral-800 bg-dark py-3 text-xs uppercase tracking-widest hover:border-accent transition-all font-medium">M</button>
+                        <button onclick="selectSize('L', this)" class="size-btn border border-accent bg-neutral-900 py-3 text-xs uppercase tracking-widest text-accent font-bold">L</button>
+                        <button onclick="selectSize('XL', this)" class="size-btn border border-neutral-800 bg-dark py-3 text-xs uppercase tracking-widest hover:border-accent transition-all font-medium">XL</button>
+                    </div>
+                </div>
+
+                <!-- Botón de Enlace Directo a Amaze Store -->
+                <div class="pt-2">
+                    <a href="https://app.amazecommerce.com/shop/jegalux/untitled-product" target="_blank" class="block text-center w-full bg-accent text-dark py-4 text-xs tracking-[0.2em] uppercase font-bold hover:bg-neutral-200 transition-colors shadow-2xl">
+                        Adquirir en Amaze
+                    </a>
+                </div>
+
+                <!-- Especificaciones Técnicas y de Material (650 GSM) -->
+                <div class="border-t border-bordercolor pt-6 space-y-4">
+                    <h3 class="font-gothic text-xs tracking-widest uppercase text-accent font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-microscope text-neutral-400"></i> Ingeniería de Materiales y Cuidados
+                    </h3>
+                    <ul class="text-xs text-neutral-400 space-y-2.5 tracking-wide leading-relaxed">
+                        <li><strong class="text-chrome">Composición:</strong> 100% Algodón Orgánico Peinado Heavyweight.</li>
+                        <li><strong class="text-chrome">Densidad:</strong> 650 GSM (Gramaje Extremo Anti-deformación).</li>
+                        <li><strong class="text-chrome">Detalles:</strong> Emblema frontal esculpido en aleación de titanio y cromo 3D.</li>
+                        <li><strong class="text-chrome">Instrucciones de Cuidado:</strong> Lavar a mano en frío del revés. No usar secadora. Secar en plano a la sombra.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. Secciones Adicionales del Sitio -->
+
+    <!-- Lookbook -->
+    <section id="lookbook" class="py-24 px-6 max-w-7xl mx-auto border-b border-bordercolor text-center">
+        <span class="text-[10px] tracking-[0.3em] uppercase bg-neutral-900 border border-neutral-800 px-3 py-1 text-neutral-400 inline-block mb-4">Editorial Nocturna</span>
+        <h2 class="font-gothic text-2xl md:text-4xl tracking-widest mb-6 uppercase">Lookbook</h2>
+        <p class="text-neutral-400 max-w-2xl mx-auto text-xs md:text-sm tracking-wide mb-12 leading-relaxed">
+            Atmósferas subterráneas, siluetas desestructuradas y la dualidad entre la alta costura clásica y el abismo cyberpunk.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="h-80 bg-neutral-950 border border-bordercolor relative overflow-hidden group flex items-center justify-center">
+                <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800&auto=format&fit=crop" alt="Lookbook 1" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-transparent to-transparent flex items-end p-6">
+                    <span class="font-gothic text-xs tracking-widest uppercase text-accent">EDITORIAL I / ABYSS</span>
+                </div>
+            </div>
+            <div class="h-80 bg-neutral-950 border border-bordercolor relative overflow-hidden group flex items-center justify-center">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop" alt="Lookbook 2" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-transparent to-transparent flex items-end p-6">
+                    <span class="font-gothic text-xs tracking-widest uppercase text-accent">EDITORIAL II / MONOLITH</span>
+                </div>
+            </div>
+            <div class="h-80 bg-neutral-950 border border-bordercolor relative overflow-hidden group flex items-center justify-center">
+                <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=800&auto=format&fit=crop" alt="Lookbook 3" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-transparent to-transparent flex items-end p-6">
+                    <span class="font-gothic text-xs tracking-widest uppercase text-accent">EDITORIAL III / ECLIPSE</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ediciones Limitadas -->
+    <section id="limitadas" class="py-24 px-6 max-w-7xl mx-auto border-b border-bordercolor text-center">
+        <span class="text-[10px] tracking-[0.3em] uppercase bg-neutral-900 border border-neutral-800 px-3 py-1 text-neutral-400 inline-block mb-4">Coleccionistas</span>
+        <h2 class="font-gothic text-2xl md:text-4xl tracking-widest mb-6 uppercase">Ediciones Limitadas</h2>
+        <p class="text-neutral-400 max-w-xl mx-auto text-xs md:text-sm tracking-wide mb-8 leading-relaxed">
+            Piezas numeradas individualmente con certificado blockchain. Producción ultrarestringida de 50 unidades mundiales.
+        </p>
+        <div class="inline-block border border-neutral-700 bg-neutral-950 px-8 py-5 text-xs tracking-[0.25em] uppercase text-accent font-gothic shadow-2xl">
+            Próximo Drop: Solsticio Nocturno — Acceso Reservado
+        </div>
+    </section>
+
+    <!-- Manifiesto -->
+    <section id="manifiesto" class="py-24 px-6 max-w-4xl mx-auto border-b border-bordercolor text-center space-y-8">
+        <span class="text-[10px] tracking-[0.3em] uppercase bg-neutral-900 border border-neutral-800 px-3 py-1 text-neutral-400 inline-block">Filosofía</span>
+        <h2 class="font-gothic text-2xl md:text-4xl tracking-widest uppercase">Manifiesto</h2>
+        <blockquote class="font-gothic text-lg md:text-2xl text-accent leading-relaxed tracking-wide italic font-normal">
+            "Rechazamos lo efímero. JEGALUX nace en las sombras como una armadura moderna para quienes encuentran belleza en la penumbra, el silencio y el diseño sin concesiones."
+        </blockquote>
+    </section>
+
+    <!-- VIP Access -->
+    <section id="vip" class="py-24 px-6 max-w-3xl mx-auto text-center space-y-6">
+        <span class="text-[10px] tracking-[0.3em] uppercase bg-neutral-900 border border-neutral-800 px-3 py-1 text-neutral-400 inline-block">Círculo Privado</span>
+        <h2 class="font-gothic text-2xl md:text-4xl tracking-widest uppercase">Acceso VIP</h2>
+        <p class="text-neutral-400 text-xs md:text-sm tracking-wide">
+            Suscríbete con tu correo electrónico para recibir invitaciones privadas a lanzamientos y piezas de archivo exclusivas.
+        </p>
+        <form onsubmit="handleVipSubmit(event)" class="flex flex-col sm:flex-row justify-center gap-3 pt-4 max-w-lg mx-auto">
+            <input type="email" id="vip-email" required placeholder="CORREO ELECTRÓNICO" class="bg-neutral-950 border border-neutral-800 px-5 py-3.5 text-xs tracking-widest text-chrome focus:outline-none focus:border-accent flex-1">
+            <button type="submit" class="bg-accent text-dark px-7 py-3.5 text-xs tracking-widest uppercase font-bold hover:bg-neutral-200 transition-colors">Solicitar Acceso</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-bordercolor py-12 text-center text-[11px] tracking-widest text-neutral-500">
+        <p>&copy; 2026 JEGALUX. Todos los derechos reservados. | Dark Luxury Wear</p>
+    </footer>
+
+    <!-- Scripts de interactividad y zoom -->
+    <script>
+        let currentSize = 'L';
+
+        function selectSize(size, btn) {
+            document.querySelectorAll('.size-btn').forEach(b => {
+                b.classList.remove('border-accent', 'bg-neutral-900', 'text-accent', 'font-bold');
+                b.classList.add('border-neutral-800', 'bg-dark', 'font-medium');
+            });
+            btn.classList.add('border-accent', 'bg-neutral-900', 'text-accent', 'font-bold');
+            btn.classList.remove('border-neutral-800', 'bg-dark', 'font-medium');
+            currentSize = size;
+            showToast(`Talla ${size} seleccionada.`);
+        }
+
+        function switchThumbnail(src, btn) {
+            const mainImg = document.getElementById('active-detail-img');
+            mainImg.src = src;
+            document.querySelectorAll('.thumb-btn').forEach(b => {
+                b.classList.remove('border-accent');
+                b.classList.add('border-bordercolor');
+            });
+            if(btn) {
+                btn.classList.add('border-accent');
+                btn.classList.remove('border-bordercolor');
+            }
+        }
+
+        function handleVipSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('vip-email').value;
+            showToast(`Solicitud recibida para ${email}. Bienvenido al Círculo VIP.`);
+            document.getElementById('vip-email').value = '';
+        }
+
+        function showToast(msg) {
+            let toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 3500);
+        }
+
+        // Efecto de lupa interactiva que sigue el cursor en la imagen principal
+        const stage = document.getElementById('zoom-stage');
+        const img = document.getElementById('active-detail-img');
+
+        stage.addEventListener('mousemove', (e) => {
+            const rect = stage.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            img.style.transformOrigin = `${x}% ${y}%`;
+            img.style.transform = 'scale(2.2)';
+        });
+
+        stage.addEventListener('mouseleave', () => {
+            img.style.transformOrigin = 'center center';
+            img.style.transform = 'scale(1)';
+        });
+    </script>
