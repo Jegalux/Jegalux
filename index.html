@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,16 +35,16 @@
         <a href="#manifesto" class="hover:text-amber-500 transition-colors">Manifesto</a>
         <a href="#vip" class="hover:text-amber-500 transition-colors">VIP</a>
       </nav>
-      <a href="#buy" class="bg-amber-500 text-black px-6 py-2.5 text-xs font-bold uppercase tracking-widest hover:bg-amber-400 transition-colors">
+      <a href="#catalog" class="bg-amber-500 text-black px-6 py-2.5 text-xs font-bold uppercase tracking-widest hover:bg-amber-400 transition-colors">
         Order Yours
       </a>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Zoom Effect -->
   <section class="relative min-h-[85vh] flex items-center justify-center text-center px-4 overflow-hidden border-b border-zinc-800">
-    <div class="absolute inset-0 z-0 opacity-40">
-      <img src="Sudadera%20JEGALUX%20en%20showroom%20futurista%20(1).png" alt="Background" class="w-full h-full object-cover">
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      <img src="Sudadera%20JEGALUX%20en%20showroom%20futurista%20(1).png" alt="Mountains Background" class="w-full h-full object-cover opacity-40 scale-100 hover:scale-105 transition-transform duration-1000">
     </div>
     <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent"></div>
     <div class="relative z-10 max-w-3xl mx-auto space-y-6">
@@ -58,19 +58,18 @@
     </div>
   </section>
 
-  <!-- Active Collection Section -->
-  <section id="catalog" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- Catalog Section -->
+  <section id="catalog" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-zinc-900">
     <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold tracking-wider uppercase mb-2">Active Collection</h2>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-wider uppercase mb-2">Catalog</h2>
+      <p class="text-xs uppercase tracking-widest text-zinc-400">Active Collection Archive</p>
     </div>
 
-    <!-- Product Grid / Showcase -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-      
       <!-- Gallery Column -->
       <div class="space-y-4">
         <div class="relative bg-zinc-900 border border-zinc-800 overflow-hidden aspect-square">
-          <img src="Sudadera%20JEGALUX%20en%20showroom%20futurista%20(1).png" alt="Sudadera Showroom" class="w-full h-full object-cover">
+          <img src="Sudadera%20JEGALUX%20en%20showroom%20futurista%20(1).png" alt="Showroom Display" class="w-full h-full object-cover">
           <span class="absolute top-4 left-4 bg-black/70 backdrop-blur-sm text-amber-500 text-[10px] uppercase tracking-widest px-3 py-1 border border-amber-500/30 flex items-center gap-1.5">
             <i class="fa-solid fa-magnifying-glass"></i> Zoom Active
           </span>
@@ -112,7 +111,7 @@
           </div>
         </div>
 
-        <button id="buy" class="w-full bg-amber-500 text-black py-4 font-bold text-xs uppercase tracking-[0.2em] hover:bg-amber-400 transition-colors">
+        <button class="w-full bg-amber-500 text-black py-4 font-bold text-xs uppercase tracking-[0.2em] hover:bg-amber-400 transition-colors">
           Request Order
         </button>
 
@@ -125,22 +124,64 @@
           <p><strong class="text-zinc-300">Care Instructions:</strong> Hand wash cold or dry clean only. Do not iron directly on prints.</p>
         </div>
       </div>
-
     </div>
   </section>
 
   <!-- Lookbook Section -->
-  <section id="lookbook" class="py-20 border-t border-zinc-800 bg-zinc-900/20 text-center">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold uppercase tracking-wider mb-4">Lookbook</h2>
-      <p class="text-sm text-zinc-400 tracking-wide uppercase">Underground textures, extreme obsolescence and duality between classic elegance and ultimate subversion.</p>
+  <section id="lookbook" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-zinc-900">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-wider uppercase mb-2">Lookbook</h2>
+      <p class="text-xs uppercase tracking-widest text-amber-500 font-semibold">Visual Atmosphere</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-zinc-900 border border-zinc-800 p-6 space-y-4">
+        <img src="Sudadera%20JEGALUX%20de%20lujo%20oscuro%20(1).png" alt="Lookbook 1" class="w-full h-80 object-cover border border-zinc-800">
+        <h3 class="text-lg font-bold uppercase tracking-wider">Series I: Industrial Duality</h3>
+        <p class="text-xs text-zinc-400 leading-relaxed">Exploring extreme textures and architectural volumes designed for nocturnal urban exploration.</p>
+      </div>
+      <div class="bg-zinc-900 border border-zinc-800 p-6 space-y-4">
+        <img src="Sudadera%20negra%20premium%20en%20estudio%20de%20lujo.png" alt="Lookbook 2" class="w-full h-80 object-cover border border-zinc-800">
+        <h3 class="text-lg font-bold uppercase tracking-wider">Series II: Absolute Obscurity</h3>
+        <p class="text-xs text-zinc-400 leading-relaxed">Heavyweight finishes combined with minimalist subversion, defining a new standard in dark luxury wear.</p>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="border-t border-zinc-800 py-12 text-center text-xs text-zinc-500 tracking-widest uppercase">
-    <p>&copy; 2026 JEGALUX. All rights reserved.</p>
-  </footer>
+  <!-- Limited Editions Section -->
+  <section id="limited" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-zinc-900">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-wider uppercase mb-2">Limited Editions</h2>
+      <p class="text-xs uppercase tracking-widest text-amber-500 font-semibold">Scarce Availability</p>
+    </div>
+    <div class="max-w-3xl mx-auto bg-zinc-900/50 border border-zinc-800 p-8 text-center space-y-6">
+      <h3 class="text-xl font-bold uppercase tracking-widest">Numbered Archive Drops</h3>
+      <p class="text-sm text-zinc-300 leading-relaxed">
+        Each drop is strictly limited to ensure exclusivity. Once an edition sells out, it will never be re-released. Secure your piece of the underground legacy.
+      </p>
+      <div class="inline-block border border-amber-500 text-amber-500 px-6 py-2 text-xs uppercase tracking-widest font-bold">
+        Next Drop: TBA
+      </div>
+    </div>
+  </section>
 
-</body>
-</html>
+  <!-- Manifesto Section -->
+  <section id="manifesto" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-zinc-900">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-wider uppercase mb-2">Manifesto</h2>
+      <p class="text-xs uppercase tracking-widest text-amber-500 font-semibold">Our Philosophy</p>
+    </div>
+    <div class="max-w-3xl mx-auto space-y-6 text-center text-zinc-300 text-sm leading-relaxed">
+      <p>We reject fast trends and seasonal uniformity. JEGALUX is born from the shadows, merging brutalist architecture with high-end luxury streetwear.</p>
+      <p>Every piece functions as an armor—crafted for those who navigate the underground currents and demand absolute individuality in their aesthetic expression.</p>
+    </div>
+  </section>
+
+  <!-- VIP Section -->
+  <section id="vip" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-wider uppercase mb-2">VIP Access</h2>
+      <p class="text-xs uppercase tracking-widest text-amber-500 font-semibold">Private Registry</p>
+    </div>
+    <div class="max-w-md mx-auto bg-zinc-900 border border-zinc-800 p-8 space-y-4">
+      <p class="text-xs text-zinc-400 text-center uppercase tracking-wider">Join the inner circle for private link alerts and early drops.</p>
+      <input type="email" placeholder
