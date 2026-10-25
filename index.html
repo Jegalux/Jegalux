@@ -30,9 +30,29 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Animación suave para la vista 360 simulada al pasar el cursor */
-        .group:hover .img-360 {
-            transform: scale(1.08) rotate(2deg);
+        /* Efecto Zoom en la prenda al pasar el cursor */
+        .zoom-container {
+            overflow: hidden;
+        }
+        .zoom-img {
+            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .zoom-container:hover .zoom-img {
+            transform: scale(1.15);
+        }
+
+        /* Efecto Zoom en el banner al hacer scroll */
+        .banner-zoom {
+            animation: heroZoom linear forwards;
+            animation-timeline: scroll();
+        }
+        @keyframes heroZoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.25);
+            }
         }
     </style>
 </head>
@@ -41,14 +61,12 @@
     <!-- Header / Navegación -->
     <header class="fixed top-0 left-0 w-full z-50 bg-dark/80 backdrop-blur-md border-b border-neutral-900">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- Logo a la izquierda -->
             <div class="flex items-center gap-3">
                 <a href="#" class="font-gothic text-xl md:text-2xl tracking-widest text-accent font-bold hover:opacity-80 transition-opacity">
                     JEGALUX
                 </a>
             </div>
             
-            <!-- Menú de navegación -->
             <nav class="hidden lg:flex items-center gap-6 text-xs tracking-widest uppercase">
                 <a href="#catalogo" class="hover:text-accent transition-colors">Catálogo</a>
                 <a href="#lookbook" class="hover:text-accent transition-colors">Lookbook</a>
@@ -65,40 +83,40 @@
         </div>
     </header>
 
-    <!-- Hero Section (Banner principal) -->
-    <section class="relative pt-32 pb-24 md:pt-48 md:pb-36 flex flex-col items-center justify-center text-center px-6 border-b border-neutral-900 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="banner-sudadera.png" alt="JEGALUX Showroom" class="w-full h-full object-cover opacity-40 filter brightness-75">
-            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/60 to-dark/40"></div>
+    <!-- Hero Section con Banner de Montaña Oscura y Zoom al bajar -->
+    <section class="relative pt-32 pb-24 md:pt-48 md:pb-36 flex flex-col items-center justify-center text-center px-6 border-b border-neutral-900 overflow-hidden min-h-[85vh]">
+        <div class="absolute inset-0 z-0 overflow-hidden">
+            <!-- Imagen de montaña oscura de fondo con efecto zoom automático al hacer scroll -->
+            <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=1920&auto=format&fit=crop" alt="Montaña Oscura JEGALUX" class="banner-zoom w-full h-full object-cover opacity-50 filter brightness-50 contrast-125">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
         </div>
 
         <div class="relative z-10 max-w-4xl mx-auto space-y-6">
-            <h1 class="font-gothic text-4xl md:text-7xl tracking-wider text-accent font-extrabold uppercase drop-shadow-lg">
+            <h1 class="font-gothic text-4xl md:text-7xl tracking-wider text-accent font-extrabold uppercase drop-shadow-2xl">
                 JEGALUX <br><span class="text-neutral-400 text-2xl md:text-4xl">Dark Luxury</span>
             </h1>
             <p class="text-neutral-300 max-w-xl mx-auto text-sm md:text-base tracking-wide font-light">
                 Indumentaria underground, oscura y texturas extremas. More than clothes, it's a lifestyle.
             </p>
             <div class="pt-4">
-                <a href="#catalogo" class="bg-accent text-dark px-8 py-3 text-xs tracking-widest uppercase font-bold hover:bg-neutral-200 transition-all duration-300 shadow-lg">
+                <a href="#catalogo" class="bg-accent text-dark px-8 py-3 text-xs tracking-widest uppercase font-bold hover:bg-neutral-200 transition-all duration-300 shadow-2xl">
                     Explorar Piezas
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Catálogo de Prendas con la nueva prenda y Vista 360 -->
+    <!-- Catálogo de Prendas con Zoom al pasar el cursor -->
     <section id="catalogo" class="py-20 px-6 max-w-7xl mx-auto border-b border-neutral-900">
         <h2 class="font-gothic text-2xl md:text-3xl tracking-widest mb-12 uppercase text-center">Catálogo / Colección Activa</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <!-- Producto Nuevo con imagen y Vista 360 -->
+            <!-- Producto con Zoom al pasar el cursor -->
             <div class="bg-card border border-neutral-900 p-6 flex flex-col justify-between group cursor-pointer">
-                <div class="relative h-96 bg-neutral-950 flex items-center justify-center overflow-hidden border border-neutral-900">
-                    <img src="producto-sudadera.png" alt="Sudadera JEGALUX de lujo oscuro" class="img-360 w-full h-full object-cover transition-transform duration-700">
-                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
-                    <span class="absolute bottom-3 right-3 text-[10px] tracking-widest uppercase bg-dark/90 text-accent px-3 py-1.5 border border-neutral-700 shadow-lg flex items-center gap-2">
-                        <i class="fa-solid fa-rotate"></i> Vista 360° Activa
+                <div class="zoom-container relative h-96 bg-neutral-950 flex items-center justify-center overflow-hidden border border-neutral-900">
+                    <img src="producto-sudadera.png" alt="Sudadera JEGALUX de lujo oscuro" class="zoom-img w-full h-full object-cover">
+                    <span class="absolute bottom-3 right-3 text-[10px] tracking-widest uppercase bg-dark/90 text-accent px-3 py-1.5 border border-neutral-700 shadow-lg flex items-center gap-2 z-10">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i> Zoom Activo
                     </span>
                 </div>
                 <div class="mt-6 flex justify-between items-center">
@@ -112,61 +130,12 @@
 
             <!-- Producto 2 (Abrigo) -->
             <div class="bg-card border border-neutral-900 p-6 flex flex-col justify-between group">
-                <div class="relative h-96 bg-neutral-950 flex items-center justify-center overflow-hidden border border-neutral-900">
+                <div class="zoom-container relative h-96 bg-neutral-950 flex items-center justify-center overflow-hidden border border-neutral-900">
                     <span class="font-gothic text-xl tracking-widest text-neutral-400 group-hover:scale-105 transition-transform duration-500">
                         Abrigo Gótico Estructurado
                     </span>
-                    <span class="absolute bottom-3 right-3 text-[10px] tracking-widest uppercase bg-dark/90 text-accent px-3 py-1.5 border border-neutral-700 shadow-lg flex items-center gap-2">
-                        <i class="fa-solid fa-rotate"></i> Vista 360° Disponible
+                    <span class="absolute bottom-3 right-3 text-[10px] tracking-widest uppercase bg-dark/90 text-accent px-3 py-1.5 border border-neutral-700 shadow-lg flex items-center gap-2 z-10">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i> Zoom Activo
                     </span>
                 </div>
                 <div class="mt-6 flex justify-between items-center">
-                    <div>
-                        <h3 class="font-gothic text-lg tracking-wide uppercase">Abrigo Overcoat Gótico</h3>
-                        <p class="text-xs text-neutral-500 tracking-wider mt-1">Edición Limitada</p>
-                    </div>
-                    <span class="font-gothic text-accent text-lg">€350</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lookbook Section -->
-    <section id="lookbook" class="py-20 px-6 max-w-7xl mx-auto border-b border-neutral-900 text-center">
-        <h2 class="font-gothic text-2xl md:text-3xl tracking-widest mb-6 uppercase">Lookbook</h2>
-        <p class="text-neutral-400 max-w-2xl mx-auto text-sm tracking-wide mb-10">
-            Atmósferas nocturnas, siluetas desestructuradas y la dualidad entre la elegancia clásica y el abismo underground.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="h-64 bg-neutral-950 border border-neutral-900 flex items-center justify-center text-neutral-600 font-gothic tracking-widest">EDITORIAL I</div>
-            <div class="h-64 bg-neutral-950 border border-neutral-900 flex items-center justify-center text-neutral-600 font-gothic tracking-widest">EDITORIAL II</div>
-            <div class="h-64 bg-neutral-950 border border-neutral-900 flex items-center justify-center text-neutral-600 font-gothic tracking-widest">EDITORIAL III</div>
-        </div>
-    </section>
-
-    <!-- Ediciones Limitadas Section -->
-    <section id="limitadas" class="py-20 px-6 max-w-7xl mx-auto border-b border-neutral-900 text-center">
-        <h2 class="font-gothic text-2xl md:text-3xl tracking-widest mb-6 uppercase">Ediciones Limitadas</h2>
-        <p class="text-neutral-400 max-w-xl mx-auto text-sm tracking-wide mb-8">
-            Piezas numeradas individualmente. Producción ultrarestringida para coleccionistas de la estética oscura.
-        </p>
-        <div class="inline-block border border-neutral-700 px-8 py-4 text-xs tracking-widest uppercase text-neutral-300">
-            Próximo Drop: Solsticio Nocturno (Acceso Reservado)
-        </div>
-    </section>
-
-    <!-- Manifiesto Section -->
-    <section id="manifiesto" class="py-20 px-6 max-w-4xl mx-auto border-b border-neutral-900 text-center space-y-6">
-        <h2 class="font-gothic text-2xl md:text-3xl tracking-widest uppercase">Manifiesto</h2>
-        <p class="text-neutral-400 text-sm md:text-base tracking-wide leading-relaxed">
-            "Rechazamos lo efímero. JEGALUX nace en las sombras como una armadura moderna para quienes encuentran belleza en la penumbra, el silencio y el diseño sin concesiones."
-        </p>
-    </section>
-
-    <!-- VIP / Contacto Section -->
-    <section id="vip" class="py-20 px-6 max-w-3xl mx-auto text-center space-y-6">
-        <h2 class="font-gothic text-2xl md:text-3xl tracking-widest uppercase">Acceso VIP</h2>
-        <p class="text-neutral-400 text-sm tracking-wide">
-            Suscríbete para recibir notificaciones privadas de lanzamientos y piezas de archivo exclusivas.
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-
