@@ -133,7 +133,7 @@
             transition: transform 0.15s cubic-bezier(0.03, 0.98, 0.52, 0.99), border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        #bannerContent {
+        #bannerContainer {
             transition: transform 0.1s ease-out;
         }
     </style>
@@ -208,36 +208,50 @@
         </div>
     </header>
 
-    <!-- 2. STREAMLINED & NARROW BANNER WITH ZOOM ON SCROLL -->
-    <section class="relative z-10 border-b border-white/5 py-12 md:py-16 overflow-hidden">
-        <div id="bannerContent" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative" onmouseenter="playFuturisticSound('block')">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-accent/30 text-accent font-tech text-[10px] uppercase tracking-widest mb-4">
-                <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-                AUTUMN/WINTER PROTOCOL — EDITION 0.94
-            </div>
-
-            <!-- Logo Grande -->
-            <div class="flex justify-center mb-5">
+    <!-- 2. HERO BANNER CON IMAGEN DE RELIEVE OSCURECIDA, ZOOM AL BAJAR Y EFECTO 3D -->
+    <section class="relative z-10 border-b border-white/5 py-16 md:py-24 overflow-hidden">
+        <div id="bannerContainer" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playFuturisticSound('block')">
+            
+            <!-- Imagen de fondo del banner (Relieve del logo con brillo bajo / oscurecida) -->
+            <div class="absolute inset-0 -z-10 overflow-hidden rounded-2xl">
                 <img 
-                    src="logo.png" 
-                    alt="Emblem" 
-                    class="h-32 md:h-44 w-auto object-contain opacity-95 drop-shadow-[0_0_35px_rgba(255,85,0,0.5)] transition-transform duration-300 hover:scale-105"
-                    onerror="this.onerror=null; this.src='https://placehold.co/400x140/08080a/ff5500?text=JEGALUX+CORP';"
-                    onmouseenter="playFuturisticSound('hover')"
+                    src="Gemini_Generated_Image_34mrde34mrde34mr.jpg" 
+                    alt="Relieve Logo Banner" 
+                    class="w-full h-full object-cover filter brightness-[0.35] contrast-[1.2] opacity-75 scale-105"
+                    onerror="this.onerror=null; this.src='https://placehold.co/1200x500/08080a/333333?text=JEGALUX';"
                 />
+                <div class="absolute inset-0 bg-gradient-to-b from-void/80 via-void/40 to-void/90"></div>
             </div>
 
-            <p class="max-w-lg mx-auto text-neutral-300 font-sans text-xs md:text-sm leading-relaxed tracking-wide mb-6">
-                Underground silhouettes, obscure textures and premium comfort for those who move in the shadow.
-            </p>
+            <div class="relative z-10 py-8 md:py-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-accent/30 text-accent font-tech text-[10px] uppercase tracking-widest mb-6">
+                    <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                    AUTUMN/WINTER PROTOCOL — EDITION 0.94
+                </div>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 font-tech text-xs tracking-widest">
-                <a href="#product" class="w-full sm:w-auto px-6 py-2.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_20px_rgba(255,85,0,0.35)]" onmouseenter="playFuturisticSound('hover')" onclick="playFuturisticSound('click')">
-                    EXPLORE COLLECTION
-                </a>
-                <a href="#manifesto" class="w-full sm:w-auto px-6 py-2.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200" onmouseenter="playFuturisticSound('hover')" onclick="playFuturisticSound('click')">
-                    READ MANIFESTO
-                </a>
+                <!-- Logo Grande -->
+                <div class="flex justify-center mb-6">
+                    <img 
+                        src="logo.png" 
+                        alt="Emblem" 
+                        class="h-32 md:h-44 w-auto object-contain opacity-95 drop-shadow-[0_0_35px_rgba(255,85,0,0.5)] transition-transform duration-300 hover:scale-105"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x140/08080a/ff5500?text=JEGALUX+CORP';"
+                        onmouseenter="playFuturisticSound('hover')"
+                    />
+                </div>
+
+                <p class="max-w-lg mx-auto text-neutral-300 font-sans text-xs md:text-sm leading-relaxed tracking-wide mb-8">
+                    Underground silhouettes, obscure textures and premium comfort for those who move in the shadow.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 font-tech text-xs tracking-widest">
+                    <a href="#product" class="w-full sm:w-auto px-6 py-2.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_20px_rgba(255,85,0,0.35)]" onmouseenter="playFuturisticSound('hover')" onclick="playFuturisticSound('click')">
+                        EXPLORE COLLECTION
+                    </a>
+                    <a href="#manifesto" class="w-full sm:w-auto px-6 py-2.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200" onmouseenter="playFuturisticSound('hover')" onclick="playFuturisticSound('click')">
+                        READ MANIFESTO
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -434,7 +448,7 @@
             mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
         }
 
-        // Sistema de Sonido Sci-Fi / Web Audio API avanzado con efectos por bloque
+        // Sistema de Sonido Sci-Fi / Web Audio API
         let audioCtx = null;
         function playFuturisticSound(type) {
             try {
@@ -485,16 +499,16 @@
             const scrollY = window.pageYOffset;
             const cloud1 = document.getElementById('cloudParallax1');
             const cloud2 = document.getElementById('cloudParallax2');
-            const bannerContent = document.getElementById('bannerContent');
+            const bannerContainer = document.getElementById('bannerContainer');
             
             if (cloud1 && cloud2) {
                 cloud1.style.transform = `translateY(${scrollY * 0.25}px)`;
                 cloud2.style.transform = `translateY(${scrollY * 0.15}px)`;
             }
 
-            if (bannerContent) {
+            if (bannerContainer) {
                 const zoomScale = 1 + (scrollY * 0.0008);
-                bannerContent.style.transform = `scale(${Math.min(zoomScale, 1.15)})`;
+                bannerContainer.style.transform = `scale(${Math.min(zoomScale, 1.15)})`;
             }
         });
 
@@ -520,7 +534,7 @@
             }
         }
 
-        // Movimiento 3D fluido e interactivo en tarjetas
+        // Movimiento 3D fluido e interactivo en tarjetas y banner
         function handleTilt(e, card) {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
