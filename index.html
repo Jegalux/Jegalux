@@ -18,15 +18,24 @@
     h1, h2, h3, .font-serif {
       font-family: 'Cinzel', serif;
     }
-    /* Smooth 3D Scroll Animations */
+    /* Smooth 3D Scroll & Zoom Animations */
     .reveal-on-scroll {
       opacity: 0;
-      transform: translateY(30px) perspective(1000px) rotateX(5deg);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      transform: translateY(40px) perspective(1000px) rotateX(8deg);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .reveal-on-scroll.active {
       opacity: 1;
       transform: translateY(0) perspective(1000px) rotateX(0deg);
+    }
+    .img-zoom-hover {
+      overflow: hidden;
+    }
+    .img-zoom-hover img {
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .img-zoom-hover:hover img {
+      transform: scale(1.08);
     }
   </style>
 </head>
@@ -51,23 +60,9 @@
     </div>
   </header>
 
-  <!-- Hero Section with Bright Gothic Emblem Background & Zoom Effect -->
-  <section class="relative min-h-[85vh] flex items-center justify-center text-center px-4 overflow-hidden border-b border-zinc-800">
+  <!-- Hero Section (Narrow, Darker Banner with Gothic Emblem Background & Zoom) -->
+  <section class="relative min-h-[65vh] flex items-center justify-center text-center px-4 overflow-hidden border-b border-zinc-800">
     <div class="absolute inset-0 z-0 overflow-hidden">
-      <img src="Emblema%20g%C3%B3tico%20de%20hueso%20sobre%20negro.png" alt="Gothic Emblem Background" class="w-full h-full object-cover opacity-75 brightness-125 scale-100 hover:scale-105 transition-transform duration-1000">
+      <img src="Emblema%20g%C3%B3tico%20de%20hueso%20sobre%20negro.png" alt="Gothic Emblem Background" class="w-full h-full object-cover opacity-60 brightness-110 scale-100 hover:scale-105 transition-transform duration-1000">
     </div>
-    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent"></div>
-    <div class="relative z-10 max-w-3xl mx-auto space-y-6 reveal-on-scroll active">
-      <img src="logo.png" alt="JEGALUX Logo" class="h-24 mx-auto object-contain mb-4">
-      <p class="text-xs uppercase tracking-[0.3em] text-amber-500 font-semibold drop-shadow-md">Underground, obscure and extreme textures. More than clothes, it's a lifestyle.</p>
-      <div>
-        <a href="#catalog" class="inline-block border border-amber-500 text-amber-500 px-8 py-3 text-xs tracking-widest uppercase font-bold hover:bg-amber-500 hover:text-black transition-all shadow-lg">
-          Explore Pieces
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Catalog Section -->
-  <section id="catalog" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-zinc-900">
-    <div class="text-center mb-16 reveal-on
+    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent">
