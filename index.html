@@ -29,6 +29,12 @@
         }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Animación suave para la vista 360 simulada al pasar el cursor */
+        .group:hover .img-360 {
+            transform: scale(1.08) rotate(2deg);
+        }
+    </style>
 </head>
 <body class="bg-dark text-chrome font-sans min-h-screen selection:bg-white selection:text-black">
 
@@ -59,15 +65,13 @@
         </div>
     </header>
 
-    <!-- Hero Section con tu imagen en el banner -->
+    <!-- Hero Section (Banner principal) -->
     <section class="relative pt-32 pb-24 md:pt-48 md:pb-36 flex flex-col items-center justify-center text-center px-6 border-b border-neutral-900 overflow-hidden">
-        <!-- Imagen de fondo con opacidad oscura -->
         <div class="absolute inset-0 z-0">
             <img src="banner-sudadera.png" alt="JEGALUX Showroom" class="w-full h-full object-cover opacity-40 filter brightness-75">
             <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/60 to-dark/40"></div>
         </div>
 
-        <!-- Contenido del Banner -->
         <div class="relative z-10 max-w-4xl mx-auto space-y-6">
             <h1 class="font-gothic text-4xl md:text-7xl tracking-wider text-accent font-extrabold uppercase drop-shadow-lg">
                 JEGALUX <br><span class="text-neutral-400 text-2xl md:text-4xl">Dark Luxury</span>
@@ -83,38 +87,37 @@
         </div>
     </section>
 
-    <!-- Catálogo de Prendas -->
+    <!-- Catálogo de Prendas con la nueva prenda y Vista 360 -->
     <section id="catalogo" class="py-20 px-6 max-w-7xl mx-auto border-b border-neutral-900">
         <h2 class="font-gothic text-2xl md:text-3xl tracking-widest mb-12 uppercase text-center">Catálogo / Colección Activa</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <!-- Producto 1 -->
-            <div class="bg-card border border-neutral-900 p-6 flex flex-col justify-between group">
-                <div class="relative h-80 bg-neutral-950 flex items-center justify-center overflow-hidden border border-neutral-900">
-                    <span class="font-gothic text-xl tracking-widest text-neutral-400 group-hover:scale-105 transition-transform duration-500">
-                        Sudadera JEGALUX
-                    </span>
-                    <span class="absolute bottom-3 right-3 text-[10px] tracking-widest uppercase bg-dark/80 px-2 py-1 border border-neutral-800">
-                        Vista 360° Disponible
+            <!-- Producto Nuevo con imagen y Vista 360 -->
+            <div class="bg-card border border-neutral-900 p-6 flex flex-col justify-between group cursor-pointer">
+                <div class="relative h-96 bg-neutral-950 flex items-center justify-center overflow-hidden border border-neutral-900">
+                    <img src="producto-sudadera.png" alt="Sudadera JEGALUX de lujo oscuro" class="img-360 w-full h-full object-cover transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                    <span class="absolute bottom-3 right-3 text-[10px] tracking-widest uppercase bg-dark/90 text-accent px-3 py-1.5 border border-neutral-700 shadow-lg flex items-center gap-2">
+                        <i class="fa-solid fa-rotate"></i> Vista 360° Activa
                     </span>
                 </div>
                 <div class="mt-6 flex justify-between items-center">
                     <div>
-                        <h3 class="font-gothic text-lg tracking-wide uppercase">Sudadera negra premium</h3>
-                        <p class="text-xs text-neutral-500 tracking-wider mt-1">Estudio de lujo oscuro</p>
+                        <h3 class="font-gothic text-lg tracking-wide uppercase">Sudadera JEGALUX Lujo Oscuro</h3>
+                        <p class="text-xs text-neutral-500 tracking-wider mt-1">Textura extrema / Algodón pesado</p>
                     </div>
-                    <span class="font-gothic text-accent text-lg">€180</span>
+                    <span class="font-gothic text-accent text-lg">€195</span>
                 </div>
             </div>
 
-            <!-- Producto 2 -->
+            <!-- Producto 2 (Abrigo) -->
             <div class="bg-card border border-neutral-900 p-6 flex flex-col justify-between group">
-                <div class="relative h-80 bg-neutral-950 flex items-center justify-center overflow-hidden border border-neutral-900">
+                <div class="relative h-96 bg-neutral-950 flex items-center justify-center overflow-hidden border border-neutral-900">
                     <span class="font-gothic text-xl tracking-widest text-neutral-400 group-hover:scale-105 transition-transform duration-500">
                         Abrigo Gótico Estructurado
                     </span>
-                    <span class="absolute bottom-3 right-3 text-[10px] tracking-widest uppercase bg-dark/80 px-2 py-1 border border-neutral-800">
-                        Vista 360° Disponible
+                    <span class="absolute bottom-3 right-3 text-[10px] tracking-widest uppercase bg-dark/90 text-accent px-3 py-1.5 border border-neutral-700 shadow-lg flex items-center gap-2">
+                        <i class="fa-solid fa-rotate"></i> Vista 360° Disponible
                     </span>
                 </div>
                 <div class="mt-6 flex justify-between items-center">
@@ -166,16 +169,4 @@
         <p class="text-neutral-400 text-sm tracking-wide">
             Suscríbete para recibir notificaciones privadas de lanzamientos y piezas de archivo exclusivas.
         </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-3 pt-4">
-            <input type="email" placeholder="CORREO ELECTRÓNICO" class="bg-neutral-950 border border-neutral-800 px-4 py-3 text-xs tracking-widest text-chrome focus:outline-none focus:border-accent">
-            <button class="bg-accent text-dark px-6 py-3 text-xs tracking-widest uppercase font-bold hover:bg-neutral-200 transition-colors">Solicitar Acceso</button>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="border-t border-neutral-900 py-12 text-center text-xs tracking-widest text-neutral-500">
-        <p>&copy; 2026 JEGALUX. Todos los derechos reservados.</p>
-    </footer>
-
-</body>
-</html>
+        <div class="flex flex-col sm:flex-row justify-center gap-
