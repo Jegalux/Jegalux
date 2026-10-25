@@ -18,10 +18,10 @@
             theme: {
                 extend: {
                     colors: {
-                        void: '#070709',
-                        obsidian: '#0d0d11',
-                        surface: '#13131a',
-                        'surface-light': '#1b1b24',
+                        void: '#050507',
+                        obsidian: '#0b0b0f',
+                        surface: '#111118',
+                        'surface-light': '#181822',
                         accent: '#ff5500',
                         'accent-glow': '#ff7700',
                         'tech-gray': '#737380'
@@ -44,7 +44,7 @@
             width: 5px;
         }
         ::-webkit-scrollbar-track {
-            background: #070709;
+            background: #050507;
         }
         ::-webkit-scrollbar-thumb {
             background: #23232e;
@@ -53,15 +53,53 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #ff5500;
         }
+
+        /* Dynamic Cursor Spotlight Effect */
+        #cursor-spotlight {
+            pointer-events: none;
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 85, 0, 0.12) 0%, rgba(255, 85, 0, 0.03) 40%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 99;
+            transition: width 0.3s, height 0.3s;
+        }
+
+        /* 3D Tilt Card Base Style */
+        .tilt-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tilt-content {
+            transform: translateZ(30px);
+        }
+
+        /* Glassmorphism Refinements */
+        .luxury-glass {
+            background: rgba(17, 17, 24, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .luxury-glass:hover {
+            border-color: rgba(255, 85, 0, 0.4);
+            box-shadow: 0 10px 40px -10px rgba(255, 85, 0, 0.25);
+        }
+
         .glow-orange {
             box-shadow: 0 0 25px -4px rgba(255, 85, 0, 0.35);
-        }
-        .glow-text {
-            text-shadow: 0 0 16px rgba(255, 85, 0, 0.5);
         }
     </style>
 </head>
 <body class="bg-void text-neutral-200 font-sans selection:bg-accent selection:text-black overflow-x-hidden relative">
+
+    <!-- Cursor Spotlight Overlay -->
+    <div id="cursor-spotlight"></div>
 
     <!-- Ambient Grid Background -->
     <div class="fixed inset-0 bg-grid-pattern [background-size:24px_24px] pointer-events-none opacity-40 z-0"></div>
@@ -75,7 +113,7 @@
                 <img 
                     src="logo.png" 
                     alt="JEGALUX Logo" 
-                    class="h-9 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_8px_rgba(255,85,0,0.3)]"
+                    class="h-9 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_12px_rgba(255,85,0,0.4)]"
                     onerror="this.onerror=null; this.src='https://placehold.co/180x44/0d0d11/ff5500?text=J+E+G+A+L+U+X';"
                 />
             </a>
@@ -101,7 +139,7 @@
             <div class="flex items-center space-x-4">
                 <button 
                     onclick="triggerToast('CART UPDATED (1 ITEM RESERVED)')"
-                    class="relative p-2.5 rounded-lg bg-surface hover:bg-surface-light border border-white/5 hover:border-accent/40 text-neutral-300 hover:text-white transition-all duration-200"
+                    class="relative p-2.5 rounded-lg bg-surface hover:bg-surface-light border border-white/5 hover:border-accent/40 text-neutral-300 hover:text-white transition-all duration-200 shadow-md"
                     aria-label="View Cart"
                 >
                     <i data-lucide="shopping-bag" class="w-4 h-4 text-accent"></i>
@@ -110,7 +148,7 @@
 
                 <a 
                     href="#product"
-                    class="hidden sm:inline-flex items-center font-tech text-xs tracking-widest px-4 py-2.5 rounded-md bg-accent/10 border border-accent/60 text-accent hover:bg-accent hover:text-black transition-all duration-200"
+                    class="hidden sm:inline-flex items-center font-tech text-xs tracking-widest px-4 py-2.5 rounded-md bg-accent/10 border border-accent/60 text-accent hover:bg-accent hover:text-black transition-all duration-200 shadow-[0_0_15px_rgba(255,85,0,0.2)]"
                 >
                     ORDER NOW
                 </a>
@@ -136,18 +174,18 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
             
             <!-- Tech HUD indicator -->
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-accent/30 text-accent font-tech text-[11px] uppercase tracking-widest mb-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-accent/30 text-accent font-tech text-[11px] uppercase tracking-widest mb-6 shadow-[0_0_15px_rgba(255,85,0,0.15)]">
                 <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
                 AUTUMN/WINTER PROTOCOL — EDITION 0.94
             </div>
 
-            <!-- Hero Emblem / Clean Graphic -->
+            <!-- Hero Emblem / Prominent Standalone Logo -->
             <div class="flex justify-center mb-6">
                 <img 
                     src="logo.png" 
                     alt="Emblem" 
-                    class="h-16 md:h-20 w-auto object-contain opacity-90 drop-shadow-[0_0_20px_rgba(255,85,0,0.25)]"
-                    onerror="this.onerror=null; this.src='https://placehold.co/240x80/08080a/ff5500?text=JEGALUX+CORP';"
+                    class="h-28 md:h-36 lg:h-44 w-auto object-contain opacity-95 filter drop-shadow-[0_0_35px_rgba(255,85,0,0.45)] transition-transform duration-500 hover:scale-105"
+                    onerror="this.onerror=null; this.src='https://placehold.co/360x120/08080a/ff5500?text=JEGALUX+CORP';"
                 />
             </div>
 
@@ -164,13 +202,13 @@
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 font-tech text-xs tracking-widest">
                 <a 
                     href="#product" 
-                    class="w-full sm:w-auto px-8 py-3.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_20px_rgba(255,85,0,0.35)]"
+                    class="w-full sm:w-auto px-8 py-3.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_25px_rgba(255,85,0,0.4)] hover:shadow-[0_0_35px_rgba(255,85,0,0.6)]"
                 >
                     EXPLORE COLLECTION
                 </a>
                 <a 
                     href="#manifesto" 
-                    class="w-full sm:w-auto px-8 py-3.5 rounded bg-surface border border-white/10 hover:border-accent/50 text-neutral-300 hover:text-white transition-all duration-200"
+                    class="w-full sm:w-auto px-8 py-3.5 rounded bg-surface border border-white/10 hover:border-accent/50 text-neutral-300 hover:text-white transition-all duration-200 luxury-glass"
                 >
                     READ MANIFESTO
                 </a>
@@ -196,42 +234,42 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
-                <!-- Garment Image Column -->
-                <div class="lg:col-span-7 relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-accent/20 to-transparent rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="relative bg-surface rounded-xl overflow-hidden border border-white/10 shadow-2xl">
+                <!-- Garment Image Column with 3D Tilt -->
+                <div class="lg:col-span-7 relative group tilt-card" data-tilt>
+                    <div class="absolute -inset-1 bg-gradient-to-r from-accent/30 to-transparent rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative luxury-glass rounded-xl overflow-hidden shadow-2xl tilt-content">
                         <img 
                             src="Sudadera EGALUX en showroom futurista (1).jpg" 
                             alt="Sudadera JEGALUX Flagship Showroom" 
                             class="w-full h-[520px] md:h-[620px] object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
                             onerror="this.onerror=null; this.src='https://placehold.co/900x1200/121217/ff5500?text=JEGALUX+FLAGSHIP+HOODIE';"
                         />
-                        <div class="absolute bottom-4 left-4 right-4 bg-obsidian/80 backdrop-blur-md border border-white/10 p-3 rounded-lg flex items-center justify-between font-tech text-xs">
+                        <div class="absolute bottom-4 left-4 right-4 bg-obsidian/90 backdrop-blur-md border border-white/10 p-3 rounded-lg flex items-center justify-between font-tech text-xs shadow-lg">
                             <span class="text-neutral-400">ARCHIVE: FUTURISTIC SHOWROOM</span>
                             <span class="text-accent">MODEL: 01-PROTOTYPE</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Garment Specs Column -->
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="border-b border-white/10 pb-5">
+                <!-- Garment Specs Column with 3D Tilt Card Background -->
+                <div class="lg:col-span-5 space-y-6 luxury-glass p-8 rounded-2xl tilt-card shadow-2xl" data-tilt data-tilt-max="3">
+                    <div class="border-b border-white/10 pb-5 tilt-content">
                         <div class="flex justify-between items-baseline mb-2">
-                            <h2 class="text-2xl md:text-4xl font-display font-bold tracking-tight text-white uppercase">JEGALUX OBSCURE OVERSIZED HOODIE</h2>
+                            <h2 class="text-2xl md:text-3xl font-display font-bold tracking-tight text-white uppercase">JEGALUX OBSCURE OVERSIZED HOODIE</h2>
                         </div>
-                        <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-3 mt-3">
                             <span class="font-display text-2xl text-accent font-bold">$290 USD</span>
                             <span class="text-neutral-500 font-tech text-xs tracking-wider line-through">$380</span>
-                            <span class="px-2 py-0.5 rounded bg-accent/20 text-accent font-tech text-[10px] tracking-wider uppercase">ARCHIVE EXCLUSIVE</span>
+                            <span class="px-2.5 py-0.5 rounded bg-accent/20 text-accent font-tech text-[10px] tracking-wider uppercase border border-accent/30">ARCHIVE EXCLUSIVE</span>
                         </div>
                     </div>
 
-                    <p class="text-neutral-400 text-sm leading-relaxed">
+                    <p class="text-neutral-400 text-sm leading-relaxed tilt-content">
                         Constructed from double-milled 550 GSM Portuguese organic cotton. Features an elongated boxy silhouette, concealed forearm cyber-mesh pocket, and high-density industrial rear typography. Pre-shrunk via dark volcanic wash.
                     </p>
 
                     <!-- Technical Bullet points -->
-                    <div class="space-y-2 font-tech text-xs text-neutral-300">
+                    <div class="space-y-2 font-tech text-xs text-neutral-300 tilt-content">
                         <div class="flex items-center gap-2">
                             <i data-lucide="check" class="w-3.5 h-3.5 text-accent"></i>
                             <span>Heavyweight structured thermal drape</span>
@@ -247,37 +285,37 @@
                     </div>
 
                     <!-- Size Selection -->
-                    <div class="pt-2">
+                    <div class="pt-2 tilt-content">
                         <div class="flex justify-between items-center mb-2 font-tech text-xs text-neutral-400">
                             <span>SELECT FIT:</span>
                             <button class="hover:text-accent underline text-[11px]" onclick="triggerToast('SIZING GUIDE: OVERSIZED DROPPED SHOULDERS')">SIZE MATRIX</button>
                         </div>
                         <div class="grid grid-cols-4 gap-2 font-tech text-xs">
-                            <button onclick="selectSize(this)" class="size-btn py-3 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition">S</button>
-                            <button onclick="selectSize(this)" class="size-btn py-3 border border-accent rounded bg-accent/10 text-accent font-bold transition">M</button>
-                            <button onclick="selectSize(this)" class="size-btn py-3 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition">L</button>
-                            <button onclick="selectSize(this)" class="size-btn py-3 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition">XL</button>
+                            <button onclick="selectSize(this)" class="size-btn py-3 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition shadow-sm">S</button>
+                            <button onclick="selectSize(this)" class="size-btn py-3 border border-accent rounded bg-accent/10 text-accent font-bold transition shadow-md shadow-accent/20">M</button>
+                            <button onclick="selectSize(this)" class="size-btn py-3 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition shadow-sm">L</button>
+                            <button onclick="selectSize(this)" class="size-btn py-3 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition shadow-sm">XL</button>
                         </div>
                     </div>
 
                     <!-- Primary Actions -->
-                    <div class="space-y-3 pt-3">
+                    <div class="space-y-3 pt-3 tilt-content">
                         <button 
                             onclick="triggerToast('ADDED TO CART: JEGALUX OVERSIZED HOODIE')" 
-                            class="w-full py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 shadow-lg shadow-accent/20"
+                            class="w-full py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,85,0,0.35)] hover:shadow-[0_0_30px_rgba(255,85,0,0.6)]"
                         >
                             <i data-lucide="plus" class="w-4 h-4"></i>
                             ADD TO CART
                         </button>
                         <button 
                             onclick="triggerToast('INITIALIZING DIRECT CRYPTO/CARD CHECKOUT...')" 
-                            class="w-full py-3.5 rounded bg-surface hover:bg-surface-light border border-white/10 hover:border-white/20 text-white font-tech text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2"
+                            class="w-full py-3.5 rounded bg-surface hover:bg-surface-light border border-white/10 hover:border-white/20 text-white font-tech text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 shadow-md"
                         >
                             BUY NOW VIA ESCROW
                         </button>
                     </div>
 
-                    <div class="flex items-center justify-between text-neutral-500 font-tech text-[10px] pt-2">
+                    <div class="flex items-center justify-between text-neutral-500 font-tech text-[10px] pt-2 tilt-content">
                         <span>🔒 256-BIT ENCRYPTED VAULT</span>
                         <span>✈ GLOBAL COURIER EXPRESS (2-4 DAYS)</span>
                     </div>
@@ -298,19 +336,19 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
                 <!-- STAGE 01: INDUSTRIAL EMBROIDERY -->
-                <div class="bg-surface rounded-xl border border-white/5 overflow-hidden flex flex-col group hover:border-accent/40 transition-all duration-300">
+                <div class="luxury-glass rounded-xl overflow-hidden flex flex-col group hover:border-accent/50 transition-all duration-300 tilt-card shadow-xl" data-tilt data-tilt-max="6">
                     <div class="h-64 overflow-hidden relative">
                         <img 
                             src="1e85e61a-723b-4751-b081-961a9c9bf287.jpg" 
                             alt="Industrial Embroidery Process" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
                             onerror="this.onerror=null; this.src='https://placehold.co/600x450/0f0f14/ff5500?text=STAGE+01+EMBROIDERY';"
                         />
-                        <div class="absolute top-3 left-3 bg-void/90 px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">
+                        <div class="absolute top-3 left-3 bg-void/90 px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30 shadow-md">
                             STAGE 01
                         </div>
                     </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div class="p-6 flex-1 flex flex-col justify-between tilt-content">
                         <div>
                             <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">INDUSTRIAL EMBROIDERY</h3>
                             <p class="text-neutral-400 text-xs leading-relaxed">
@@ -325,19 +363,19 @@
                 </div>
 
                 <!-- STAGE 02: OBSCURE ATELIER -->
-                <div class="bg-surface rounded-xl border border-white/5 overflow-hidden flex flex-col group hover:border-accent/40 transition-all duration-300">
+                <div class="luxury-glass rounded-xl overflow-hidden flex flex-col group hover:border-accent/50 transition-all duration-300 tilt-card shadow-xl" data-tilt data-tilt-max="6">
                     <div class="h-64 overflow-hidden relative">
                         <img 
                             src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=800&q=80" 
                             alt="Obscure Atelier Design Studio" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
                             onerror="this.onerror=null; this.src='https://placehold.co/600x450/0f0f14/ff5500?text=STAGE+02+ATELIER';"
                         />
-                        <div class="absolute top-3 left-3 bg-void/90 px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">
+                        <div class="absolute top-3 left-3 bg-void/90 px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30 shadow-md">
                             STAGE 02
                         </div>
                     </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div class="p-6 flex-1 flex flex-col justify-between tilt-content">
                         <div>
                             <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">OBSCURE ATELIER</h3>
                             <p class="text-neutral-400 text-xs leading-relaxed">
@@ -352,19 +390,19 @@
                 </div>
 
                 <!-- STAGE 03: ABSOLUTE DETAIL -->
-                <div class="bg-surface rounded-xl border border-white/5 overflow-hidden flex flex-col group hover:border-accent/40 transition-all duration-300">
+                <div class="luxury-glass rounded-xl overflow-hidden flex flex-col group hover:border-accent/50 transition-all duration-300 tilt-card shadow-xl" data-tilt data-tilt-max="6">
                     <div class="h-64 overflow-hidden relative">
                         <img 
                             src="accb1452-469b-4746-9017-64ce56cf296b.jpg" 
                             alt="Absolute Detail Quality Control" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
                             onerror="this.onerror=null; this.src='https://placehold.co/600x450/0f0f14/ff5500?text=STAGE+03+DETAILS';"
                         />
-                        <div class="absolute top-3 left-3 bg-void/90 px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">
+                        <div class="absolute top-3 left-3 bg-void/90 px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30 shadow-md">
                             STAGE 03
                         </div>
                     </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div class="p-6 flex-1 flex flex-col justify-between tilt-content">
                         <div>
                             <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">ABSOLUTE DETAIL</h3>
                             <p class="text-neutral-400 text-xs leading-relaxed">
@@ -385,9 +423,9 @@
     <!-- 5. PHILOSOPHY SECTION (LUXURY BUILT IN THE DARK) -->
     <section id="manifesto" class="py-20 md:py-28 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-surface/80 rounded-2xl border border-white/10 p-8 md:p-14 relative overflow-hidden backdrop-blur-xl">
+            <div class="luxury-glass rounded-2xl p-8 md:p-14 relative overflow-hidden backdrop-blur-2xl shadow-2xl tilt-card" data-tilt data-tilt-max="2">
                 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center tilt-content">
                     
                     <div class="lg:col-span-6 space-y-6">
                         <span class="font-tech text-xs text-accent tracking-widest uppercase">// CORE MANIFESTO</span>
@@ -402,13 +440,13 @@
                         </p>
 
                         <div class="pt-4 flex flex-wrap gap-4 font-tech text-xs text-neutral-400">
-                            <div class="px-3 py-2 bg-obsidian rounded border border-white/5">
+                            <div class="px-3 py-2 bg-obsidian rounded border border-white/5 shadow-inner">
                                 <span class="text-accent font-bold">01</span> NO MASS PRODUCTION
                             </div>
-                            <div class="px-3 py-2 bg-obsidian rounded border border-white/5">
+                            <div class="px-3 py-2 bg-obsidian rounded border border-white/5 shadow-inner">
                                 <span class="text-accent font-bold">02</span> RAW MONOCHROME
                             </div>
-                            <div class="px-3 py-2 bg-obsidian rounded border border-white/5">
+                            <div class="px-3 py-2 bg-obsidian rounded border border-white/5 shadow-inner">
                                 <span class="text-accent font-bold">03</span> ARCHIVAL QUALITY
                             </div>
                         </div>
@@ -416,7 +454,7 @@
 
                     <!-- Dark Atelier Sanctum Card with Sudadera JEGALUX de lujo oscuro (1).png -->
                     <div class="lg:col-span-6">
-                        <div class="relative rounded-xl overflow-hidden border border-accent/30 shadow-[0_0_35px_rgba(255,85,0,0.15)] group">
+                        <div class="relative rounded-xl overflow-hidden border border-accent/40 shadow-[0_0_40px_rgba(255,85,0,0.25)] group">
                             <img 
                                 src="Sudadera JEGALUX de lujo oscuro (1).png" 
                                 alt="Sudadera JEGALUX de Lujo Oscuro Atelier Sanctum" 
@@ -437,7 +475,7 @@
     </section>
 
     <!-- 6. VIP ACCESS / SUBSCRIPTION -->
-    <section id="vip" class="py-16 bg-obsidian border-t border-white/5 relative z-10">
+    <section id="vip" class="py-16 bg-obsidian border-t border-white/5 relative z-10 shadow-inner">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">RESTRICTED FREQUENCY</span>
             <h3 class="text-2xl md:text-3xl font-display font-bold uppercase text-white mb-4">JOIN THE UNDERGROUND REGISTRY</h3>
@@ -450,11 +488,11 @@
                     type="email" 
                     required 
                     placeholder="ENTER YOUR PROTOCOL ADDRESS (EMAIL)" 
-                    class="flex-1 px-4 py-3 bg-surface border border-white/10 rounded font-tech text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-accent"
+                    class="flex-1 px-4 py-3 bg-surface border border-white/10 rounded font-tech text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-accent shadow-inner"
                 />
                 <button 
                     type="submit" 
-                    class="px-6 py-3 bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs uppercase tracking-widest rounded transition duration-200"
+                    class="px-6 py-3 bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs uppercase tracking-widest rounded transition duration-200 shadow-lg shadow-accent/20"
                 >
                     REQUEST ACCESS
                 </button>
@@ -469,7 +507,7 @@
                 <img 
                     src="logo.png" 
                     alt="JEGALUX" 
-                    class="h-7 w-auto object-contain"
+                    class="h-7 w-auto object-contain filter drop-shadow-[0_0_8px_rgba(255,85,0,0.3)]"
                     onerror="this.onerror=null; this.src='https://placehold.co/100x30/08080a/ff5500?text=JEGALUX';"
                 />
                 <span class="text-neutral-600 font-tech text-xs">/ SHADOW ATELIER 2026</span>
@@ -489,7 +527,7 @@
 
     <!-- Interactive Feedback Toast (No alert() used) -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
-        <div class="bg-surface border border-accent text-white px-5 py-3 rounded-lg shadow-2xl flex items-center gap-3 font-tech text-xs">
+        <div class="luxury-glass border border-accent text-white px-5 py-3 rounded-lg shadow-2xl flex items-center gap-3 font-tech text-xs">
             <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
             <span id="toastMsg">ACTION CONFIRMED</span>
         </div>
@@ -501,6 +539,38 @@
             if (window.lucide) {
                 lucide.createIcons();
             }
+        });
+
+        // Dynamic Cursor Spotlight Tracker
+        const spotlight = document.getElementById('cursor-spotlight');
+        window.addEventListener('mousemove', (e) => {
+            if (spotlight) {
+                spotlight.style.left = `${e.clientX}px`;
+                spotlight.style.top = `${e.clientY}px`;
+            }
+        });
+
+        // 3D Tilt Card Interactive Logic
+        document.querySelectorAll('[data-tilt]').forEach(card => {
+            const maxTilt = parseFloat(card.getAttribute('data-tilt-max')) || 8;
+            
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = -((y - centerY) / centerY) * maxTilt;
+                const rotateY = ((x - centerX) / centerX) * maxTilt;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
         });
 
         // Mobile menu toggle
@@ -515,9 +585,9 @@
         // Size selector interaction
         function selectSize(btn) {
             document.querySelectorAll('.size-btn').forEach(b => {
-                b.className = 'size-btn py-3 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition';
+                b.className = 'size-btn py-3 border border-white/10 rounded bg-obsidian hover:border-accent text-neutral-300 transition shadow-sm';
             });
-            btn.className = 'size-btn py-3 border border-accent rounded bg-accent/10 text-accent font-bold transition';
+            btn.className = 'size-btn py-3 border border-accent rounded bg-accent/10 text-accent font-bold transition shadow-md shadow-accent/20';
             triggerToast(`SIZE SELECTED: ${btn.textContent.trim()}`);
         }
 
