@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JEGALUX | Dark Luxury Wear</title>
+    <!-- Favicon de lujo -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23ffffff%22>✦</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -16,7 +18,7 @@
                         surface: '#0a0a0a',
                         card: '#121212',
                         chrome: '#e5e7eb',
-                        accent: '#ffffff'
+                        accent: '#ffffff',
                     },
                     fontFamily: {
                         gothic: ['Cinzel', 'serif'],
@@ -30,189 +32,150 @@
 </head>
 <body class="bg-dark text-chrome font-sans min-h-screen selection:bg-white selection:text-black">
 
-    <!-- Header -->
-    <header class="sticky top-0 z-40 bg-dark/90 backdrop-blur-md border-b border-white/10">
+    <!-- Header / Navegación -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-dark/80 backdrop-blur-md border-b border-neutral-900">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo a la izquierda -->
             <div class="flex items-center gap-3">
-                <span class="font-gothic text-2xl md:text-3xl tracking-widest text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">JEGALUX</span>
+                <a href="#" class="font-gothic text-xl md:text-2xl tracking-widest text-accent font-bold hover:opacity-80 transition-opacity">
+                    JEGALUX
+                </a>
             </div>
-            <nav class="hidden md:flex items-center gap-8 text-sm uppercase tracking-widest">
-                <a href="#productos" class="hover:text-white transition-colors">Catálogo</a>
-                <a href="#about" class="hover:text-white transition-colors">Manifiesto</a>
+            
+            <!-- Menú de navegación -->
+            <nav class="hidden lg:flex items-center gap-6 text-xs tracking-widest uppercase">
+                <a href="#catalogo" class="hover:text-accent transition-colors">Catálogo</a>
+                <a href="#lookbook" class="hover:text-accent transition-colors">Lookbook</a>
+                <a href="#limitadas" class="hover:text-accent transition-colors">Ediciones Limitadas</a>
+                <a href="#manifiesto" class="hover:text-accent transition-colors">Manifiesto</a>
+                <a href="#vip" class="hover:text-accent transition-colors">VIP</a>
             </nav>
+
             <div class="flex items-center gap-4">
-                <button onclick="toggleCart()" class="relative p-2 hover:bg-white/10 rounded-full transition-colors">
-                    <i class="fa-solid fa-bag-shopping text-xl"></i>
-                    <span id="cart-count" class="absolute -top-1 -right-1 bg-white text-black text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
-                </button>
+                <a href="#catalogo" class="bg-accent text-dark px-5 py-2 text-xs uppercase tracking-widest font-bold hover:bg-neutral-200 transition-colors">
+                    Ver Colección
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative h-[80vh] flex items-center justify-center overflow-hidden border-b border-white/10">
-        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent z-10"></div>
-        <img src="https://scknahadzvkxdxilgapm.supabase.co/storage/v1/object/public/alpha-public/optimized/6cf3bd14-1433-4c02-948c-23757eb53112/listing-mockups/3b76bed7-7455-474e-aadb-b3fb7df988e9/c1b78d5f9fea19072e0616ad9d7f494757b574245948141eef6796721bd0ccb2.webp" alt="JEGALUX" class="absolute inset-0 w-full h-full object-cover opacity-40 scale-105 animate-pulse duration-1000">
-        <div class="relative z-20 text-center max-w-3xl px-6">
-            <h1 class="font-gothic text-5xl md:text-7xl font-bold tracking-wider text-white mb-6">DARK LUXURY</h1>
-            <p class="text-gray-400 text-lg md:text-xl tracking-wide mb-8">Indumentaria underground, cromo y texturas extremas.</p>
-            <a href="#productos" class="inline-block bg-white text-black font-semibold px-8 py-4 uppercase tracking-widest hover:bg-gray-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)]">Ver Colección</a>
+    <!-- Hero Section con tu imagen en el banner -->
+    <section class="relative pt-32 pb-24 md:pt-48 md:pb-36 flex flex-col items-center justify-center text-center px-6 border-b border-neutral-900 overflow-hidden">
+        <!-- Imagen de fondo con opacidad oscura -->
+        <div class="absolute inset-0 z-0">
+            <img src="banner-sudadera.png" alt="JEGALUX Showroom" class="w-full h-full object-cover opacity-40 filter brightness-75">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/60 to-dark/40"></div>
+        </div>
+
+        <!-- Contenido del Banner -->
+        <div class="relative z-10 max-w-4xl mx-auto space-y-6">
+            <h1 class="font-gothic text-4xl md:text-7xl tracking-wider text-accent font-extrabold uppercase drop-shadow-lg">
+                JEGALUX <br><span class="text-neutral-400 text-2xl md:text-4xl">Dark Luxury</span>
+            </h1>
+            <p class="text-neutral-300 max-w-xl mx-auto text-sm md:text-base tracking-wide font-light">
+                Indumentaria underground, oscura y texturas extremas. More than clothes, it's a lifestyle.
+            </p>
+            <div class="pt-4">
+                <a href="#catalogo" class="bg-accent text-dark px-8 py-3 text-xs tracking-widest uppercase font-bold hover:bg-neutral-200 transition-all duration-300 shadow-lg">
+                    Explorar Piezas
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Products Section -->
-    <main id="productos" class="max-w-7xl mx-auto px-6 py-20">
-        <div class="flex justify-between items-end mb-12">
-            <div>
-                <p class="text-gray-500 uppercase tracking-widest text-xs mb-2">Colección Activa</p>
-                <h2 class="font-gothic text-3xl md:text-4xl text-white">Lanzamientos</h2>
+    <!-- Catálogo de Prendas -->
+    <section id="catalogo" class="py-20 px-6 max-w-7xl mx-auto border-b border-neutral-900">
+        <h2 class="font-gothic text-2xl md:text-3xl tracking-widest mb-12 uppercase text-center">Catálogo / Colección Activa</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- Producto 1 -->
+            <div class="bg-card border border-neutral-900 p-6 flex flex-col justify-between group">
+                <div class="relative h-80 bg-neutral-950 flex items-center justify-center overflow-hidden border border-neutral-900">
+                    <span class="font-gothic text-xl tracking-widest text-neutral-400 group-hover:scale-105 transition-transform duration-500">
+                        Sudadera JEGALUX
+                    </span>
+                    <span class="absolute bottom-3 right-3 text-[10px] tracking-widest uppercase bg-dark/80 px-2 py-1 border border-neutral-800">
+                        Vista 360° Disponible
+                    </span>
+                </div>
+                <div class="mt-6 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-gothic text-lg tracking-wide uppercase">Sudadera negra premium</h3>
+                        <p class="text-xs text-neutral-500 tracking-wider mt-1">Estudio de lujo oscuro</p>
+                    </div>
+                    <span class="font-gothic text-accent text-lg">€180</span>
+                </div>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="bg-card border border-neutral-900 p-6 flex flex-col justify-between group">
+                <div class="relative h-80 bg-neutral-950 flex items-center justify-center overflow-hidden border border-neutral-900">
+                    <span class="font-gothic text-xl tracking-widest text-neutral-400 group-hover:scale-105 transition-transform duration-500">
+                        Abrigo Gótico Estructurado
+                    </span>
+                    <span class="absolute bottom-3 right-3 text-[10px] tracking-widest uppercase bg-dark/80 px-2 py-1 border border-neutral-800">
+                        Vista 360° Disponible
+                    </span>
+                </div>
+                <div class="mt-6 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-gothic text-lg tracking-wide uppercase">Abrigo Overcoat Gótico</h3>
+                        <p class="text-xs text-neutral-500 tracking-wider mt-1">Edición Limitada</p>
+                    </div>
+                    <span class="font-gothic text-accent text-lg">€350</span>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Grid de Productos -->
-        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Renderizado dinámico -->
+    <!-- Lookbook Section -->
+    <section id="lookbook" class="py-20 px-6 max-w-7xl mx-auto border-b border-neutral-900 text-center">
+        <h2 class="font-gothic text-2xl md:text-3xl tracking-widest mb-6 uppercase">Lookbook</h2>
+        <p class="text-neutral-400 max-w-2xl mx-auto text-sm tracking-wide mb-10">
+            Atmósferas nocturnas, siluetas desestructuradas y la dualidad entre la elegancia clásica y el abismo underground.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="h-64 bg-neutral-950 border border-neutral-900 flex items-center justify-center text-neutral-600 font-gothic tracking-widest">EDITORIAL I</div>
+            <div class="h-64 bg-neutral-950 border border-neutral-900 flex items-center justify-center text-neutral-600 font-gothic tracking-widest">EDITORIAL II</div>
+            <div class="h-64 bg-neutral-950 border border-neutral-900 flex items-center justify-center text-neutral-600 font-gothic tracking-widest">EDITORIAL III</div>
         </div>
-    </main>
+    </section>
 
-    <!-- Panel de Administración Flotante -->
-    <button onclick="toggleAdminModal()" class="fixed bottom-6 left-6 z-50 bg-white text-black p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center">
-        <i class="fa-solid fa-gear text-xl"></i>
-    </button>
+    <!-- Ediciones Limitadas Section -->
+    <section id="limitadas" class="py-20 px-6 max-w-7xl mx-auto border-b border-neutral-900 text-center">
+        <h2 class="font-gothic text-2xl md:text-3xl tracking-widest mb-6 uppercase">Ediciones Limitadas</h2>
+        <p class="text-neutral-400 max-w-xl mx-auto text-sm tracking-wide mb-8">
+            Piezas numeradas individualmente. Producción ultrarestringida para coleccionistas de la estética oscura.
+        </p>
+        <div class="inline-block border border-neutral-700 px-8 py-4 text-xs tracking-widest uppercase text-neutral-300">
+            Próximo Drop: Solsticio Nocturno (Acceso Reservado)
+        </div>
+    </section>
 
-    <!-- Modal Admin -->
-    <div id="admin-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-card border border-white/20 p-8 rounded-2xl w-full max-w-lg relative">
-            <button onclick="toggleAdminModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
-            <h3 class="font-gothic text-2xl text-white mb-6">Administrar Productos</h3>
-            <form id="add-product-form" onsubmit="handleAddProduct(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs uppercase tracking-wider text-gray-400 mb-1">Nombre del Producto</label>
-                    <input type="text" id="p-name" required class="w-full bg-surface border border-white/10 rounded px-4 py-2 text-white focus:outline-none focus:border-white">
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-1">Precio ($)</label>
-                        <input type="number" id="p-price" required class="w-full bg-surface border border-white/10 rounded px-4 py-2 text-white focus:outline-none focus:border-white">
-                    </div>
-                    <div>
-                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-1">Categoría</label>
-                        <input type="text" id="p-category" value="Hoodies" required class="w-full bg-surface border border-white/10 rounded px-4 py-2 text-white focus:outline-none focus:border-white">
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-xs uppercase tracking-wider text-gray-400 mb-1">URL de la Imagen</label>
-                    <input type="url" id="p-image" required class="w-full bg-surface border border-white/10 rounded px-4 py-2 text-white focus:outline-none focus:border-white">
-                </div>
-                <div>
-                    <label class="block text-xs uppercase tracking-wider text-gray-400 mb-1">Enlace de Compra (Amaze / Web externa)</label>
-                    <input type="url" id="p-link" required class="w-full bg-surface border border-white/10 rounded px-4 py-2 text-white focus:outline-none focus:border-white">
-                </div>
-                <button type="submit" class="w-full bg-white text-black font-semibold py-3 uppercase tracking-widest hover:bg-gray-200 transition-colors mt-4">Añadir Producto</button>
-            </form>
-        </div>
-    </div>
+    <!-- Manifiesto Section -->
+    <section id="manifiesto" class="py-20 px-6 max-w-4xl mx-auto border-b border-neutral-900 text-center space-y-6">
+        <h2 class="font-gothic text-2xl md:text-3xl tracking-widest uppercase">Manifiesto</h2>
+        <p class="text-neutral-400 text-sm md:text-base tracking-wide leading-relaxed">
+            "Rechazamos lo efímero. JEGALUX nace en las sombras como una armadura moderna para quienes encuentran belleza en la penumbra, el silencio y el diseño sin concesiones."
+        </p>
+    </section>
 
-    <!-- Carrito Drawer -->
-    <div id="cart-drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-surface border-l border-white/10 transform translate-x-full transition-transform duration-300 flex flex-col">
-        <div class="p-6 border-b border-white/10 flex items-center justify-between">
-            <h3 class="font-gothic text-xl text-white">Tu Carrito</h3>
-            <button onclick="toggleCart()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+    <!-- VIP / Contacto Section -->
+    <section id="vip" class="py-20 px-6 max-w-3xl mx-auto text-center space-y-6">
+        <h2 class="font-gothic text-2xl md:text-3xl tracking-widest uppercase">Acceso VIP</h2>
+        <p class="text-neutral-400 text-sm tracking-wide">
+            Suscríbete para recibir notificaciones privadas de lanzamientos y piezas de archivo exclusivas.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-3 pt-4">
+            <input type="email" placeholder="CORREO ELECTRÓNICO" class="bg-neutral-950 border border-neutral-800 px-4 py-3 text-xs tracking-widest text-chrome focus:outline-none focus:border-accent">
+            <button class="bg-accent text-dark px-6 py-3 text-xs tracking-widest uppercase font-bold hover:bg-neutral-200 transition-colors">Solicitar Acceso</button>
         </div>
-        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
-            <!-- Items -->
-        </div>
-        <div class="p-6 border-t border-white/10 bg-card">
-            <div class="flex justify-between text-lg font-semibold text-white mb-4">
-                <span>Total:</span>
-                <span id="cart-total">$0.00</span>
-            </div>
-            <button onclick="checkout()" class="w-full bg-white text-black font-semibold py-4 uppercase tracking-widest hover:bg-gray-200 transition-colors">Proceder al Pago</button>
-        </div>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="border-t border-white/10 py-12 text-center text-gray-500 text-sm">
+    <footer class="border-t border-neutral-900 py-12 text-center text-xs tracking-widest text-neutral-500">
         <p>&copy; 2026 JEGALUX. Todos los derechos reservados.</p>
     </footer>
 
-    <script>
-        let products = JSON.parse(localStorage.getItem('jegalux_products')) || [
-            {
-                id: 1,
-                name: 'JEGALUX Chrome Spikes Hoodie',
-                price: 89.00,
-                category: 'Hoodies',
-                image: 'https://scknahadzvkxdxilgapm.supabase.co/storage/v1/object/public/alpha-public/optimized/6cf3bd14-1433-4c02-948c-23757eb53112/listing-mockups/3b76bed7-7455-474e-aadb-b3fb7df988e9/c1b78d5f9fea19072e0616ad9d7f494757b574245948141eef6796721bd0ccb2.webp',
-                link: 'https://app.amazecommerce.com/shop/jegalux/untitled-product'
-            }
-        ];
-
-        let cart = [];
-
-        function renderProducts() {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = '';
-            products.forEach(p => {
-                grid.innerHTML += `
-                    <div class="bg-card border border-white/10 rounded-xl overflow-hidden group flex flex-col">
-                        <div class="aspect-square overflow-hidden relative bg-black">
-                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="p-6 flex flex-col flex-1 justify-between">
-                            <div>
-                                <span class="text-xs uppercase tracking-widest text-gray-500">${p.category}</span>
-                                <h3 class="text-lg font-semibold text-white mt-1 mb-2">${p.name}</h3>
-                                <p class="text-xl font-bold text-white mb-4">$${p.price.toFixed(2)}</p>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="${p.link}" target="_blank" class="flex-1 bg-white/10 hover:bg-white hover:text-black text-white text-center py-3 uppercase text-xs font-semibold tracking-wider transition-colors rounded">Comprar en Amaze</a>
-                                <button onclick="deleteProduct(${p.id})" class="px-3 bg-red-900/30 hover:bg-red-900 text-red-400 hover:text-white rounded transition-colors" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function toggleAdminModal() {
-            const modal = document.getElementById('admin-modal');
-            modal.classList.toggle('hidden');
-        }
-
-        function toggleCart() {
-            const drawer = document.getElementById('cart-drawer');
-            drawer.classList.toggle('translate-x-full');
-        }
-
-        function handleAddProduct(e) {
-            e.preventDefault();
-            const newP = {
-                id: Date.now(),
-                name: document.getElementById('p-name').value,
-                price: parseFloat(document.getElementById('p-price').value),
-                category: document.getElementById('p-category').value,
-                image: document.getElementById('p-image').value,
-                link: document.getElementById('p-link').value
-            };
-            products.push(newP);
-            localStorage.setItem('jegalux_products', JSON.stringify(products));
-            renderProducts();
-            toggleAdminModal();
-            document.getElementById('add-product-form').reset();
-        }
-
-        function deleteProduct(id) {
-            products = products.filter(p => p.id !== id);
-            localStorage.setItem('jegalux_products', JSON.stringify(products));
-            renderProducts();
-        }
-
-        function checkout() {
-            alert('Redirigiendo a pasarela de pago segura...');
-        }
-
-        renderProducts();
-    </script>
 </body>
 </html>
