@@ -83,7 +83,7 @@
             will-change: background-position;
         }
 
-        /* Estilos profesionales para recortes de personajes de la cuadrícula */
+        /* Sistema de recortes individuales de la cuadrícula de 5 columnas x 3 filas */
         .fighter-avatar {
             background-image: url('Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg');
             background-size: 500% 300%;
@@ -225,14 +225,14 @@
         </div>
     </section>
 
-    <!-- 3. SECCIÓN DEL VIDEOJUEGO SHADOW ARENA 1V1 (CON LOS 15 PERSONAJES PRO) -->
+    <!-- 3. SECCIÓN DEL VIDEOJUEGO SHADOW ARENA 1V1 (CON LOS 15 PERSONAJES EXACTOS DE LAS ESQUINAS) -->
     <section id="arena" class="py-24 relative z-10 border-b border-white/5 bg-void/60 backdrop-blur-xl">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// ARCADE PROTOCOL v2.10 PRO</span>
+                <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// ARCADE PROTOCOL v2.15 PRO</span>
                 <h2 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // 1V1 DUEL</h2>
                 <p class="text-neutral-400 font-sans text-xs md:text-sm mt-3">
-                    Neo-Tokyo 2026. Selecciona tu operativo de élite o desafía a los 14 luchadores callejeros en combates 1v1 con narrativa, puntos y niveles dinámicos.
+                    Neo-Tokyo 2026. Selecciona tu operativo de élite o desafía a los 14 luchadores de la cuadrícula en combates 1v1 con narrativa, puntos y niveles dinámicos.
                 </p>
             </div>
 
@@ -255,7 +255,7 @@
                     </div>
                 </div>
 
-                <!-- FASE 1: SELECCIÓN DE PERSONAJE CON LOS 15 DE LA CUADRÍCULA -->
+                <!-- FASE 1: SELECCIÓN DE PERSONAJE CON LOS 15 LUCHADORES MAPEADOS EXACTAMENTE -->
                 <div id="charSelectScreen" class="space-y-6">
                     <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECCIONA TU OPERATIVO</h3>
                     
@@ -398,10 +398,7 @@
 
                 <!-- FASE 2: PANTALLA DE COMBATE 1V1 -->
                 <div id="battleScreen" class="hidden space-y-8">
-                    <!-- Marcador de Combate -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-obsidian/60 p-6 rounded-xl border border-white/10">
-                        
-                        <!-- Jugador -->
                         <div class="space-y-3">
                             <div class="flex justify-between font-tech text-xs">
                                 <span id="battlePlayerName" class="text-accent font-bold">OPERATIVO</span>
@@ -412,7 +409,6 @@
                             </div>
                         </div>
 
-                        <!-- Rival -->
                         <div class="space-y-3">
                             <div class="flex justify-between font-tech text-xs">
                                 <span id="battleRivalName" class="text-red-500 font-bold">RIVAL</span>
@@ -422,10 +418,8 @@
                                 <div id="rivalHpBar" class="bg-red-500 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
                             </div>
                         </div>
-
                     </div>
 
-                    <!-- Arena Visual & Log de Combate -->
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                         <div class="md:col-span-5 text-center p-6 glass-panel rounded-xl">
                             <div class="text-accent font-tech text-xs mb-2">VS</div>
@@ -438,7 +432,6 @@
                         </div>
                     </div>
 
-                    <!-- Botones de Acción de Combate -->
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 font-tech text-xs">
                         <button onclick="playerAttack('light')" class="py-3.5 rounded glass-panel glass-panel-hover border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
                             <i data-lucide="sword" class="w-4 h-4 text-accent"></i> GOLPE LIGERO
@@ -470,7 +463,7 @@
         </div>
     </section>
 
-    <!-- 4. FLAGSHIP PRODUCT SHOWCASE -->
+    <!-- 4. PRODUCT SHOWCASE -->
     <section id="product" class="py-20 md:py-28 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center gap-3 mb-10 font-tech text-xs text-accent uppercase tracking-widest">
@@ -479,7 +472,6 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
                 <div class="lg:col-span-7 relative group tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                     <div class="absolute -inset-1 bg-gradient-to-r from-accent/20 to-transparent rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity"></div>
                     <div class="relative glass-panel rounded-xl overflow-hidden shadow-2xl">
