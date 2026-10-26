@@ -86,13 +86,13 @@
                 <a href="#arena" class="hover:text-accent transition-colors text-accent font-bold"><span class="text-accent/60 text-[10px]">04//</span>SHADOW ARENA</a>
             </nav>
             <div class="flex items-center space-x-3">
-                <button onclick="playCyberpunkSound('click'); openProfileModal()" class="flex items-center gap-2 px-3 py-2 rounded-lg glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200">
+                <button onclick="openProfileModal()" class="flex items-center gap-2 px-3 py-2 rounded-lg glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200">
                     <div id="headerAvatar" class="w-6 h-6 rounded overflow-hidden border border-accent">
                         <img id="headerAvatarImg" src="htfhfhtff.png" class="w-full h-full object-cover" />
                     </div>
                     <span id="headerName" class="font-tech text-xs text-accent font-bold hidden sm:inline">NEXUS ID</span>
                 </button>
-                <button onclick="playCyberpunkSound('click'); openCartModal()" class="relative p-2.5 rounded-lg glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200">
+                <button onclick="openCartModal()" class="relative p-2.5 rounded-lg glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200">
                     <i data-lucide="shopping-bag" class="w-4 h-4 text-accent"></i>
                     <span id="cartItemCount" class="absolute -top-1 -right-1 w-4 h-4 bg-accent text-black font-tech font-bold text-[10px] rounded-full flex items-center justify-center">1</span>
                 </button>
@@ -125,7 +125,7 @@
         </div>
     </section>
 
-    <!-- SHADOW ARENA // 15 COMBATIENTES (NOMBRES DE ARCHIVO EXACTOS) -->
+    <!-- SHADOW ARENA // 15 COMBATIENTES -->
     <section id="arena" class="py-24 relative z-10 border-b border-white/5 bg-void/80 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
