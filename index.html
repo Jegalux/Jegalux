@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEGALUX | Obscure Luxury Streetwear & Arena</title>
+    <title>JEGALUX | Shadow Arena (15 Operativos)</title>
     <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,11 +18,9 @@
                     colors: {
                         void: '#070709',
                         obsidian: '#0d0d11',
-                        surface: 'rgba(13, 13, 17, 0.8)',
-                        'surface-light': 'rgba(23, 23, 31, 0.85)',
+                        surface: 'rgba(13, 13, 17, 0.85)',
                         accent: '#ff5500',
                         'accent-glow': '#ff7700',
-                        'tech-gray': '#737380'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -48,51 +46,50 @@
             position: absolute; top: -50%; left: 0; width: 100vw; height: 200vh;
             background-image: url('view-apocalyptic-dark-stormy-clouds_23-2151065786.jpg');
             background-repeat: repeat; background-size: cover; background-position: center top;
-            filter: blur(6px) brightness(0.28) contrast(1.2); will-change: background-position;
+            filter: blur(6px) brightness(0.28) contrast(1.2);
         }
         .glass-panel {
-            background: linear-gradient(135deg, rgba(18, 18, 26, 0.82) 0%, rgba(9, 9, 13, 0.9) 100%);
-            backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
-            border: 1px solid rgba(255, 255, 255, 0.09);
-            box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, rgba(18, 18, 26, 0.85) 0%, rgba(9, 9, 13, 0.92) 100%);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
         }
-        .glass-panel-hover { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-panel-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .glass-panel-hover:hover {
-            border-color: rgba(255, 85, 0, 0.45);
-            box-shadow: 0 20px 50px 0 rgba(255, 85, 0, 0.18), inset 0 1px 0 0 rgba(255, 85, 0, 0.3);
+            border-color: rgba(255, 85, 0, 0.5);
+            box-shadow: 0 20px 50px 0 rgba(255, 85, 0, 0.2), inset 0 1px 0 0 rgba(255, 85, 0, 0.3);
         }
-        .tilt-card {
-            transform-style: preserve-3d; perspective: 1000px;
-            transition: transform 0.15s cubic-bezier(0.03, 0.98, 0.52, 0.99), border-color 0.3s ease, box-shadow 0.3s ease;
+        .char-card-selected {
+            border-color: #ff5500 !important;
+            box-shadow: 0 0 20px rgba(255, 85, 0, 0.4), inset 0 0 15px rgba(255, 85, 0, 0.2) !important;
+            background: rgba(255, 85, 0, 0.1) !important;
         }
     </style>
 </head>
 <body class="bg-void text-neutral-200 font-sans selection:bg-accent selection:text-black overflow-x-hidden relative">
 
     <div class="cloud-bg-container">
-        <div id="cloudInfinite" class="cloud-bg-tile"></div>
+        <div class="cloud-bg-tile"></div>
     </div>
 
-    <!-- HEADER -->
-    <header class="sticky top-0 z-50 glass-panel border-b border-white/5 transition-all duration-300">
+    <!-- NAVEGACIÓN -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center group py-2">
-                <img src="logo.png" alt="JEGALUX Logo" class="h-9 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_8px_rgba(255,85,0,0.3)]"/>
+                <img src="logo.png" alt="JEGALUX Logo" onerror="this.src='https://placehold.co/120x40/0d0d11/ff5500?text=JEGALUX'" class="h-9 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_8px_rgba(255,85,0,0.3)]"/>
             </a>
             <nav class="hidden md:flex items-center space-x-8 font-tech text-xs tracking-[0.22em] text-neutral-400">
                 <a href="#product" class="hover:text-accent transition-colors"><span class="text-accent/60 text-[10px]">01//</span>PRODUCTS</a>
-                <a href="#process" class="hover:text-accent transition-colors"><span class="text-accent/60 text-[10px]">02//</span>PROCESS</a>
-                <a href="#manifesto" class="hover:text-accent transition-colors"><span class="text-accent/60 text-[10px]">03//</span>MANIFESTO</a>
-                <a href="#arena" class="hover:text-accent transition-colors text-accent font-bold"><span class="text-accent/60 text-[10px]">04//</span>SHADOW ARENA</a>
+                <a href="#arena" class="hover:text-accent transition-colors text-accent font-bold"><span class="text-accent/60 text-[10px]">02//</span>SHADOW ARENA</a>
             </nav>
             <div class="flex items-center space-x-3">
                 <button onclick="openProfileModal()" class="flex items-center gap-2 px-3 py-2 rounded-lg glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200">
-                    <div id="headerAvatar" class="w-6 h-6 rounded overflow-hidden border border-accent">
-                        <img id="headerAvatarImg" src="htfhfhtff.png" class="w-full h-full object-cover" />
+                    <div class="w-6 h-6 rounded overflow-hidden border border-accent">
+                        <img id="headerAvatarImg" src="htfhfhtff.png" onerror="this.src='https://placehold.co/40x40/070709/ff5500?text=JH'" class="w-full h-full object-cover" />
                     </div>
                     <span id="headerName" class="font-tech text-xs text-accent font-bold hidden sm:inline">NEXUS ID</span>
                 </button>
-                <button onclick="openCartModal()" class="relative p-2.5 rounded-lg glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200">
+                <button onclick="openCartModal()" class="relative p-2.5 rounded-lg glass-panel glass-panel-hover text-neutral-300 hover:text-white">
                     <i data-lucide="shopping-bag" class="w-4 h-4 text-accent"></i>
                     <span id="cartItemCount" class="absolute -top-1 -right-1 w-4 h-4 bg-accent text-black font-tech font-bold text-[10px] rounded-full flex items-center justify-center">1</span>
                 </button>
@@ -100,172 +97,178 @@
         </div>
     </header>
 
-    <!-- PRODUCT SHOWCASE -->
-    <section id="product" class="py-20 md:py-28 relative z-10 border-b border-white/5">
+    <!-- SECCIÓN DE PRODUCTO Y TIENDA -->
+    <section id="product" class="py-20 md:py-24 relative z-10 border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center gap-3 mb-10 font-tech text-xs text-accent uppercase tracking-widest">
-                <span class="w-8 h-px bg-accent"></span> JEGALUX // JEGALUX OSCURO
+                <span class="w-8 h-px bg-accent"></span> JEGALUX // CATALOGUE
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 relative group tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
-                    <div class="relative glass-panel rounded-xl overflow-hidden shadow-2xl">
-                        <img src="Sudadera EGALUX en showroom futurista.png" alt="Showroom" class="w-full h-[520px] md:h-[620px] object-cover object-center"/>
-                    </div>
+                <div class="lg:col-span-7 relative glass-panel rounded-xl overflow-hidden shadow-2xl">
+                    <img src="Sudadera EGALUX en showroom futurista.png" onerror="this.src='https://placehold.co/800x600/0d0d11/ff5500?text=JEGALUX+SHOWROOM'" alt="Showroom" class="w-full h-[450px] md:h-[550px] object-cover"/>
                 </div>
-                <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl tilt-card shadow-2xl">
+                <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl shadow-2xl">
                     <h2 class="text-2xl md:text-3xl font-display font-bold tracking-tight text-white uppercase">JEGALUX OSCURO</h2>
                     <div class="flex items-center gap-3">
                         <span class="font-display text-2xl text-accent font-bold">$37.22 USD</span>
                         <span class="px-2 py-0.5 rounded bg-accent/20 text-accent font-tech text-[10px] uppercase">GRANTS 1,000 XP</span>
                     </div>
-                    <p class="text-neutral-300 text-sm leading-relaxed">Unisex heavy blend hoodie integrated directly from your catalog.</p>
-                    <button onclick="addToCart()" class="w-full py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs uppercase tracking-[0.2em] transition">ADD TO CART ($37.22)</button>
+                    <p class="text-neutral-300 text-sm leading-relaxed">Sudadera cyberpunk unisex de alta calidad integrada directamente desde el catálogo oficial.</p>
+                    <button onclick="addToCart()" class="w-full py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs uppercase tracking-[0.2em] transition shadow-lg shadow-accent/20">AÑADIR AL CARRITO ($37.22)</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SHADOW ARENA // 15 COMBATIENTES -->
-    <section id="arena" class="py-24 relative z-10 border-b border-white/5 bg-void/80 backdrop-blur-xl">
+    <!-- SHADOW ARENA // 15 OPERATIVOS -->
+    <section id="arena" class="py-24 relative z-10 bg-void/90 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
                 <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// NEXUS ARCADE ARENA</span>
-                <h2 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // 15 COMBATIENTES</h2>
+                <h2 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // 15 OPERATIVOS</h2>
+                <p class="text-neutral-400 text-xs font-tech mt-2">Selecciona tu combatiente con nombres de archivo y estadísticas exactas para ingresar al duelo 1v1.</p>
             </div>
 
             <div class="glass-panel rounded-2xl p-6 md:p-8 shadow-2xl border border-accent/30 relative">
-                <div id="gameStatsHeader" class="flex flex-wrap justify-between items-center bg-obsidian/80 p-4 rounded-xl border border-white/10 mb-8 font-tech text-xs">
-                    <div><span class="text-accent font-bold">OPERATIVO:</span> <span id="lblPlayerName" class="text-white">CYBER_OPERATIVE</span></div>
+                
+                <!-- BARRA DE ESTADÍSTICAS (HUD) -->
+                <div id="gameStatsHeader" class="flex flex-wrap justify-between items-center bg-obsidian/90 p-4 rounded-xl border border-white/10 mb-8 font-tech text-xs">
+                    <div><span class="text-accent font-bold">OPERATIVO:</span> <span id="lblPlayerName" class="text-white">Shadow Hood</span></div>
                     <div><span class="text-accent font-bold">NIVEL:</span> <span id="lblLevel" class="text-white bg-accent/20 px-2 py-0.5 rounded">1</span></div>
                     <div><span class="text-accent font-bold">PUNTOS:</span> <span id="lblScore" class="text-white font-bold">0 PTS</span></div>
-                    <div><span class="text-accent font-bold">RIVAL:</span> <span id="lblRivalCount" class="text-white">1 / 15</span></div>
+                    <div><span class="text-accent font-bold">FASE RIVAL:</span> <span id="lblRivalCount" class="text-white">1 / 15</span></div>
                 </div>
 
+                <!-- SELECCIÓN DE PERSONAJES -->
                 <div id="charSelectScreen" class="space-y-8">
-                    <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECCIONA TU OPERATIVO</h3>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-h-[520px] overflow-y-auto pr-2">
+                    <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                        <h3 class="font-display font-bold text-lg text-white uppercase tracking-wider">// ELIGE TU OPERATIVO (15 / 15)</h3>
+                        <span id="selectedIndicator" class="font-tech text-xs text-accent">Seleccionado: Shadow Hood</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-h-[560px] overflow-y-auto pr-1" id="charGridContainer">
                         
                         <!-- 1. Shadow Hood -->
-                        <div onclick="selectCharacter('Shadow Hood', 'htfhfhtff.png', 110, 25)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden group">
-                            <img src="htfhfhtff.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                        <div onclick="selectCharacter('Shadow Hood', 'htfhfhtff.png', 110, 25, this)" class="char-card cursor-pointer rounded-xl border border-white/10 h-48 glass-panel glass-panel-hover flex flex-col justify-end p-3 relative overflow-hidden group">
+                            <img src="htfhfhtff.png" onerror="this.src='https://placehold.co/200x300/0d0d11/ff5500?text=Shadow+Hood'" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            <div class="relative z-10 text-[10px] font-tech text-white font-bold"><div class="text-accent">Shadow Hood</div><div>HP: 110 | ATK: 25</div></div>
+                            <div class="relative z-10 font-tech text-xs"><div class="text-accent font-bold">Shadow Hood</div><div class="text-neutral-300 text-[10px]">HP: 110 | ATK: 25</div><div class="text-neutral-500 text-[9px] truncate">htfhfhtff.png</div></div>
                         </div>
 
                         <!-- 2. Neon Blue -->
-                        <div onclick="selectCharacter('Neon Blue', 'gdgrdgdgr.png', 95, 28)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden group">
-                            <img src="gdgrdgdgr.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                        <div onclick="selectCharacter('Neon Blue', 'gdgrdgdgr.png', 95, 28, this)" class="char-card cursor-pointer rounded-xl border border-white/10 h-48 glass-panel glass-panel-hover flex flex-col justify-end p-3 relative overflow-hidden group">
+                            <img src="gdgrdgdgr.png" onerror="this.src='https://placehold.co/200x300/0d0d11/ff5500?text=Neon+Blue'" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            <div class="relative z-10 text-[10px] font-tech text-white font-bold"><div class="text-accent">Neon Blue</div><div>HP: 95 | ATK: 28</div></div>
+                            <div class="relative z-10 font-tech text-xs"><div class="text-accent font-bold">Neon Blue</div><div class="text-neutral-300 text-[10px]">HP: 95 | ATK: 28</div><div class="text-neutral-500 text-[9px] truncate">gdgrdgdgr.png</div></div>
                         </div>
 
                         <!-- 3. Mohawk Striker -->
-                        <div onclick="selectCharacter('Mohawk Striker', 'gdgrdgddggr.png', 120, 22)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden group">
-                            <img src="gdgrdgddggr.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                        <div onclick="selectCharacter('Mohawk Striker', 'gdgrdgddggr.png', 120, 22, this)" class="char-card cursor-pointer rounded-xl border border-white/10 h-48 glass-panel glass-panel-hover flex flex-col justify-end p-3 relative overflow-hidden group">
+                            <img src="gdgrdgddggr.png" onerror="this.src='https://placehold.co/200x300/0d0d11/ff5500?text=Mohawk+Striker'" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            <div class="relative z-10 text-[10px] font-tech text-white font-bold"><div class="text-accent">Mohawk Striker</div><div>HP: 120 | ATK: 22</div></div>
+                            <div class="relative z-10 font-tech text-xs"><div class="text-accent font-bold">Mohawk Striker</div><div class="text-neutral-300 text-[10px]">HP: 120 | ATK: 22</div><div class="text-neutral-500 text-[9px] truncate">gdgrdgddggr.png</div></div>
                         </div>
 
                         <!-- 4. Cyber Vest -->
-                        <div onclick="selectCharacter('Cyber Vest', 'htfhtfhtfhtf.png', 100, 26)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden group">
-                            <img src="htfhtfhtfhtf.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                        <div onclick="selectCharacter('Cyber Vest', 'htfhtfhtfhtf.png', 100, 26, this)" class="char-card cursor-pointer rounded-xl border border-white/10 h-48 glass-panel glass-panel-hover flex flex-col justify-end p-3 relative overflow-hidden group">
+                            <img src="htfhtfhtfhtf.png" onerror="this.src='https://placehold.co/200x300/0d0d11/ff5500?text=Cyber+Vest'" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            <div class="relative z-10 text-[10px] font-tech text-white font-bold"><div class="text-accent">Cyber Vest</div><div>HP: 100 | ATK: 26</div></div>
+                            <div class="relative z-10 font-tech text-xs"><div class="text-accent font-bold">Cyber Vest</div><div class="text-neutral-300 text-[10px]">HP: 100 | ATK: 26</div><div class="text-neutral-500 text-[9px] truncate">htfhtfhtfhtf.png</div></div>
                         </div>
 
                         <!-- 5. Spike Punk -->
-                        <div onclick="selectCharacter('Spike Punk', 'jgjygjygjJy.png', 130, 20)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden group">
-                            <img src="jgjygjygjJy.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                        <div onclick="selectCharacter('Spike Punk', 'jgjygjygjJy.png', 130, 20, this)" class="char-card cursor-pointer rounded-xl border border-white/10 h-48 glass-panel glass-panel-hover flex flex-col justify-end p-3 relative overflow-hidden group">
+                            <img src="jgjygjygjJy.png" onerror="this.src='https://placehold.co/200x300/0d0d11/ff5500?text=Spike+Punk'" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            <div class="relative z-10 text-[10px] font-tech text-white font-bold"><div class="text-accent">Spike Punk</div><div>HP: 130 | ATK: 20</div></div>
+                            <div class="relative z-10 font-tech text-xs"><div class="text-accent font-bold">Spike Punk</div><div class="text-neutral-300 text-[10px]">HP: 130 | ATK: 20</div><div class="text-neutral-500 text-[9px] truncate">jgjygjygjJy.png</div></div>
                         </div>
 
                         <!-- 6. Red Vanguard -->
-                        <div onclick="selectCharacter('Red Vanguard', 'htfhfhhf.png', 105, 24)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden group">
-                            <img src="htfhfhhf.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                        <div onclick="selectCharacter('Red Vanguard', 'htfhfhhf.png', 105, 24, this)" class="char-card cursor-pointer rounded-xl border border-white/10 h-48 glass-panel glass-panel-hover flex flex-col justify-end p-3 relative overflow-hidden group">
+                            <img src="htfhfhhf.png" onerror="this.src='https://placehold.co/200x300/0d0d11/ff5500?text=Red+Vanguard'" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            <div class="relative z-10 text-[10px] font-tech text-white font-bold"><div class="text-accent">Red Vanguard</div><div>HP: 105 | ATK: 24</div></div>
+                            <div class="relative z-10 font-tech text-xs"><div class="text-accent font-bold">Red Vanguard</div><div class="text-neutral-300 text-[10px]">HP: 105 | ATK: 24</div><div class="text-neutral-500 text-[9px] truncate">htfhfhhf.png</div></div>
                         </div>
 
                         <!-- 7. Dark Ronin -->
-                        <div onclick="selectCharacter('Dark Ronin', 'grdgdrgdg.png', 115, 27)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden group">
-                            <img src="grdgdrgdg.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                        <div onclick="selectCharacter('Dark Ronin', 'grdgdrgdg.png', 115, 27, this)" class="char-card cursor-pointer rounded-xl border border-white/10 h-48 glass-panel glass-panel-hover flex flex-col justify-end p-3 relative overflow-hidden group">
+                            <img src="grdgdrgdg.png" onerror="this.src='https://placehold.co/200x300/0d0d11/ff5500?text=Dark+Ronin'" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            <div class="relative z-10 text-[10px] font-tech text-white font-bold"><div class="text-accent">Dark Ronin</div><div>HP: 115 | ATK: 27</div></div>
+                            <div class="relative z-10 font-tech text-xs"><div class="text-accent font-bold">Dark Ronin</div><div class="text-neutral-300 text-[10px]">HP: 115 | ATK: 27</div><div class="text-neutral-500 text-[9px] truncate">grdgdrgdg.png</div></div>
                         </div>
 
                         <!-- 8. JEGALUX PRIME -->
-                        <div onclick="selectCharacter('JEGALUX PRIME', 'Collage cyberpunk de 15 personajes neón.png', 160, 35)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden group">
-                            <img src="Collage cyberpunk de 15 personajes neón.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                        <div onclick="selectCharacter('JEGALUX PRIME', 'Collage cyberpunk de 15 personajes neón.png', 160, 35, this)" class="char-card cursor-pointer rounded-xl border border-white/10 h-48 glass-panel glass-panel-hover flex flex-col justify-end p-3 relative overflow-hidden group">
+                            <img src="Collage cyberpunk de 15 personajes neón.png" onerror="this.src='https://placehold.co/200x300/0d0d11/ff5500?text=JEGALUX+PRIME'" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            <div class="relative z-10 text-[10px] font-tech text-white font-bold"><div class="text-accent">JEGALUX PRIME</div><div>HP: 160 | ATK: 35</div></div>
+                            <div class="relative z-10 font-tech text-xs"><div class="text-accent font-bold">JEGALUX PRIME</div><div class="text-neutral-300 text-[10px]">HP: 160 | ATK: 35</div><div class="text-neutral-500 text-[9px] truncate">Collage cyberpunk...</div></div>
                         </div>
 
                         <!-- 9. Street Jersey -->
-                        <div onclick="selectCharacter('Street Jersey', 'jygjygjigjg.png', 90, 29)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden group">
-                            <img src="jygjygjigjg.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                        <div onclick="selectCharacter('Street Jersey', 'jygjygjigjg.png', 90, 29, this)" class="char-card cursor-pointer rounded-xl border border-white/10 h-48 glass-panel glass-panel-hover flex flex-col justify-end p-3 relative overflow-hidden group">
+                            <img src="jygjygjigjg.png" onerror="this.src='https://placehold.co/200x300/0d0d11/ff5500?text=Street+Jersey'" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            <div class="relative z-10 text-[10px] font-tech text-white font-bold"><div class="text-accent">Street Jersey</div><div>HP: 90 | ATK: 29</div></div>
+                            <div class="relative z-10 font-tech text-xs"><div class="text-accent font-bold">Street Jersey</div><div class="text-neutral-300 text-[10px]">HP: 90 | ATK: 29</div><div class="text-neutral-500 text-[9px] truncate">jygjygjigjg.png</div></div>
                         </div>
 
                         <!-- 10. Cyber Goth -->
-                        <div onclick="selectCharacter('Cyber Goth', 'gdrgdgrdgd.png', 110, 23)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden group">
-                            <img src="gdrgdgrdgd.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                        <div onclick="selectCharacter('Cyber Goth', 'gdrgdgrdgd.png', 110, 23, this)" class="char-card cursor-pointer rounded-xl border border-white/10 h-48 glass-panel glass-panel-hover flex flex-col justify-end p-3 relative overflow-hidden group">
+                            <img src="gdrgdgrdgd.png" onerror="this.src='https://placehold.co/200x300/0d0d11/ff5500?text=Cyber+Goth'" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            <div class="relative z-10 text-[10px] font-tech text-white font-bold"><div class="text-accent">Cyber Goth</div><div>HP: 110 | ATK: 23</div></div>
+                            <div class="relative z-10 font-tech text-xs"><div class="text-accent font-bold">Cyber Goth</div><div class="text-neutral-300 text-[10px]">HP: 110 | ATK: 23</div><div class="text-neutral-500 text-[9px] truncate">gdrgdgrdgd.png</div></div>
                         </div>
 
                         <!-- 11. Neo Matrix -->
-                        <div onclick="selectCharacter('Neo Matrix', 'grdgdgdgdgd.png', 95, 31)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden group">
-                            <img src="grdgdgdgdgd.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                        <div onclick="selectCharacter('Neo Matrix', 'grdgdgdgdgd.png', 95, 31, this)" class="char-card cursor-pointer rounded-xl border border-white/10 h-48 glass-panel glass-panel-hover flex flex-col justify-end p-3 relative overflow-hidden group">
+                            <img src="grdgdgdgdgd.png" onerror="this.src='https://placehold.co/200x300/0d0d11/ff5500?text=Neo+Matrix'" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            <div class="relative z-10 text-[10px] font-tech text-white font-bold"><div class="text-accent">Neo Matrix</div><div>HP: 95 | ATK: 31</div></div>
+                            <div class="relative z-10 font-tech text-xs"><div class="text-accent font-bold">Neo Matrix</div><div class="text-neutral-300 text-[10px]">HP: 95 | ATK: 31</div><div class="text-neutral-500 text-[9px] truncate">grdgdgdgdgd.png</div></div>
                         </div>
 
                         <!-- 12. Plasma Brawler -->
-                        <div onclick="selectCharacter('Plasma Brawler', 'wadwdfergfef.png', 140, 21)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden group">
-                            <img src="wadwdfergfef.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                        <div onclick="selectCharacter('Plasma Brawler', 'wadwdfergfef.png', 140, 21, this)" class="char-card cursor-pointer rounded-xl border border-white/10 h-48 glass-panel glass-panel-hover flex flex-col justify-end p-3 relative overflow-hidden group">
+                            <img src="wadwdfergfef.png" onerror="this.src='https://placehold.co/200x300/0d0d11/ff5500?text=Plasma+Brawler'" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            <div class="relative z-10 text-[10px] font-tech text-white font-bold"><div class="text-accent">Plasma Brawler</div><div>HP: 140 | ATK: 21</div></div>
+                            <div class="relative z-10 font-tech text-xs"><div class="text-accent font-bold">Plasma Brawler</div><div class="text-neutral-300 text-[10px]">HP: 140 | ATK: 21</div><div class="text-neutral-500 text-[9px] truncate">wadwdfergfef.png</div></div>
                         </div>
 
                         <!-- 13. Neon Glitch -->
-                        <div onclick="selectCharacter('Neon Glitch', 'dwadadawda.png', 85, 33)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden group">
-                            <img src="dwadadawda.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                        <div onclick="selectCharacter('Neon Glitch', 'dwadadawda.png', 85, 33, this)" class="char-card cursor-pointer rounded-xl border border-white/10 h-48 glass-panel glass-panel-hover flex flex-col justify-end p-3 relative overflow-hidden group">
+                            <img src="dwadadawda.png" onerror="this.src='https://placehold.co/200x300/0d0d11/ff5500?text=Neon+Glitch'" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            <div class="relative z-10 text-[10px] font-tech text-white font-bold"><div class="text-accent">Neon Glitch</div><div>HP: 85 | ATK: 33</div></div>
+                            <div class="relative z-10 font-tech text-xs"><div class="text-accent font-bold">Neon Glitch</div><div class="text-neutral-300 text-[10px]">HP: 85 | ATK: 33</div><div class="text-neutral-500 text-[9px] truncate">dwadadawda.png</div></div>
                         </div>
 
                         <!-- 14. Dark Chemist -->
-                        <div onclick="selectCharacter('Dark Chemist', 'dwadawdawdad.png', 100, 27)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden group">
-                            <img src="dwadawdawdad.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                        <div onclick="selectCharacter('Dark Chemist', 'dwadawdawdad.png', 100, 27, this)" class="char-card cursor-pointer rounded-xl border border-white/10 h-48 glass-panel glass-panel-hover flex flex-col justify-end p-3 relative overflow-hidden group">
+                            <img src="dwadawdawdad.png" onerror="this.src='https://placehold.co/200x300/0d0d11/ff5500?text=Dark+Chemist'" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            <div class="relative z-10 text-[10px] font-tech text-white font-bold"><div class="text-accent">Dark Chemist</div><div>HP: 100 | ATK: 27</div></div>
+                            <div class="relative z-10 font-tech text-xs"><div class="text-accent font-bold">Dark Chemist</div><div class="text-neutral-300 text-[10px]">HP: 100 | ATK: 27</div><div class="text-neutral-500 text-[9px] truncate">dwadawdawdad.png</div></div>
                         </div>
 
                         <!-- 15. Shadow Specter -->
-                        <div onclick="selectCharacter('Shadow Specter', 'dwadawdawdadw.png', 125, 26)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden group">
-                            <img src="dwadawdawdadw.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                        <div onclick="selectCharacter('Shadow Specter', 'dwadawdawdadw.png', 125, 26, this)" class="char-card cursor-pointer rounded-xl border border-white/10 h-48 glass-panel glass-panel-hover flex flex-col justify-end p-3 relative overflow-hidden group">
+                            <img src="dwadawdawdadw.png" onerror="this.src='https://placehold.co/200x300/0d0d11/ff5500?text=Shadow+Specter'" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            <div class="relative z-10 text-[10px] font-tech text-white font-bold"><div class="text-accent">Shadow Specter</div><div>HP: 125 | ATK: 26</div></div>
+                            <div class="relative z-10 font-tech text-xs"><div class="text-accent font-bold">Shadow Specter</div><div class="text-neutral-300 text-[10px]">HP: 125 | ATK: 26</div><div class="text-neutral-500 text-[9px] truncate">dwadawdawdadw.png</div></div>
                         </div>
 
                     </div>
 
                     <div class="text-center pt-4">
-                        <button onclick="startGame()" class="px-8 py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg shadow-accent/30">
-                            INICIAR DUELO 1V1
+                        <button onclick="startGame()" class="px-10 py-4 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-[0.2em] hover:bg-accent-glow transition shadow-xl shadow-accent/30">
+                            INICIAR DUELO 1V1 (ARENA)
                         </button>
                     </div>
                 </div>
 
-                <!-- BATALLA -->
+                <!-- PANTALLA DE BATALLA 1V1 -->
                 <div id="battleScreen" class="hidden space-y-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-obsidian/60 p-6 rounded-xl border border-white/10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-obsidian/90 p-6 rounded-xl border border-white/10">
                         <div class="space-y-3">
                             <div class="flex justify-between font-tech text-xs">
                                 <span id="battlePlayerName" class="text-accent font-bold">OPERATIVO</span>
-                                <span id="playerHpText" class="text-white">100 / 100 HP</span>
+                                <span id="playerHpText" class="text-white">110 / 110 HP</span>
                             </div>
                             <div class="w-full bg-neutral-800 h-4 rounded-full overflow-hidden p-0.5 border border-white/10">
                                 <div id="playerHpBar" class="bg-accent h-full rounded-full transition-all duration-300" style="width: 100%"></div>
@@ -274,7 +277,7 @@
                         <div class="space-y-3">
                             <div class="flex justify-between font-tech text-xs">
                                 <span id="battleRivalName" class="text-red-500 font-bold">RIVAL</span>
-                                <span id="rivalHpText" class="text-white">100 / 100 HP</span>
+                                <span id="rivalHpText" class="text-white">95 / 95 HP</span>
                             </div>
                             <div class="w-full bg-neutral-800 h-4 rounded-full overflow-hidden p-0.5 border border-white/10">
                                 <div id="rivalHpBar" class="bg-red-500 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
@@ -282,37 +285,41 @@
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                        <div class="md:col-span-5 text-center p-6 glass-panel rounded-xl">
-                            <div class="text-accent font-tech text-xs mb-2">VS</div>
-                            <h3 id="arenaRivalTitle" class="font-display font-bold text-xl text-white uppercase">OPONENTE</h3>
+                        <div class="md:col-span-5 text-center p-6 glass-panel rounded-xl space-y-3">
+                            <div class="w-24 h-24 mx-auto rounded-xl overflow-hidden border-2 border-red-500 shadow-xl">
+                                <img id="battleRivalImg" src="gdgrdgdgr.png" class="w-full h-full object-cover" />
+                            </div>
+                            <div class="text-accent font-tech text-xs">VS RIVAL ACTUAL</div>
+                            <h3 id="arenaRivalTitle" class="font-display font-bold text-xl text-white uppercase">NEON BLUE</h3>
                         </div>
-                        <div class="md:col-span-7 glass-panel p-5 rounded-xl h-44 overflow-y-auto font-tech text-xs space-y-2 border border-accent/20" id="battleLog">
-                            <div class="text-accent">[SISTEMA] Duelo 1v1 iniciado. Selecciona tu movimiento.</div>
+                        <div class="md:col-span-7 glass-panel p-5 rounded-xl h-48 overflow-y-auto font-tech text-xs space-y-2 border border-accent/20" id="battleLog">
+                            <div class="text-accent">[SISTEMA] Duelo 1v1 inicializado en la Red. Selecciona tu movimiento de combate.</div>
                         </div>
                     </div>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 font-tech text-xs">
-                        <button onclick="playerAttack('light')" class="py-3.5 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition">GOLPE LIGERO</button>
-                        <button onclick="playerAttack('heavy')" class="py-3.5 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition">GOLPE PESADO</button>
-                        <button onclick="playerDefend()" class="py-3.5 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition">CUBRIRSE</button>
-                        <button onclick="playerSpecial()" class="py-3.5 rounded bg-accent/20 border border-accent text-accent font-bold hover:bg-accent hover:text-black transition">SHADOW STRIKE</button>
+                        <button onclick="playerAttack('light')" class="py-4 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition">GOLPE LIGERO</button>
+                        <button onclick="playerAttack('heavy')" class="py-4 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition">GOLPE PESADO</button>
+                        <button onclick="playerDefend()" class="py-4 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition">CUBRIRSE</button>
+                        <button onclick="playerSpecial()" class="py-4 rounded bg-accent/20 border border-accent text-accent font-bold hover:bg-accent hover:text-black transition">SHADOW STRIKE</button>
                     </div>
                 </div>
 
-                <!-- FIN DE JUEGO -->
-                <div id="endGameScreen" class="hidden text-center space-y-6 py-8">
-                    <h3 id="endGameTitle" class="font-display font-bold text-3xl text-accent uppercase">¡VICTORIA!</h3>
-                    <p id="endGameDesc" class="text-sm text-neutral-300">Combate finalizado.</p>
-                    <button onclick="nextBattle()" class="px-8 py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition">SIGUIENTE RIVAL</button>
+                <!-- PANTALLA FIN DE JUEGO -->
+                <div id="endGameScreen" class="hidden text-center space-y-6 py-12">
+                    <h3 id="endGameTitle" class="font-display font-bold text-3xl text-accent uppercase">¡VICTORIA EN LA ARENA!</h3>
+                    <p id="endGameDesc" class="text-sm text-neutral-300">Has derrotado al oponente cibernético y ganado XP.</p>
+                    <button onclick="nextBattle()" class="px-8 py-4 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition">SIGUIENTE RIVAL</button>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- MODAL PERFIL -->
+    <!-- MODAL DE PERFIL / NEXUS ID -->
     <div id="profileModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-md p-6 rounded-2xl border border-accent/40 space-y-6 shadow-2xl">
             <div class="flex justify-between items-center border-b border-white/10 pb-4">
-                <h3 class="font-display font-bold text-lg text-white uppercase tracking-wider">// NEXUS ID</h3>
+                <h3 class="font-display font-bold text-lg text-white uppercase">// NEXUS ID</h3>
                 <button onclick="closeProfileModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
             <div id="loginView" class="space-y-4 text-center py-2">
@@ -320,21 +327,26 @@
                 <button onclick="loginUser('Apple')" class="w-full py-3.5 rounded bg-black border border-white/30 text-white font-tech font-bold text-xs uppercase">APPLE ID</button>
             </div>
             <div id="userProfileView" class="hidden space-y-4 font-tech text-xs">
-                <div class="flex items-center gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10">
+                <div class="flex items-center gap-4 bg-obsidian/90 p-4 rounded-xl border border-white/10">
                     <div class="w-16 h-16 rounded-xl overflow-hidden border-2 border-accent shadow-lg">
                         <img id="profileAvatarImg" src="htfhfhtff.png" class="w-full h-full object-cover" />
                     </div>
                     <div><span id="profileUserEmail" class="text-accent font-bold">operativo@jegalux.com</span></div>
                 </div>
                 <input type="text" id="editUsername" class="w-full bg-obsidian border border-white/10 rounded p-2.5 text-white outline-none" value="CYBER_OPERATIVE" />
-                <button onclick="saveProfile()" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase">GUARDAR</button>
+                <button onclick="saveProfile()" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase">GUARDAR PERFIL</button>
             </div>
         </div>
     </div>
 
-    <!-- SCRIPT -->
+    <!-- SCRIPT DE LA APLICACIÓN -->
     <script>
-        window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); loadUserData(); });
+        window.addEventListener('load', () => {
+            if (window.lucide) lucide.createIcons();
+            loadUserData();
+            const firstCard = document.querySelector('.char-card');
+            if (firstCard) firstCard.classList.add('char-card-selected');
+        });
 
         let userNexus = { isLoggedIn: false, email: "", provider: "", username: "CYBER_OPERATIVE", level: 1, xp: 0, points: 0, avatarFile: "htfhfhtff.png" };
 
@@ -359,9 +371,6 @@
                 document.getElementById('userProfileView').classList.remove('hidden');
                 document.getElementById('profileUserEmail').innerText = userNexus.email;
                 document.getElementById('profileAvatarImg').src = userNexus.avatarFile;
-            } else {
-                document.getElementById('loginView').classList.remove('hidden');
-                document.getElementById('userProfileView').classList.add('hidden');
             }
         }
 
@@ -382,39 +391,78 @@
             saveUserData();
         }
 
-        let cart = { item: "JEGALUX OSCURO", price: 37.22, size: "M", quantity: 1 };
-        function addToCart() { document.getElementById('cartItemCount').innerText = cart.quantity; openCartModal(); }
-        function openCartModal() {}
-        function closeCartModal() {}
+        function addToCart() {
+            document.getElementById('cartItemCount').innerText = '1';
+            const box = document.createElement('div');
+            box.className = 'fixed bottom-5 right-5 z-50 glass-panel p-4 rounded-xl border border-accent text-xs font-tech text-white';
+            box.innerText = 'JEGALUX OSCURO añadido al carrito de la Red.';
+            document.body.appendChild(box);
+            setTimeout(() => box.remove(), 3000);
+        }
 
-        const rivalsList = [
-            { name: "Neon Blue", hp: 95, atk: 28, desc: "Asesina cibernética." },
-            { name: "Mohawk Striker", hp: 120, atk: 22, desc: "Luchador de fuerza bruta." },
-            { name: "Cyber Vest", hp: 100, atk: 26, desc: "Especialista en asalto." },
-            { name: "Red Vanguard", hp: 105, atk: 24, desc: "Guerrero táctico." },
-            { name: "JEGALUX PRIME BOSS", hp: 160, atk: 35, desc: "La prueba final." }
+        function openCartModal() {
+            addToCart();
+        }
+
+        // 15 PERSONAJES OFICIALES Y SUS ARCHIVOS
+        const masterCharacters = [
+            { name: "Shadow Hood", file: "htfhfhtff.png", hp: 110, atk: 25 },
+            { name: "Neon Blue", file: "gdgrdgdgr.png", hp: 95, atk: 28 },
+            { name: "Mohawk Striker", file: "gdgrdgddggr.png", hp: 120, atk: 22 },
+            { name: "Cyber Vest", file: "htfhtfhtfhtf.png", hp: 100, atk: 26 },
+            { name: "Spike Punk", file: "jgjygjygjJy.png", hp: 130, atk: 20 },
+            { name: "Red Vanguard", file: "htfhfhhf.png", hp: 105, atk: 24 },
+            { name: "Dark Ronin", file: "grdgdrgdg.png", hp: 115, atk: 27 },
+            { name: "JEGALUX PRIME", file: "Collage cyberpunk de 15 personajes neón.png", hp: 160, atk: 35 },
+            { name: "Street Jersey", file: "jygjygjigjg.png", hp: 90, atk: 29 },
+            { name: "Cyber Goth", file: "gdrgdgrdgd.png", hp: 110, atk: 23 },
+            { name: "Neo Matrix", file: "grdgdgdgdgd.png", hp: 95, atk: 31 },
+            { name: "Plasma Brawler", file: "wadwdfergfef.png", hp: 140, atk: 21 },
+            { name: "Neon Glitch", file: "dwadadawda.png", hp: 85, atk: 33 },
+            { name: "Dark Chemist", file: "dwadawdawdad.png", hp: 100, atk: 27 },
+            { name: "Shadow Specter", file: "dwadawdadw.png", hp: 125, atk: 26 }
         ];
 
-        let gameState = { playerMaxHp: 100, playerHp: 100, playerAtk: 24, currentRivalIndex: 0, rivalHp: 100, rivalMaxHp: 100, rivalAtk: 22, isDefending: false };
+        let selectedPlayerChar = masterCharacters[0];
+        let currentRivalIndex = 0;
+        let gameState = { playerHp: 110, playerMaxHp: 110, playerAtk: 25, rivalHp: 95, rivalMaxHp: 95, rivalAtk: 28, isDefending: false };
 
-        function selectCharacter(name, file, hp, atk) {
-            userNexus.avatarFile = file; gameState.playerMaxHp = hp; gameState.playerHp = hp; gameState.playerAtk = atk;
+        function selectCharacter(name, file, hp, atk, el) {
+            document.querySelectorAll('.char-card').forEach(card => card.classList.remove('char-card-selected'));
+            el.classList.add('char-card-selected');
+            selectedPlayerChar = { name, file, hp, atk };
+            userNexus.avatarFile = file;
             saveUserData();
+            document.getElementById('selectedIndicator').innerText = `Seleccionado: ${name}`;
         }
 
         function startGame() {
+            gameState.playerMaxHp = selectedPlayerChar.hp;
+            gameState.playerHp = selectedPlayerChar.hp;
+            gameState.playerAtk = selectedPlayerChar.atk;
+            currentRivalIndex = 0;
             document.getElementById('charSelectScreen').classList.add('hidden');
             document.getElementById('battleScreen').classList.remove('hidden');
             loadRival();
         }
 
         function loadRival() {
-            if (gameState.currentRivalIndex >= rivalsList.length) gameState.currentRivalIndex = 0;
-            const rival = rivalsList[gameState.currentRivalIndex];
-            gameState.rivalMaxHp = rival.hp; gameState.rivalHp = rival.hp; gameState.rivalAtk = rival.atk;
-            document.getElementById('battleRivalName').innerText = rival.name.toUpperCase();
-            document.getElementById('arenaRivalTitle').innerText = rival.name;
+            let rivalObj = masterCharacters[currentRivalIndex % masterCharacters.length];
+            if (rivalObj.name === selectedPlayerChar.name) {
+                currentRivalIndex++;
+                rivalObj = masterCharacters[currentRivalIndex % masterCharacters.length];
+            }
+            gameState.rivalMaxHp = rivalObj.hp;
+            gameState.rivalHp = rivalObj.hp;
+            gameState.rivalAtk = rivalObj.atk;
+
+            document.getElementById('battleRivalName').innerText = rivalObj.name.toUpperCase();
+            document.getElementById('arenaRivalTitle').innerText = rivalObj.name;
+            document.getElementById('battleRivalImg').src = rivalObj.file;
+            document.getElementById('lblRivalCount').innerText = `${(currentRivalIndex % 15) + 1} / 15`;
+            
             updateHpBars();
+            appendLog(`[SISTEMA] Nuevo rival enlazado: <span class="text-red-500 font-bold">${rivalObj.name}</span> (HP: ${rivalObj.hp}, ATK: ${rivalObj.atk})`);
         }
 
         function updateHpBars() {
@@ -428,36 +476,41 @@
 
         function appendLog(text) {
             const log = document.getElementById('battleLog');
-            log.innerHTML += `<div>${text}</div>`; log.scrollTop = log.scrollHeight;
+            log.innerHTML += `<div>${text}</div>`;
+            log.scrollTop = log.scrollHeight;
         }
 
         function playerAttack(type) {
             let damage = type === 'light' ? gameState.playerAtk : Math.floor(gameState.playerAtk * 1.6);
             gameState.rivalHp -= damage;
-            appendLog(`[TÚ] Infliges <span class="text-accent">${damage} DAÑO</span>.`);
+            appendLog(`[TÚ] Ejecutas golpe ${type === 'light' ? 'ligero' : 'pesado'}. Infliges <span class="text-accent">${damage} DAÑO</span>.`);
             checkBattleStatus();
             if (gameState.rivalHp > 0) setTimeout(rivalTurn, 600);
         }
 
         function playerDefend() {
             gameState.isDefending = true;
-            appendLog(`[TÚ] Postura defensiva adoptada.`);
+            appendLog(`[TÚ] Activas protocolo de cobertura defensiva.`);
             setTimeout(rivalTurn, 600);
         }
 
         function playerSpecial() {
             const damage = Math.floor(gameState.playerAtk * 2.2);
             gameState.rivalHp -= damage;
-            appendLog(`[TÚ] ¡SHADOW STRIKE! <span class="text-accent">${damage} DAÑO</span>.`);
+            appendLog(`[TÚ] ¡SHADOW STRIKE CRÍTICO! Infliges <span class="text-accent">${damage} DAÑO</span>.`);
             checkBattleStatus();
             if (gameState.rivalHp > 0) setTimeout(rivalTurn, 600);
         }
 
         function rivalTurn() {
-            const rival = rivalsList[gameState.currentRivalIndex];
             let rDamage = gameState.rivalAtk;
-            if (gameState.isDefending) { rDamage = Math.floor(rDamage * 0.4); gameState.isDefending = false; }
+            if (gameState.isDefending) {
+                rDamage = Math.floor(rDamage * 0.35);
+                gameState.isDefending = false;
+                appendLog(`[DEFENSA] Cobertura bloquea gran parte del ataque enemigo.`);
+            }
             gameState.playerHp -= rDamage;
+            appendLog(`[RIVAL] Ataca con potencia. Recibes <span class="text-red-500">${rDamage} DAÑO</span>.`);
             updateHpBars();
             if (gameState.playerHp <= 0) battleOver(false);
         }
@@ -470,7 +523,15 @@
         function battleOver(isVictory) {
             document.getElementById('battleScreen').classList.add('hidden');
             document.getElementById('endGameScreen').classList.remove('hidden');
-            if (isVictory) { addXpAndPoints(300, 150); gameState.currentRivalIndex++; }
+            if (isVictory) {
+                addXpAndPoints(350, 200);
+                document.getElementById('endGameTitle').innerText = "¡VICTORIA EN LA ARENA!";
+                document.getElementById('endGameDesc').innerText = "Has derrotado al oponente cibernético y ganado XP.";
+                currentRivalIndex++;
+            } else {
+                document.getElementById('endGameTitle').innerText = "OPERATIVO DERROTADO";
+                document.getElementById('endGameDesc').innerText = "La red ha colapsado tu salud. Vuelve a intentarlo.";
+            }
         }
 
         function nextBattle() {
@@ -479,15 +540,6 @@
             document.getElementById('battleScreen').classList.remove('hidden');
             loadRival();
         }
-
-        function handleTilt(e, card) {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left, y = e.clientY - rect.top;
-            const rx = ((y - rect.height / 2) / (rect.height / 2)) * -2.2;
-            const ry = ((x - rect.width / 2) / (rect.width / 2)) * 2.2;
-            card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-        }
-        function resetTilt(card) { card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)'; }
     </script>
 </body>
 </html>
