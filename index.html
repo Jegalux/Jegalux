@@ -84,13 +84,6 @@
             will-change: background-position;
         }
 
-        /* Sprite maestro vinculado directamente al archivo de tu GitHub */
-        .fighter-avatar {
-            background-image: url('Collage cyberpunk de 15 personajes neón.png');
-            background-size: 500% 300%;
-            background-repeat: no-repeat;
-        }
-
         .glass-panel {
             background: linear-gradient(135deg, rgba(18, 18, 26, 0.82) 0%, rgba(9, 9, 13, 0.9) 100%);
             backdrop-filter: blur(22px);
@@ -155,7 +148,9 @@
                     class="flex items-center gap-2 px-3 py-2 rounded-lg glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200"
                     onmouseenter="playCyberpunkSound('hover')"
                 >
-                    <div id="headerAvatar" class="w-6 h-6 rounded fighter-avatar border border-accent" style="background-position: 0% 0%;"></div>
+                    <div id="headerAvatar" class="w-6 h-6 rounded overflow-hidden border border-accent">
+                        <img id="headerAvatarImg" src="htfhfhtff.png" class="w-full h-full object-cover" />
+                    </div>
                     <span id="headerName" class="font-tech text-xs text-accent font-bold hidden sm:inline">NEXUS ID</span>
                 </button>
 
@@ -341,14 +336,14 @@
         </div>
     </section>
 
-    <!-- 5. SHADOW ARENA // 15 COMBATIENTES (SPRITE 5x3 DE LA IMAGEN DE GITHUB) -->
+    <!-- 5. SHADOW ARENA // 15 COMBATIENTES (BLOQUES INDIVIDUALES CON TUS FOTOS DE GITHUB) -->
     <section id="arena" class="py-24 relative z-10 border-b border-white/5 bg-void/80 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
                 <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// NEXUS ARCADE ARENA</span>
                 <h2 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // 15 COMBATIENTES</h2>
                 <p class="text-neutral-400 font-sans text-xs md:text-sm mt-3">
-                    Selecciona tu operativo de la base de datos visual y enfréntate en duelos 1v1.
+                    Cada casilla utiliza tu foto de archivo individual de GitHub con su nombre, vida y fuerza asignadas.
                 </p>
             </div>
 
@@ -368,60 +363,159 @@
                     </div>
                 </div>
 
-                <!-- SELECCIÓN DE PERSONAJES (15 CASILLAS - MATRIZ 5x3) -->
+                <!-- SELECCIÓN DE PERSONAJES (15 BLOQUES INDIVIDUALES) -->
                 <div id="charSelectScreen" class="space-y-8">
                     <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECCIONA TU OPERATIVO (15 LUCHADORES)</h3>
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-h-[520px] overflow-y-auto pr-2">
                         
-                        <!-- FILA 1 -->
-                        <div onclick="selectCharacter('Viper Punk', '0% 0%', 100, 24)" class="cursor-pointer rounded-xl border border-accent/40 fighter-avatar h-36 glass-panel glass-panel-hover flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/50 shadow-lg" style="background-position: 0% 0%;">
-                            <span class="bg-black/80 px-1.5 py-0.5 rounded">Viper (HP: 100 | ATK: 24)</span>
-                        </div>
-                        <div onclick="selectCharacter('Cyber Geisha', '25% 0%', 90, 28)" class="cursor-pointer rounded-xl border border-accent/40 fighter-avatar h-36 glass-panel glass-panel-hover flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/50 shadow-lg" style="background-position: 25% 0%;">
-                            <span class="bg-black/80 px-1.5 py-0.5 rounded">Geisha (HP: 90 | ATK: 28)</span>
-                        </div>
-                        <div onclick="selectCharacter('Neon Valkyrie', '50% 0%', 110, 22)" class="cursor-pointer rounded-xl border border-accent/40 fighter-avatar h-36 glass-panel glass-panel-hover flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/50 shadow-lg" style="background-position: 50% 0%;">
-                            <span class="bg-black/80 px-1.5 py-0.5 rounded">Valkyrie (HP: 110 | ATK: 22)</span>
-                        </div>
-                        <div onclick="selectCharacter('Riot Brawler', '75% 0%', 130, 20)" class="cursor-pointer rounded-xl border border-accent/40 fighter-avatar h-36 glass-panel glass-panel-hover flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/50 shadow-lg" style="background-position: 75% 0%;">
-                            <span class="bg-black/80 px-1.5 py-0.5 rounded">Brawler (HP: 130 | ATK: 20)</span>
-                        </div>
-                        <div onclick="selectCharacter('Shadow Assassin', '100% 0%', 95, 30)" class="cursor-pointer rounded-xl border border-accent/40 fighter-avatar h-36 glass-panel glass-panel-hover flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/50 shadow-lg" style="background-position: 100% 0%;">
-                            <span class="bg-black/80 px-1.5 py-0.5 rounded">Assassin (HP: 95 | ATK: 30)</span>
+                        <!-- Personaje 1 -->
+                        <div onclick="selectCharacter('Shadow Hood', 'htfhfhtff.png', 110, 25)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden shadow-lg group">
+                            <img src="htfhfhtff.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                            <div class="relative z-10 text-[10px] font-tech text-white font-bold">
+                                <div class="text-accent">Shadow Hood</div>
+                                <div class="text-neutral-300">HP: 110 | ATK: 25</div>
+                            </div>
                         </div>
 
-                        <!-- FILA 2 -->
-                        <div onclick="selectCharacter('Subway Stalker', '0% 50%', 105, 23)" class="cursor-pointer rounded-xl border border-accent/40 fighter-avatar h-36 glass-panel glass-panel-hover flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/50 shadow-lg" style="background-position: 0% 50%;">
-                            <span class="bg-black/80 px-1.5 py-0.5 rounded">Stalker (HP: 105 | ATK: 23)</span>
-                        </div>
-                        <div onclick="selectCharacter('Yakuza Elite', '25% 50%', 120, 25)" class="cursor-pointer rounded-xl border border-accent/40 fighter-avatar h-36 glass-panel glass-panel-hover flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/50 shadow-lg" style="background-position: 25% 50%;">
-                            <span class="bg-black/80 px-1.5 py-0.5 rounded">Yakuza (HP: 120 | ATK: 25)</span>
-                        </div>
-                        <div onclick="selectCharacter('JEGALUX PRIME', '50% 50%', 150, 35)" class="cursor-pointer rounded-xl border border-accent/40 fighter-avatar h-36 glass-panel glass-panel-hover flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/50 shadow-lg" style="background-position: 50% 50%;">
-                            <span class="bg-black/80 px-1.5 py-0.5 rounded">Prime (HP: 150 | ATK: 35)</span>
-                        </div>
-                        <div onclick="selectCharacter('Ronin Cyber', '75% 50%', 115, 27)" class="cursor-pointer rounded-xl border border-accent/40 fighter-avatar h-36 glass-panel glass-panel-hover flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/50 shadow-lg" style="background-position: 75% 50%;">
-                            <span class="bg-black/80 px-1.5 py-0.5 rounded">Ronin (HP: 115 | ATK: 27)</span>
-                        </div>
-                        <div onclick="selectCharacter('Copper Phoenix', '100% 50%', 100, 26)" class="cursor-pointer rounded-xl border border-accent/40 fighter-avatar h-36 glass-panel glass-panel-hover flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/50 shadow-lg" style="background-position: 100% 50%;">
-                            <span class="bg-black/80 px-1.5 py-0.5 rounded">Phoenix (HP: 100 | ATK: 26)</span>
+                        <!-- Personaje 2 -->
+                        <div onclick="selectCharacter('Neon Blue', 'gdgrdgdgr.png', 95, 28)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden shadow-lg group">
+                            <img src="gdgrdgdgr.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                            <div class="relative z-10 text-[10px] font-tech text-white font-bold">
+                                <div class="text-accent">Neon Blue</div>
+                                <div class="text-neutral-300">HP: 95 | ATK: 28</div>
+                            </div>
                         </div>
 
-                        <!-- FILA 3 -->
-                        <div onclick="selectCharacter('Iron Jaw', '0% 100%', 140, 21)" class="cursor-pointer rounded-xl border border-accent/40 fighter-avatar h-36 glass-panel glass-panel-hover flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/50 shadow-lg" style="background-position: 0% 100%;">
-                            <span class="bg-black/80 px-1.5 py-0.5 rounded">Iron Jaw (HP: 140 | ATK: 21)</span>
+                        <!-- Personaje 3 -->
+                        <div onclick="selectCharacter('Mohawk Striker', 'gdgrdgrddggr.png', 120, 22)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden shadow-lg group">
+                            <img src="gdgrdgrddggr.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                            <div class="relative z-10 text-[10px] font-tech text-white font-bold">
+                                <div class="text-accent">Mohawk Striker</div>
+                                <div class="text-neutral-300">HP: 120 | ATK: 22</div>
+                            </div>
                         </div>
-                        <div onclick="selectCharacter('Plasma Chemist', '25% 100%', 85, 32)" class="cursor-pointer rounded-xl border border-accent/40 fighter-avatar h-36 glass-panel glass-panel-hover flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/50 shadow-lg" style="background-position: 25% 100%;">
-                            <span class="bg-black/80 px-1.5 py-0.5 rounded">Chemist (HP: 85 | ATK: 32)</span>
+
+                        <!-- Personaje 4 -->
+                        <div onclick="selectCharacter('Cyber Vest', 'htfhtfhtfhtf.png', 100, 26)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden shadow-lg group">
+                            <img src="htfhtfhtfhtf.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                            <div class="relative z-10 text-[10px] font-tech text-white font-bold">
+                                <div class="text-accent">Cyber Vest</div>
+                                <div class="text-neutral-300">HP: 100 | ATK: 26</div>
+                            </div>
                         </div>
-                        <div onclick="selectCharacter('Street Wraith', '50% 100%', 95, 29)" class="cursor-pointer rounded-xl border border-accent/40 fighter-avatar h-36 glass-panel glass-panel-hover flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/50 shadow-lg" style="background-position: 50% 100%;">
-                            <span class="bg-black/80 px-1.5 py-0.5 rounded">Wraith (HP: 95 | ATK: 29)</span>
+
+                        <!-- Personaje 5 -->
+                        <div onclick="selectCharacter('Spike Punk', 'jgjygjygjJy.png', 130, 20)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden shadow-lg group">
+                            <img src="jgjygjygjJy.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                            <div class="relative z-10 text-[10px] font-tech text-white font-bold">
+                                <div class="text-accent">Spike Punk</div>
+                                <div class="text-neutral-300">HP: 130 | ATK: 20</div>
+                            </div>
                         </div>
-                        <div onclick="selectCharacter('Void Guardian', '75% 100%', 160, 24)" class="cursor-pointer rounded-xl border border-accent/40 fighter-avatar h-36 glass-panel glass-panel-hover flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/50 shadow-lg" style="background-position: 75% 100%;">
-                            <span class="bg-black/80 px-1.5 py-0.5 rounded">Guardian (HP: 160 | ATK: 24)</span>
+
+                        <!-- Personaje 6 -->
+                        <div onclick="selectCharacter('Red Vanguard', 'htfhfhhfhf.png', 105, 24)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden shadow-lg group">
+                            <img src="htfhfhhfhf.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                            <div class="relative z-10 text-[10px] font-tech text-white font-bold">
+                                <div class="text-accent">Red Vanguard</div>
+                                <div class="text-neutral-300">HP: 105 | ATK: 24</div>
+                            </div>
                         </div>
-                        <div onclick="selectCharacter('Dark Specter', '100% 100%', 110, 30)" class="cursor-pointer rounded-xl border border-accent/40 fighter-avatar h-36 glass-panel glass-panel-hover flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/50 shadow-lg" style="background-position: 100% 100%;">
-                            <span class="bg-black/80 px-1.5 py-0.5 rounded">Specter (HP: 110 | ATK: 30)</span>
+
+                        <!-- Personaje 7 -->
+                        <div onclick="selectCharacter('Dark Ronin', 'grdgdrgdrg.png', 115, 27)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden shadow-lg group">
+                            <img src="grdgdrgdrg.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                            <div class="relative z-10 text-[10px] font-tech text-white font-bold">
+                                <div class="text-accent">Dark Ronin</div>
+                                <div class="text-neutral-300">HP: 115 | ATK: 27</div>
+                            </div>
+                        </div>
+
+                        <!-- Personaje 8 -->
+                        <div onclick="selectCharacter('JEGALUX PRIME', 'Collage cyberpunk de 15 personajes neón.png', 160, 35)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden shadow-lg group">
+                            <img src="Collage cyberpunk de 15 personajes neón.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                            <div class="relative z-10 text-[10px] font-tech text-white font-bold">
+                                <div class="text-accent">JEGALUX PRIME</div>
+                                <div class="text-neutral-300">HP: 160 | ATK: 35</div>
+                            </div>
+                        </div>
+
+                        <!-- Personaje 9 -->
+                        <div onclick="selectCharacter('Street Jersey', 'jygjygjigjg.png', 90, 29)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden shadow-lg group">
+                            <img src="jygjygjigjg.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                            <div class="relative z-10 text-[10px] font-tech text-white font-bold">
+                                <div class="text-accent">Street Jersey</div>
+                                <div class="text-neutral-300">HP: 90 | ATK: 29</div>
+                            </div>
+                        </div>
+
+                        <!-- Personaje 10 -->
+                        <div onclick="selectCharacter('Cyber Goth', 'gdrgdgrdgd.png', 110, 23)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden shadow-lg group">
+                            <img src="gdrgdgrdgd.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                            <div class="relative z-10 text-[10px] font-tech text-white font-bold">
+                                <div class="text-accent">Cyber Goth</div>
+                                <div class="text-neutral-300">HP: 110 | ATK: 23</div>
+                            </div>
+                        </div>
+
+                        <!-- Personaje 11 -->
+                        <div onclick="selectCharacter('Neo Matrix', 'grdgdgdgdgd.png', 95, 31)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden shadow-lg group">
+                            <img src="grdgdgdgdgd.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                            <div class="relative z-10 text-[10px] font-tech text-white font-bold">
+                                <div class="text-accent">Neo Matrix</div>
+                                <div class="text-neutral-300">HP: 95 | ATK: 31</div>
+                            </div>
+                        </div>
+
+                        <!-- Personaje 12 -->
+                        <div onclick="selectCharacter('Plasma Brawler', 'wadwdfergfef.png', 140, 21)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden shadow-lg group">
+                            <img src="wadwdfergfef.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                            <div class="relative z-10 text-[10px] font-tech text-white font-bold">
+                                <div class="text-accent">Plasma Brawler</div>
+                                <div class="text-neutral-300">HP: 140 | ATK: 21</div>
+                            </div>
+                        </div>
+
+                        <!-- Personaje 13 -->
+                        <div onclick="selectCharacter('Neon Glitch', 'dwadadawda.png', 85, 33)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden shadow-lg group">
+                            <img src="dwadadawda.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                            <div class="relative z-10 text-[10px] font-tech text-white font-bold">
+                                <div class="text-accent">Neon Glitch</div>
+                                <div class="text-neutral-300">HP: 85 | ATK: 33</div>
+                            </div>
+                        </div>
+
+                        <!-- Personaje 14 -->
+                        <div onclick="selectCharacter('Dark Chemist', 'dwadawdawdad.png', 100, 27)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden shadow-lg group">
+                            <img src="dwadawdawdad.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                            <div class="relative z-10 text-[10px] font-tech text-white font-bold">
+                                <div class="text-accent">Dark Chemist</div>
+                                <div class="text-neutral-300">HP: 100 | ATK: 27</div>
+                            </div>
+                        </div>
+
+                        <!-- Personaje 15 -->
+                        <div onclick="selectCharacter('Shadow Specter', 'dwadawdawdadw.png', 125, 26)" class="cursor-pointer rounded-xl border border-accent/40 h-44 glass-panel glass-panel-hover flex flex-col justify-end p-2.5 relative overflow-hidden shadow-lg group">
+                            <img src="dwadawdawdadw.png" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                            <div class="relative z-10 text-[10px] font-tech text-white font-bold">
+                                <div class="text-accent">Shadow Specter</div>
+                                <div class="text-neutral-300">HP: 125 | ATK: 26</div>
+                            </div>
                         </div>
 
                     </div>
@@ -544,7 +638,9 @@
             <!-- Si ya inició sesión (Perfil activo) -->
             <div id="userProfileView" class="hidden space-y-4 font-tech text-xs">
                 <div class="flex items-center gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10">
-                    <div id="profileAvatarBox" class="w-16 h-16 rounded-xl fighter-avatar border-2 border-accent shadow-lg" style="background-position: 0% 0%;"></div>
+                    <div id="profileAvatarBox" class="w-16 h-16 rounded-xl overflow-hidden border-2 border-accent shadow-lg">
+                        <img id="profileAvatarImg" src="htfhfhtff.png" class="w-full h-full object-cover" />
+                    </div>
                     <div class="space-y-1">
                         <div class="flex items-center gap-2">
                             <span id="profileUserEmail" class="text-accent font-bold">operativo@jegalux.com</span>
@@ -560,13 +656,13 @@
 
                 <div class="space-y-2">
                     <label class="block text-neutral-400">SELECCIONAR AVATAR DE LA PLANTILLA</label>
-                    <select id="selectAvatarPos" onchange="previewAvatar(this.value)" class="w-full bg-obsidian border border-white/10 rounded p-2.5 text-white focus:border-accent outline-none">
-                        <option value="0% 0%">Viper Punk (Fila 1, Col 1)</option>
-                        <option value="25% 0%">Cyber Geisha (Fila 1, Col 2)</option>
-                        <option value="50% 0%">Neon Valkyrie (Fila 1, Col 3)</option>
-                        <option value="75% 0%">Riot Brawler (Fila 1, Col 4)</option>
-                        <option value="100% 0%">Shadow Assassin (Fila 1, Col 5)</option>
-                        <option value="50% 50%">JEGALUX PRIME (Centro)</option>
+                    <select id="selectAvatarFile" onchange="previewAvatar(this.value)" class="w-full bg-obsidian border border-white/10 rounded p-2.5 text-white focus:border-accent outline-none">
+                        <option value="htfhfhtff.png">Shadow Hood</option>
+                        <option value="gdgrdgdgr.png">Neon Blue</option>
+                        <option value="gdgrdgdggr.png">Mohawk Striker</option>
+                        <option value="htfhtfhtfhtf.png">Cyber Vest</option>
+                        <option value="jgjygjygjJy.png">Spike Punk</option>
+                        <option value="Collage cyberpunk de 15 personajes neón.png">JEGALUX PRIME</option>
                     </select>
                 </div>
 
@@ -667,7 +763,7 @@
             level: 1,
             xp: 0,
             points: 0,
-            avatarPos: "0% 0%"
+            avatarFile: "htfhfhtff.png"
         };
 
         function loadUserData() {
@@ -685,7 +781,7 @@
 
         function updateUIState() {
             document.getElementById('headerName').innerText = userNexus.username.toUpperCase();
-            document.getElementById('headerAvatar').style.backgroundPosition = userNexus.avatarPos;
+            document.getElementById('headerAvatarImg').src = userNexus.avatarFile;
             document.getElementById('lblPlayerName').innerText = userNexus.username.toUpperCase();
             document.getElementById('lblLevel').innerText = userNexus.level;
             document.getElementById('lblScore').innerText = userNexus.points + ' PTS';
@@ -696,8 +792,8 @@
                 document.getElementById('profileUserEmail').innerText = userNexus.email;
                 document.getElementById('profileAuthType').innerText = `Vinculado vía ${userNexus.provider} ID`;
                 document.getElementById('editUsername').value = userNexus.username;
-                document.getElementById('selectAvatarPos').value = userNexus.avatarPos;
-                document.getElementById('profileAvatarBox').style.backgroundPosition = userNexus.avatarPos;
+                document.getElementById('selectAvatarFile').value = userNexus.avatarFile;
+                document.getElementById('profileAvatarImg').src = userNexus.avatarFile;
                 document.getElementById('profileLevel').innerText = userNexus.level;
                 document.getElementById('profileXp').innerText = `${userNexus.xp} / ${userNexus.level * 500} XP`;
                 document.getElementById('profilePoints').innerText = userNexus.points + ' PTS';
@@ -725,14 +821,14 @@
             document.getElementById('profileModal').classList.add('hidden');
         }
 
-        function previewAvatar(pos) {
-            document.getElementById('profileAvatarBox').style.backgroundPosition = pos;
+        function previewAvatar(file) {
+            document.getElementById('profileAvatarImg').src = file;
         }
 
         function saveProfile() {
             playCyberpunkSound('click');
             userNexus.username = document.getElementById('editUsername').value || "OPERATIVO";
-            userNexus.avatarPos = document.getElementById('selectAvatarPos').value;
+            userNexus.avatarFile = document.getElementById('selectAvatarFile').value;
             saveUserData();
             closeProfileModal();
             triggerToast('¡PERFIL DE NEXUS ID ACTUALIZADO!');
@@ -750,7 +846,7 @@
             saveUserData();
         }
 
-        // --- SONIDO ULTRA SUTIL AL PASAR EL CURSOR ---
+        // --- SONIDO SUTIL AL PASAR EL CURSOR ---
         let audioCtx = null;
         function playCyberpunkSound(type) {
             try {
@@ -775,7 +871,7 @@
             } catch (e) {}
         }
 
-        // --- CARRITO Y PAGO (APPLE PAY) ---
+        // --- CARRITO Y PAGO ---
         let cart = { item: "JEGALUX OSCURO", price: 37.22, size: "M", quantity: 1 };
 
         function selectSize(size, btn) {
@@ -830,12 +926,12 @@
             triggerToast('¡COMPRA EXITOSA! +1,000 XP AÑADIDOS A TU NEXUS ID');
         }
 
-        // --- LÓGICA ARCADE 1V1 (15 PERSONAJES) ---
+        // --- LÓGICA ARCADE 1V1 ---
         const rivalsList = [
-            { name: "Cyber Geisha", hp: 90, atk: 28, desc: "Asesina cibernética de alta precisión." },
-            { name: "Neon Valkyrie", hp: 110, atk: 22, desc: "Guerrera con trenzas de fibra óptica letal." },
-            { name: "Riot Brawler", hp: 130, atk: 20, desc: "Luchador sin camiseta de fuerza bruta." },
-            { name: "Subway Stalker", hp: 105, atk: 23, desc: "Acechador rápido de los túneles oscuros." },
+            { name: "Neon Blue", hp: 95, atk: 28, desc: "Asesina cibernética ágil." },
+            { name: "Mohawk Striker", hp: 120, atk: 22, desc: "Luchador con fuerza bruta imparable." },
+            { name: "Cyber Vest", hp: 100, atk: 26, desc: "Especialista en tácticas de asalto." },
+            { name: "Red Vanguard", hp: 105, atk: 24, desc: "Guerrero táctico de primera línea." },
             { name: "JEGALUX PRIME BOSS", hp: 160, atk: 35, desc: "El reflejo oscuro supremo. Tu prueba final." }
         ];
 
@@ -850,9 +946,9 @@
             isDefending: false
         };
 
-        function selectCharacter(name, pos, hp, atk) {
+        function selectCharacter(name, file, hp, atk) {
             playCyberpunkSound('click');
-            userNexus.avatarPos = pos;
+            userNexus.avatarFile = file;
             gameState.playerMaxHp = hp;
             gameState.playerHp = hp;
             gameState.playerAtk = atk;
