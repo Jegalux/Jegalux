@@ -83,6 +83,12 @@
             will-change: background-position;
         }
 
+        /* Estilos profesionales para recortes de personajes de la cuadrícula */
+        .fighter-avatar {
+            background-image: url('Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg');
+            background-size: 500% 300%;
+        }
+
         /* Efecto de cristal oscuro avanzado con brillos de borde y sombras profundas */
         .glass-panel {
             background: linear-gradient(135deg, rgba(18, 18, 26, 0.82) 0%, rgba(9, 9, 13, 0.9) 100%);
@@ -100,7 +106,6 @@
             box-shadow: 0 20px 50px 0 rgba(255, 85, 0, 0.18), inset 0 1px 0 0 rgba(255, 85, 0, 0.3);
         }
 
-        /* Tarjetas con profundidad 3D y sensibilidad equilibrada */
         .tilt-card {
             transform-style: preserve-3d;
             perspective: 1000px;
@@ -220,21 +225,21 @@
         </div>
     </section>
 
-    <!-- 3. NUEVA SECCIÓN: VIDEOJUEGO SHADOW ARENA 1V1 -->
+    <!-- 3. SECCIÓN DEL VIDEOJUEGO SHADOW ARENA 1V1 (CON LOS 15 PERSONAJES PRO) -->
     <section id="arena" class="py-24 relative z-10 border-b border-white/5 bg-void/60 backdrop-blur-xl">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// ARCADE PROTOCOL v2.06</span>
+                <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// ARCADE PROTOCOL v2.10 PRO</span>
                 <h2 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // 1V1 DUEL</h2>
                 <p class="text-neutral-400 font-sans text-xs md:text-sm mt-3">
-                    Neo-Tokyo 2026. Los clanes callejeros compiten por el dominio de la sombra. Elige tu Operativo, derrota a los 14 rivales en duelos 1v1 y asciende de nivel para reclamar el título supremo.
+                    Neo-Tokyo 2026. Selecciona tu operativo de élite o desafía a los 14 luchadores callejeros en combates 1v1 con narrativa, puntos y niveles dinámicos.
                 </p>
             </div>
 
             <!-- CONTENEDOR PRINCIPAL DEL JUEGO -->
             <div class="glass-panel rounded-2xl p-6 md:p-10 shadow-2xl border border-accent/30 relative overflow-hidden">
                 
-                <!-- ESTADÍSTICAS GLOBALES DEL JUGADOR -->
+                <!-- ESTADÍSTICAS GLOBALES -->
                 <div id="gameStatsHeader" class="flex flex-wrap justify-between items-center bg-obsidian/80 p-4 rounded-xl border border-white/10 mb-8 font-tech text-xs">
                     <div class="flex items-center gap-3">
                         <span class="text-accent font-bold">OPERATIVO:</span> <span id="lblPlayerName" class="text-white">JEGALUX</span>
@@ -250,83 +255,138 @@
                     </div>
                 </div>
 
-                <!-- FASE 1: SELECCIÓN DE PERSONAJE -->
+                <!-- FASE 1: SELECCIÓN DE PERSONAJE CON LOS 15 DE LA CUADRÍCULA -->
                 <div id="charSelectScreen" class="space-y-6">
-                    <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECCIONA TU LUCHADOR</h3>
+                    <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECCIONA TU OPERATIVO</h3>
                     
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-                        <!-- Personaje Principal: JEGALUX -->
+                    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 max-h-[480px] overflow-y-auto pr-2">
+                        
+                        <!-- 1. JEGALUX (Protagonista) -->
                         <div onclick="selectCharacter('JEGALUX', 'El portador de la sombra absoluta', 120, 25)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover border-accent group" onmouseenter="playCyberpunkSound('hover')">
                             <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian border border-accent/40 flex items-center justify-center">
                                 <img src="logo.png" alt="JEGALUX" class="h-20 w-auto object-contain group-hover:scale-110 transition" />
                             </div>
-                            <h4 class="font-display font-bold text-sm text-accent">JEGALUX</h4>
-                            <p class="text-[10px] font-tech text-neutral-400">ATK: 25 | HP: 120</p>
+                            <h4 class="font-display font-bold text-xs text-accent">JEGALUX</h4>
+                            <p class="text-[9px] font-tech text-neutral-400">ATK: 25 | HP: 120</p>
                         </div>
-                        <!-- Los 14 Luchadores de la Cuadrícula -->
+
+                        <!-- 2. Viper Punk (Fila 1, Col 1) -->
                         <div onclick="selectCharacter('Viper Punk', 'Reina del caos callejero con púas', 100, 22)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
-                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
-                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 0% 0%;" alt="Viper Punk" class="w-full h-full object-cover group-hover:scale-110 transition" />
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian relative">
+                                <div class="w-full h-full fighter-avatar" style="background-position: 0% 0%;"></div>
                             </div>
-                            <h4 class="font-display font-bold text-xs text-white">01. Viper Punk</h4>
-                            <p class="text-[10px] font-tech text-neutral-400">ATK: 22 | HP: 100</p>
+                            <h4 class="font-display font-bold text-[11px] text-white">Viper Punk</h4>
+                            <p class="text-[9px] font-tech text-neutral-400">ATK: 22 | HP: 100</p>
                         </div>
+
+                        <!-- 3. Cyber Geisha (Fila 1, Col 2) -->
                         <div onclick="selectCharacter('Cyber Geisha', 'Asesina cibernética de alta precisión', 90, 28)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
-                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
-                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 20% 0%;" alt="Cyber Geisha" class="w-full h-full object-cover group-hover:scale-110 transition" />
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian relative">
+                                <div class="w-full h-full fighter-avatar" style="background-position: 25% 0%;"></div>
                             </div>
-                            <h4 class="font-display font-bold text-xs text-white">02. Cyber Geisha</h4>
-                            <p class="text-[10px] font-tech text-neutral-400">ATK: 28 | HP: 90</p>
+                            <h4 class="font-display font-bold text-[11px] text-white">Cyber Geisha</h4>
+                            <p class="text-[9px] font-tech text-neutral-400">ATK: 28 | HP: 90</p>
                         </div>
+
+                        <!-- 4. Neon Valkyrie (Fila 1, Col 3) -->
                         <div onclick="selectCharacter('Neon Valkyrie', 'Guerrera con trenzas de fibra óptica', 110, 20)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
-                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
-                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 40% 0%;" alt="Neon Valkyrie" class="w-full h-full object-cover group-hover:scale-105 transition" />
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian relative">
+                                <div class="w-full h-full fighter-avatar" style="background-position: 50% 0%;"></div>
                             </div>
-                            <h4 class="font-display font-bold text-xs text-white">03. Neon Valkyrie</h4>
-                            <p class="text-[10px] font-tech text-neutral-400">ATK: 20 | HP: 110</p>
+                            <h4 class="font-display font-bold text-[11px] text-white">Neon Valkyrie</h4>
+                            <p class="text-[9px] font-tech text-neutral-400">ATK: 20 | HP: 110</p>
                         </div>
-                        <div onclick="selectCharacter('Riot Brawler', 'Luchador sin camiseta de la vieja escuela', 130, 18)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
-                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
-                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 60% 0%;" alt="Riot Brawler" class="w-full h-full object-cover group-hover:scale-105 transition" />
+
+                        <!-- 5. Riot Brawler (Fila 1, Col 4) -->
+                        <div onclick="selectCharacter('Riot Brawler', 'Luchador sin camiseta de fuerza bruta', 130, 18)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian relative">
+                                <div class="w-full h-full fighter-avatar" style="background-position: 75% 0%;"></div>
                             </div>
-                            <h4 class="font-display font-bold text-xs text-white">04. Riot Brawler</h4>
-                            <p class="text-[10px] font-tech text-neutral-400">ATK: 18 | HP: 130</p>
+                            <h4 class="font-display font-bold text-[11px] text-white">Riot Brawler</h4>
+                            <p class="text-[9px] font-tech text-neutral-400">ATK: 18 | HP: 130</p>
                         </div>
-                        <div onclick="selectCharacter('Harness Queen', 'Estratega táctica de los distritos bajos', 95, 26)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
-                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
-                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 80% 0%;" alt="Harness Queen" class="w-full h-full object-cover group-hover:scale-105 transition" />
+
+                        <!-- 6. Harness Queen (Fila 1, Col 5) -->
+                        <div onclick="selectCharacter('Harness Queen', 'Estratega táctica de los distritos', 95, 26)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian relative">
+                                <div class="w-full h-full fighter-avatar" style="background-position: 100% 0%;"></div>
                             </div>
-                            <h4 class="font-display font-bold text-xs text-white">05. Harness Queen</h4>
-                            <p class="text-[10px] font-tech text-neutral-400">ATK: 26 | HP: 95</p>
+                            <h4 class="font-display font-bold text-[11px] text-white">Harness Queen</h4>
+                            <p class="text-[9px] font-tech text-neutral-400">ATK: 26 | HP: 95</p>
                         </div>
-                        <div onclick="selectCharacter('Iron Dread', 'Especialista en artes marciales urbanas', 105, 22)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
-                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
-                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 0% 50%;" alt="Iron Dread" class="w-full h-full object-cover group-hover:scale-105 transition" />
+
+                        <!-- 7. Goth Assassin (Fila 2, Col 1) -->
+                        <div onclick="selectCharacter('Goth Assassin', 'Maestra de combate con arnés oscuro', 95, 27)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian relative">
+                                <div class="w-full h-full fighter-avatar" style="background-position: 0% 50%;"></div>
                             </div>
-                            <h4 class="font-display font-bold text-xs text-white">06. Iron Dread</h4>
-                            <p class="text-[10px] font-tech text-neutral-400">ATK: 22 | HP: 105</p>
+                            <h4 class="font-display font-bold text-[11px] text-white">Goth Assassin</h4>
+                            <p class="text-[9px] font-tech text-neutral-400">ATK: 27 | HP: 95</p>
                         </div>
-                        <div onclick="selectCharacter('Yakuza Zero', 'Veterano de las mafias digitales', 115, 24)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
-                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
-                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 20% 50%;" alt="Yakuza Zero" class="w-full h-full object-cover group-hover:scale-105 transition" />
+
+                        <!-- 8. Street Samurai (Fila 2, Col 2) -->
+                        <div onclick="selectCharacter('Street Samurai', 'Veterano con gorra y campera Yakuza', 115, 23)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian relative">
+                                <div class="w-full h-full fighter-avatar" style="background-position: 25% 50%;"></div>
                             </div>
-                            <h4 class="font-display font-bold text-xs text-white">07. Yakuza Zero</h4>
-                            <p class="text-[10px] font-tech text-neutral-400">ATK: 24 | HP: 115</p>
+                            <h4 class="font-display font-bold text-[11px] text-white">Street Samurai</h4>
+                            <p class="text-[9px] font-tech text-neutral-400">ATK: 23 | HP: 115</p>
                         </div>
-                        <div onclick="selectCharacter('Shadow Blade', 'Maestro de la katana de plasma', 100, 30)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
-                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
-                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 60% 50%;" alt="Shadow Blade" class="w-full h-full object-cover group-hover:scale-105 transition" />
+
+                        <!-- 9. Shadow Ronin (Fila 2, Col 4) -->
+                        <div onclick="selectCharacter('Shadow Ronin', 'Guerrero místico de la larga melena', 105, 29)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian relative">
+                                <div class="w-full h-full fighter-avatar" style="background-position: 75% 50%;"></div>
                             </div>
-                            <h4 class="font-display font-bold text-xs text-white">08. Shadow Blade</h4>
-                            <p class="text-[10px] font-tech text-neutral-400">ATK: 30 | HP: 100</p>
+                            <h4 class="font-display font-bold text-[11px] text-white">Shadow Ronin</h4>
+                            <p class="text-[9px] font-tech text-neutral-400">ATK: 29 | HP: 105</p>
                         </div>
-                        <div onclick="selectCharacter('Toxic Spike', 'Guerrero anarquista acorazado', 125, 19)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
-                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
-                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 80% 50%;" alt="Toxic Spike" class="w-full h-full object-cover group-hover:scale-105 transition" />
+
+                        <!-- 10. Spike Berserker (Fila 2, Col 5) -->
+                        <div onclick="selectCharacter('Spike Berserker', 'Bravucón con bebidas energéticas', 125, 20)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian relative">
+                                <div class="w-full h-full fighter-avatar" style="background-position: 100% 50%;"></div>
                             </div>
-                            <h4 class="font-display font-bold text-xs text-white">09. Toxic Spike</h4>
-                            <p class="text-[10px] font-tech text-neutral-400">ATK: 19 | HP: 125</p>
+                            <h4 class="font-display font-bold text-[11px] text-white">Spike Berserker</h4>
+                            <p class="text-[9px] font-tech text-neutral-400">ATK: 20 | HP: 125</p>
                         </div>
+
+                        <!-- 11. Punk Outlaw (Fila 3, Col 1) -->
+                        <div onclick="selectCharacter('Punk Outlaw', 'Anarquista de chaleco con tachuelas', 100, 24)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian relative">
+                                <div class="w-full h-full fighter-avatar" style="background-position: 0% 100%;"></div>
+                            </div>
+                            <h4 class="font-display font-bold text-[11px] text-white">Punk Outlaw</h4>
+                            <p class="text-[9px] font-tech text-neutral-400">ATK: 24 | HP: 100</p>
+                        </div>
+
+                        <!-- 12. Urban Enforcer (Fila 3, Col 2) -->
+                        <div onclick="selectCharacter('Urban Enforcer', 'Sicario callejero con cresta lateral', 105, 26)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian relative">
+                                <div class="w-full h-full fighter-avatar" style="background-position: 25% 100%;"></div>
+                            </div>
+                            <h4 class="font-display font-bold text-[11px] text-white">Urban Enforcer</h4>
+                            <p class="text-[9px] font-tech text-neutral-400">ATK: 26 | HP: 105</p>
+                        </div>
+
+                        <!-- 13. Neon Brawler (Fila 3, Col 4) -->
+                        <div onclick="selectCharacter('Neon Brawler', 'Luchador con guantes de plasma rojo', 110, 25)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian relative">
+                                <div class="w-full h-full fighter-avatar" style="background-position: 75% 100%;"></div>
+                            </div>
+                            <h4 class="font-display font-bold text-[11px] text-white">Neon Brawler</h4>
+                            <p class="text-[9px] font-tech text-neutral-400">ATK: 25 | HP: 110</p>
+                        </div>
+
+                        <!-- 14. Riot Guard (Fila 3, Col 5) -->
+                        <div onclick="selectCharacter('Riot Guard', 'Especialista blindado anti-disturbios', 135, 17)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian relative">
+                                <div class="w-full h-full fighter-avatar" style="background-position: 100% 100%;"></div>
+                            </div>
+                            <h4 class="font-display font-bold text-[11px] text-white">Riot Guard</h4>
+                            <p class="text-[9px] font-tech text-neutral-400">ATK: 17 | HP: 135</p>
+                        </div>
+
                     </div>
 
                     <div class="text-center pt-4">
@@ -395,7 +455,7 @@
                     </div>
                 </div>
 
-                <!-- FASE 3: VICTORIA / DERROTA / SIGUIENTE RIVAL -->
+                <!-- FASE 3: VICTORIA / DERROTA -->
                 <div id="endGameScreen" class="hidden text-center space-y-6 py-8">
                     <h3 id="endGameTitle" class="font-display font-bold text-3xl text-accent uppercase">¡VICTORIA EN EL DUELO!</h3>
                     <p id="endGameDesc" class="text-sm text-neutral-300">Has derrotado al oponente y ganado valiosos puntos de experiencia.</p>
@@ -420,7 +480,6 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
-                <!-- Garment Image Column -->
                 <div class="lg:col-span-7 relative group tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                     <div class="absolute -inset-1 bg-gradient-to-r from-accent/20 to-transparent rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity"></div>
                     <div class="relative glass-panel rounded-xl overflow-hidden shadow-2xl">
@@ -437,7 +496,6 @@
                     </div>
                 </div>
 
-                <!-- Garment Specs Column -->
                 <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl tilt-card relative overflow-hidden shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                     <div class="border-b border-white/10 pb-5">
                         <div class="flex justify-between items-baseline mb-2">
@@ -464,7 +522,6 @@
                         </div>
                     </div>
 
-                    <!-- Size Selection -->
                     <div class="pt-2">
                         <div class="flex justify-between items-center mb-2 font-tech text-xs text-neutral-400">
                             <span>SELECT FIT:</span>
@@ -479,7 +536,6 @@
                         </div>
                     </div>
 
-                    <!-- Primary Actions -->
                     <div class="space-y-3 pt-3">
                         <button 
                             onclick="playCyberpunkSound('click'); triggerToast('ADDED TO CART: JEGALUX OSCURO ($37.22)')" 
@@ -502,7 +558,7 @@
         </div>
     </section>
 
-    <!-- 5. CRAFTED WITH INTENT / PROCESS -->
+    <!-- 5. PROCESS -->
     <section id="process" class="py-20 md:py-28 relative z-10 border-y border-white/5 bg-black/40 backdrop-blur-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16" onmouseenter="playCyberpunkSound('cyber')">
@@ -511,7 +567,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- STAGE 01 -->
                 <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                     <div class="h-64 overflow-hidden relative">
                         <img src="1e85e61a-723b-4751-b081-961a9c9bf287.jpg" alt="Embroidery" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
@@ -524,7 +579,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- STAGE 02 -->
                 <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                     <div class="h-64 overflow-hidden relative">
                         <img src="ea5e7534-dd0e-4d1c-84c2-a8f7543243a1.jpg" alt="Obscure Atelier Studio" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
@@ -537,7 +591,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- STAGE 03 -->
                 <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                     <div class="h-64 overflow-hidden relative">
                         <img src="accb1452-469b-4746-9017-64ce56cf296b.jpg" alt="Detail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
@@ -554,7 +607,7 @@
         </div>
     </section>
 
-    <!-- 6. PHILOSOPHY SECTION -->
+    <!-- 6. MANIFESTO -->
     <section id="manifesto" class="py-20 md:py-28 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="glass-panel rounded-2xl p-8 md:p-14 relative overflow-hidden tilt-card shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
@@ -650,20 +703,20 @@
 
         // --- LÓGICA DEL MINIJUEGO 1V1 ARCADE ---
         const rivalsList = [
-            { name: "Viper Punk", hp: 90, atk: 20, desc: "Reina del caos callejero con púas de plasma." },
-            { name: "Cyber Geisha", hp: 95, atk: 24, desc: "Asesina cibernética de alta precisión." },
-            { name: "Neon Valkyrie", hp: 100, atk: 22, desc: "Guerrera con trenzas de fibra óptica letal." },
-            { name: "Riot Brawler", hp: 120, atk: 18, desc: "Luchador sin camiseta de fuerza bruta." },
-            { name: "Harness Queen", hp: 90, atk: 26, desc: "Estratega táctica de los distritos bajos." },
-            { name: "Iron Dread", hp: 110, atk: 21, desc: "Especialista en artes marciales urbanas." },
-            { name: "Yakuza Zero", hp: 115, atk: 23, desc: "Veterano de las mafias digitales." },
-            { name: "Shadow Blade", hp: 95, atk: 29, desc: "Maestro de la katana de plasma oscura." },
-            { name: "Toxic Spike", hp: 125, atk: 19, desc: "Guerrero anarquista acorazado." },
-            { name: "Cyber Street 10", hp: 105, atk: 22, desc: "Luchador clandestino del distrito 4." },
-            { name: "Cyber Street 11", hp: 110, atk: 24, desc: "Experto en contraataques digitales." },
-            { name: "Cyber Street 12", hp: 115, atk: 25, desc: "Mercenario de la sombra absoluta." },
-            { name: "Cyber Street 13", hp: 120, atk: 26, desc: "Líder de la resistencia Neo-Tokyo." },
-            { name: "JEGALUX BOSS", hp: 150, atk: 32, desc: "El reflejo oscuro supremo. Tu prueba final." }
+            { name: "Viper Punk", hp: 100, atk: 22, desc: "Reina del caos callejero con púas de plasma." },
+            { name: "Cyber Geisha", hp: 90, atk: 28, desc: "Asesina cibernética de alta precisión." },
+            { name: "Neon Valkyrie", hp: 110, atk: 20, desc: "Guerrera con trenzas de fibra óptica letal." },
+            { name: "Riot Brawler", hp: 130, atk: 18, desc: "Luchador sin camiseta de fuerza bruta." },
+            { name: "Harness Queen", hp: 95, atk: 26, desc: "Estratega táctica de los distritos bajos." },
+            { name: "Goth Assassin", hp: 95, atk: 27, desc: "Maestra de combate con arnés oscuro." },
+            { name: "Street Samurai", hp: 115, atk: 23, desc: "Veterano con gorra y campera Yakuza." },
+            { name: "Shadow Ronin", hp: 105, atk: 29, desc: "Guerrero místico de la larga melena." },
+            { name: "Spike Berserker", hp: 125, atk: 20, desc: "Bravucón con bebidas energéticas." },
+            { name: "Punk Outlaw", hp: 100, atk: 24, desc: "Anarquista de chaleco con tachuelas." },
+            { name: "Urban Enforcer", hp: 105, atk: 26, desc: "Sicario callejero con cresta lateral." },
+            { name: "Neon Brawler", hp: 110, atk: 25, desc: "Luchador con guantes de plasma rojo." },
+            { name: "Riot Guard", hp: 135, atk: 17, desc: "Especialista blindado anti-disturbios." },
+            { name: "JEGALUX BOSS", hp: 160, atk: 33, desc: "El reflejo oscuro supremo. Tu prueba final." }
         ];
 
         let gameState = {
@@ -674,9 +727,9 @@
             level: 1,
             score: 0,
             currentRivalIndex: 0,
-            rivalHp: 90,
-            rivalMaxHp: 90,
-            rivalAtk: 20,
+            rivalHp: 100,
+            rivalMaxHp: 100,
+            rivalAtk: 22,
             isDefending: false
         };
 
@@ -699,10 +752,10 @@
 
         function loadRival() {
             if (gameState.currentRivalIndex >= rivalsList.length) {
-                gameState.currentRivalIndex = 0; // Bucle infinito de campeones
+                gameState.currentRivalIndex = 0;
             }
             const rival = rivalsList[gameState.currentRivalIndex];
-            gameState.rivalMaxHp = rival.hp + (gameState.level * 5);
+            gameState.rivalMaxHp = rival.hp + (gameState.level * 6);
             gameState.rivalHp = gameState.rivalMaxHp;
             gameState.rivalAtk = rival.atk + gameState.level;
 
@@ -721,7 +774,7 @@
             const rPct = Math.max(0, (gameState.rivalHp / gameState.rivalMaxHp) * 100);
 
             document.getElementById('playerHpBar').style.width = pPct + '%';
-            document.getElementById('playerHpText',).innerText = `${Math.ceil(gameState.playerHp)} / ${gameState.playerMaxHp} HP`;
+            document.getElementById('playerHpText').innerText = `${Math.ceil(gameState.playerHp)} / ${gameState.playerMaxHp} HP`;
 
             document.getElementById('rivalHpBar').style.width = rPct + '%';
             document.getElementById('rivalHpText').innerText = `${Math.ceil(gameState.rivalHp)} / ${gameState.rivalMaxHp} HP`;
@@ -809,14 +862,14 @@
 
             if (isVictory) {
                 playCyberpunkSound('cyber');
-                gameState.score += 250 * gameState.level;
+                gameState.score += 300 * gameState.level;
                 gameState.level += 1;
                 document.getElementById('lblScore').innerText = gameState.score + ' PTS';
                 document.getElementById('lblLevel').innerText = gameState.level;
 
                 title.className = "font-display font-bold text-3xl text-accent uppercase";
                 title.innerText = "¡VICTORIA EN EL DUELO!";
-                desc.innerText = `Has superado al oponente. +${250 * (gameState.level - 1)} PUNTOS obtenidos. Tu nivel de Operativo ha aumentado a ${gameState.level}.`;
+                desc.innerText = `Has superado al oponente. +${300 * (gameState.level - 1)} PUNTOS obtenidos. Tu nivel de Operativo ha aumentado a ${gameState.level}.`;
                 btnNext.innerText = "SIGUIENTE RIVAL";
                 gameState.currentRivalIndex++;
             } else {
@@ -873,7 +926,6 @@
             }
         }
 
-        // Movimiento 3D con sensibilidad equilibrada y elegante
         function handleTilt(e, card) {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
