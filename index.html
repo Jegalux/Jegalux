@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEGALUX | Obscure Luxury Streetwear</title>
+    <title>JEGALUX | Obscure Luxury Streetwear & Arena</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
     <!-- Tailwind CSS -->
@@ -22,8 +22,8 @@
                     colors: {
                         void: '#070709',
                         obsidian: '#0d0d11',
-                        surface: 'rgba(13, 13, 17, 0.75)',
-                        'surface-light': 'rgba(27, 27, 36, 0.85)',
+                        surface: 'rgba(13, 13, 17, 0.8)',
+                        'surface-light': 'rgba(23, 23, 31, 0.85)',
                         accent: '#ff5500',
                         'accent-glow': '#ff7700',
                         'tech-gray': '#737380'
@@ -56,13 +56,13 @@
             background: #ff5500;
         }
         
-        /* Fondo de nubes infinito y borroso en todas las secciones */
+        /* Fondo de nubes infinito y realista con repetición fluida */
         .cloud-bg-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
-            height: 200vh;
+            height: 100vh;
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
@@ -71,37 +71,36 @@
 
         .cloud-bg-tile {
             position: absolute;
-            top: 0;
+            top: -50%;
             left: 0;
             width: 100vw;
-            height: 100vh;
+            height: 200vh;
             background-image: url('view-apocalyptic-dark-stormy-clouds_23-2151065786.jpg');
-            background-repeat: repeat-y;
+            background-repeat: repeat;
             background-size: cover;
-            background-position: center;
-            filter: blur(18px) brightness(0.2) contrast(1.3);
-            transform: scale(1.1);
-            will-change: transform;
+            background-position: center top;
+            filter: blur(6px) brightness(0.28) contrast(1.2);
+            will-change: background-position;
         }
 
-        /* Glassmorphism oscuro avanzado con alto desenfoque */
+        /* Efecto de cristal oscuro avanzado con brillos de borde y sombras profundas */
         .glass-panel {
-            background: rgba(13, 13, 17, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+            background: linear-gradient(135deg, rgba(18, 18, 26, 0.82) 0%, rgba(9, 9, 13, 0.9) 100%);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
         }
 
         .glass-panel-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .glass-panel-hover:hover {
-            border-color: rgba(255, 85, 0, 0.4);
-            box-shadow: 0 12px 40px 0 rgba(255, 85, 0, 0.15);
+            border-color: rgba(255, 85, 0, 0.45);
+            box-shadow: 0 20px 50px 0 rgba(255, 85, 0, 0.18), inset 0 1px 0 0 rgba(255, 85, 0, 0.3);
         }
 
-        /* Tarjetas con profundidad 3D mejorada */
+        /* Tarjetas con profundidad 3D y sensibilidad equilibrada */
         .tilt-card {
             transform-style: preserve-3d;
             perspective: 1000px;
@@ -111,9 +110,9 @@
 </head>
 <body class="bg-void text-neutral-200 font-sans selection:bg-accent selection:text-black overflow-x-hidden relative">
 
-    <!-- Fondo de nubes infinito y borroso -->
+    <!-- Fondo de nubes infinito realista -->
     <div class="cloud-bg-container">
-        <div id="cloudParallax" class="cloud-bg-tile"></div>
+        <div id="cloudInfinite" class="cloud-bg-tile"></div>
     </div>
 
     <!-- 1. HEADER / NAVIGATION -->
@@ -132,15 +131,14 @@
                 <a href="#product" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playCyberpunkSound('hover')">
                     <span class="text-accent/60 text-[10px]">01//</span>PRODUCTS
                 </a>
+                <a href="#arena" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1 text-accent font-bold" onmouseenter="playCyberpunkSound('hover')">
+                    <span class="text-accent/60 text-[10px]">02//</span>SHADOW ARENA
+                </a>
                 <a href="#process" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playCyberpunkSound('hover')">
-                    <span class="text-accent/60 text-[10px]">02//</span>PROCESS
+                    <span class="text-accent/60 text-[10px]">03//</span>PROCESS
                 </a>
                 <a href="#manifesto" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playCyberpunkSound('hover')">
-                    <span class="text-accent/60 text-[10px]">03//</span>MANIFESTO
-                </a>
-                <a href="#vip" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playCyberpunkSound('hover')">
-                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-ping"></span>
-                    VIP ACCESS
+                    <span class="text-accent/60 text-[10px]">04//</span>MANIFESTO
                 </a>
             </nav>
 
@@ -172,32 +170,31 @@
 
         <div id="mobileMenu" class="hidden md:hidden glass-panel border-b border-white/10 px-6 py-5 font-tech text-xs tracking-widest space-y-4">
             <a href="#product" class="block text-neutral-300 hover:text-accent" onmouseenter="playCyberpunkSound('hover')">01// PRODUCTS</a>
-            <a href="#process" class="block text-neutral-300 hover:text-accent" onmouseenter="playCyberpunkSound('hover')">02// PROCESS</a>
-            <a href="#manifesto" class="block text-neutral-300 hover:text-accent" onmouseenter="playCyberpunkSound('hover')">03// MANIFESTO</a>
-            <a href="#vip" class="block text-accent" onmouseenter="playCyberpunkSound('hover')">● VIP ACCESS</a>
+            <a href="#arena" class="block text-accent font-bold" onmouseenter="playCyberpunkSound('hover')">02// SHADOW ARENA (GAME)</a>
+            <a href="#process" class="block text-neutral-300 hover:text-accent" onmouseenter="playCyberpunkSound('hover')">03// PROCESS</a>
+            <a href="#manifesto" class="block text-neutral-300 hover:text-accent" onmouseenter="playCyberpunkSound('hover')">04// MANIFESTO</a>
         </div>
     </header>
 
-    <!-- 2. HERO BANNER DE ESQUINA A ESQUINA (100vw) CON ZOOM AL BAJAR Y EFECTO 3D -->
-    <section class="relative z-10 w-full border-b border-white/10 py-24 md:py-36 overflow-hidden bg-void/40 backdrop-blur-md">
-        <!-- Imagen de fondo fija de esquina a esquina (Relieve del logo con brillo bajo) -->
+    <!-- 2. HERO BANNER -->
+    <section id="heroBanner" class="relative z-10 w-full border-b border-white/10 py-24 md:py-36 overflow-hidden bg-void/40 backdrop-blur-md">
         <div class="absolute inset-0 -z-10 overflow-hidden w-full h-full">
             <img 
+                id="bannerBgImage"
                 src="Gemini_Generated_Image_34mrde34mrde34mr.jpg" 
                 alt="Relieve Logo Banner" 
-                class="w-full h-full object-cover filter brightness-[0.3] contrast-[1.25] opacity-75 scale-105"
+                class="w-full h-full object-cover filter brightness-[0.35] contrast-[1.2] opacity-80 scale-105 will-change-transform"
                 onerror="this.onerror=null; this.src='https://placehold.co/1920x800/08080a/222222?text=JEGALUX';"
             />
-            <div class="absolute inset-0 bg-gradient-to-b from-void/90 via-void/50 to-void/95"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-void/85 via-void/40 to-void/95"></div>
         </div>
 
-        <div id="bannerContainer" class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+        <div id="bannerContainer" class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative tilt-card will-change-transform glass-panel rounded-2xl py-12 md:py-16 shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-white/10 overflow-hidden" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-accent/30 text-accent font-tech text-[10px] uppercase tracking-widest mb-6">
                 <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
                 AUTUMN/WINTER PROTOCOL — EDITION 0.94
             </div>
 
-            <!-- Logo Grande -->
             <div class="flex justify-center mb-6">
                 <img 
                     src="logo.png" 
@@ -213,17 +210,207 @@
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 font-tech text-xs tracking-widest">
-                <a href="#product" class="w-full sm:w-auto px-8 py-3.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_25px_rgba(255,85,0,0.4)]" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
-                    EXPLORE COLLECTION
+                <a href="#arena" class="w-full sm:w-auto px-8 py-3.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_25px_rgba(255,85,0,0.4)]" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                    PLAY SHADOW ARENA (1V1)
                 </a>
-                <a href="#manifesto" class="w-full sm:w-auto px-8 py-3.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
-                    READ MANIFESTO
+                <a href="#product" class="w-full sm:w-auto px-8 py-3.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                    EXPLORE COLLECTION
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- 3. FLAGSHIP PRODUCT SHOWCASE -->
+    <!-- 3. NUEVA SECCIÓN: VIDEOJUEGO SHADOW ARENA 1V1 -->
+    <section id="arena" class="py-24 relative z-10 border-b border-white/5 bg-void/60 backdrop-blur-xl">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// ARCADE PROTOCOL v2.06</span>
+                <h2 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // 1V1 DUEL</h2>
+                <p class="text-neutral-400 font-sans text-xs md:text-sm mt-3">
+                    Neo-Tokyo 2026. Los clanes callejeros compiten por el dominio de la sombra. Elige tu Operativo, derrota a los 14 rivales en duelos 1v1 y asciende de nivel para reclamar el título supremo.
+                </p>
+            </div>
+
+            <!-- CONTENEDOR PRINCIPAL DEL JUEGO -->
+            <div class="glass-panel rounded-2xl p-6 md:p-10 shadow-2xl border border-accent/30 relative overflow-hidden">
+                
+                <!-- ESTADÍSTICAS GLOBALES DEL JUGADOR -->
+                <div id="gameStatsHeader" class="flex flex-wrap justify-between items-center bg-obsidian/80 p-4 rounded-xl border border-white/10 mb-8 font-tech text-xs">
+                    <div class="flex items-center gap-3">
+                        <span class="text-accent font-bold">OPERATIVO:</span> <span id="lblPlayerName" class="text-white">JEGALUX</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-accent font-bold">NIVEL:</span> <span id="lblLevel" class="text-white bg-accent/20 px-2 py-0.5 rounded">1</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-accent font-bold">PUNTOS:</span> <span id="lblScore" class="text-white font-bold">0 PTS</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-accent font-bold">RIVAL ACTUAL:</span> <span id="lblRivalCount" class="text-white">1 / 14</span>
+                    </div>
+                </div>
+
+                <!-- FASE 1: SELECCIÓN DE PERSONAJE -->
+                <div id="charSelectScreen" class="space-y-6">
+                    <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECCIONA TU LUCHADOR</h3>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                        <!-- Personaje Principal: JEGALUX -->
+                        <div onclick="selectCharacter('JEGALUX', 'El portador de la sombra absoluta', 120, 25)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover border-accent group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian border border-accent/40 flex items-center justify-center">
+                                <img src="logo.png" alt="JEGALUX" class="h-20 w-auto object-contain group-hover:scale-110 transition" />
+                            </div>
+                            <h4 class="font-display font-bold text-sm text-accent">JEGALUX</h4>
+                            <p class="text-[10px] font-tech text-neutral-400">ATK: 25 | HP: 120</p>
+                        </div>
+                        <!-- Los 14 Luchadores de la Cuadrícula -->
+                        <div onclick="selectCharacter('Viper Punk', 'Reina del caos callejero con púas', 100, 22)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
+                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 0% 0%;" alt="Viper Punk" class="w-full h-full object-cover group-hover:scale-110 transition" />
+                            </div>
+                            <h4 class="font-display font-bold text-xs text-white">01. Viper Punk</h4>
+                            <p class="text-[10px] font-tech text-neutral-400">ATK: 22 | HP: 100</p>
+                        </div>
+                        <div onclick="selectCharacter('Cyber Geisha', 'Asesina cibernética de alta precisión', 90, 28)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
+                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 20% 0%;" alt="Cyber Geisha" class="w-full h-full object-cover group-hover:scale-110 transition" />
+                            </div>
+                            <h4 class="font-display font-bold text-xs text-white">02. Cyber Geisha</h4>
+                            <p class="text-[10px] font-tech text-neutral-400">ATK: 28 | HP: 90</p>
+                        </div>
+                        <div onclick="selectCharacter('Neon Valkyrie', 'Guerrera con trenzas de fibra óptica', 110, 20)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
+                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 40% 0%;" alt="Neon Valkyrie" class="w-full h-full object-cover group-hover:scale-105 transition" />
+                            </div>
+                            <h4 class="font-display font-bold text-xs text-white">03. Neon Valkyrie</h4>
+                            <p class="text-[10px] font-tech text-neutral-400">ATK: 20 | HP: 110</p>
+                        </div>
+                        <div onclick="selectCharacter('Riot Brawler', 'Luchador sin camiseta de la vieja escuela', 130, 18)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
+                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 60% 0%;" alt="Riot Brawler" class="w-full h-full object-cover group-hover:scale-105 transition" />
+                            </div>
+                            <h4 class="font-display font-bold text-xs text-white">04. Riot Brawler</h4>
+                            <p class="text-[10px] font-tech text-neutral-400">ATK: 18 | HP: 130</p>
+                        </div>
+                        <div onclick="selectCharacter('Harness Queen', 'Estratega táctica de los distritos bajos', 95, 26)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
+                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 80% 0%;" alt="Harness Queen" class="w-full h-full object-cover group-hover:scale-105 transition" />
+                            </div>
+                            <h4 class="font-display font-bold text-xs text-white">05. Harness Queen</h4>
+                            <p class="text-[10px] font-tech text-neutral-400">ATK: 26 | HP: 95</p>
+                        </div>
+                        <div onclick="selectCharacter('Iron Dread', 'Especialista en artes marciales urbanas', 105, 22)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
+                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 0% 50%;" alt="Iron Dread" class="w-full h-full object-cover group-hover:scale-105 transition" />
+                            </div>
+                            <h4 class="font-display font-bold text-xs text-white">06. Iron Dread</h4>
+                            <p class="text-[10px] font-tech text-neutral-400">ATK: 22 | HP: 105</p>
+                        </div>
+                        <div onclick="selectCharacter('Yakuza Zero', 'Veterano de las mafias digitales', 115, 24)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
+                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 20% 50%;" alt="Yakuza Zero" class="w-full h-full object-cover group-hover:scale-105 transition" />
+                            </div>
+                            <h4 class="font-display font-bold text-xs text-white">07. Yakuza Zero</h4>
+                            <p class="text-[10px] font-tech text-neutral-400">ATK: 24 | HP: 115</p>
+                        </div>
+                        <div onclick="selectCharacter('Shadow Blade', 'Maestro de la katana de plasma', 100, 30)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
+                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 60% 50%;" alt="Shadow Blade" class="w-full h-full object-cover group-hover:scale-105 transition" />
+                            </div>
+                            <h4 class="font-display font-bold text-xs text-white">08. Shadow Blade</h4>
+                            <p class="text-[10px] font-tech text-neutral-400">ATK: 30 | HP: 100</p>
+                        </div>
+                        <div onclick="selectCharacter('Toxic Spike', 'Guerrero anarquista acorazado', 125, 19)" class="cursor-pointer glass-panel p-3 rounded-xl text-center glass-panel-hover group" onmouseenter="playCyberpunkSound('hover')">
+                            <div class="h-28 rounded-lg overflow-hidden mb-2 bg-obsidian flex items-center justify-center">
+                                <img src="Gemini_Generated_Image_3rndvd3rndvd3rnd.jpg" style="object-position: 80% 50%;" alt="Toxic Spike" class="w-full h-full object-cover group-hover:scale-105 transition" />
+                            </div>
+                            <h4 class="font-display font-bold text-xs text-white">09. Toxic Spike</h4>
+                            <p class="text-[10px] font-tech text-neutral-400">ATK: 19 | HP: 125</p>
+                        </div>
+                    </div>
+
+                    <div class="text-center pt-4">
+                        <button onclick="startGame()" class="px-8 py-3 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg shadow-accent/30" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                            INICIAR DUELO 1V1
+                        </button>
+                    </div>
+                </div>
+
+                <!-- FASE 2: PANTALLA DE COMBATE 1V1 -->
+                <div id="battleScreen" class="hidden space-y-8">
+                    <!-- Marcador de Combate -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-obsidian/60 p-6 rounded-xl border border-white/10">
+                        
+                        <!-- Jugador -->
+                        <div class="space-y-3">
+                            <div class="flex justify-between font-tech text-xs">
+                                <span id="battlePlayerName" class="text-accent font-bold">OPERATIVO</span>
+                                <span id="playerHpText" class="text-white">100 / 100 HP</span>
+                            </div>
+                            <div class="w-full bg-neutral-800 h-4 rounded-full overflow-hidden p-0.5 border border-white/10">
+                                <div id="playerHpBar" class="bg-accent h-full rounded-full transition-all duration-300" style="width: 100%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Rival -->
+                        <div class="space-y-3">
+                            <div class="flex justify-between font-tech text-xs">
+                                <span id="battleRivalName" class="text-red-500 font-bold">RIVAL</span>
+                                <span id="rivalHpText" class="text-white">100 / 100 HP</span>
+                            </div>
+                            <div class="w-full bg-neutral-800 h-4 rounded-full overflow-hidden p-0.5 border border-white/10">
+                                <div id="rivalHpBar" class="bg-red-500 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Arena Visual & Log de Combate -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-5 text-center p-6 glass-panel rounded-xl">
+                            <div class="text-accent font-tech text-xs mb-2">VS</div>
+                            <h3 id="arenaRivalTitle" class="font-display font-bold text-xl text-white uppercase">OPONENTE</h3>
+                            <p id="arenaRivalDesc" class="text-xs text-neutral-400 mt-1">Preparado para el combate callejero.</p>
+                        </div>
+
+                        <div class="md:col-span-7 glass-panel p-5 rounded-xl h-44 overflow-y-auto font-tech text-xs space-y-2 border border-accent/20" id="battleLog">
+                            <div class="text-accent">[SISTEMA] Duelo 1v1 iniciado. Selecciona tu movimiento estratégico.</div>
+                        </div>
+                    </div>
+
+                    <!-- Botones de Acción de Combate -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 font-tech text-xs">
+                        <button onclick="playerAttack('light')" class="py-3.5 rounded glass-panel glass-panel-hover border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                            <i data-lucide="sword" class="w-4 h-4 text-accent"></i> GOLPE LIGERO
+                        </button>
+                        <button onclick="playerAttack('heavy')" class="py-3.5 rounded glass-panel glass-panel-hover border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                            <i data-lucide="zap" class="w-4 h-4 text-accent"></i> GOLPE PESADO
+                        </button>
+                        <button onclick="playerDefend()" class="py-3.5 rounded glass-panel glass-panel-hover border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                            <i data-lucide="shield" class="w-4 h-4 text-accent"></i> CUBRIRSE
+                        </button>
+                        <button onclick="playerSpecial()" class="py-3.5 rounded bg-accent/20 border border-accent text-accent font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                            <i data-lucide="star" class="w-4 h-4"></i> SHADOW STRIKE
+                        </button>
+                    </div>
+                </div>
+
+                <!-- FASE 3: VICTORIA / DERROTA / SIGUIENTE RIVAL -->
+                <div id="endGameScreen" class="hidden text-center space-y-6 py-8">
+                    <h3 id="endGameTitle" class="font-display font-bold text-3xl text-accent uppercase">¡VICTORIA EN EL DUELO!</h3>
+                    <p id="endGameDesc" class="text-sm text-neutral-300">Has derrotado al oponente y ganado valiosos puntos de experiencia.</p>
+                    <div>
+                        <button onclick="nextBattle()" id="btnNextBattle" class="px-8 py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                            SIGUIENTE RIVAL
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. FLAGSHIP PRODUCT SHOWCASE -->
     <section id="product" class="py-20 md:py-28 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center gap-3 mb-10 font-tech text-xs text-accent uppercase tracking-widest">
@@ -251,7 +438,7 @@
                 </div>
 
                 <!-- Garment Specs Column -->
-                <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl tilt-card relative overflow-hidden" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl tilt-card relative overflow-hidden shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                     <div class="border-b border-white/10 pb-5">
                         <div class="flex justify-between items-baseline mb-2">
                             <h2 class="text-2xl md:text-3xl font-display font-bold tracking-tight text-white uppercase">JEGALUX OSCURO</h2>
@@ -315,8 +502,8 @@
         </div>
     </section>
 
-    <!-- 4. CRAFTED WITH INTENT / PROCESS -->
-    <section id="process" class="py-20 md:py-28 relative z-10 border-y border-white/5 bg-black/30 backdrop-blur-md">
+    <!-- 5. CRAFTED WITH INTENT / PROCESS -->
+    <section id="process" class="py-20 md:py-28 relative z-10 border-y border-white/5 bg-black/40 backdrop-blur-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16" onmouseenter="playCyberpunkSound('cyber')">
                 <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// RIGOROUS PRODUCTION ARCHITECTURE</span>
@@ -325,7 +512,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- STAGE 01 -->
-                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                     <div class="h-64 overflow-hidden relative">
                         <img src="1e85e61a-723b-4751-b081-961a9c9bf287.jpg" alt="Embroidery" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                         <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 01</div>
@@ -338,7 +525,7 @@
                     </div>
                 </div>
                 <!-- STAGE 02 -->
-                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                     <div class="h-64 overflow-hidden relative">
                         <img src="ea5e7534-dd0e-4d1c-84c2-a8f7543243a1.jpg" alt="Obscure Atelier Studio" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                         <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 02</div>
@@ -351,7 +538,7 @@
                     </div>
                 </div>
                 <!-- STAGE 03 -->
-                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                     <div class="h-64 overflow-hidden relative">
                         <img src="accb1452-469b-4746-9017-64ce56cf296b.jpg" alt="Detail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                         <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 03</div>
@@ -367,10 +554,10 @@
         </div>
     </section>
 
-    <!-- 5. PHILOSOPHY SECTION -->
+    <!-- 6. PHILOSOPHY SECTION -->
     <section id="manifesto" class="py-20 md:py-28 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="glass-panel rounded-2xl p-8 md:p-14 relative overflow-hidden tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+            <div class="glass-panel rounded-2xl p-8 md:p-14 relative overflow-hidden tilt-card shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                     <div class="lg:col-span-6 space-y-6">
                         <span class="font-tech text-xs text-accent tracking-widest uppercase">// CORE MANIFESTO</span>
@@ -388,7 +575,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="glass-panel border-t border-white/5 py-12 relative z-10" onmouseenter="playCyberpunkSound('cyber')">
+    <footer class="glass-panel border-t border-white/5 py-12 relative z-10 shadow-2xl" onmouseenter="playCyberpunkSound('cyber')">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
                 <img src="logo.png" alt="JEGALUX" class="h-7 w-auto object-contain" />
@@ -406,6 +593,7 @@
         </div>
     </div>
 
+    <!-- SCRIPT DE JUEGO Y FUNCIONALIDADES -->
     <script>
         window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
 
@@ -450,7 +638,6 @@
                     osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
                     osc.frequency.exponentialRampToValueAtTime(180, audioCtx.currentTime + 0.08);
                     gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
-                    gain.gain.exponentialRاصلونail = 0; // fallback
                     gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.08);
                     osc.start();
                     osc.stop(audioCtx.currentTime + 0.08);
@@ -458,24 +645,209 @@
                 
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
-            } catch (e) {
-                // Previene restricciones de audio del navegador
+            } catch (e) {}
+        }
+
+        // --- LÓGICA DEL MINIJUEGO 1V1 ARCADE ---
+        const rivalsList = [
+            { name: "Viper Punk", hp: 90, atk: 20, desc: "Reina del caos callejero con púas de plasma." },
+            { name: "Cyber Geisha", hp: 95, atk: 24, desc: "Asesina cibernética de alta precisión." },
+            { name: "Neon Valkyrie", hp: 100, atk: 22, desc: "Guerrera con trenzas de fibra óptica letal." },
+            { name: "Riot Brawler", hp: 120, atk: 18, desc: "Luchador sin camiseta de fuerza bruta." },
+            { name: "Harness Queen", hp: 90, atk: 26, desc: "Estratega táctica de los distritos bajos." },
+            { name: "Iron Dread", hp: 110, atk: 21, desc: "Especialista en artes marciales urbanas." },
+            { name: "Yakuza Zero", hp: 115, atk: 23, desc: "Veterano de las mafias digitales." },
+            { name: "Shadow Blade", hp: 95, atk: 29, desc: "Maestro de la katana de plasma oscura." },
+            { name: "Toxic Spike", hp: 125, atk: 19, desc: "Guerrero anarquista acorazado." },
+            { name: "Cyber Street 10", hp: 105, atk: 22, desc: "Luchador clandestino del distrito 4." },
+            { name: "Cyber Street 11", hp: 110, atk: 24, desc: "Experto en contraataques digitales." },
+            { name: "Cyber Street 12", hp: 115, atk: 25, desc: "Mercenario de la sombra absoluta." },
+            { name: "Cyber Street 13", hp: 120, atk: 26, desc: "Líder de la resistencia Neo-Tokyo." },
+            { name: "JEGALUX BOSS", hp: 150, atk: 32, desc: "El reflejo oscuro supremo. Tu prueba final." }
+        ];
+
+        let gameState = {
+            playerName: "JEGALUX",
+            playerMaxHp: 120,
+            playerHp: 120,
+            playerAtk: 25,
+            level: 1,
+            score: 0,
+            currentRivalIndex: 0,
+            rivalHp: 90,
+            rivalMaxHp: 90,
+            rivalAtk: 20,
+            isDefending: false
+        };
+
+        function selectCharacter(name, desc, hp, atk) {
+            gameState.playerName = name;
+            gameState.playerMaxHp = hp;
+            gameState.playerHp = hp;
+            gameState.playerAtk = atk;
+            document.getElementById('lblPlayerName').innerText = name;
+            playCyberpunkSound('click');
+            triggerToast(`OPERATIVO SELECCIONADO: ${name}`);
+        }
+
+        function startGame() {
+            playCyberpunkSound('click');
+            document.getElementById('charSelectScreen').classList.add('hidden');
+            document.getElementById('battleScreen').classList.remove('hidden');
+            loadRival();
+        }
+
+        function loadRival() {
+            if (gameState.currentRivalIndex >= rivalsList.length) {
+                gameState.currentRivalIndex = 0; // Bucle infinito de campeones
+            }
+            const rival = rivalsList[gameState.currentRivalIndex];
+            gameState.rivalMaxHp = rival.hp + (gameState.level * 5);
+            gameState.rivalHp = gameState.rivalMaxHp;
+            gameState.rivalAtk = rival.atk + gameState.level;
+
+            document.getElementById('battlePlayerName').innerText = gameState.playerName;
+            document.getElementById('battleRivalName').innerText = rival.name.toUpperCase();
+            document.getElementById('arenaRivalTitle').innerText = rival.name;
+            document.getElementById('arenaRivalDesc').innerText = rival.desc;
+            document.getElementById('lblRivalCount').innerText = `${gameState.currentRivalIndex + 1} / ${rivalsList.length}`;
+
+            updateHpBars();
+            appendLog(`[ARENA] ¡Comienza el duelo contra ${rival.name}! Prepárate.`);
+        }
+
+        function updateHpBars() {
+            const pPct = Math.max(0, (gameState.playerHp / gameState.playerMaxHp) * 100);
+            const rPct = Math.max(0, (gameState.rivalHp / gameState.rivalMaxHp) * 100);
+
+            document.getElementById('playerHpBar').style.width = pPct + '%';
+            document.getElementById('playerHpText',).innerText = `${Math.ceil(gameState.playerHp)} / ${gameState.playerMaxHp} HP`;
+
+            document.getElementById('rivalHpBar').style.width = rPct + '%';
+            document.getElementById('rivalHpText').innerText = `${Math.ceil(gameState.rivalHp)} / ${gameState.rivalMaxHp} HP`;
+        }
+
+        function appendLog(text) {
+            const log = document.getElementById('battleLog');
+            log.innerHTML += `<div>${text}</div>`;
+            log.scrollTop = log.scrollHeight;
+        }
+
+        function playerAttack(type) {
+            playCyberpunkSound('click');
+            let damage = 0;
+            if (type === 'light') {
+                damage = Math.floor(gameState.playerAtk * (0.8 + Math.random() * 0.4));
+                appendLog(`[TÚ] Ejecutas un golpe ligero preciso infligiendo <span class="text-accent">${damage} DAÑO</span>.`);
+            } else {
+                if (Math.random() > 0.4) {
+                    damage = Math.floor(gameState.playerAtk * (1.3 + Math.random() * 0.6));
+                    appendLog(`[TÚ] ¡IMPACTO CRÍTICO! Golpe pesado conectado por <span class="text-accent">${damage} DAÑO</span>.`);
+                } else {
+                    appendLog(`[TÚ] Fallaste tu golpe pesado. El rival esquivó a tiempo.`);
+                }
+            }
+
+            gameState.rivalHp -= damage;
+            checkBattleStatus();
+            if (gameState.rivalHp > 0) {
+                setTimeout(rivalTurn, 600);
             }
         }
 
-        // Efecto Parallax en el fondo de nubes y zoom en el banner al hacer scroll
+        function playerDefend() {
+            playCyberpunkSound('click');
+            gameState.isDefending = true;
+            appendLog(`[TÚ] Adoptas postura defensiva de sombra. Reducirás el próximo daño.`);
+            setTimeout(rivalTurn, 600);
+        }
+
+        function playerSpecial() {
+            playCyberpunkSound('click');
+            const damage = Math.floor(gameState.playerAtk * 2.2);
+            appendLog(`[TÚ] ¡¡SHADOW STRIKE ACTIVADO!! Energía pura liberada por <span class="text-accent">${damage} DAÑO</span>.`);
+            gameState.rivalHp -= damage;
+            checkBattleStatus();
+            if (gameState.rivalHp > 0) {
+                setTimeout(rivalTurn, 600);
+            }
+        }
+
+        function rivalTurn() {
+            const rival = rivalsList[gameState.currentRivalIndex];
+            let rDamage = Math.floor(gameState.rivalAtk * (0.8 + Math.random() * 0.4));
+            if (gameState.isDefending) {
+                rDamage = Math.floor(rDamage * 0.4);
+                appendLog(`[RIVAL] ${rival.name} ataca, pero tu defensa absorbe la mayor parte.`);
+                gameState.isDefending = false;
+            } else {
+                appendLog(`[RIVAL] ${rival.name} te contraataca causando <span class="text-red-500">${rDamage} DAÑO</span>.`);
+            }
+
+            gameState.playerHp -= rDamage;
+            updateHpBars();
+
+            if (gameState.playerHp <= 0) {
+                battleOver(false);
+            }
+        }
+
+        function checkBattleStatus() {
+            updateHpBars();
+            if (gameState.rivalHp <= 0) {
+                battleOver(true);
+            }
+        }
+
+        function battleOver(isVictory) {
+            document.getElementById('battleScreen').classList.add('hidden');
+            document.getElementById('endGameScreen').classList.remove('hidden');
+
+            const title = document.getElementById('endGameTitle');
+            const desc = document.getElementById('endGameDesc');
+            const btnNext = document.getElementById('btnNextBattle');
+
+            if (isVictory) {
+                playCyberpunkSound('cyber');
+                gameState.score += 250 * gameState.level;
+                gameState.level += 1;
+                document.getElementById('lblScore').innerText = gameState.score + ' PTS';
+                document.getElementById('lblLevel').innerText = gameState.level;
+
+                title.className = "font-display font-bold text-3xl text-accent uppercase";
+                title.innerText = "¡VICTORIA EN EL DUELO!";
+                desc.innerText = `Has superado al oponente. +${250 * (gameState.level - 1)} PUNTOS obtenidos. Tu nivel de Operativo ha aumentado a ${gameState.level}.`;
+                btnNext.innerText = "SIGUIENTE RIVAL";
+                gameState.currentRivalIndex++;
+            } else {
+                title.className = "font-display font-bold text-3xl text-red-500 uppercase";
+                title.innerText = "¡HAS SIDO DERROTADO!";
+                desc.innerText = "La sombra te ha consumido en este distrito. Inténtalo de nuevo.";
+                btnNext.innerText = "REINTENTAR DUELO";
+                gameState.playerHp = gameState.playerMaxHp;
+            }
+        }
+
+        function nextBattle() {
+            playCyberpunkSound('click');
+            gameState.playerHp = gameState.playerMaxHp;
+            document.getElementById('endGameScreen').classList.add('hidden');
+            document.getElementById('battleScreen').classList.remove('hidden');
+            loadRival();
+        }
+
+        // Fondo de nubes infinito sincronizado con el scroll
         window.addEventListener('scroll', () => {
             const scrollY = window.pageYOffset;
-            const cloudParallax = document.getElementById('cloudParallax');
+            const cloudInfinite = document.getElementById('cloudInfinite');
             const bannerContainer = document.getElementById('bannerContainer');
             
-            if (cloudParallax) {
-                cloudParallax.style.transform = `translateY(${scrollY * 0.35}px) scale(1.1)`;
+            if (cloudInfinite) {
+                cloudInfinite.style.backgroundPosition = `center ${scrollY * 0.4}px`;
             }
 
             if (bannerContainer) {
-                const zoomScale = 1 + (scrollY * 0.0005);
-                bannerContainer.style.transform = `scale(${Math.min(zoomScale, 1.08)})`;
+                bannerContainer.style.transform = `translateY(${scrollY * 0.3}px) scale(${1 + (scrollY * 0.0005)})`;
             }
         });
 
@@ -501,20 +873,20 @@
             }
         }
 
-        // Movimiento 3D fluido e interactivo en tarjetas
+        // Movimiento 3D con sensibilidad equilibrada y elegante
         function handleTilt(e, card) {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -2;
-            const rotateY = ((x - centerX) / centerX) * 2;
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+            const rotateX = ((y - centerY) / centerY) * -2.2;
+            const rotateY = ((x - centerX) / centerX) * 2.2;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         }
 
         function resetTilt(card) {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
         }
     </script>
 </body>
