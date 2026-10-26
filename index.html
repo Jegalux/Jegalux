@@ -22,8 +22,8 @@
                     colors: {
                         void: '#070709',
                         obsidian: '#0d0d11',
-                        surface: 'rgba(13, 13, 17, 0.8)',
-                        'surface-light': 'rgba(23, 23, 31, 0.85)',
+                        surface: 'rgba(13, 13, 17, 0.75)',
+                        'surface-light': 'rgba(27, 27, 36, 0.85)',
                         accent: '#ff5500',
                         'accent-glow': '#ff7700',
                         'tech-gray': '#737380'
@@ -56,13 +56,13 @@
             background: #ff5500;
         }
         
-        /* Fondo de nubes infinito y realista con repetición fluida */
+        /* Fondo de nubes infinito y borroso en todas las secciones */
         .cloud-bg-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
-            height: 100vh;
+            height: 200vh;
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
@@ -71,36 +71,37 @@
 
         .cloud-bg-tile {
             position: absolute;
-            top: -50%;
+            top: 0;
             left: 0;
             width: 100vw;
-            height: 200vh;
+            height: 100vh;
             background-image: url('view-apocalyptic-dark-stormy-clouds_23-2151065786.jpg');
-            background-repeat: repeat;
+            background-repeat: repeat-y;
             background-size: cover;
-            background-position: center top;
-            filter: blur(6px) brightness(0.28) contrast(1.2);
-            will-change: background-position;
+            background-position: center;
+            filter: blur(18px) brightness(0.2) contrast(1.3);
+            transform: scale(1.1);
+            will-change: transform;
         }
 
-        /* Efecto de cristal oscuro avanzado con brillos de borde y sombras profundas */
+        /* Glassmorphism oscuro avanzado con alto desenfoque */
         .glass-panel {
-            background: linear-gradient(135deg, rgba(18, 18, 26, 0.82) 0%, rgba(9, 9, 13, 0.9) 100%);
-            backdrop-filter: blur(22px);
-            -webkit-backdrop-filter: blur(22px);
-            border: 1px solid rgba(255, 255, 255, 0.09);
-            box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+            background: rgba(13, 13, 17, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
         }
 
         .glass-panel-hover {
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .glass-panel-hover:hover {
-            border-color: rgba(255, 85, 0, 0.45);
-            box-shadow: 0 20px 50px 0 rgba(255, 85, 0, 0.18), inset 0 1px 0 0 rgba(255, 85, 0, 0.3);
+            border-color: rgba(255, 85, 0, 0.4);
+            box-shadow: 0 12px 40px 0 rgba(255, 85, 0, 0.15);
         }
 
-        /* Tarjetas con profundidad 3D y sensibilidad equilibrada */
+        /* Tarjetas con profundidad 3D mejorada */
         .tilt-card {
             transform-style: preserve-3d;
             perspective: 1000px;
@@ -110,9 +111,9 @@
 </head>
 <body class="bg-void text-neutral-200 font-sans selection:bg-accent selection:text-black overflow-x-hidden relative">
 
-    <!-- Fondo de nubes infinito realista -->
+    <!-- Fondo de nubes infinito y borroso -->
     <div class="cloud-bg-container">
-        <div id="cloudInfinite" class="cloud-bg-tile"></div>
+        <div id="cloudParallax" class="cloud-bg-tile"></div>
     </div>
 
     <!-- 1. HEADER / NAVIGATION -->
@@ -177,54 +178,47 @@
         </div>
     </header>
 
-    <!-- 2. HERO BANNER UNIFICADO: Bajan y se esconden sin zoom -->
-    <section id="heroBanner" class="relative z-10 w-full border-b border-white/10 py-24 md:py-36 overflow-hidden bg-void/40 backdrop-blur-md">
-        
-        <!-- Contenedor del banner unificado -->
-        <div id="bannerContainer" class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative tilt-card will-change-transform glass-panel rounded-2xl py-12 md:py-16 shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-white/10 overflow-hidden" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
-            
-            <!-- Imagen de fondo del banner que baja y se oculta sin zoom -->
-            <div class="absolute inset-0 -z-10 overflow-hidden w-full h-full pointer-events-none">
-                <img 
-                    id="bannerBgImage"
-                    src="Gemini_Generated_Image_34mrde34mrde34mr.jpg" 
-                    alt="Relieve Logo Banner" 
-                    class="w-full h-full object-cover filter brightness-[0.35] contrast-[1.2] opacity-80 will-change-transform"
-                    onerror="this.onerror=null; this.src='https://placehold.co/1920x800/08080a/222222?text=JEGALUX';"
-                />
-                <div class="absolute inset-0 bg-gradient-to-b from-void/85 via-void/40 to-void/95"></div>
+    <!-- 2. HERO BANNER DE ESQUINA A ESQUINA (100vw) CON ZOOM AL BAJAR Y EFECTO 3D -->
+    <section class="relative z-10 w-full border-b border-white/10 py-24 md:py-36 overflow-hidden bg-void/40 backdrop-blur-md">
+        <!-- Imagen de fondo fija de esquina a esquina (Relieve del logo con brillo bajo) -->
+        <div class="absolute inset-0 -z-10 overflow-hidden w-full h-full">
+            <img 
+                src="Gemini_Generated_Image_34mrde34mrde34mr.jpg" 
+                alt="Relieve Logo Banner" 
+                class="w-full h-full object-cover filter brightness-[0.3] contrast-[1.25] opacity-75 scale-105"
+                onerror="this.onerror=null; this.src='https://placehold.co/1920x800/08080a/222222?text=JEGALUX';"
+            />
+            <div class="absolute inset-0 bg-gradient-to-b from-void/90 via-void/50 to-void/95"></div>
+        </div>
+
+        <div id="bannerContainer" class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-accent/30 text-accent font-tech text-[10px] uppercase tracking-widest mb-6">
+                <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                AUTUMN/WINTER PROTOCOL — EDITION 0.94
             </div>
 
-            <!-- Contenido del banner -->
-            <div class="relative z-10">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-accent/30 text-accent font-tech text-[10px] uppercase tracking-widest mb-6">
-                    <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-                    AUTUMN/WINTER PROTOCOL — EDITION 0.94
-                </div>
+            <!-- Logo Grande -->
+            <div class="flex justify-center mb-6">
+                <img 
+                    src="logo.png" 
+                    alt="Emblem" 
+                    class="h-36 md:h-52 w-auto object-contain opacity-95 drop-shadow-[0_0_40px_rgba(255,85,0,0.5)] transition-transform duration-300 hover:scale-105"
+                    onerror="this.onerror=null; this.src='https://placehold.co/400x140/08080a/ff5500?text=JEGALUX+CORP';"
+                    onmouseenter="playCyberpunkSound('hover')"
+                />
+            </div>
 
-                <!-- Logo Grande -->
-                <div class="flex justify-center mb-6">
-                    <img 
-                        src="logo.png" 
-                        alt="Emblem" 
-                        class="h-36 md:h-52 w-auto object-contain opacity-95 drop-shadow-[0_0_40px_rgba(255,85,0,0.5)] transition-transform duration-300 hover:scale-105"
-                        onerror="this.onerror=null; this.src='https://placehold.co/400x140/08080a/ff5500?text=JEGALUX+CORP';"
-                        onmouseenter="playCyberpunkSound('hover')"
-                    />
-                </div>
+            <p class="max-w-xl mx-auto text-neutral-300 font-sans text-sm md:text-base leading-relaxed tracking-wide mb-8">
+                Underground silhouettes, obscure textures and premium comfort for those who move in the shadow.
+            </p>
 
-                <p class="max-w-xl mx-auto text-neutral-300 font-sans text-sm md:text-base leading-relaxed tracking-wide mb-8">
-                    Underground silhouettes, obscure textures and premium comfort for those who move in the shadow.
-                </p>
-
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 font-tech text-xs tracking-widest">
-                    <a href="#product" class="w-full sm:w-auto px-8 py-3.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_25px_rgba(255,85,0,0.4)]" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
-                        EXPLORE COLLECTION
-                    </a>
-                    <a href="#manifesto" class="w-full sm:w-auto px-8 py-3.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
-                        READ MANIFESTO
-                    </a>
-                </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 font-tech text-xs tracking-widest">
+                <a href="#product" class="w-full sm:w-auto px-8 py-3.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_25px_rgba(255,85,0,0.4)]" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                    EXPLORE COLLECTION
+                </a>
+                <a href="#manifesto" class="w-full sm:w-auto px-8 py-3.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                    READ MANIFESTO
+                </a>
             </div>
         </div>
     </section>
@@ -257,7 +251,7 @@
                 </div>
 
                 <!-- Garment Specs Column -->
-                <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl tilt-card relative overflow-hidden shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl tilt-card relative overflow-hidden" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                     <div class="border-b border-white/10 pb-5">
                         <div class="flex justify-between items-baseline mb-2">
                             <h2 class="text-2xl md:text-3xl font-display font-bold tracking-tight text-white uppercase">JEGALUX OSCURO</h2>
@@ -322,7 +316,7 @@
     </section>
 
     <!-- 4. CRAFTED WITH INTENT / PROCESS -->
-    <section id="process" class="py-20 md:py-28 relative z-10 border-y border-white/5 bg-black/40 backdrop-blur-lg">
+    <section id="process" class="py-20 md:py-28 relative z-10 border-y border-white/5 bg-black/30 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16" onmouseenter="playCyberpunkSound('cyber')">
                 <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// RIGOROUS PRODUCTION ARCHITECTURE</span>
@@ -331,7 +325,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- STAGE 01 -->
-                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                     <div class="h-64 overflow-hidden relative">
                         <img src="1e85e61a-723b-4751-b081-961a9c9bf287.jpg" alt="Embroidery" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                         <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 01</div>
@@ -344,7 +338,7 @@
                     </div>
                 </div>
                 <!-- STAGE 02 -->
-                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                     <div class="h-64 overflow-hidden relative">
                         <img src="ea5e7534-dd0e-4d1c-84c2-a8f7543243a1.jpg" alt="Obscure Atelier Studio" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                         <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 02</div>
@@ -357,7 +351,7 @@
                     </div>
                 </div>
                 <!-- STAGE 03 -->
-                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                     <div class="h-64 overflow-hidden relative">
                         <img src="accb1452-469b-4746-9017-64ce56cf296b.jpg" alt="Detail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                         <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 03</div>
@@ -376,7 +370,7 @@
     <!-- 5. PHILOSOPHY SECTION -->
     <section id="manifesto" class="py-20 md:py-28 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="glass-panel rounded-2xl p-8 md:p-14 relative overflow-hidden tilt-card shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+            <div class="glass-panel rounded-2xl p-8 md:p-14 relative overflow-hidden tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                     <div class="lg:col-span-6 space-y-6">
                         <span class="font-tech text-xs text-accent tracking-widest uppercase">// CORE MANIFESTO</span>
@@ -394,7 +388,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="glass-panel border-t border-white/5 py-12 relative z-10 shadow-2xl" onmouseenter="playCyberpunkSound('cyber')">
+    <footer class="glass-panel border-t border-white/5 py-12 relative z-10" onmouseenter="playCyberpunkSound('cyber')">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
                 <img src="logo.png" alt="JEGALUX" class="h-7 w-auto object-contain" />
@@ -456,6 +450,7 @@
                     osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
                     osc.frequency.exponentialRampToValueAtTime(180, audioCtx.currentTime + 0.08);
                     gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+                    gain.gain.exponentialRاصلونail = 0; // fallback
                     gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.08);
                     osc.start();
                     osc.stop(audioCtx.currentTime + 0.08);
@@ -468,21 +463,19 @@
             }
         }
 
-        // Fondo de nubes infinito y banner que baja y se esconde sin zoom al hacer scroll
+        // Efecto Parallax en el fondo de nubes y zoom en el banner al hacer scroll
         window.addEventListener('scroll', () => {
             const scrollY = window.pageYOffset;
-            const cloudInfinite = document.getElementById('cloudInfinite');
+            const cloudParallax = document.getElementById('cloudParallax');
             const bannerContainer = document.getElementById('bannerContainer');
             
-            if (cloudInfinite) {
-                cloudInfinite.style.backgroundPosition = `center ${scrollY * 0.4}px`;
+            if (cloudParallax) {
+                cloudParallax.style.transform = `translateY(${scrollY * 0.35}px) scale(1.1)`;
             }
 
-            // El banner baja progresivamente y se desvanece (esconde) sin hacer zoom
             if (bannerContainer) {
-                const hideProgress = Math.min(scrollY / 300, 1);
-                bannerContainer.style.transform = `translateY(${scrollY * 0.55}px)`;
-                bannerContainer.style.opacity = `${1 - hideProgress}`;
+                const zoomScale = 1 + (scrollY * 0.0005);
+                bannerContainer.style.transform = `scale(${Math.min(zoomScale, 1.08)})`;
             }
         });
 
@@ -508,25 +501,20 @@
             }
         }
 
-        // Movimiento 3D sutil para tarjetas y bloques (excluyendo el banner del tilt al hacer scroll)
+        // Movimiento 3D fluido e interactivo en tarjetas
         function handleTilt(e, card) {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -1.8;
-            const rotateY = ((x - centerX) / centerX) * 1.8;
-            card.style.transform += ` perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            const rotateX = ((y - centerY) / centerY) * -2;
+            const rotateY = ((x - centerX) / centerX) * 2;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
         }
 
         function resetTilt(card) {
-            const scrollY = window.pageYOffset;
-            const isBanner = card.id === 'bannerContainer';
-            const translateYVal = isBanner ? scrollY * 0.55 : 0;
-            const opacityVal = isBanner ? Math.max(1 - (scrollY / 300), 0) : 1;
-            card.style.transform = `translateY(${translateYVal}px) perspective(1000px) rotateX(0deg) rotateY(0deg)`;
-            card.style.opacity = opacityVal;
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
         }
     </script>
 </body>
