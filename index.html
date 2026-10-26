@@ -150,14 +150,15 @@
             </nav>
 
             <div class="flex items-center space-x-4">
+                <!-- Botón de Carrito Funcional -->
                 <button 
-                    onclick="playCyberpunkSound('click'); triggerToast('CART UPDATED (1 ITEM RESERVED)')"
+                    onclick="playCyberpunkSound('click'); openCartModal()"
                     class="relative p-2.5 rounded-lg glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200"
                     aria-label="View Cart"
                     onmouseenter="playCyberpunkSound('hover')"
                 >
                     <i data-lucide="shopping-bag" class="w-4 h-4 text-accent"></i>
-                    <span class="absolute -top-1 -right-1 w-4 h-4 bg-accent text-black font-tech font-bold text-[10px] rounded-full flex items-center justify-center">1</span>
+                    <span id="cartItemCount" class="absolute -top-1 -right-1 w-4 h-4 bg-accent text-black font-tech font-bold text-[10px] rounded-full flex items-center justify-center">1</span>
                 </button>
 
                 <a 
@@ -168,18 +169,7 @@
                 >
                     ORDER NOW
                 </a>
-
-                <button id="mobileMenuBtn" class="md:hidden p-2 text-neutral-400 hover:text-white" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
             </div>
-        </div>
-
-        <div id="mobileMenu" class="hidden md:hidden glass-panel border-b border-white/10 px-6 py-5 font-tech text-xs tracking-widest space-y-4">
-            <a href="#product" class="block text-neutral-300 hover:text-accent" onmouseenter="playCyberpunkSound('hover')">01// PRODUCTS</a>
-            <a href="#arena" class="block text-accent font-bold" onmouseenter="playCyberpunkSound('hover')">02// SHADOW ARENA (GAME)</a>
-            <a href="#process" class="block text-neutral-300 hover:text-accent" onmouseenter="playCyberpunkSound('hover')">03// PROCESS</a>
-            <a href="#manifesto" class="block text-neutral-300 hover:text-accent" onmouseenter="playCyberpunkSound('hover')">04// MANIFESTO</a>
         </div>
     </header>
 
@@ -207,8 +197,6 @@
                     src="logo.png" 
                     alt="Emblem" 
                     class="h-36 md:h-52 w-auto object-contain opacity-95 drop-shadow-[0_0_40px_rgba(255,85,0,0.5)] transition-transform duration-300 hover:scale-105"
-                    onerror="this.onerror=null; this.src='https://placehold.co/400x140/08080a/ff5500?text=JEGALUX+CORP';"
-                    onmouseenter="playCyberpunkSound('hover')"
                 />
             </div>
 
@@ -227,7 +215,7 @@
         </div>
     </section>
 
-    <!-- 3. SECCIÓN DEL VIDEOJUEGO SHADOW ARENA 1V1 (50 PERSONAJES EN 5 EQUIPOS DE 10) -->
+    <!-- 3. SECCIÓN DEL VIDEOJUEGO SHADOW ARENA 1V1 (50 PERSONAJES) -->
     <section id="arena" class="py-24 relative z-10 border-b border-white/5 bg-void/60 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
@@ -238,10 +226,7 @@
                 </p>
             </div>
 
-            <!-- CONTENEDOR PRINCIPAL DEL JUEGO -->
             <div class="glass-panel rounded-2xl p-6 md:p-8 shadow-2xl border border-accent/30 relative overflow-hidden">
-                
-                <!-- ESTADÍSTICAS GLOBALES -->
                 <div id="gameStatsHeader" class="flex flex-wrap justify-between items-center bg-obsidian/80 p-4 rounded-xl border border-white/10 mb-8 font-tech text-xs">
                     <div class="flex items-center gap-3">
                         <span class="text-accent font-bold">OPERATIVO:</span> <span id="lblPlayerName" class="text-white">CYBERNETIC SQUAD</span>
@@ -257,13 +242,11 @@
                     </div>
                 </div>
 
-                <!-- FASE 1: SELECCIÓN DE PERSONAJE (50 LUCHADORES / 5 EQUIPOS DE 10) -->
+                <!-- SELECCIÓN DE PERSONAJES -->
                 <div id="charSelectScreen" class="space-y-8">
                     <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECCIONA TU OPERATIVO (50 LUCHADORES)</h3>
-                    
                     <div class="space-y-6 max-h-[520px] overflow-y-auto pr-2">
-                        
-                        <!-- EQUIPO 1: CYBERNETIC SQUAD (RED) -->
+                        <!-- EQUIPO 1 -->
                         <div class="space-y-3">
                             <div class="flex items-center gap-2 border-b border-red-500/30 pb-2">
                                 <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
@@ -272,7 +255,7 @@
                             <div class="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-10 gap-3">
                                 <div onclick="selectCharacter('Cybernetic Squad', 'Especialista en combate cibernético rojo.', 100, 24, '0% 0%')" class="cursor-pointer rounded-lg border border-red-500/40 fighter-avatar h-28 glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/50" style="background-position: 0% 0%;">Cyber</div>
                                 <div onclick="selectCharacter('Male Biker Punk', 'Biker callejero con chaqueta de cuero.', 105, 22, '11.1% 0%')" class="cursor-pointer rounded-lg border border-red-500/40 fighter-avatar h-28 glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/50" style="background-position: 11.1% 0%;">Biker</div>
-                                <div onclick="selectCharacter('Rbaian Bro'k Punk', 'Guerrera con trenzas y actitud desafiante.', 95, 26, '22.2% 0%')" class="cursor-pointer rounded-lg border border-red-500/40 fighter-avatar h-28 glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/50" style="background-position: 22.2% 0%;">Brook</div>
+                                <div onclick="selectCharacter('Rbaian Brook Punk', 'Guerrera con trenzas y actitud desafiante.', 95, 26, '22.2% 0%')" class="cursor-pointer rounded-lg border border-red-500/40 fighter-avatar h-28 glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/50" style="background-position: 22.2% 0%;">Brook</div>
                                 <div onclick="selectCharacter('Brand Glow Punk', 'Portadora de tecnología de neón brillante.', 90, 28, '33.3% 0%')" class="cursor-pointer rounded-lg border border-red-500/40 fighter-avatar h-28 glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/50" style="background-position: 33.3% 0%;">Glow</div>
                                 <div onclick="selectCharacter('Dote Manbrazhur', 'Hacker táctico con visor AR.', 100, 25, '44.4% 0%')" class="cursor-pointer rounded-lg border border-red-500/40 fighter-avatar h-28 glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/50" style="background-position: 44.4% 0%;">Manbra</div>
                                 <div onclick="selectCharacter('Haiiker', 'Especialista en emboscadas urbanas.', 110, 21, '55.5% 0%')" class="cursor-pointer rounded-lg border border-red-500/40 fighter-avatar h-28 glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/50" style="background-position: 55.5% 0%;">Haiiker</div>
@@ -283,7 +266,7 @@
                             </div>
                         </div>
 
-                        <!-- EQUIPO 2: URBAN GUARDIANS (BLUE) -->
+                        <!-- EQUIPO 2 -->
                         <div class="space-y-3">
                             <div class="flex items-center gap-2 border-b border-blue-500/30 pb-2">
                                 <span class="w-3 h-3 rounded-full bg-blue-500 inline-block"></span>
@@ -303,7 +286,7 @@
                             </div>
                         </div>
 
-                        <!-- EQUIPO 3: SHADOW STALKERS (PURPLE) -->
+                        <!-- EQUIPO 3 -->
                         <div class="space-y-3">
                             <div class="flex items-center gap-2 border-b border-purple-500/30 pb-2">
                                 <span class="w-3 h-3 rounded-full bg-purple-500 inline-block"></span>
@@ -323,7 +306,7 @@
                             </div>
                         </div>
 
-                        <!-- EQUIPO 4: GLOW REBELS (YELLOW) -->
+                        <!-- EQUIPO 4 -->
                         <div class="space-y-3">
                             <div class="flex items-center gap-2 border-b border-yellow-500/30 pb-2">
                                 <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
@@ -343,7 +326,7 @@
                             </div>
                         </div>
 
-                        <!-- EQUIPO 5: WILD FURY (GREEN) -->
+                        <!-- EQUIPO 5 -->
                         <div class="space-y-3">
                             <div class="flex items-center gap-2 border-b border-green-500/30 pb-2">
                                 <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
@@ -362,7 +345,6 @@
                                 <div onclick="selectCharacter('Iron Fists', 'Maestro de los puños de hierro.', 115, 24, '100% 100%')" class="cursor-pointer rounded-lg border border-green-500/40 fighter-avatar h-28 glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/50" style="background-position: 100% 100%;">Iron Fists</div>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="text-center pt-4">
@@ -493,32 +475,45 @@
                     <div class="pt-2">
                         <div class="flex justify-between items-center mb-2 font-tech text-xs text-neutral-400">
                             <span>SELECT FIT:</span>
-                            <span class="text-[11px] text-accent">S TO 5XL AVAILABLE</span>
+                            <span id="selectedSizeLabel" class="text-[11px] text-accent">M</span>
                         </div>
                         <div class="grid grid-cols-5 gap-2 font-tech text-xs">
-                            <button onclick="playCyberpunkSound('click'); selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">S</button>
-                            <button onclick="playCyberpunkSound('click'); selectSize(this)" class="size-btn py-2.5 border border-accent rounded bg-accent/10 text-accent font-bold transition" onmouseenter="playCyberpunkSound('hover')">M</button>
-                            <button onclick="playCyberpunkSound('click'); selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">L</button>
-                            <button onclick="playCyberpunkSound('click'); selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">XL</button>
-                            <button onclick="playCyberpunkSound('click'); selectSize(this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">2XL</button>
+                            <button onclick="playCyberpunkSound('click'); selectSize('S', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">S</button>
+                            <button onclick="playCyberpunkSound('click'); selectSize('M', this)" class="size-btn py-2.5 border border-accent rounded bg-accent/10 text-accent font-bold transition" onmouseenter="playCyberpunkSound('hover')">M</button>
+                            <button onclick="playCyberpunkSound('click'); selectSize('L', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">L</button>
+                            <button onclick="playCyberpunkSound('click'); selectSize('XL', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">XL</button>
+                            <button onclick="playCyberpunkSound('click'); selectSize('2XL', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">2XL</button>
                         </div>
                     </div>
 
+                    <!-- BOTONES DE COMPRA Y CARRITO FUNCIONALES -->
                     <div class="space-y-3 pt-3">
                         <button 
-                            onclick="playCyberpunkSound('click'); triggerToast('ADDED TO CART: JEGALUX OSCURO ($37.22)')" 
+                            onclick="playCyberpunkSound('click'); addToCart()" 
                             class="w-full py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 shadow-lg shadow-accent/20"
                             onmouseenter="playCyberpunkSound('hover')"
                         >
                             <i data-lucide="plus" class="w-4 h-4"></i>
                             ADD TO CART ($37.22)
                         </button>
+                        
+                        <!-- BOTÓN APPLE PAY / GOOGLE PAY DIRECTO -->
                         <button 
-                            onclick="playCyberpunkSound('click'); triggerToast('REDIRECTING TO STORE CHECKOUT...')" 
-                            class="w-full py-3.5 rounded glass-panel glass-panel-hover text-white font-tech text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2"
+                            onclick="playCyberpunkSound('click'); openCheckoutModal('Apple Pay')" 
+                            class="w-full py-3.5 rounded bg-black border border-white/30 text-white font-tech text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 hover:border-accent shadow-xl"
                             onmouseenter="playCyberpunkSound('hover')"
                         >
-                            BUY NOW VIA STORE
+                            <i data-lucide="apple" class="w-4 h-4 fill-white"></i>
+                            PAY WITH APPLE PAY
+                        </button>
+                        
+                        <button 
+                            onclick="playCyberpunkSound('click'); openCheckoutModal('Card / Google Pay')" 
+                            class="w-full py-3 rounded glass-panel glass-panel-hover text-white font-tech text-xs tracking-[0.15em] uppercase transition duration-200 flex items-center justify-center gap-2"
+                            onmouseenter="playCyberpunkSound('hover')"
+                        >
+                            <i data-lucide="credit-card" class="w-4 h-4 text-accent"></i>
+                            CREDIT CARD / GOOGLE PAY
                         </button>
                     </div>
                 </div>
@@ -595,6 +590,72 @@
         </div>
     </section>
 
+    <!-- MODAL DE CARRITO -->
+    <div id="cartModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden">
+        <div class="glass-panel w-full max-w-md p-6 rounded-2xl border border-accent/40 space-y-6 shadow-2xl">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                <h3 class="font-display font-bold text-lg text-white uppercase tracking-wider">// TU CARRITO DE COMPRAS</h3>
+                <button onclick="closeCartModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div id="cartItemsList" class="space-y-4 max-h-60 overflow-y-auto">
+                <!-- Se llena dinámicamente -->
+            </div>
+            <div class="border-t border-white/10 pt-4 flex justify-between font-tech text-sm">
+                <span class="text-neutral-300">TOTAL:</span>
+                <span id="cartTotalPrice" class="text-accent font-bold">$37.22 USD</span>
+            </div>
+            <div class="space-y-3 pt-2">
+                <button onclick="openCheckoutModal('Apple Pay')" class="w-full py-3.5 rounded bg-black border border-white/30 text-white font-tech text-xs tracking-widest uppercase hover:border-accent transition flex items-center justify-center gap-2">
+                    <i data-lucide="apple" class="w-4 h-4 fill-white"></i> PAY WITH APPLE PAY
+                </button>
+                <button onclick="openCheckoutModal('Credit Card')" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs tracking-widest uppercase hover:bg-accent-glow transition">
+                    PROCEDER AL PAGO
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE CHECKOUT / PAGO RÁPIDO -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
+        <div class="glass-panel w-full max-w-lg p-8 rounded-2xl border border-accent/50 space-y-6 shadow-2xl relative">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                <h3 id="checkoutTitle" class="font-display font-bold text-xl text-white uppercase tracking-wider">PASARELA DE PAGO</h3>
+                <button onclick="closeCheckoutModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <form id="paymentForm" onsubmit="processPayment(event)" class="space-y-4 font-tech text-xs">
+                <div>
+                    <label class="block text-neutral-400 mb-1">CORREO ELECTRÓNICO</label>
+                    <input type="email" required placeholder="operativo@jegalux.com" class="w-full bg-obsidian border border-white/10 rounded p-3 text-white focus:border-accent outline-none" />
+                </div>
+                <div>
+                    <label class="block text-neutral-400 mb-1">DIRECCIÓN DE ENVÍO</label>
+                    <input type="text" required placeholder="Neo-Tokyo District 7, St. Shadow" class="w-full bg-obsidian border border-white/10 rounded p-3 text-white focus:border-accent outline-none" />
+                </div>
+                <div id="cardDetailsContainer" class="space-y-4">
+                    <div>
+                        <label class="block text-neutral-400 mb-1">NÚMERO DE TARJETA</label>
+                        <input type="text" placeholder="4532 •••• •••• 8821" class="w-full bg-obsidian border border-white/10 rounded p-3 text-white focus:border-accent outline-none" />
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-neutral-400 mb-1">EXPIRACIÓN</label>
+                            <input type="text" placeholder="MM/AA" class="w-full bg-obsidian border border-white/10 rounded p-3 text-white focus:border-accent outline-none" />
+                        </div>
+                        <div>
+                            <label class="block text-neutral-400 mb-1">CVC / CVV</label>
+                            <input type="password" placeholder="•••" class="w-full bg-obsidian border border-white/10 rounded p-3 text-white focus:border-accent outline-none" />
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-4">
+                    <button type="submit" class="w-full py-4 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg shadow-accent/30">
+                        CONFIRMAR PAGO ($37.22 USD)
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <footer class="glass-panel border-t border-white/5 py-12 relative z-10 shadow-2xl" onmouseenter="playCyberpunkSound('cyber')">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -614,7 +675,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT DE JUEGO Y FUNCIONALIDADES -->
+    <!-- SCRIPT DE JUEGO Y CARRITO/PAGO -->
     <script>
         window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
 
@@ -627,12 +688,8 @@
         let audioCtx = null;
         function playCyberpunkSound(type) {
             try {
-                if (!audioCtx) {
-                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                }
-                if (audioCtx.state === 'suspended') {
-                    audioCtx.resume();
-                }
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
 
@@ -642,32 +699,110 @@
                     osc.frequency.exponentialRampToValueAtTime(640, audioCtx.currentTime + 0.05);
                     gain.gain.setValueAtTime(0.012, audioCtx.currentTime);
                     gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.05);
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 0.05);
-                } else if (type === 'cyber') {
-                    osc.type = 'square';
-                    osc.frequency.setValueAtTime(180, audioCtx.currentTime);
-                    osc.frequency.setValueAtTime(540, audioCtx.currentTime + 0.03);
-                    osc.frequency.exponentialRampToValueAtTime(220, audioCtx.currentTime + 0.09);
-                    gain.gain.setValueAtTime(0.015, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.09);
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 0.09);
                 } else if (type === 'click') {
                     osc.type = 'triangle';
                     osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
                     osc.frequency.exponentialRampToValueAtTime(180, audioCtx.currentTime + 0.08);
                     gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
                     gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.08);
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 0.08);
                 }
-                
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.08);
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
             } catch (e) {}
         }
 
+        // --- SISTEMA DE CARRITO Y PAGO (APPLE PAY / TARJETA) ---
+        let cart = {
+            item: "JEGALUX OSCURO",
+            price: 37.22,
+            size: "M",
+            quantity: 1
+        };
+
+        function selectSize(size, btn) {
+            cart.size = size;
+            document.getElementById('selectedSizeLabel').innerText = size;
+            document.querySelectorAll('.size-btn').forEach(b => {
+                b.className = 'size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition';
+            });
+            btn.className = 'size-btn py-2.5 border border-accent rounded bg-accent/10 text-accent font-bold transition';
+            triggerToast(`TALLA SELECCIONADA: ${size}`);
+        }
+
+        function addToCart() {
+            document.getElementById('cartItemCount').innerText = cart.quantity;
+            triggerToast(`¡AGREGADO AL CARRITO! (${cart.item} - Talla ${cart.size})`);
+            openCartModal();
+        }
+
+        function openCartModal() {
+            const list = document.getElementById('cartItemsList');
+            list.innerHTML = `
+                <div class="flex justify-between items-center bg-obsidian/80 p-3 rounded-lg border border-white/10 font-tech text-xs">
+                    <div>
+                        <div class="text-white font-bold">${cart.item}</div>
+                        <div class="text-neutral-400">Talla: ${cart.size} | Cant: ${cart.quantity}</div>
+                    </div>
+                    <div class="text-accent font-bold">$${cart.price} USD</div>
+                </div>
+            `;
+            document.getElementById('cartModal').classList.remove('hidden');
+        }
+
+        function closeCartModal() {
+            document.getElementById('cartModal').classList.add('hidden');
+        }
+
+        function openCheckoutModal(method) {
+            closeCartModal();
+            document.getElementById('checkoutTitle').innerText = `PAGO SEGURO VÍA ${method.toUpperCase()}`;
+            const cardContainer = document.getElementById('cardDetailsContainer');
+            if (method.includes('Apple Pay')) {
+                cardContainer.innerHTML = `
+                    <div class="p-4 bg-black/60 rounded-lg text-center border border-white/20 text-white font-tech text-xs">
+                        <i data-lucide="apple" class="w-8 h-8 mx-auto mb-2 fill-white"></i>
+                        <span>Autorización biométrica instantánea con Apple Pay activa.</span>
+                    </div>
+                `;
+            } else {
+                cardContainer.innerHTML = `
+                    <div>
+                        <label class="block text-neutral-400 mb-1">NÚMERO DE TARJETA</label>
+                        <input type="text" required placeholder="4532 •••• •••• 8821" class="w-full bg-obsidian border border-white/10 rounded p-3 text-white focus:border-accent outline-none" />
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-neutral-400 mb-1">EXPIRACIÓN</label>
+                            <input type="text" required placeholder="MM/AA" class="w-full bg-obsidian border border-white/10 rounded p-3 text-white focus:border-accent outline-none" />
+                        </div>
+                        <div>
+                            <label class="block text-neutral-400 mb-1">CVC / CVV</label>
+                            <input type="password" required placeholder="•••" class="w-full bg-obsidian border border-white/10 rounded p-3 text-white focus:border-accent outline-none" />
+                        </div>
+                    </div>
+                `;
+            }
+            if (window.lucide) lucide.createIcons();
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        function processPayment(e) {
+            e.preventDefault();
+            playCyberpunkSound('click');
+            closeCheckoutModal();
+            triggerToast('¡PAGO EXITOSO! PEDIDO CONFIRMADO');
+            setTimeout(() => {
+                alert('¡Gracias por tu compra en JEGALUX! Tu pedido ha sido procesado de forma segura y se enviará en breve a tu dirección.');
+            }, 500);
+        }
+
+        // --- LÓGICA DE DUELOS ARCADE 1V1 (50 PERSONAJES) ---
         const rivalsList = [
             { name: "Viper Punk", hp: 100, atk: 22, desc: "Reina del caos callejero con púas de plasma." },
             { name: "Cyber Geisha", hp: 90, atk: 28, desc: "Asesina cibernética de alta precisión." },
@@ -827,7 +962,6 @@
             const btnNext = document.getElementById('btnNextBattle');
 
             if (isVictory) {
-                playCyberpunkSound('cyber');
                 gameState.score += 300 * gameState.level;
                 gameState.level += 1;
                 document.getElementById('lblScore').innerText = gameState.score + ' PTS';
@@ -860,22 +994,9 @@
             const cloudInfinite = document.getElementById('cloudInfinite');
             const bannerContainer = document.getElementById('bannerContainer');
             
-            if (cloudInfinite) {
-                cloudInfinite.style.backgroundPosition = `center ${scrollY * 0.4}px`;
-            }
-
-            if (bannerContainer) {
-                bannerContainer.style.transform = `translateY(${scrollY * 0.3}px) scale(${1 + (scrollY * 0.0005)})`;
-            }
+            if (cloudInfinite) cloudInfinite.style.backgroundPosition = `center ${scrollY * 0.4}px`;
+            if (bannerContainer) bannerContainer.style.transform = `translateY(${scrollY * 0.3}px) scale(${1 + (scrollY * 0.0005)})`;
         });
-
-        function selectSize(btn) {
-            document.querySelectorAll('.size-btn').forEach(b => {
-                b.className = 'size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition';
-            });
-            btn.className = 'size-btn py-2.5 border border-accent rounded bg-accent/10 text-accent font-bold transition';
-            triggerToast(`SIZE SELECTED: ${btn.textContent.trim()}`);
-        }
 
         function triggerToast(message) {
             const toast = document.getElementById('toast');
