@@ -44,6 +44,7 @@
 
         ::-webkit-scrollbar {
             width: 5px;
+            height: 5px;
         }
         ::-webkit-scrollbar-track {
             background: #070709;
@@ -83,10 +84,11 @@
             will-change: background-position;
         }
 
-        /* Mapeo exacto de la plantilla de 50 personajes (12 columnas x 5 filas en la imagen original) */
+        /* Sprite maestro configurado exactamente para la cuadrícula de 10x5 personajes */
         .character-sprite {
             background-image: url('Plantilla cyberpunk de personajes neón.png');
-            background-size: 1200% 500%;
+            background-size: 1000% 500%;
+            background-repeat: no-repeat;
         }
 
         .glass-panel {
@@ -104,12 +106,6 @@
             border-color: rgba(255, 85, 0, 0.45);
             box-shadow: 0 20px 50px 0 rgba(255, 85, 0, 0.18), inset 0 1px 0 0 rgba(255, 85, 0, 0.3);
         }
-
-        .tilt-card {
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            transition: transform 0.15s cubic-bezier(0.03, 0.98, 0.52, 0.99), border-color 0.3s ease, box-shadow 0.3s ease;
-        }
     </style>
 </head>
 <body class="bg-void text-neutral-200 font-sans selection:bg-accent selection:text-black overflow-x-hidden relative">
@@ -119,73 +115,31 @@
         <div id="cloudInfinite" class="cloud-bg-tile"></div>
     </div>
 
-    <!-- 1. HEADER / NAVIGATION -->
+    <!-- HEADER -->
     <header class="sticky top-0 z-50 glass-panel border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center group py-2" aria-label="JEGALUX Home" onmouseenter="playCyberpunkSound('hover')">
-                <img 
-                    src="logo.png" 
-                    alt="JEGALUX Logo" 
-                    class="h-9 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_8px_rgba(255,85,0,0.3)]"
-                    onerror="this.onerror=null; this.src='https://placehold.co/180x44/0d0d11/ff5500?text=J+E+G+A+L+U+X';"
-                />
+            <a href="#" class="flex items-center group py-2" aria-label="JEGALUX Home">
+                <img src="logo.png" alt="JEGALUX Logo" class="h-9 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_8px_rgba(255,85,0,0.3)]" />
             </a>
-
             <nav class="hidden md:flex items-center space-x-8 font-tech text-xs tracking-[0.22em] text-neutral-400">
-                <a href="#product" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playCyberpunkSound('hover')">
-                    <span class="text-accent/60 text-[10px]">01//</span>PRODUCTS
-                </a>
-                <a href="#arena" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1 text-accent font-bold" onmouseenter="playCyberpunkSound('hover')">
-                    <span class="text-accent/60 text-[10px]">02//</span>SHADOW ARENA
-                </a>
-                <a href="#process" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playCyberpunkSound('hover')">
-                    <span class="text-accent/60 text-[10px]">03//</span>PROCESS
-                </a>
-                <a href="#manifesto" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playCyberpunkSound('hover')">
-                    <span class="text-accent/60 text-[10px]">04//</span>MANIFESTO
-                </a>
+                <a href="#product" class="hover:text-accent transition-colors">01// PRODUCTS</a>
+                <a href="#arena" class="text-accent font-bold">02// SHADOW ARENA</a>
+                <a href="#process" class="hover:text-accent transition-colors">03// PROCESS</a>
+                <a href="#manifesto" class="hover:text-accent transition-colors">04// MANIFESTO</a>
             </nav>
-
-            <div class="flex items-center space-x-4">
-                <button 
-                    onclick="playCyberpunkSound('click'); triggerToast('CART UPDATED (1 ITEM RESERVED)')"
-                    class="relative p-2.5 rounded-lg glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200"
-                    aria-label="View Cart"
-                    onmouseenter="playCyberpunkSound('hover')"
-                >
-                    <i data-lucide="shopping-bag" class="w-4 h-4 text-accent"></i>
-                    <span class="absolute -top-1 -right-1 w-4 h-4 bg-accent text-black font-tech font-bold text-[10px] rounded-full flex items-center justify-center">1</span>
-                </button>
-
-                <a 
-                    href="#product"
-                    class="hidden sm:inline-flex items-center font-tech text-xs tracking-widest px-4 py-2.5 rounded-md bg-accent/10 border border-accent/60 text-accent hover:bg-accent hover:text-black transition-all duration-200 shadow-lg"
-                    onmouseenter="playCyberpunkSound('hover')"
-                    onclick="playCyberpunkSound('click')"
-                >
-                    ORDER NOW
-                </a>
-            </div>
         </div>
     </header>
 
-    <!-- 2. HERO BANNER -->
-    <section id="heroBanner" class="relative z-10 w-full border-b border-white/10 py-24 md:py-36 overflow-hidden bg-void/40 backdrop-blur-md">
+    <!-- HERO -->
+    <section class="relative z-10 w-full border-b border-white/10 py-24 md:py-36 overflow-hidden bg-void/40 backdrop-blur-md">
         <div class="absolute inset-0 -z-10 overflow-hidden w-full h-full">
-            <img 
-                id="bannerBgImage"
-                src="Gemini_Generated_Image_34mrde34mrde34mr.jpg" 
-                alt="Banner" 
-                class="w-full h-full object-cover filter brightness-[0.35] contrast-[1.2] opacity-80 scale-105"
-                onerror="this.onerror=null; this.src='https://placehold.co/1920x800/08080a/222222?text=JEGALUX';"
-            />
+            <img src="Gemini_Generated_Image_34mrde34mrde34mr.jpg" alt="Banner" class="w-full h-full object-cover filter brightness-[0.35] contrast-[1.2] opacity-80 scale-105" />
             <div class="absolute inset-0 bg-gradient-to-b from-void/85 via-void/40 to-void/95"></div>
         </div>
-
-        <div id="bannerContainer" class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative glass-panel rounded-2xl py-12 md:py-16 shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-white/10">
+        <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative glass-panel rounded-2xl py-12 md:py-16 shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-white/10">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-accent/30 text-accent font-tech text-[10px] uppercase tracking-widest mb-6">
                 <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-                NEO-TOKYO 2026 // 50 CHARACTERS ROSTER
+                NEO-TOKYO 2026 // 50 COMBATIENTES
             </div>
             <div class="flex justify-center mb-6">
                 <img src="logo.png" alt="Emblem" class="h-36 md:h-52 w-auto object-contain opacity-95 drop-shadow-[0_0_40px_rgba(255,85,0,0.5)]" />
@@ -193,30 +147,27 @@
             <p class="max-w-xl mx-auto text-neutral-300 font-sans text-sm md:text-base leading-relaxed tracking-wide mb-8">
                 Elige tu combatiente entre 5 escuelas exclusivas y demuestra tu dominio en la arena 1v1.
             </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 font-tech text-xs tracking-widest">
-                <a href="#arena" class="w-full sm:w-auto px-8 py-3.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_25px_rgba(255,85,0,0.4)]" onclick="playCyberpunkSound('click')">
-                    JUGAR SHADOW ARENA (1V1)
-                </a>
-            </div>
+            <a href="#arena" class="inline-block px-8 py-3.5 rounded bg-accent text-black font-tech text-xs font-semibold uppercase tracking-widest hover:bg-accent-glow transition-all shadow-[0_0_25px_rgba(255,85,0,0.4)]">
+                JUGAR SHADOW ARENA (1V1)
+            </a>
         </div>
     </section>
 
-    <!-- 3. SECCIÓN SHADOW ARENA // 50 PERSONAJES Y 5 EQUIPOS -->
+    <!-- SECCIÓN SHADOW ARENA // 50 PERSONAJES EN 5 EQUIPOS CON FOTO REAL -->
     <section id="arena" class="py-24 relative z-10 border-b border-white/5 bg-void/60 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// ARCADE ROSTER PRO 2.20</span>
+                <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// ARCADE ROSTER PRO 3.1</span>
                 <h2 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // 50 COMBATIENTES</h2>
                 <p class="text-neutral-400 font-sans text-xs md:text-sm mt-3">
-                    Explora los 5 equipos oficiales (10 personajes por escuela, codificados por color). Selecciona tu luchador para ver sus estadísticas o iniciar el combate 1v1.
+                    Cada botón muestra el recorte exacto de la plantilla fotográfica de personajes. Selecciona tu luchador para ver sus estadísticas o iniciar el combate.
                 </p>
             </div>
 
-            <!-- INTERFAZ PRINCIPAL DE SELECCIÓN TIPO ARCADE -->
-            <div class="glass-panel rounded-2xl p-6 md:p-8 shadow-2xl border border-accent/30 relative">
+            <div class="glass-panel rounded-2xl p-6 md:p-8 shadow-2xl border border-accent/30 relative space-y-8">
                 
-                <!-- VISTA PREVIA DEL LUCHADOR SELECCIONADO Y ESTADÍSTICAS -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-obsidian/80 p-6 rounded-xl border border-white/10 mb-8">
+                <!-- VISTA PREVIA DEL LUCHADOR SELECCIONADO -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-obsidian/80 p-6 rounded-xl border border-white/10">
                     <div class="lg:col-span-4 text-center sm:flex sm:text-left items-center gap-6">
                         <div id="previewSpriteBox" class="w-28 h-28 mx-auto sm:mx-0 rounded-xl overflow-hidden border-2 border-accent character-sprite shadow-lg" style="background-position: 0% 0%;"></div>
                         <div class="mt-4 sm:mt-0">
@@ -263,29 +214,27 @@
                     </div>
                 </div>
 
-                <!-- SELECTOR DE EQUIPOS / CARRUSEL DE 5 EQUIPOS (10 PERSONAJES CADA UNO) -->
-                <div class="space-y-8">
+                <!-- 5 EQUIPOS CON 10 LUCHADORES CADA UNO (FOTOS REALES MAPEADAS) -->
+                <div class="space-y-6">
                     
                     <!-- EQUIPO 1: CYBERNETIC SQUAD (RED) -->
                     <div class="space-y-3">
                         <div class="flex justify-between items-center border-b border-red-500/30 pb-2">
                             <h4 class="font-display font-bold text-sm text-red-400 uppercase tracking-wider flex items-center gap-2">
-                                <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span> 01 // CYBERNETIC SQUAD (RED) - 10 LUCHADORES
+                                <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span> 01 // CYBERNETIC SQUAD (RED)
                             </h4>
-                            <span class="font-tech text-[10px] text-neutral-400">DESLIZA O HAZ CLIC PARA SELECCIONAR</span>
                         </div>
-                        <div class="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
-                            <!-- 10 Personajes Fila 1 de la plantilla -->
-                            <div onclick="selectCharacterFromGrid(0, 'CYBERNETIC SQUAD', 'Especialista en combate cibernético rojo.', 85, 70, 90, '0% 0%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 0% 0%;">Cyber Squad</div>
-                            <div onclick="selectCharacterFromGrid(1, 'MALE BIKER PUNK', 'Biker callejero con chaqueta de cuero reforzada.', 60, 85, 75, '8.33% 0%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 8.33% 0%;">Biker Punk</div>
-                            <div onclick="selectCharacterFromGrid(2, 'RBAIAN BROOK PUNK', 'Guerrera con trenzas y actitud desafiante.', 70, 80, 85, '16.66% 0%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 16.66% 0%;">Brook Punk</div>
-                            <div onclick="selectCharacterFromGrid(3, 'BRAND GLOW PUNK', 'Portadora de tecnología de neón brillante.', 90, 65, 88, '25% 0%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 25% 0%;">Glow Punk</div>
-                            <div onclick="selectCharacterFromGrid(4, 'DOTE MANBRAZHUR', 'Hacker táctico con visor de realidad aumentada.', 95, 55, 80, '33.33% 0%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 33.33% 0%;">Manbrazhur</div>
-                            <div onclick="selectCharacterFromGrid(5, 'HAIIKER', 'Especialista en emboscadas urbanas.', 80, 75, 85, '41.66% 0%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 41.66% 0%;">Haiiker</div>
-                            <div onclick="selectCharacterFromGrid(6, 'VH-PUNK', 'Anarquista de la vieja escuela con implantes.', 65, 90, 70, '50% 0%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 50% 0%;">VH-Punk</div>
-                            <div onclick="selectCharacterFromGrid(7, 'BIO PUNK CHEMIST', 'Científico renegado con toxinas letales.', 92, 60, 78, '58.33% 0%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 58.33% 0%;">Bio Chemist</div>
-                            <div onclick="selectCharacterFromGrid(8, 'CORPAHS REAKEN BRAWLER', 'Corgi cibernético y luchador blindado.', 70, 95, 65, '66.66% 0%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 66.66% 0%;">Reaken Brawler</div>
-                            <div onclick="selectCharacterFromGrid(9, 'DATAINVEF', 'Especialista en robo de datos encubierto.', 98, 50, 92, '75% 0%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 75% 0%;">Datainvef</div>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-10 gap-3">
+                            <div onclick="selectCharacterFromGrid('CYBERNETIC SQUAD', 'Especialista en combate cibernético rojo.', 85, 70, 90, '0% 0%')" class="h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 0% 0%;">Cyber</div>
+                            <div onclick="selectCharacterFromGrid('MALE BIKER PUNK', 'Biker callejero con chaqueta de cuero.', 60, 85, 75, '11.1% 0%')" class="h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 11.1% 0%;">Biker</div>
+                            <div onclick="selectCharacterFromGrid('RBAIAN BROOK PUNK', 'Guerrera con trenzas y actitud desafiante.', 70, 80, 85, '22.2% 0%')" class="h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 22.2% 0%;">Brook</div>
+                            <div onclick="selectCharacterFromGrid('BRAND GLOW PUNK', 'Portadora de tecnología de neón brillante.', 90, 65, 88, '33.3% 0%')" class="h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 33.3% 0%;">Glow</div>
+                            <div onclick="selectCharacterFromGrid('DOTE MANBRAZHUR', 'Hacker táctico con visor AR.', 95, 55, 80, '44.4% 0%')" class="h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 44.4% 0%;">Manbra</div>
+                            <div onclick="selectCharacterFromGrid('HAIIKER', 'Especialista en emboscadas urbanas.', 80, 75, 85, '55.5% 0%')" class="h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 55.5% 0%;">Haiiker</div>
+                            <div onclick="selectCharacterFromGrid('VH-PUNK', 'Anarquista de la vieja escuela.', 65, 90, 70, '66.6% 0%')" class="h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 66.6% 0%;">VH-Punk</div>
+                            <div onclick="selectCharacterFromGrid('BIO PUNK CHEMIST', 'Científico renegado con toxinas.', 92, 60, 78, '77.7% 0%')" class="h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 77.7% 0%;">Chemist</div>
+                            <div onclick="selectCharacterFromGrid('CORPAHS REAKEN BRAWLER', 'Luchador blindado cibernético.', 70, 95, 65, '88.8% 0%')" class="h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 88.8% 0%;">Brawler</div>
+                            <div onclick="selectCharacterFromGrid('DATAINVEF', 'Especialista en robo de datos.', 98, 50, 92, '100% 0%')" class="h-28 cursor-pointer rounded-lg border border-red-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 100% 0%;">Datainv</div>
                         </div>
                     </div>
 
@@ -293,21 +242,20 @@
                     <div class="space-y-3">
                         <div class="flex justify-between items-center border-b border-blue-500/30 pb-2">
                             <h4 class="font-display font-bold text-sm text-blue-400 uppercase tracking-wider flex items-center gap-2">
-                                <span class="w-3 h-3 rounded-full bg-blue-500 inline-block"></span> 02 // URBAN GUARDIANS (BLUE) - 10 LUCHADORES
+                                <span class="w-3 h-3 rounded-full bg-blue-500 inline-block"></span> 02 // URBAN GUARDIANS (BLUE)
                             </h4>
                         </div>
-                        <div class="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
-                            <!-- 10 Personajes Fila 2 de la plantilla -->
-                            <div onclick="selectCharacterFromGrid(12, 'URBAN GUARDIANS', 'Defensor de las calles con equipo táctico.', 75, 80, 80, '0% 25%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 0% 25%;">Urban Guard 1</div>
-                            <div onclick="selectCharacterFromGrid(13, 'URBAN GUARDIANS 2', 'Oficial de patrulla con escopeta de plasma.', 70, 85, 78, '8.33% 25%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 8.33% 25%;">Urban Guard 2</div>
-                            <div onclick="selectCharacterFromGrid(14, 'YAKUZA JERSEY PLAYER', 'Estilo de las mafias callejeras de Neo-Tokyo.', 75, 82, 85, '16.66% 25%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 16.66% 25%;">Yakuza Jersey</div>
-                            <div onclick="selectCharacterFromGrid(15, 'MALLE DEUNCER', 'Tanque humano con blindaje pesado.', 60, 95, 65, '25% 25%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 25% 25%;">Malle Deuncer</div>
-                            <div onclick="selectCharacterFromGrid(16, 'ARMOURED FULL STALKER', 'Merodeador blindado de alta resistencia.', 72, 88, 70, '33.33% 25%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 33.33% 25%;">Armoured Stalker</div>
-                            <div onclick="selectCharacterFromGrid(17, 'CHANNEEC HUNTER', 'Cazadora urbana con precisión letal.', 85, 70, 88, '41.66% 25%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 41.66% 25%;">Channeec Hunter</div>
-                            <div onclick="selectCharacterFromGrid(18, 'SUBWAY MECHANIC', 'Experto en trampas y llaves inglesas eléctricas.', 78, 78, 75, '50% 25%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 50% 25%;">Subway Mechanic</div>
-                            <div onclick="selectCharacterFromGrid(19, 'STREET PREACHER', 'Predicador con crucifijo láser y fanatismo.', 82, 72, 80, '58.33% 25%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 58.33% 25%;">Street Preacher</div>
-                            <div onclick="selectCharacterFromGrid(20, 'PARKOUR COURIER', 'Mensajera ágil con parkour cibernético.', 88, 60, 95, '66.66% 25%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 66.66% 25%;">Parkour Courier</div>
-                            <div onclick="selectCharacterFromGrid(21, 'CORPORATE SECURITY', 'Guardia corporativo de seguridad implacable.', 80, 85, 76, '75% 25%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 75% 25%;">Corp Security</div>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-10 gap-3">
+                            <div onclick="selectCharacterFromGrid('URBAN GUARDIAN 1', 'Defensor de las calles táctico.', 75, 80, 80, '0% 25%')" class="h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 0% 25%;">Guard 1</div>
+                            <div onclick="selectCharacterFromGrid('URBAN GUARDIAN 2', 'Oficial de patrulla con escopeta.', 70, 85, 78, '11.1% 25%')" class="h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 11.1% 25%;">Guard 2</div>
+                            <div onclick="selectCharacterFromGrid('YAKUZA JERSEY PLAYER', 'Estilo mafias callejeras.', 75, 82, 85, '22.2% 25%')" class="h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 22.2% 25%;">Yakuza</div>
+                            <div onclick="selectCharacterFromGrid('MALLE DEUNCER', 'Tanque humano con blindaje.', 60, 95, 65, '33.3% 25%')" class="h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 33.3% 25%;">Malle</div>
+                            <div onclick="selectCharacterFromGrid('ARMOURED FULL STALKER', 'Merodeador blindado pesado.', 72, 88, 70, '44.4% 25%')" class="h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 44.4% 25%;">Stalker</div>
+                            <div onclick="selectCharacterFromGrid('CHANNEEC HUNTER', 'Cazadora urbana con precisión.', 85, 70, 88, '55.5% 25%')" class="h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 55.5% 25%;">Hunter</div>
+                            <div onclick="selectCharacterFromGrid('SUBWAY MECHANIC 1', 'Experto en llaves inglesas eléctricas.', 78, 78, 75, '66.6% 25%')" class="h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 66.6% 25%;">Mech 1</div>
+                            <div onclick="selectCharacterFromGrid('SUBWAY MECHANIC 2', 'Mecánico de vías subterráneas.', 82, 72, 80, '77.7% 25%')" class="h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 77.7% 25%;">Mech 2</div>
+                            <div onclick="selectCharacterFromGrid('STREET PREACHER', 'Predicador con crucifijo láser.', 88, 60, 95, '88.8% 25%')" class="h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 88.8% 25%;">Preacher</div>
+                            <div onclick="selectCharacterFromGrid('PARKOUR COURIER', 'Mensajera ágil de parkour.', 80, 85, 76, '100% 25%')" class="h-28 cursor-pointer rounded-lg border border-blue-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 100% 25%;">Courier</div>
                         </div>
                     </div>
 
@@ -315,21 +263,20 @@
                     <div class="space-y-3">
                         <div class="flex justify-between items-center border-b border-purple-500/30 pb-2">
                             <h4 class="font-display font-bold text-sm text-purple-400 uppercase tracking-wider flex items-center gap-2">
-                                <span class="w-3 h-3 rounded-full bg-purple-500 inline-block"></span> 03 // SHADOW STALKERS (PURPLE) - 10 LUCHADORES
+                                <span class="w-3 h-3 rounded-full bg-purple-500 inline-block"></span> 03 // SHADOW STALKERS (PURPLE)
                             </h4>
                         </div>
-                        <div class="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
-                            <!-- 10 Personajes Fila 3 de la plantilla -->
-                            <div onclick="selectCharacterFromGrid(24, 'SHADOW STALKER 1', 'Asesina sigilosa con cuchillas de plasma.', 90, 70, 94, '0% 50%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 0% 50%;">Shadow 1</div>
-                            <div onclick="selectCharacterFromGrid(25, 'SHADOW STALKER 2', 'Guerrero nocturno sin miedo a la oscuridad.', 85, 80, 88, '8.33% 50%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 8.33% 50%;">Shadow 2</div>
-                            <div onclick="selectCharacterFromGrid(26, 'SHADOW STALKER 3', 'Especialista en venenos y artes oscuras.', 88, 75, 90, '16.66% 50%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 16.66% 50%;">Shadow 3</div>
-                            <div onclick="selectCharacterFromGrid(27, 'SHADOW STALKER 4', 'Infiltrador con camuflaje óptico avanzado.', 92, 68, 95, '25% 50%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 25% 50%;">Shadow 4</div>
-                            <div onclick="selectCharacterFromGrid(28, 'SHADOW STALKER 5', 'Maestra de katanas dobles en la penumbra.', 87, 78, 91, '33.33% 50%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 33.33% 50%;">Shadow 5</div>
-                            <div onclick="selectCharacterFromGrid(29, 'SHADOW STALKER 6', 'Vigilante silenciosa de los tejados.', 89, 72, 93, '41.66% 50%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 41.66% 50%;">Shadow 6</div>
-                            <div onclick="selectCharacterFromGrid(30, 'SHADOW STALKER 7', 'Asesino de élite con pistolas silenciadas.', 84, 82, 89, '50% 50%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 50% 50%;">Shadow 7</div>
-                            <div onclick="selectCharacterFromGrid(31, 'FIALE AORSSISN', 'Experta en combate cuerpo a cuerpo letal.', 86, 79, 90, '58.33% 50%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 58.33% 50%;">Fiale Aorssisn</div>
-                            <div onclick="selectCharacterFromGrid(32, 'NIGHT ITNACKER', 'Hacker nocturno de sistemas cuánticos.', 98, 50, 92, '66.66% 50%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 66.66% 50%;">Night Itnacker</div>
-                            <div onclick="selectCharacterFromGrid(33, 'MALE SPECTER', 'Entidad enmascarada con poderes espectrales.', 94, 70, 96, '75% 50%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 75% 50%;">Male Specter</div>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-10 gap-3">
+                            <div onclick="selectCharacterFromGrid('SHADOW STALKER 1', 'Asesina sigilosa con plasma.', 90, 70, 94, '0% 50%')" class="h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 0% 50%;">Shadow 1</div>
+                            <div onclick="selectCharacterFromGrid('SHADOW STALKER 2', 'Guerrero nocturno sin miedo.', 85, 80, 88, '11.1% 50%')" class="h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 11.1% 50%;">Shadow 2</div>
+                            <div onclick="selectCharacterFromGrid('SHADOW STALKER 3', 'Especialista en venenos y sombras.', 88, 75, 90, '22.2% 50%')" class="h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 22.2% 50%;">Shadow 3</div>
+                            <div onclick="selectCharacterFromGrid('SHADOW STALKER 4', 'Infiltrador con camuflaje óptico.', 92, 68, 95, '33.3% 50%')" class="h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 33.3% 50%;">Shadow 4</div>
+                            <div onclick="selectCharacterFromGrid('SHADOW STALKER 5', 'Maestra de katanas dobles.', 87, 78, 91, '44.4% 50%')" class="h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 44.4% 50%;">Shadow 5</div>
+                            <div onclick="selectCharacterFromGrid('SHADOW STALKER 6', 'Vigilante silenciosa de tejados.', 89, 72, 93, '55.5% 50%')" class="h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 55.5% 50%;">Shadow 6</div>
+                            <div onclick="selectCharacterFromGrid('SHADOW STALKER 7', 'Asesino de élite con pistolas.', 84, 82, 89, '66.6% 50%')" class="h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 66.6% 50%;">Shadow 7</div>
+                            <div onclick="selectCharacterFromGrid('FIALE AORSSISN', 'Experta en combate cuerpo a cuerpo.', 86, 79, 90, '77.7% 50%')" class="h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 77.7% 50%;">Fiale</div>
+                            <div onclick="selectCharacterFromGrid('NIGHT ITNACKER', 'Hacker nocturno cuántico.', 98, 50, 92, '88.8% 50%')" class="h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 88.8% 50%;">Itnacker</div>
+                            <div onclick="selectCharacterFromGrid('MALE SPECTER', 'Entidad enmascarada espectral.', 94, 70, 96, '100% 50%')" class="h-28 cursor-pointer rounded-lg border border-purple-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 100% 50%;">Specter</div>
                         </div>
                     </div>
 
@@ -337,21 +284,20 @@
                     <div class="space-y-3">
                         <div class="flex justify-between items-center border-b border-yellow-500/30 pb-2">
                             <h4 class="font-display font-bold text-sm text-yellow-400 uppercase tracking-wider flex items-center gap-2">
-                                <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span> 04 // GLOW REBELS (YELLOW) - 10 LUCHADORES
+                                <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span> 04 // GLOW REBELS (YELLOW)
                             </h4>
                         </div>
-                        <div class="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
-                            <!-- 10 Personajes Fila 4 de la plantilla -->
-                            <div onclick="selectCharacterFromGrid(36, 'GLOW REBEL 1', 'Rebelde con estética neón vibrante.', 80, 75, 85, '0% 75%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 0% 75%;">Glow Rebel 1</div>
-                            <div onclick="selectCharacterFromGrid(37, 'GLOW REBEL 2', 'Artífice de explosivos de luz.', 82, 78, 83, '8.33% 75%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 8.33% 75%;">Glow Rebel 2</div>
-                            <div onclick="selectCharacterFromGrid(38, 'GLOW REBEL 3', 'Especialista en tecnología lumínica.', 85, 70, 88, '16.66% 75%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 16.66% 75%;">Glow Rebel 3</div>
-                            <div onclick="selectCharacterFromGrid(39, 'GLOW REBEL 4', 'Estrategas de los distritos iluminados.', 83, 72, 86, '25% 75%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 25% 75%;">Glow Rebel 4</div>
-                            <div onclick="selectCharacterFromGrid(40, 'GLOW REBEL 5', 'Luchadora con guantes de plasma amarillo.', 81, 80, 84, '33.33% 75%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 33.33% 75%;">Glow Rebel 5</div>
-                            <div onclick="selectCharacterFromGrid(41, 'GLOW REBEL 6', 'Acróbata urbana con destellos láser.', 88, 65, 92, '41.66% 75%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 41.66% 75%;">Glow Rebel 6</div>
-                            <div onclick="selectCharacterFromGrid(42, 'GLOW REBEL 7', 'Artista marcial de la luz estroboscópica.', 84, 76, 89, '50% 75%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 50% 75%;">Glow Rebel 7</div>
-                            <div onclick="selectCharacterFromGrid(43, 'GLOW REBEL 8', 'Experta en armamento de energía.', 86, 74, 87, '58.33% 75%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 58.33% 75%;">Glow Rebel 8</div>
-                            <div onclick="selectCharacterFromGrid(44, 'GLOW REBEL 9', 'Velocista con propulsores de neón.', 90, 68, 95, '66.66% 75%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 66.66% 75%;">Glow Rebel 9</div>
-                            <div onclick="selectCharacterFromGrid(45, 'GLOW REBEL 10', 'Comandante de la resistencia lumínica.', 89, 80, 88, '75% 75%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 75% 75%;">Glow Rebel 10</div>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-10 gap-3">
+                            <div onclick="selectCharacterFromGrid('GLOW REBEL 1', 'Rebelde con neón vibrante.', 80, 75, 85, '0% 75%')" class="h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 0% 75%;">Glow 1</div>
+                            <div onclick="selectCharacterFromGrid('GLOW REBEL 2', 'Artífice de explosivos de luz.', 82, 78, 83, '11.1% 75%')" class="h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 11.1% 75%;">Glow 2</div>
+                            <div onclick="selectCharacterFromGrid('GLOW REBEL 3', 'Especialista en tecnología lumínica.', 85, 70, 88, '22.2% 75%')" class="h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 22.2% 75%;">Glow 3</div>
+                            <div onclick="selectCharacterFromGrid('GLOW REBEL 4', 'Estratega de distritos iluminados.', 83, 72, 86, '33.3% 75%')" class="h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 33.3% 75%;">Glow 4</div>
+                            <div onclick="selectCharacterFromGrid('GLOW REBEL 5', 'Luchadora con guantes de plasma.', 81, 80, 84, '44.4% 75%')" class="h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 44.4% 75%;">Glow 5</div>
+                            <div onclick="selectCharacterFromGrid('GLOW REBEL 6', 'Acróbata urbana con láser.', 88, 65, 92, '55.5% 75%')" class="h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 55.5% 75%;">Glow 6</div>
+                            <div onclick="selectCharacterFromGrid('GLOW REBEL 7', 'Artista marcial estroboscópica.', 84, 76, 89, '66.6% 75%')" class="h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 66.6% 75%;">Glow 7</div>
+                            <div onclick="selectCharacterFromGrid('GLOW REBEL 8', 'Experta en armamento energético.', 86, 74, 87, '77.7% 75%')" class="h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 77.7% 75%;">Glow 8</div>
+                            <div onclick="selectCharacterFromGrid('GLOW REBEL 9', 'Velocista con propulsores neón.', 90, 68, 95, '88.8% 75%')" class="h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 88.8% 75%;">Glow 9</div>
+                            <div onclick="selectCharacterFromGrid('GLOW REBEL 10', 'Comandante de la resistencia.', 89, 80, 88, '100% 75%')" class="h-28 cursor-pointer rounded-lg border border-yellow-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 100% 75%;">Glow 10</div>
                         </div>
                     </div>
 
@@ -359,27 +305,26 @@
                     <div class="space-y-3">
                         <div class="flex justify-between items-center border-b border-green-500/30 pb-2">
                             <h4 class="font-display font-bold text-sm text-green-400 uppercase tracking-wider flex items-center gap-2">
-                                <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span> 05 // WILD FURY (GREEN) - 10 LUCHADORES
+                                <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span> 05 // WILD FURY (GREEN)
                             </h4>
                         </div>
-                        <div class="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
-                            <!-- 10 Personajes Fila 5 de la plantilla -->
-                            <div onclick="selectCharacterFromGrid(48, 'SUMA SUMA', 'Luchador de sumo pesado y arrollador.', 60, 100, 55, '0% 100%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 0% 100%;">Suma Suma</div>
-                            <div onclick="selectCharacterFromGrid(49, 'BOXIE HOXX', 'Pugilista profesional de puños de acero.', 70, 92, 75, '8.33% 100%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 8.33% 100%;">Boxie Hoxx</div>
-                            <div onclick="selectCharacterFromGrid(50, 'STREED FIGHTER', 'Luchador callejero curtido en mil batallas.', 75, 88, 80, '16.66% 100%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 16.66% 100%;">Street Fighter</div>
-                            <div onclick="selectCharacterFromGrid(51, 'KICKBAXER', 'Especialista en patadas altas devastadoras.', 78, 85, 86, '25% 100%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 25% 100%;">Kickbaxer</div>
-                            <div onclick="selectCharacterFromGrid(52, 'DEBIM DENIN PUNK', 'Bravucón con chaleco de mezclilla y cadenas.', 72, 90, 78, '33.33% 100%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 33.33% 100%;">Denin Punk</div>
-                            <div onclick="selectCharacterFromGrid(53, 'METAL JAW', 'Ciborg con mandíbula de titanio reforzado.', 65, 96, 70, '41.66% 100%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 41.66% 100%;">Metal Jaw</div>
-                            <div onclick="selectCharacterFromGrid(54, 'NIETU JAW', 'Gladiadora clandestina de la jaula de hierro.', 74, 89, 82, '50% 100%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 50% 100%;">Nietu Jaw</div>
-                            <div onclick="selectCharacterFromGrid(55, 'WRESTLER 1', 'Luchador libre con llaves inquebrantables.', 68, 95, 74, '58.33% 100%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 58.33% 100%;">Wrestler 1</div>
-                            <div onclick="selectCharacterFromGrid(56, 'WRESTLER 2', 'Campeón mundial de pesos pesados.', 66, 98, 72, '66.66% 100%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 66.66% 100%;">Wrestler 2</div>
-                            <div onclick="selectCharacterFromGrid(57, 'IRON FISTS', 'Maestro de los puños de hierro fundido.', 70, 97, 76, '75% 100%')" class="min-w-[90px] h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white" style="background-position: 75% 100%;">Iron Fists</div>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-10 gap-3">
+                            <div onclick="selectCharacterFromGrid('SUMA SUMA', 'Luchador de sumo pesado.', 60, 100, 55, '0% 100%')" class="h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 0% 100%;">Suma</div>
+                            <div onclick="selectCharacterFromGrid('BOXIE HOXX', 'Pugilista de acero.', 70, 92, 75, '11.1% 100%')" class="h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 11.1% 100%;">Boxie</div>
+                            <div onclick="selectCharacterFromGrid('STREET FIGHTER', 'Luchador callejero curtido.', 75, 88, 80, '22.2% 100%')" class="h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 22.2% 100%;">St.Fighter</div>
+                            <div onclick="selectCharacterFromGrid('KICKBAXER', 'Especialista en patadas altas.', 78, 85, 86, '33.3% 100%')" class="h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 33.3% 100%;">Kickbox</div>
+                            <div onclick="selectCharacterFromGrid('DEBIM DENIN PUNK', 'Bravucón de mezclilla.', 72, 90, 78, '44.4% 100%')" class="h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 44.4% 100%;">Denin</div>
+                            <div onclick="selectCharacterFromGrid('METAL JAW', 'Ciborg con mandíbula de titanio.', 65, 96, 70, '55.5% 100%')" class="h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 55.5% 100%;">Metal Jaw</div>
+                            <div onclick="selectCharacterFromGrid('NIETU JAW', 'Gladiadora clandestina.', 74, 89, 82, '66.6% 100%')" class="h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 66.6% 100%;">Nietu Jaw</div>
+                            <div onclick="selectCharacterFromGrid('WRESTLER 1', 'Luchador libre con llaves.', 68, 95, 74, '77.7% 100%')" class="h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 77.7% 100%;">Wrestle 1</div>
+                            <div onclick="selectCharacterFromGrid('WRESTLER 2', 'Campeón mundial de peso pesado.', 66, 98, 72, '88.8% 100%')" class="h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 88.8% 100%;">Wrestle 2</div>
+                            <div onclick="selectCharacterFromGrid('IRON FISTS', 'Maestro de puños de hierro.', 70, 97, 76, '100% 100%')" class="h-28 cursor-pointer rounded-lg border border-green-500/40 character-sprite glass-panel glass-panel-hover flex flex-col justify-end p-1.5 text-[9px] font-tech text-white font-bold bg-black/40" style="background-position: 100% 100%;">Iron Fists</div>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- PANTALLA DE COMBATE 1V1 (OCULTA INICIALMENTE) -->
+                <!-- PANTALLA DE COMBATE 1V1 -->
                 <div id="battleScreen" class="hidden mt-8 pt-8 border-t border-white/10 space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center bg-obsidian/90 p-5 rounded-xl border border-white/10">
                         <div class="space-y-2">
@@ -418,40 +363,6 @@
         </div>
     </section>
 
-    <!-- 4. PRODUCT SHOWCASE -->
-    <section id="product" class="py-20 md:py-28 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center gap-3 mb-10 font-tech text-xs text-accent uppercase tracking-widest">
-                <span class="w-8 h-px bg-accent"></span>
-                JEGALUX // JEGALUX OSCURO
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 relative group glass-panel rounded-xl overflow-hidden shadow-2xl">
-                    <img 
-                        src="Sudadera EGALUX en showroom futurista.png" 
-                        alt="Sudadera EGALUX" 
-                        class="w-full h-[520px] md:h-[620px] object-cover group-hover:scale-[1.02] transition-transform duration-700"
-                        onerror="this.onerror=null; this.src='https://placehold.co/900x1200/121217/ff5500?text=JEGALUX+SHOWROOM';"
-                    />
-                </div>
-
-                <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl shadow-2xl">
-                    <div class="border-b border-white/10 pb-5">
-                        <h2 class="text-2xl md:text-3xl font-display font-bold tracking-tight text-white uppercase mb-2">JEGALUX OSCURO</h2>
-                        <span class="font-display text-2xl text-accent font-bold">$37.22 USD</span>
-                    </div>
-                    <p class="text-neutral-300 text-sm leading-relaxed">
-                        Sudadera unisex de felpa pesada integrada con diseño minimalista oscuro.
-                    </p>
-                    <button onclick="triggerToast('ADDED TO CART: JEGALUX OSCURO ($37.22)')" class="w-full py-4 rounded bg-accent text-black font-tech font-bold text-xs tracking-[0.2em] uppercase hover:bg-accent-glow transition shadow-lg">
-                        ADD TO CART ($37.22)
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- FOOTER -->
     <footer class="glass-panel border-t border-white/5 py-12 relative z-10 shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -471,7 +382,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT DE INTERACTIVIDAD Y COMBATE -->
+    <!-- SCRIPT DE JUEGO -->
     <script>
         window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
 
@@ -482,27 +393,18 @@
                 if (audioCtx.state === 'suspended') audioCtx.resume();
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
-                if (type === 'hover') {
-                    osc.type = 'sawtooth';
-                    osc.frequency.setValueAtTime(320, audioCtx.currentTime);
-                    osc.frequency.exponentialRampToValueAtTime(640, audioCtx.currentTime + 0.05);
-                    gain.gain.setValueAtTime(0.012, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.05);
-                } else {
-                    osc.type = 'triangle';
-                    osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
-                    osc.frequency.exponentialRampToValueAtTime(180, audioCtx.currentTime + 0.08);
-                    gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.08);
-                }
+                osc.type = type === 'hover' ? 'sawtooth' : 'triangle';
+                osc.frequency.setValueAtTime(320, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(640, audioCtx.currentTime + 0.05);
+                gain.gain.setValueAtTime(0.012, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.05);
                 osc.start();
-                osc.stop(audioCtx.currentTime + 0.08);
+                osc.stop(audioCtx.currentTime + 0.05);
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
             } catch (e) {}
         }
 
-        // Estado del personaje seleccionado y combate
         let selectedCharacter = {
             name: "CYBERNETIC SQUAD",
             desc: "Especialista en combate cibernético con implantes de alta frecuencia.",
@@ -520,7 +422,7 @@
             isDefending: false
         };
 
-        function selectCharacterFromGrid(index, name, desc, hack, str, ref, bgPos) {
+        function selectCharacterFromGrid(name, desc, hack, str, ref, bgPos) {
             selectedCharacter = { name, desc, hack, str, ref, bgPos };
             
             document.getElementById('previewCharName').innerText = name;
