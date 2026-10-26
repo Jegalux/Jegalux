@@ -98,11 +98,11 @@
             box-shadow: 0 12px 40px 0 rgba(255, 85, 0, 0.15);
         }
 
-        /* Tarjetas con profundidad 3D mejorada */
+        /* Tarjetas con profundidad 3D suave y controlada */
         .tilt-card {
             transform-style: preserve-3d;
-            perspective: 1000px;
-            transition: transform 0.15s cubic-bezier(0.03, 0.98, 0.52, 0.99), border-color 0.3s ease, box-shadow 0.3s ease;
+            perspective: 1200px;
+            transition: transform 0.2s cubic-bezier(0.03, 0.98, 0.52, 0.99), border-color 0.3s ease, box-shadow 0.3s ease;
         }
     </style>
 </head>
@@ -175,7 +175,7 @@
         </div>
     </header>
 
-    <!-- 2. HERO BANNER: Hueco quieto con imagen y contenido bajando en parallax -->
+    <!-- 2. HERO BANNER -->
     <section id="heroBanner" class="relative z-10 w-full border-b border-white/10 py-24 md:py-36 overflow-hidden bg-void/40 backdrop-blur-md">
         <!-- Imagen de fondo del banner fija con parallax -->
         <div class="absolute inset-0 -z-10 overflow-hidden w-full h-full">
@@ -469,7 +469,6 @@
             const bannerContainer = document.getElementById('bannerContainer');
             
             if (cloudInfinite) {
-                // Modifica la posición del fondo en bucle vertical para que parezca infinito y realista
                 cloudInfinite.style.backgroundPosition = `center ${scrollY * 0.4}px`;
             }
 
@@ -504,20 +503,21 @@
             }
         }
 
-        // Movimiento 3D fluido e interactivo en tarjetas
+        // Movimiento 3D fluido y con sensibilidad suavizada / controlada en tarjetas
         function handleTilt(e, card) {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -3;
-            const rotateY = ((x - centerX) / centerX) * 3;
-            card.style.transform += ` perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            // Sensibilidad reducida a 1.2 grados máximo para un efecto sutil y elegante
+            const rotateX = ((y - centerY) / centerY) * -1.2;
+            const rotateY = ((x - centerX) / centerX) * 1.2;
+            card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         }
 
         function resetTilt(card) {
-            card.style.transform = 'translateY(0px) perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
         }
     </script>
 </body>
