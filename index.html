@@ -84,7 +84,7 @@
             will-change: background-position;
         }
 
-        /* Sprite maestro para los 15 personajes de la nueva imagen (Matriz de 5 columnas x 3 filas) */
+        /* Sprite maestro vinculado directamente al archivo de tu GitHub */
         .fighter-avatar {
             background-image: url('Collage cyberpunk de 15 personajes neón.png');
             background-size: 500% 300%;
@@ -341,14 +341,14 @@
         </div>
     </section>
 
-    <!-- 5. SHADOW ARENA // 15 COMBATIENTES (NUEVA IMAGEN SPLIT) -->
+    <!-- 5. SHADOW ARENA // 15 COMBATIENTES (SPRITE 5x3 DE LA IMAGEN DE GITHUB) -->
     <section id="arena" class="py-24 relative z-10 border-b border-white/5 bg-void/80 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
                 <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// NEXUS ARCADE ARENA</span>
                 <h2 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // 15 COMBATIENTES</h2>
                 <p class="text-neutral-400 font-sans text-xs md:text-sm mt-3">
-                    Selecciona tu operativo de la nueva base de datos visual y enfréntate en duelos 1v1.
+                    Selecciona tu operativo de la base de datos visual y enfréntate en duelos 1v1.
                 </p>
             </div>
 
@@ -368,7 +368,7 @@
                     </div>
                 </div>
 
-                <!-- SELECCIÓN DE PERSONAJES (15 CASILLAS - 5x3) -->
+                <!-- SELECCIÓN DE PERSONAJES (15 CASILLAS - MATRIZ 5x3) -->
                 <div id="charSelectScreen" class="space-y-8">
                     <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECCIONA TU OPERATIVO (15 LUCHADORES)</h3>
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-h-[520px] overflow-y-auto pr-2">
@@ -830,7 +830,7 @@
             triggerToast('¡COMPRA EXITOSA! +1,000 XP AÑADIDOS A TU NEXUS ID');
         }
 
-        // --- LÓGICA ARCADE 1V1 (15 PERSONAJES DE LA NUEVA IMAGEN) ---
+        // --- LÓGICA ARCADE 1V1 (15 PERSONAJES) ---
         const rivalsList = [
             { name: "Cyber Geisha", hp: 90, atk: 28, desc: "Asesina cibernética de alta precisión." },
             { name: "Neon Valkyrie", hp: 110, atk: 22, desc: "Guerrera con trenzas de fibra óptica letal." },
