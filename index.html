@@ -138,14 +138,14 @@
                 <a href="#product" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playCyberpunkSound('hover')">
                     <span class="text-accent/60 text-[10px]">01//</span>PRODUCTS
                 </a>
-                <a href="#arena" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1 text-accent font-bold" onmouseenter="playCyberpunkSound('hover')">
-                    <span class="text-accent/60 text-[10px]">02//</span>SHADOW ARENA
-                </a>
                 <a href="#process" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playCyberpunkSound('hover')">
-                    <span class="text-accent/60 text-[10px]">03//</span>PROCESS
+                    <span class="text-accent/60 text-[10px]">02//</span>PROCESS
                 </a>
                 <a href="#manifesto" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playCyberpunkSound('hover')">
-                    <span class="text-accent/60 text-[10px]">04//</span>MANIFESTO
+                    <span class="text-accent/60 text-[10px]">03//</span>MANIFESTO
+                </a>
+                <a href="#arena" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1 text-accent font-bold" onmouseenter="playCyberpunkSound('hover')">
+                    <span class="text-accent/60 text-[10px]">04//</span>SHADOW ARENA
                 </a>
             </nav>
 
@@ -188,7 +188,7 @@
         <div id="bannerContainer" class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative tilt-card will-change-transform glass-panel rounded-2xl py-12 md:py-16 shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-white/10 overflow-hidden" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-accent/30 text-accent font-tech text-[10px] uppercase tracking-widest mb-6">
                 <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-                NEO-TOKYO 2026 // 50 COMBATIENTES (5 EQUIPOS)
+                AUTUMN/WINTER PROTOCOL — EDITION 0.94
             </div>
 
             <div class="flex justify-center mb-6">
@@ -200,28 +200,193 @@
             </div>
 
             <p class="max-w-xl mx-auto text-neutral-300 font-sans text-sm md:text-base leading-relaxed tracking-wide mb-8">
-                Elige tu operativo entre 5 equipos oficiales y demuestra tu dominio en la arena 1v1 con combates dinámicos.
+                Underground silhouettes, obscure textures and premium comfort for those who move in the shadow.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 font-tech text-xs tracking-widest">
-                <a href="#arena" class="w-full sm:w-auto px-8 py-3.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_25px_rgba(255,85,0,0.4)]" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
-                    JUGAR SHADOW ARENA (1V1)
+                <a href="#product" class="w-full sm:w-auto px-8 py-3.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_25px_rgba(255,85,0,0.4)]" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                    ORDER NOW
                 </a>
-                <a href="#product" class="w-full sm:w-auto px-8 py-3.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
-                    EXPLORE COLLECTION
+                <a href="#arena" class="w-full sm:w-auto px-8 py-3.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                    PLAY SHADOW ARENA
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- 3. SECCIÓN SHADOW ARENA // 50 PERSONAJES (5 EQUIPOS DE 10 CON RECORTES EXACTOS) -->
-    <section id="arena" class="py-24 relative z-10 border-b border-white/5 bg-void/60 backdrop-blur-xl">
+    <!-- 3. PRODUCT SHOWCASE -->
+    <section id="product" class="py-20 md:py-28 relative z-10 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-3 mb-10 font-tech text-xs text-accent uppercase tracking-widest">
+                <span class="w-8 h-px bg-accent"></span>
+                JEGALUX // JEGALUX OSCURO
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 relative group tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-accent/20 to-transparent rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative glass-panel rounded-xl overflow-hidden shadow-2xl">
+                        <img 
+                            src="Sudadera EGALUX en showroom futurista.png" 
+                            alt="Sudadera EGALUX en showroom futurista" 
+                            class="w-full h-[520px] md:h-[620px] object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
+                            onerror="this.onerror=null; this.src='https://placehold.co/900x1200/121217/ff5500?text=JEGALUX+SHOWROOM';"
+                        />
+                        <div class="absolute bottom-4 left-4 right-4 glass-panel p-3 rounded-lg flex items-center justify-between font-tech text-xs">
+                            <span class="text-neutral-400">SHOWROOM FUTURISTA</span>
+                            <span class="text-accent">COLOR: BLACK // UNISEX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl tilt-card relative overflow-hidden shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                    <div class="border-b border-white/10 pb-5">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h2 class="text-2xl md:text-3xl font-display font-bold tracking-tight text-white uppercase">JEGALUX OSCURO</h2>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="font-display text-2xl text-accent font-bold">$37.22 USD</span>
+                            <span class="px-2 py-0.5 rounded bg-accent/20 text-accent font-tech text-[10px] tracking-wider uppercase">EXCLUSIVE EDITION</span>
+                        </div>
+                    </div>
+
+                    <p class="text-neutral-300 text-sm leading-relaxed">
+                        Unisex heavy blend hoodie integrated directly from your catalog. Crafted for absolute comfort and structured drape under minimalist specifications.
+                    </p>
+
+                    <div class="space-y-2 font-tech text-xs text-neutral-300">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-accent"></i>
+                            <span>Premium cotton-poly blend fleece</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-accent"></i>
+                            <span>Double-lined hood with matched drawcord</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <div class="flex justify-between items-center mb-2 font-tech text-xs text-neutral-400">
+                            <span>SELECT FIT:</span>
+                            <span id="selectedSizeLabel" class="text-[11px] text-accent">M</span>
+                        </div>
+                        <div class="grid grid-cols-5 gap-2 font-tech text-xs">
+                            <button onclick="playCyberpunkSound('click'); selectSize('S', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">S</button>
+                            <button onclick="playCyberpunkSound('click'); selectSize('M', this)" class="size-btn py-2.5 border border-accent rounded bg-accent/10 text-accent font-bold transition" onmouseenter="playCyberpunkSound('hover')">M</button>
+                            <button onclick="playCyberpunkSound('click'); selectSize('L', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">L</button>
+                            <button onclick="playCyberpunkSound('click'); selectSize('XL', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">XL</button>
+                            <button onclick="playCyberpunkSound('click'); selectSize('2XL', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">2XL</button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 pt-3">
+                        <button 
+                            onclick="playCyberpunkSound('click'); addToCart()" 
+                            class="w-full py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 shadow-lg shadow-accent/20"
+                            onmouseenter="playCyberpunkSound('hover')"
+                        >
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                            ADD TO CART ($37.22)
+                        </button>
+                        <button 
+                            onclick="playCyberpunkSound('click'); openCheckoutModal('Apple Pay')" 
+                            class="w-full py-3.5 rounded bg-black border border-white/30 text-white font-tech text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 hover:border-accent shadow-xl"
+                            onmouseenter="playCyberpunkSound('hover')"
+                        >
+                            <i data-lucide="apple" class="w-4 h-4 fill-white"></i>
+                            PAY WITH APPLE PAY
+                        </button>
+                        <button 
+                            onclick="playCyberpunkSound('click'); openCheckoutModal('Card / Google Pay')" 
+                            class="w-full py-3 rounded glass-panel glass-panel-hover text-white font-tech text-xs tracking-[0.15em] uppercase transition duration-200 flex items-center justify-center gap-2"
+                            onmouseenter="playCyberpunkSound('hover')"
+                        >
+                            <i data-lucide="credit-card" class="w-4 h-4 text-accent"></i>
+                            CREDIT CARD / GOOGLE PAY
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PROCESS -->
+    <section id="process" class="py-20 md:py-28 relative z-10 border-b border-white/5 bg-black/40 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16" onmouseenter="playCyberpunkSound('cyber')">
+                <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// RIGOROUS PRODUCTION ARCHITECTURE</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold uppercase text-white tracking-tight">CRAFTED WITH INTENT</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="1e85e61a-723b-4751-b081-961a9c9bf287.jpg" alt="Embroidery" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                        <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 01</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">INDUSTRIAL EMBROIDERY</h3>
+                            <p class="text-neutral-300 text-xs leading-relaxed">Precision computerized micro-stitching guarantees millimeter-perfect tension across heavy textiles.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="ea5e7534-dd0e-4d1c-84c2-a8f7543243a1.jpg" alt="Obscure Atelier Studio" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                        <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 02</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">OBSCURE ATELIER</h3>
+                            <p class="text-neutral-300 text-xs leading-relaxed">Developed within shadow and controlled light setups to balance deep matte absorption.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="accb1452-469b-4746-9017-64ce56cf296b.jpg" alt="Detail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                        <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 03</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">ABSOLUTE DETAIL</h3>
+                            <p class="text-neutral-300 text-xs leading-relaxed">Individual numbered authenticity tags, reinforced drop-shoulder seam bindings, and raw artisan touches.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. MANIFESTO -->
+    <section id="manifesto" class="py-20 md:py-28 relative z-10 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel rounded-2xl p-8 md:p-14 relative overflow-hidden tilt-card shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    <div class="lg:col-span-6 space-y-6">
+                        <span class="font-tech text-xs text-accent tracking-widest uppercase">// CORE MANIFESTO</span>
+                        <h2 class="text-3xl md:text-5xl font-display font-bold uppercase text-white leading-tight">LUXURY BUILT IN THE DARK</h2>
+                        <p class="text-neutral-300 text-sm md:text-base leading-relaxed font-sans">JEGALUX does not participate in fast cycles. We craft timeless darkness for an elite cohort who prioritize presence over superficial noise.</p>
+                    </div>
+                    <div class="lg:col-span-6">
+                        <div class="relative rounded-xl overflow-hidden border border-accent/30 shadow-[0_0_35px_rgba(255,85,0,0.15)] group">
+                            <img src="Sudadera JEGALUX de lujo oscuro (1).png" alt="Atelier Sanctum" class="w-full h-[420px] object-cover group-hover:scale-105 transition-transform duration-700" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SECCIÓN SHADOW ARENA // ÚLTIMA SECCIÓN DEL JUEGO -->
+    <section id="arena" class="py-24 relative z-10 border-b border-white/5 bg-void/80 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// ARCADE ROSTER PRO 4.6</span>
+                <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// ARCADE ROSTER PRO FINAL</span>
                 <h2 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // 50 COMBATIENTES</h2>
                 <p class="text-neutral-400 font-sans text-xs md:text-sm mt-3">
-                    Cada bloque recorta exactamente su respectivo personaje de la imagen <strong>Plantilla cyberpunk de personajes neón.png</strong>.
+                    Selecciona tu luchador de la plantilla fotográfica y entra en la arena de combate 1v1.
                 </p>
             </div>
 
@@ -241,7 +406,7 @@
                     </div>
                 </div>
 
-                <!-- SELECCIÓN DE PERSONAJES (50 BLOQUES CON RECORTES DE LA FOTO) -->
+                <!-- SELECCIÓN DE PERSONAJES -->
                 <div id="charSelectScreen" class="space-y-8">
                     <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECCIONA TU OPERATIVO (50 LUCHADORES)</h3>
                     <div class="space-y-6 max-h-[520px] overflow-y-auto pr-2">
@@ -422,153 +587,8 @@
         </div>
     </section>
 
-    <!-- 4. PRODUCT SHOWCASE -->
-    <section id="product" class="py-20 md:py-28 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center gap-3 mb-10 font-tech text-xs text-accent uppercase tracking-widest">
-                <span class="w-8 h-px bg-accent"></span>
-                JEGALUX // JEGALUX OSCURO
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 relative group tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-accent/20 to-transparent rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="relative glass-panel rounded-xl overflow-hidden shadow-2xl">
-                        <img 
-                            src="Sudadera EGALUX en showroom futurista.png" 
-                            alt="Sudadera EGALUX en showroom futurista" 
-                            class="w-full h-[520px] md:h-[620px] object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
-                            onerror="this.onerror=null; this.src='https://placehold.co/900x1200/121217/ff5500?text=JEGALUX+SHOWROOM';"
-                        />
-                        <div class="absolute bottom-4 left-4 right-4 glass-panel p-3 rounded-lg flex items-center justify-between font-tech text-xs">
-                            <span class="text-neutral-400">SHOWROOM FUTURISTA</span>
-                            <span class="text-accent">COLOR: BLACK // UNISEX</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl tilt-card relative overflow-hidden shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
-                    <div class="border-b border-white/10 pb-5">
-                        <div class="flex justify-between items-baseline mb-2">
-                            <h2 class="text-2xl md:text-3xl font-display font-bold tracking-tight text-white uppercase">JEGALUX OSCURO</h2>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <span class="font-display text-2xl text-accent font-bold">$37.22 USD</span>
-                            <span class="px-2 py-0.5 rounded bg-accent/20 text-accent font-tech text-[10px] tracking-wider uppercase">EXCLUSIVE EDITION</span>
-                        </div>
-                    </div>
-
-                    <p class="text-neutral-300 text-sm leading-relaxed">
-                        Unisex heavy blend hoodie integrated directly from your catalog. Crafted for absolute comfort and structured drape under minimalist specifications.
-                    </p>
-
-                    <div class="space-y-2 font-tech text-xs text-neutral-300">
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-3.5 h-3.5 text-accent"></i>
-                            <span>Premium cotton-poly blend fleece</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-3.5 h-3.5 text-accent"></i>
-                            <span>Double-lined hood with matched drawcord</span>
-                        </div>
-                    </div>
-
-                    <div class="pt-2">
-                        <div class="flex justify-between items-center mb-2 font-tech text-xs text-neutral-400">
-                            <span>SELECT FIT:</span>
-                            <span id="selectedSizeLabel" class="text-[11px] text-accent">M</span>
-                        </div>
-                        <div class="grid grid-cols-5 gap-2 font-tech text-xs">
-                            <button onclick="playCyberpunkSound('click'); selectSize('S', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">S</button>
-                            <button onclick="playCyberpunkSound('click'); selectSize('M', this)" class="size-btn py-2.5 border border-accent rounded bg-accent/10 text-accent font-bold transition" onmouseenter="playCyberpunkSound('hover')">M</button>
-                            <button onclick="playCyberpunkSound('click'); selectSize('L', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">L</button>
-                            <button onclick="playCyberpunkSound('click'); selectSize('XL', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">XL</button>
-                            <button onclick="playCyberpunkSound('click'); selectSize('2XL', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">2XL</button>
-                        </div>
-                    </div>
-
-                    <div class="space-y-3 pt-3">
-                        <button 
-                            onclick="playCyberpunkSound('click'); addToCart()" 
-                            class="w-full py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 shadow-lg shadow-accent/20"
-                            onmouseenter="playCyberpunkSound('hover')"
-                        >
-                            <i data-lucide="plus" class="w-4 h-4"></i>
-                            ADD TO CART ($37.22)
-                        </button>
-                        <button 
-                            onclick="playCyberpunkSound('click'); openCheckoutModal('Apple Pay')" 
-                            class="w-full py-3.5 rounded bg-black border border-white/30 text-white font-tech text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 hover:border-accent shadow-xl"
-                            onmouseenter="playCyberpunkSound('hover')"
-                        >
-                            <i data-lucide="apple" class="w-4 h-4 fill-white"></i>
-                            PAY WITH APPLE PAY
-                        </button>
-                        <button 
-                            onclick="playCyberpunkSound('click'); openCheckoutModal('Card / Google Pay')" 
-                            class="w-full py-3 rounded glass-panel glass-panel-hover text-white font-tech text-xs tracking-[0.15em] uppercase transition duration-200 flex items-center justify-center gap-2"
-                            onmouseenter="playCyberpunkSound('hover')"
-                        >
-                            <i data-lucide="credit-card" class="w-4 h-4 text-accent"></i>
-                            CREDIT CARD / GOOGLE PAY
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. PROCESS -->
-    <section id="process" class="py-20 md:py-28 relative z-10 border-y border-white/5 bg-black/40 backdrop-blur-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16" onmouseenter="playCyberpunkSound('cyber')">
-                <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// RIGOROUS PRODUCTION ARCHITECTURE</span>
-                <h2 class="text-3xl md:text-4xl font-display font-bold uppercase text-white tracking-tight">CRAFTED WITH INTENT</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="1e85e61a-723b-4751-b081-961a9c9bf287.jpg" alt="Embroidery" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                        <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 01</div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">INDUSTRIAL EMBROIDERY</h3>
-                            <p class="text-neutral-300 text-xs leading-relaxed">Precision computerized micro-stitching guarantees millimeter-perfect tension across heavy textiles.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="ea5e7534-dd0e-4d1c-84c2-a8f7543243a1.jpg" alt="Obscure Atelier Studio" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                        <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 02</div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">OBSCURE ATELIER</h3>
-                            <p class="text-neutral-300 text-xs leading-relaxed">Developed within shadow and controlled light setups to balance deep matte absorption.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="accb1452-469b-4746-9017-64ce56cf296b.jpg" alt="Detail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                        <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 03</div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">ABSOLUTE DETAIL</h3>
-                            <p class="text-neutral-300 text-xs leading-relaxed">Individual numbered authenticity tags, reinforced drop-shoulder seam bindings, and raw artisan touches.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. MANIFESTO -->
-    <section id="manifesto" class="py-20 md:py-28 relative z-10">
+    <!-- 7. MANIFESTO -->
+    <section id="manifesto" class="py-20 md:py-28 relative z-10 border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="glass-panel rounded-2xl p-8 md:p-14 relative overflow-hidden tilt-card shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -686,8 +706,8 @@
                     osc.type = 'sawtooth';
                     osc.frequency.setValueAtTime(320, audioCtx.currentTime);
                     osc.frequency.exponentialRampToValueAtTime(640, audioCtx.currentTime + 0.01);
-                    // Volumen casi imperceptible (extremadamente bajo)
-                    gain.gain.setValueAtTime(0.00005, audioCtx.currentTime);
+                    // Volumen extremadamente bajo y sutil para el cursor
+                    gain.gain.setValueAtTime(0.00002, audioCtx.currentTime);
                     gain.gain.exponentialRampToValueAtTime(0.0000001, audioCtx.currentTime + 0.01);
                 } else if (type === 'click') {
                     osc.type = 'triangle';
