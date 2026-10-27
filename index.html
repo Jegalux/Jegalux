@@ -292,7 +292,7 @@
                         </div>
                         <h3 class="text-2xl md:text-4xl font-display font-bold text-white uppercase tracking-tight">SHADOW, FIRE & ICE DUELS</h3>
                         <p class="text-neutral-300 text-xs md:text-sm leading-relaxed">
-                            Choose among 6 exclusive collection operatives, face powerful street bosses and rank up your Google or Apple ID account.
+                            Choose among 15 exclusive collection operatives, face powerful street bosses and rank up your Google or Apple ID account.
                         </p>
                         <div class="pt-4">
                             <a href="arena.html" target="_blank" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs uppercase tracking-[0.2em] transition-all duration-300 shadow-[0_0_35px_rgba(255,85,0,0.5)] transform hover:-translate-y-1" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
@@ -305,7 +305,7 @@
         </div>
     </section>
 
-    <!-- MODAL DE PERFIL // NEXUS ID CON FOTO AMPLIABLE AL CLICAR -->
+    <!-- MODAL DE PERFIL // NEXUS ID CON LOS 15 AVATARES -->
     <div id="profileModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-lg p-6 md:p-8 rounded-2xl border border-accent/40 space-y-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-white/10 pb-4">
@@ -340,16 +340,25 @@
                     </div>
                 </div>
 
-                <!-- Selector de Avatar -->
+                <!-- Selector de Avatar (Los 15 personajes) -->
                 <div class="space-y-2">
-                    <label class="block text-neutral-400 uppercase tracking-wider text-[10px]">// SELECT OPERATIVE AVATAR</label>
-                    <div class="grid grid-cols-6 gap-2">
+                    <label class="block text-neutral-400 uppercase tracking-wider text-[10px]">// SELECT OPERATIVE AVATAR (15 ROSTER)</label>
+                    <div class="grid grid-cols-5 gap-2">
                         <div onclick="setProfileAvatar('Collage cyberpunk de 15 personajes neón.png')" class="cursor-pointer rounded-lg border border-accent fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');" title="Kuro Shadow"></div>
                         <div onclick="setProfileAvatar('pelirroja.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('pelirroja.png');" title="Scarlet Vixen"></div>
                         <div onclick="setProfileAvatar('gdrgdgrdgd.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('gdrgdgrdgd.png');" title="Nova Ocular"></div>
                         <div onclick="setProfileAvatar('señora.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('señora.png');" title="Valkyrie Riot"></div>
                         <div onclick="setProfileAvatar('htfhfhtff.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('htfhfhtff.png');" title="Specter Assassin"></div>
                         <div onclick="setProfileAvatar('jgjygjgjgjy.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('jgjygjgjgjy.png');" title="Zane Anarchy"></div>
+                        <div onclick="setProfileAvatar('ezez.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('ezez.png');" title="Ezel"></div>
+                        <div onclick="setProfileAvatar('gtgt.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('gtgt.png');" title="Vexia"></div>
+                        <div onclick="setProfileAvatar('yjuk.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('yjuk.png');" title="Zane Punk"></div>
+                        <div onclick="setProfileAvatar('jkujk.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('jkujk.png');" title="Kuro Spike"></div>
+                        <div onclick="setProfileAvatar('etr.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('etr.png');" title="Aiden Volt"></div>
+                        <div onclick="setProfileAvatar('emna.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('emna.png');" title="Nova Zero"></div>
+                        <div onclick="setProfileAvatar('elman.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('elman.png');" title="Cyber Goggles"></div>
+                        <div onclick="setProfileAvatar('gilil.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('gilil.png');" title="Scarlet Blade"></div>
+                        <div onclick="setProfileAvatar('ergh.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('ergh.png');" title="Valkyrie Red"></div>
                     </div>
                 </div>
 
@@ -603,6 +612,7 @@
 
         function renderRankingList(data) {
             const listContainer = document.getElementById('rankingList');
+            if(!listContainer) return;
             listContainer.innerHTML = '';
 
             data.forEach((player, index) => {
