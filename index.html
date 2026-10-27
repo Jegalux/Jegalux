@@ -1,9 +1,9 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEGALUX | Obscure Luxury Streetwear & Arena</title>
+    <title>JEGALUX | Obscure Luxury Streetwear & Live Arena</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
     <!-- Tailwind CSS -->
@@ -302,7 +302,7 @@
         </section>
     </div>
 
-    <!-- ================= PESTAÑA 2: SHADOW ARENA (DISEÑO ANCHO Y FOTOS SÓLIDAS) ================= -->
+    <!-- ================= PESTAÑA 2: SHADOW ARENA (ESTILO POKÉMON CON MATCHMAKING DE RANKING) ================= -->
     <div id="arenaView" class="relative z-10 hidden transition-opacity duration-300 py-8">
         
         <!-- FONDO DINÁMICO DE BATALLA -->
@@ -413,7 +413,7 @@
                     <div class="self-end w-72 glass-panel p-4 rounded-xl border border-red-500/40 font-tech text-xs space-y-2 shadow-2xl bg-black/90">
                         <div class="flex justify-between items-center text-white">
                             <span id="battleRivalName" class="font-bold text-red-400 text-sm">RIVAL</span>
-                            <span class="text-xs text-neutral-300 font-bold">Lv.12</span>
+                            <span class="text-xs text-neutral-300 font-bold">Lv.<span id="rivalLevelDisplay">1</span></span>
                         </div>
                         <div class="flex items-center gap-2">
                             <span class="text-xs font-bold text-red-500">HP</span>
@@ -440,8 +440,8 @@
 
                     <!-- FOTOS SÓLIDAS EN EL CAMPO DE BATALLA -->
                     <div class="absolute inset-0 pointer-events-none flex justify-between items-center px-12">
-                        <div class="w-28 h-28 rounded-2xl bg-cover bg-center border-2 border-accent shadow-[0_0_20px_rgba(255,85,0,0.4)]" id="arenaPlayerAvatar" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
-                        <div class="w-28 h-28 rounded-2xl bg-cover bg-center border-2 border-red-500 shadow-[0_0_20px_rgba(239,68,68,0.4)]" id="arenaRivalAvatar" style="background-image: url('pelirroja.png');"></div>
+                        <div class="w-28 h-28 rounded-2xl bg-cover bg-center border-2 border-accent shadow-[0_0_20px_rgba(255,85,0,0.4)] bg-black" id="arenaPlayerAvatar" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
+                        <div class="w-28 h-28 rounded-2xl bg-cover bg-center border-2 border-red-500 shadow-[0_0_20px_rgba(239,68,68,0.4)] bg-black" id="arenaRivalAvatar" style="background-image: url('pelirroja.png');"></div>
                     </div>
                 </div>
 
@@ -452,7 +452,7 @@
                         <div id="battleLogText" class="w-full truncate text-accent font-bold">
                             [SYSTEM] Duel initialized! Choose your action.
                         </div>
-                        <div class="absolute bottom-1 right-3 text-[10px] text-neutral-400 font-bold" id="lblRivalCount">Boss 1 / 5</div>
+                        <div class="absolute bottom-1 right-3 text-[10px] text-neutral-400 font-bold" id="lblRivalCount">Boss Matchmaking Active</div>
                     </div>
 
                     <!-- BOTÓN DE CAMBIAR OPERATIVO EN COMBATE -->
@@ -611,7 +611,7 @@
                 <button onclick="closeStatsModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
             
-            <div id="statModalAvatar" class="w-24 h-24 mx-auto rounded-xl bg-cover bg-center border-2 border-accent shadow-lg"></div>
+            <div id="statModalAvatar" class="w-24 h-24 mx-auto rounded-xl bg-cover bg-center border-2 border-accent shadow-lg bg-black"></div>
             <div id="statModalClass" class="text-accent font-bold uppercase tracking-widest"></div>
 
             <div class="bg-obsidian/80 p-4 rounded-xl border border-white/10 space-y-3 text-left">
@@ -718,7 +718,7 @@
         </div>
     </div>
 
-    <!-- SCRIPTS UNIFICADOS -->
+    <!-- SCRIPTS UNIFICADOS CON RANKING VIVO Y MATCHMAKING -->
     <script>
         window.addEventListener('load', () => { 
             if (window.lucide) lucide.createIcons(); 
@@ -760,9 +760,55 @@
             { name: "Ciberpunk JEGALUX bajo la lluvia", file: "Arena ciberpunk JEGALUX bajo la lluvia.png" }
         ];
 
+        // Roster con nombres propios y avatares del juego
+        const rosterPool = [
+            { name: "Kuro Shadow", avatar: "Collage cyberpunk de 15 personajes neón.png" },
+            { name: "Scarlet Vixen", avatar: "pelirroja.png" },
+            { name: "Nova Ocular", avatar: "gdrgdgrdgd.png" },
+            { name: "Valkyrie Riot", avatar: "señora.png" },
+            { name: "Specter Assassin", avatar: "htfhfhtff.png" },
+            { name: "Zane Anarchy", avatar: "jgjygjgjgjy.png" },
+            { name: "Ezel", avatar: "ezez.png" },
+            { name: "Vexia", avatar: "gtgt.png" },
+            { name: "Zane Punk", avatar: "yjuk.png" },
+            { name: "Kuro Spike", avatar: "jkujk.png" },
+            { name: "Aiden Volt", avatar: "etr.png" },
+            { name: "Nova Zero", avatar: "emna.png" },
+            { name: "Cyber Goggles", avatar: "elman.png" },
+            { name: "Scarlet Blade", avatar: "gilil.png" },
+            { name: "Valkyrie Red", avatar: "ergh.png" }
+        ];
+
+        let currentRival = { name: "Viper Stryke", level: 1, hp: 100, maxHp: 100, atk: 20, avatar: "pelirroja.png" };
+
         function setRandomArenaBackground() {
             const randomBg = arenaBackgrounds[Math.floor(Math.random() * arenaBackgrounds.length)];
             document.getElementById('dynamicArenaBg').style.backgroundImage = `url('${randomBg.file}')`;
+        }
+
+        // SISTEMA DE EMPAREJAMIENTO INTELIGENTE POR RANGO DE NIVEL CERCANO
+        function findMatchmakingRival() {
+            let rankingData = JSON.parse(localStorage.getItem('jegalux_global_ranking')) || [];
+            
+            // Filtrar bots dentro del rango de nivel cercano (±2 niveles de tu nivel actual)
+            let eligibleRivals = rankingData.filter(p => !p.isUser && Math.abs(p.level - userNexus.level) <= 2);
+            
+            // Si no hay exactamente en ese rango, coger cualquiera de la lista viva
+            if (eligibleRivals.length === 0) {
+                eligibleRivals = rankingData.filter(p => !p.isUser);
+            }
+
+            const chosenBot = eligibleRivals[Math.floor(Math.random() * eligibleRivals.length)];
+            const matchedRosterItem = rosterPool[Math.floor(Math.random() * rosterPool.length)];
+
+            currentRival = {
+                name: chosenBot.name,
+                level: chosenBot.level,
+                hp: 100 + (chosenBot.level * 10),
+                maxHp: 100 + (chosenBot.level * 10),
+                atk: 18 + (chosenBot.level * 3), // Dificultad basada en el nivel del rival
+                avatar: matchedRosterItem.avatar
+            };
         }
 
         function getLevelColor(lvl) {
@@ -867,39 +913,53 @@
             document.getElementById('zoomAvatarModal').classList.add('hidden');
         }
 
+        // RANKING MUNDIAL VIVO E INFINITO CON FLUCTUACIÓN DE PUNTOS
         function initGlobalRanking() {
-            let rankingData = JSON.parse(localStorage.getItem('jegalux_global_ranking'));
-            const lastSync = localStorage.getItem('jegalux_ranking_sync_date');
-            const todayStr = new Date().toDateString();
+            let rankingData = JSON.parse(localStorage.getItem('jegalux_live_ranking'));
 
-            const randomNames = [
-                "Vex_01", "Kuro_Ghost", "NeonValkyrie", "ZeroX", "CyberNinja", "RiotPulse", "Sovereign_K", 
-                "AeroBlade", "Noxious", "Sektor9", "GlitchMatrix", "AshenPhantom", "VoidWalker", "Orion_99",
-                "BladeRunner", "Hyperion", "Synthia", "Ronin_Dark", "Phreak", "Nyx_Shadow", "ApexPredator",
-                "Zenith_Core", "Vortex_9", "CryptoBlade", "GhostProtocol", "OmegaByte", "Stalker_X"
+            const cyberpunkFirstNames = [
+                "Vex", "Kuro", "Neon", "Zero", "Cyber", "Riot", "Sovereign", "Aero", "Nox", "Sektor",
+                "Glitch", "Ashen", "Void", "Orion", "Blade", "Hyper", "Syn", "Ronin", "Phreak", "Nyx",
+                "Apex", "Zenith", "Vortex", "Crypto", "Ghost", "Omega", "Stalker", "Echo", "Matrix", "Pulse"
+            ];
+            const cyberpunkLastNames = [
+                "Stryke", "Ghost", "Valkyrie", "X", "Ninja", "Pulse", "K", "Blade", "ious", "9",
+                "Matrix", "Phantom", "Walker", "99", "Runner", "ion", "thia", "Dark", "Phreak", "Shadow",
+                "Predator", "Core", "9", "Protocol", "Byte", "X", "Viper", "Vector", "Helix", "Syndicate"
             ];
 
-            if (!rankingData || lastSync !== todayStr) {
+            if (!rankingData || rankingData.length < 50) {
                 rankingData = [];
-                let basePts = 12500;
-                for (let i = 1; i <= 99; i++) {
-                    const randName = randomNames[Math.floor(Math.random() * randomNames.length)] + "_" + Math.floor(Math.random() * 900 + 100);
-                    basePts -= Math.floor(Math.random() * 120 + 20);
-                    const botLevel = Math.max(1, Math.floor(basePts / 800));
-                    rankingData.push({ name: randName, points: Math.max(500, basePts), level: botLevel });
+                let basePts = 15000;
+                for (let i = 1; i <= 150; i++) {
+                    const fName = cyberpunkFirstNames[Math.floor(Math.random() * cyberpunkFirstNames.length)];
+                    const lName = cyberpunkLastNames[Math.floor(Math.random() * cyberpunkLastNames.length)];
+                    const randName = `${fName}_${lName}${Math.floor(Math.random() * 90 + 10)}`;
+                    basePts -= Math.floor(Math.random() * 90 + 10);
+                    const botLevel = Math.max(1, Math.floor(basePts / 700));
+                    rankingData.push({ name: randName, points: Math.max(200, basePts), level: botLevel });
                 }
-                localStorage.setItem('jegalux_ranking_sync_date', todayStr);
             } else {
+                // Simula movimiento orgánico en el ranking mundial (suben y bajan puntos)
                 rankingData.forEach(bot => {
-                    const delta = Math.floor(Math.random() * 75) - 32;
-                    bot.points = Math.max(200, bot.points + delta);
-                    bot.level = Math.max(1, Math.floor(bot.points / 800));
+                    const delta = Math.floor(Math.random() * 100) - 48;
+                    bot.points = Math.max(100, bot.points + delta);
+                    bot.level = Math.max(1, Math.floor(bot.points / 700));
                 });
             }
 
-            rankingData.push({ name: userNexus.username || "CYBER_OPERATIVE", points: userNexus.points || 150, level: userNexus.level || 1, isUser: true });
+            // Actualizar o insertar al usuario en el ranking vivo
+            let userIndex = rankingData.findIndex(p => p.isUser);
+            if (userIndex !== -1) {
+                rankingData[userIndex].points = userNexus.points;
+                rankingData[userIndex].level = userNexus.level;
+                rankingData[userIndex].name = userNexus.username;
+            } else {
+                rankingData.push({ name: userNexus.username || "CYBER_OPERATIVE", points: userNexus.points, level: userNexus.level, isUser: true });
+            }
+
             rankingData.sort((a, b) => b.points - a.points);
-            localStorage.setItem('jegalux_global_ranking', JSON.stringify(rankingData));
+            localStorage.setItem('jegalux_live_ranking', JSON.stringify(rankingData));
             renderRankingList(rankingData);
         }
 
@@ -974,49 +1034,38 @@
                 triggerToast(`YOU REACHED LEVEL ${userNexus.level}! 🎉`);
             }
             saveUserData();
+            initGlobalRanking(); // Actualiza el ranking vivo
         }
 
-        const rivalsList = [
-            { name: "Viper Stryke", hp: 100, atk: 22, avatar: "gilil.png", desc: "Balanced rival 1 / 5." },
-            { name: "Ghost Geisha", hp: 100, atk: 24, avatar: "emna.png", desc: "Balanced rival 2 / 5." },
-            { name: "Valkyrie Blade", hp: 110, atk: 20, avatar: "ergh.png", desc: "Balanced rival 3 / 5." },
-            { name: "Riot Titan", hp: 120, atk: 18, avatar: "yjuk.png", desc: "Balanced rival 4 / 5." },
-            { name: "JEGALUX PRIME", hp: 115, atk: 22, avatar: "jkujk.png", desc: "Supreme shadow boss." }
-        ];
-
-        let gameState = { playerMaxHp: 100, playerHp: 100, currentRivalIndex: 0, rivalHp: 100, rivalMaxHp: 100, rivalAtk: 22, isDefending: false };
+        let gameState = { playerMaxHp: 100, playerHp: 100, isDefending: false };
 
         function startGame() {
             playCyberpunkSound('click');
             setRandomArenaBackground();
+            findMatchmakingRival(); // Busca rival en tu rango de nivel
             document.getElementById('charSelectScreen').classList.add('hidden');
             document.getElementById('battleScreen').classList.remove('hidden');
             loadRival();
         }
 
         function loadRival() {
-            if (gameState.currentRivalIndex >= rivalsList.length) gameState.currentRivalIndex = 0;
-            const rival = rivalsList[gameState.currentRivalIndex];
             const type = activeCombatant.classType || "balanced";
             gameState.playerMaxHp = type === 'critical' ? 85 : (type === 'tank' ? 125 : 100);
             gameState.playerHp = gameState.playerMaxHp;
-            gameState.rivalMaxHp = rival.hp;
-            gameState.rivalHp = rival.hp;
-            gameState.rivalAtk = rival.atk;
 
-            document.getElementById('battleRivalName').innerText = rival.name.toUpperCase();
+            document.getElementById('battleRivalName').innerText = currentRival.name.toUpperCase();
+            document.getElementById('rivalLevelDisplay').innerText = currentRival.level;
             document.getElementById('battlePlayerName').innerText = activeCombatant.name.toUpperCase();
             document.getElementById('arenaPlayerAvatar').style.backgroundImage = `url('${activeCombatant.imgFile}')`;
-            document.getElementById('arenaRivalAvatar').style.backgroundImage = `url('${rival.avatar}')`;
-            document.getElementById('lblRivalCount').innerText = `Boss ${gameState.currentRivalIndex + 1} / 5`;
+            document.getElementById('arenaRivalAvatar').style.backgroundImage = `url('${currentRival.avatar}')`;
 
             updateHpBars();
-            appendLog(`[ARENA] Duel started against ${rival.name}!`);
+            appendLog(`[MATCHMAKING] Duel matched against ${currentRival.name} (Lv.${currentRival.level})!`);
         }
 
         function updateHpBars() {
             const pPct = Math.max(0, (gameState.playerHp / gameState.playerMaxHp) * 100);
-            const rPct = Math.max(0, (gameState.rivalHp / gameState.rivalMaxHp) * 100);
+            const rPct = Math.max(0, (currentRival.hp / currentRival.maxHp) * 100);
             document.getElementById('playerHpBar').style.width = pPct + '%';
             document.getElementById('playerHpText').innerText = `${Math.ceil(gameState.playerHp)} / ${gameState.playerMaxHp}`;
             document.getElementById('rivalHpBar').style.width = rPct + '%';
@@ -1041,9 +1090,9 @@
             else { appendLog(`Attack hits for <span class="text-accent">${baseDmg} DMG</span>.`); }
             
             registerDamage(baseDmg);
-            gameState.rivalHp -= baseDmg;
+            currentRival.hp -= baseDmg;
             checkBattleStatus();
-            if (gameState.rivalHp > 0) setTimeout(rivalTurn, 900);
+            if (currentRival.hp > 0) setTimeout(rivalTurn, 900);
         }
 
         function playerDefend() { playCyberpunkSound('click'); gameState.isDefending = true; appendLog(`Defensive stance adopted! Shield active.`); setTimeout(rivalTurn, 900); }
@@ -1054,24 +1103,23 @@
             let damage = cType === 'critical' ? 65 : (cType === 'berserker' ? 60 : (cType === 'speed' ? 55 : 50));
             registerDamage(damage);
             appendLog(`SHADOW STRIKE unleashes <span class="text-accent">${damage} DMG</span>!`);
-            gameState.rivalHp -= damage;
+            currentRival.hp -= damage;
             checkBattleStatus();
-            if (gameState.rivalHp > 0) setTimeout(rivalTurn, 900);
+            if (currentRival.hp > 0) setTimeout(rivalTurn, 900);
         }
 
         function rivalTurn() {
-            const rival = rivalsList[gameState.currentRivalIndex];
             const cType = activeCombatant.classType || "balanced";
-            let rDamage = rival.atk;
+            let rDamage = currentRival.atk;
             if (gameState.isDefending) { rDamage = Math.floor(rDamage * 0.4); gameState.isDefending = false; appendLog(`Defense absorbed rival impact (${rDamage} DMG).`); }
             else if (cType === 'agility' && Math.random() < 0.35) { rDamage = 0; appendLog(`Agile evasion! You dodged the attack! (0 DMG)`); }
-            else { appendLog(`${rival.name} strikes back for <span class="text-red-500">${rDamage} DMG</span>.`); }
+            else { appendLog(`${currentRival.name} strikes back for <span class="text-red-500">${rDamage} DMG</span>.`); }
             gameState.playerHp -= rDamage;
             updateHpBars();
             if (gameState.playerHp <= 0) battleOver(false);
         }
 
-        function checkBattleStatus() { updateHpBars(); if (gameState.rivalHp <= 0) battleOver(true); }
+        function checkBattleStatus() { updateHpBars(); if (currentRival.hp <= 0) battleOver(true); }
 
         function battleOver(isVictory) {
             document.getElementById('battleScreen').classList.add('hidden');
@@ -1080,15 +1128,14 @@
             const desc = document.getElementById('endGameDesc');
             if (isVictory) {
                 userNexus.bossesDefeated = (userNexus.bossesDefeated || 0) + 1;
-                addXpAndPoints(300, 150);
+                addXpAndPoints(350, 200);
                 title.className = "font-display font-bold text-3xl text-accent uppercase";
                 title.innerText = "VICTORY IN DUEL!";
-                desc.innerText = `Combat won! +300 XP added to your Nexus ID.`;
-                gameState.currentRivalIndex++;
+                desc.innerText = `Defeated ${currentRival.name} (Lv.${currentRival.level})! +350 XP & +200 PTS added.`;
             } else {
                 title.className = "font-display font-bold text-3xl text-red-500 uppercase";
                 title.innerText = "YOU HAVE BEEN DEFEATED!";
-                desc.innerText = "The shadow has consumed you. Try again.";
+                desc.innerText = `Overpowered by ${currentRival.name}. Regroup and try again.`;
                 gameState.playerHp = gameState.playerMaxHp;
             }
             saveUserData();
@@ -1097,6 +1144,7 @@
         function nextBattle() { 
             playCyberpunkSound('click'); 
             setRandomArenaBackground(); 
+            findMatchmakingRival(); // Nuevo emparejamiento para la siguiente ronda
             gameState.playerHp = gameState.playerMaxHp; 
             document.getElementById('endGameScreen').classList.add('hidden'); 
             document.getElementById('battleScreen').classList.remove('hidden'); 
