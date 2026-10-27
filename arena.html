@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEGALUX | Shadow Arena - Global Ranking</title>
+    <title>JEGALUX | Shadow Arena - Character Stats</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
     <!-- Tailwind CSS -->
@@ -85,14 +85,13 @@
                 <a href="index.html" class="font-tech text-xs tracking-widest text-neutral-400 hover:text-accent transition flex items-center gap-1.5 px-4 py-2 rounded-lg glass-panel">
                     <i data-lucide="arrow-left" class="w-4 h-4"></i> BACK TO STORE
                 </a>
-                <!-- BOTÓN DE NIVEL CLICABLE QUE ABRE EL RANKING MUNDIAL -->
-                <button onclick="openRankingModal()" class="flex items-center gap-2 px-3 py-2 rounded-lg glass-panel hover:border-accent transition text-neutral-300 group" title="Click to view Global Ranking">
+                <div class="flex items-center gap-2 px-3 py-2 rounded-lg glass-panel text-neutral-300">
                     <div class="relative">
                         <div id="headerAvatar" class="w-6 h-6 rounded bg-cover bg-center border border-accent" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
                         <span id="headerLevelBadge" class="absolute -top-1 -right-1 px-1 text-[8px] font-black rounded bg-accent text-black">1</span>
                     </div>
                     <span id="headerName" class="font-tech text-xs text-accent font-bold hidden sm:inline">NEXUS ID</span>
-                </button>
+                </div>
             </div>
         </div>
     </header>
@@ -100,69 +99,80 @@
     <!-- MAIN GAME CONTAINER -->
     <main class="py-16 relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-10">
-            <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// NEXUS ARCADE ARENA 1V1</span>
-            <h1 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // TOTAL COMBAT</h1>
+            <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// ASYMMETRIC BALANCED ARENA</span>
+            <h1 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // OPERATIVES</h1>
             <p class="text-neutral-400 font-sans text-xs md:text-sm mt-3">
-                Select your elite operative and conquer the shadow bosses. Click your level to access the Global Leaderboard.
+                Click any operative to inspect their combat stats, strengths, and special abilities before deploying.
             </p>
         </div>
 
         <div class="glass-panel rounded-2xl p-6 md:p-10 shadow-2xl border border-accent/40 relative overflow-hidden space-y-8">
             
-            <!-- STATS BAR (CLICABLE EN EL NIVEL PARA ABRIR RANKING) -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10 font-tech text-xs">
+            <!-- STATS BAR & BOTÓN DE CAMBIAR OPERATIVO -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10 font-tech text-xs items-center">
                 <div class="space-y-1">
                     <span class="text-neutral-400 text-[10px] uppercase">OPERATIVE</span>
-                    <div id="lblPlayerName" class="text-white font-bold truncate">CYBER_OPERATIVE</div>
+                    <div id="lblPlayerName" class="text-white font-bold truncate">KURO SHADOW</div>
                 </div>
-                <div class="space-y-1 cursor-pointer group" onclick="openRankingModal()" title="Click to open World Ranking">
-                    <span class="text-neutral-400 text-[10px] uppercase group-hover:text-accent transition">LEVEL / PTS (RANKING)</span>
-                    <div><span id="lblLevel" class="px-2 py-0.5 rounded text-black font-extrabold bg-accent shadow">1</span> <span id="lblScore" class="text-accent font-bold ml-1">0 PTS</span></div>
+                <div class="space-y-1">
+                    <span class="text-neutral-400 text-[10px] uppercase">LEVEL / PTS</span>
+                    <div><span id="lblLevel" class="px-2 py-0.5 rounded text-black font-extrabold bg-accent">1</span> <span id="lblScore" class="text-accent font-bold ml-1">0 PTS</span></div>
                 </div>
                 <div class="space-y-1">
                     <span class="text-neutral-400 text-[10px] uppercase">MAX DAMAGE</span>
                     <div id="statMaxDamage" class="text-accent font-bold text-sm">0 DMG</div>
                 </div>
                 <div class="space-y-1">
-                    <span class="text-neutral-400 text-[10px] uppercase">BOSSES DEFEATED</span>
+                    <span class="text-neutral-400 text-[10px] uppercase">BOSSES</span>
                     <div id="statBossesDefeated" class="text-white font-bold text-sm">0 / 5</div>
+                </div>
+                <div>
+                    <button onclick="returnToCharSelect()" class="w-full py-2.5 px-3 rounded bg-accent/20 border border-accent text-accent font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-1.5 uppercase text-[10px]">
+                        <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> CHANGE OPERATIVE
+                    </button>
                 </div>
             </div>
 
-            <!-- 1. SELECCIÓN DE PERSONAJES -->
+            <!-- 1. SELECCIÓN DE PERSONAJES (CLICABLE PARA VER ESTADÍSTICAS) -->
             <div id="charSelectScreen" class="space-y-8">
-                <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECT YOUR OPERATIVE</h3>
+                <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// CLICK TO INSPECT & SELECT OPERATIVE</h3>
                 
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-                    <div onclick="selectCharacter('Kuro Shadow', 'Collage cyberpunk de 15 personajes neón.png')" class="cursor-pointer rounded-xl border border-accent/40 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
+                    <div onclick="inspectCharacter('Kuro Shadow', 'Collage cyberpunk de 15 personajes neón.png', 'balanced', '100 HP', 'Medium', 'Balanced All-Rounder', 'Reliable in all combat situations with zero weaknesses.')" class="cursor-pointer rounded-xl border border-accent/40 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <span class="relative z-10 text-accent">Kuro Shadow</span>
+                        <span class="relative z-10 text-[9px] text-neutral-300">Inspect Stats</span>
                     </div>
-                    <div onclick="selectCharacter('Scarlet Vixen', 'pelirroja.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
+                    <div onclick="inspectCharacter('Scarlet Vixen', 'pelirroja.png', 'critical', '85 HP', 'High Critical', 'Critical Striker', 'Deals devastating critical hits (+40% extra damage chance).')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('pelirroja.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <span class="relative z-10">Scarlet Vixen</span>
+                        <span class="relative z-10 text-[9px] text-red-400">Inspect Stats</span>
                     </div>
-                    <div onclick="selectCharacter('Nova Ocular', 'gdrgdgrdgd.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
+                    <div onclick="inspectCharacter('Nova Ocular', 'gdrgdgrdgd.png', 'agility', '100 HP', 'High Evasion', 'Agile Evasion Master', 'Possesses 35% passive evasion to completely dodge incoming attacks.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('gdrgdgrdgd.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <span class="relative z-10">Nova Ocular</span>
+                        <span class="relative z-10 text-[9px] text-cyan-400">Inspect Stats</span>
                     </div>
-                    <div onclick="selectCharacter('Valkyrie Riot', 'señora.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
+                    <div onclick="inspectCharacter('Valkyrie Riot', 'señora.png', 'tank', '125 HP', 'Low Atk / High HP', 'Tank Vanguard', 'Higher endurance with 125 HP pool to outlast opponents.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('señora.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <span class="relative z-10">Valkyrie Riot</span>
+                        <span class="relative z-10 text-[9px] text-emerald-400">Inspect Stats</span>
                     </div>
-                    <div onclick="selectCharacter('Specter Assassin', 'htfhfhtff.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
+                    <div onclick="inspectCharacter('Specter Assassin', 'htfhfhtff.png', 'speed', '100 HP', 'Fast Combo', 'Stealth Assassin', 'Balanced combatant with rapid strike momentum.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('htfhfhtff.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <span class="relative z-10">Specter Assassin</span>
+                        <span class="relative z-10 text-[9px] text-purple-400">Inspect Stats</span>
                     </div>
-                    <div onclick="selectCharacter('Zane Anarchy', 'jgjygjgjgjy.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
+                    <div onclick="inspectCharacter('Zane Anarchy', 'jgjygjgjgjy.png', 'berserker', '100 HP', 'Maximum Atk', 'Berserker Brawler', 'Deals raw heavy damage with every single strike.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('jgjygjgjgjy.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <span class="relative z-10">Zane Anarchy</span>
+                        <span class="relative z-10 text-[9px] text-yellow-400">Inspect Stats</span>
                     </div>
                 </div>
 
@@ -200,7 +210,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                     <div class="md:col-span-4 text-center p-4 glass-panel rounded-xl border border-accent/40 relative overflow-hidden">
                         <div class="w-28 h-28 mx-auto rounded-xl fighter-slot border-2 border-accent shadow-lg mb-2" id="arenaPlayerAvatar" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
-                        <div class="font-tech text-xs text-accent font-bold uppercase">YOUR OPERATIVE</div>
+                        <div class="font-tech text-xs text-accent font-bold uppercase" id="arenaPlayerClassTitle">YOUR OPERATIVE</div>
                     </div>
 
                     <div class="md:col-span-4 text-center">
@@ -216,7 +226,7 @@
                 </div>
 
                 <div class="glass-panel p-5 rounded-xl h-44 overflow-y-auto font-tech text-xs space-y-2 border border-accent/20" id="battleLog">
-                    <div class="text-accent">[SYSTEM] 1v1 duel started. Select your strategic move.</div>
+                    <div class="text-accent">[SYSTEM] Specialized duel initialized. Exploit your class strengths!</div>
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 font-tech text-xs">
@@ -248,31 +258,32 @@
         </div>
     </main>
 
-    <!-- MODAL DE RANKING MUNDIAL (GLOBAL LEADERBOARD) -->
-    <div id="rankingModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md hidden">
-        <div class="glass-panel w-full max-w-2xl p-6 md:p-8 rounded-2xl border border-accent/50 space-y-6 shadow-2xl relative max-h-[85vh] flex flex-col">
-            <div class="flex justify-between items-center border-b border-white/10 pb-4">
-                <div>
-                    <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider">// GLOBAL RANKING (TOP 100)</h3>
-                    <p class="text-xs font-tech text-neutral-400">Live active operatives across shadow servers</p>
-                </div>
-                <button onclick="closeRankingModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+    <!-- MODAL DE ESTADÍSTICAS DEL OPERATIVO (INSPECCIÓN) -->
+    <div id="statsModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
+        <div class="glass-panel w-full max-w-md p-6 md:p-8 rounded-2xl border border-accent/50 space-y-6 shadow-2xl relative text-center">
+            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                <h3 id="statModalName" class="font-display font-bold text-lg text-white uppercase tracking-wider">OPERATIVE STATS</h3>
+                <button onclick="closeStatsModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
-
-            <!-- Lista de Ranking con Scroll -->
-            <div id="rankingList" class="space-y-2 overflow-y-auto flex-1 pr-2 font-tech text-xs">
-                <!-- Se inyecta por JavaScript -->
+            <div id="statModalAvatar" class="w-24 h-24 mx-auto rounded-xl bg-cover bg-center border-2 border-accent shadow-lg"></div>
+            <div class="grid grid-cols-2 gap-4 font-tech text-xs text-left bg-obsidian/60 p-4 rounded-xl border border-white/10">
+                <div><span class="text-neutral-400">CLASS:</span> <div id="statModalClass" class="text-accent font-bold mt-0.5"></div></div>
+                <div><span class="text-neutral-400">BASE HP:</span> <div id="statModalHp" class="text-white font-bold mt-0.5"></div></div>
+                <div><span class="text-neutral-400">STRENGTH:</span> <div id="statModalAtk" class="text-white font-bold mt-0.5"></div></div>
+                <div><span class="text-neutral-400">SPECIAL:</span> <div id="statModalSpecial" class="text-white font-bold mt-0.5"></div></div>
             </div>
-
-            <div class="border-t border-white/10 pt-4 text-center font-tech text-[10px] text-neutral-400">
-                RANKINGS AUTO-SYNC DAILY // ACTIVE CLOUD PROTOCOL
+            <p id="statModalDesc" class="text-xs font-sans text-neutral-300 leading-relaxed"></p>
+            <div class="pt-2">
+                <button onclick="confirmSelectFromModal()" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
+                    SELECT THIS OPERATIVE
+                </button>
             </div>
         </div>
     </div>
 
     <!-- FOOTER -->
     <footer class="glass-panel border-t border-white/5 py-10 relative z-10 text-center font-tech text-xs text-neutral-400">
-        JEGALUX SHADOW ARENA // ARCADE PROTOCOL 2026
+        JEGALUX SHADOW ARENA // ASYMMETRIC PROTOCOL 2026
     </footer>
 
     <!-- TOAST -->
@@ -288,19 +299,21 @@
         window.addEventListener('load', () => { 
             if (window.lucide) lucide.createIcons(); 
             loadUserData();
-            initGlobalRanking();
         });
 
         let userNexus = {
             isLoggedIn: false,
-            username: "CYBER_OPERATIVE",
+            username: "KURO SHADOW",
             level: 1,
             xp: 0,
             points: 150,
             maxDamage: 0,
             bossesDefeated: 0,
-            avatarImg: "Collage cyberpunk de 15 personajes neón.png"
+            avatarImg: "Collage cyberpunk de 15 personajes neón.png",
+            classType: "balanced"
         };
+
+        let tempSelected = { name: "Kuro Shadow", imgFile: "Collage cyberpunk de 15 personajes neón.png", classType: "balanced" };
 
         function getLevelColor(lvl) {
             if (lvl <= 9) return 'bg-accent text-black';
@@ -314,6 +327,7 @@
             const saved = localStorage.getItem('jegalux_nexus_id');
             if (saved) {
                 userNexus = JSON.parse(saved);
+                if(!userNexus.classType) userNexus.classType = "balanced";
                 updateStatsUI();
             }
         }
@@ -343,96 +357,39 @@
             document.getElementById('statBossesDefeated').innerText = (userNexus.bossesDefeated || 0) + ' / 5';
         }
 
-        // GENERADOR DE RANKING MUNDIAL ACTIVO CON CAMBIOS DIARIOS
-        function initGlobalRanking() {
-            let rankingData = JSON.parse(localStorage.getItem('jegalux_global_ranking'));
-            const lastSync = localStorage.getItem('jegalux_ranking_sync_date');
-            const todayStr = new Date().toDateString();
-
-            const randomNames = [
-                "Vex_01", "Kuro_Ghost", "NeonValkyrie", "ZeroX", "CyberNinja", "RiotPulse", "Sovereign_K", 
-                "AeroBlade", "Noxious", "Sektor9", "GlitchMatrix", "AshenPhantom", "VoidWalker", "Orion_99",
-                "BladeRunner", "Hyperion", "Synthia", "Ronin_Dark", "Phreak", "Nyx_Shadow", "ApexPredator",
-                "Zenith_Core", "Vortex_9", "CryptoBlade", "GhostProtocol", "OmegaByte", "Stalker_X"
-            ];
-
-            if (!rankingData || lastSync !== todayStr) {
-                // Crear 99 bots aleatorios activos y realistas
-                rankingData = [];
-                let basePts = 12500;
-                for (let i = 1; i <= 99; i++) {
-                    const randName = randomNames[Math.floor(Math.random() * randomNames.length)] + "_" + Math.floor(Math.random() * 900 + 100);
-                    basePts -= Math.floor(Math.random() * 120 + 20); // Puntos decrecientes escalonados
-                    const botLevel = Math.max(1, Math.floor(basePts / 800));
-                    rankingData.push({
-                        name: randName,
-                        points: Math.max(500, basePts),
-                        level: botLevel
-                    });
-                }
-                localStorage.setItem('jegalux_ranking_sync_date', todayStr);
-            } else {
-                // Simular actividad diaria sumando/restando puntos aleatorios a los bots para parecer activos
-                rankingData.forEach(bot => {
-                    const delta = Math.floor(Math.random() * 75) - 32; // +/- puntos diarios
-                    bot.points = Math.max(200, bot.points + delta);
-                    bot.level = Math.max(1, Math.floor(bot.points / 800));
-                });
-            }
-
-            // Insertar al usuario actual dentro del ranking según sus puntos
-            rankingData.push({
-                name: userNexus.username || "CYBER_OPERATIVE",
-                points: userNexus.points || 150,
-                level: userNexus.level || 1,
-                isUser: true
-            });
-
-            // Ordenar de mayor a menor puntuación
-            rankingData.sort((a, b) => b.points - a.points);
-            localStorage.setItem('jegalux_global_ranking', JSON.stringify(rankingData));
-            renderRankingList(rankingData);
-        }
-
-        function renderRankingList(data) {
-            const listContainer = document.getElementById('rankingList');
-            listContainer.innerHTML = '';
-
-            data.forEach((player, index) => {
-                const rank = index + 1;
-                const isTop3 = rank <= 3;
-                const rankStyle = rank === 1 ? 'text-yellow-400 font-bold border-yellow-400/40 bg-yellow-500/10' : 
-                                  rank === 2 ? 'text-neutral-300 font-bold border-neutral-400/40 bg-neutral-400/10' : 
-                                  rank === 3 ? 'text-amber-600 font-bold border-amber-600/40 bg-amber-600/10' : 
-                                  'text-neutral-400 border-white/5 bg-obsidian/40';
-
-                const userHighlight = player.isUser ? 'border-accent bg-accent/10 text-white font-bold' : '';
-
-                listContainer.innerHTML += `
-                    <div class="flex items-center justify-between p-3 rounded-xl border ${userHighlight || rankStyle} transition">
-                        <div class="flex items-center gap-4">
-                            <span class="w-6 text-center font-display font-bold text-sm">#${rank}</span>
-                            <div>
-                                <div class="text-white flex items-center gap-2">
-                                    ${player.name} ${player.isUser ? '<span class="px-1.5 py-0.5 rounded bg-accent text-black text-[9px] font-black">YOU</span>' : ''}
-                                </div>
-                                <div class="text-[10px] text-neutral-400">Level <span class="text-accent">${player.level}</span></div>
-                            </div>
-                        </div>
-                        <div class="text-accent font-bold">${player.points} PTS</div>
-                    </div>
-                `;
-            });
-        }
-
-        function openRankingModal() {
+        function inspectCharacter(name, imgFile, classType, hp, atk, special, desc) {
             playCyberpunkSound('click');
-            initGlobalRanking(); // Refrescar lista con datos activos
-            document.getElementById('rankingModal').classList.remove('hidden');
+            tempSelected = { name, imgFile, classType };
+            document.getElementById('statModalName').innerText = name.toUpperCase();
+            document.getElementById('statModalAvatar').style.backgroundImage = `url('${imgFile}')`;
+            document.getElementById('statModalClass').innerText = classType.toUpperCase();
+            document.getElementById('statModalHp').innerText = hp;
+            document.getElementById('statModalAtk').innerText = atk;
+            document.getElementById('statModalSpecial').innerText = special;
+            document.getElementById('statModalDesc').innerText = desc;
+            document.getElementById('statsModal').classList.remove('hidden');
         }
 
-        function closeRankingModal() {
-            document.getElementById('rankingModal').classList.add('hidden');
+        function closeStatsModal() {
+            document.getElementById('statsModal').classList.add('hidden');
+        }
+
+        function confirmSelectFromModal() {
+            playCyberpunkSound('click');
+            userNexus.username = tempSelected.name;
+            userNexus.avatarImg = tempSelected.imgFile;
+            userNexus.classType = tempSelected.classType;
+            saveUserData();
+            closeStatsModal();
+            triggerToast(`OPERATIVE SELECTED: ${tempSelected.name}`);
+        }
+
+        function returnToCharSelect() {
+            playCyberpunkSound('click');
+            document.getElementById('battleScreen').classList.add('hidden');
+            document.getElementById('endGameScreen').classList.add('hidden');
+            document.getElementById('charSelectScreen').classList.remove('hidden');
+            triggerToast('SELECT A NEW OPERATIVE');
         }
 
         function addXpAndPoints(xpGain, ptsGain) {
@@ -448,11 +405,11 @@
         }
 
         const rivalsList = [
-            { name: "Viper Stryke", hp: 100, atk: 22, avatar: "pelirroja.png", desc: "Street chaos queen with plasma spikes." },
-            { name: "Ghost Geisha", hp: 90, atk: 28, avatar: "gdrgdgrdgd.png", desc: "High-precision stealth cyber assassin." },
-            { name: "Valkyrie Blade", hp: 110, atk: 20, avatar: "señora.png", desc: "Deadly warrior with reinforced fiber optics." },
-            { name: "Riot Titan", hp: 130, atk: 18, avatar: "htfhfhtff.png", desc: "Unmatched brute force street colossus." },
-            { name: "JEGALUX PRIME", hp: 160, atk: 33, avatar: "jgjygjgjgjy.png", desc: "The supreme dark reflection. Your final test." }
+            { name: "Viper Stryke", hp: 100, atk: 22, avatar: "pelirroja.png", desc: "Balanced rival 1 / 5." },
+            { name: "Ghost Geisha", hp: 100, atk: 24, avatar: "gdrgdgrdgd.png", desc: "Balanced rival 2 / 5." },
+            { name: "Valkyrie Blade", hp: 110, atk: 20, avatar: "señora.png", desc: "Balanced rival 3 / 5." },
+            { name: "Riot Titan", hp: 120, atk: 18, avatar: "htfhfhtff.png", desc: "Balanced rival 4 / 5." },
+            { name: "JEGALUX PRIME", hp: 115, atk: 22, avatar: "jgjygjgjgjy.png", desc: "Supreme shadow boss." }
         ];
 
         let gameState = {
@@ -465,14 +422,6 @@
             isDefending: false
         };
 
-        function selectCharacter(name, imgFile) {
-            playCyberpunkSound('click');
-            userNexus.avatarImg = imgFile;
-            userNexus.username = name;
-            saveUserData();
-            triggerToast(`OPERATIVE SELECTED: ${name}`);
-        }
-
         function startGame() {
             playCyberpunkSound('click');
             document.getElementById('charSelectScreen').classList.add('hidden');
@@ -483,17 +432,29 @@
         function loadRival() {
             if (gameState.currentRivalIndex >= rivalsList.length) gameState.currentRivalIndex = 0;
             const rival = rivalsList[gameState.currentRivalIndex];
-            gameState.rivalMaxHp = rival.hp + (userNexus.level * 5);
-            gameState.rivalHp = gameState.rivalMaxHp;
-            gameState.rivalAtk = rival.atk + userNexus.level;
+            
+            const type = userNexus.classType || "balanced";
+            if (type === 'critical') {
+                gameState.playerMaxHp = 85;
+            } else if (type === 'tank') {
+                gameState.playerMaxHp = 125;
+            } else {
+                gameState.playerMaxHp = 100;
+            }
+
+            gameState.playerHp = gameState.playerMaxHp;
+            gameState.rivalMaxHp = rival.hp;
+            gameState.rivalHp = rival.hp;
+            gameState.rivalAtk = rival.atk;
 
             document.getElementById('battleRivalName').innerText = rival.name.toUpperCase();
             document.getElementById('arenaRivalTitle').innerText = rival.name;
             document.getElementById('arenaRivalAvatar').style.backgroundImage = `url('${rival.avatar}')`;
+            document.getElementById('arenaPlayerClassTitle').innerText = `${userNexus.username} (${type.toUpperCase()})`;
             document.getElementById('lblRivalCount').innerText = `Boss ${gameState.currentRivalIndex + 1} / 5`;
 
             updateHpBars();
-            appendLog(`[ARENA] Duel started against ${rival.name}!`);
+            appendLog(`[ARENA] Duel started against ${rival.name}! Class: ${type.toUpperCase()}`);
         }
 
         function updateHpBars() {
@@ -520,10 +481,21 @@
 
         function playerAttack(type) {
             playCyberpunkSound('click');
-            let damage = type === 'light' ? 20 : 35;
-            registerDamage(damage);
-            gameState.rivalHp -= damage;
-            appendLog(`[YOU] Attack and deal <span class="text-accent">${damage} DMG</span>.`);
+            const cType = userNexus.classType || "balanced";
+            let baseDmg = type === 'light' ? 20 : 35;
+
+            if (cType === 'critical' && Math.random() < 0.4) {
+                baseDmg = Math.floor(baseDmg * 1.4);
+                appendLog(`[CRITICAL] Devastating strike!`);
+            } else if (cType === 'berserker') {
+                baseDmg += 5;
+            } else if (cType === 'tank' && type === 'light') {
+                baseDmg -= 3;
+            }
+
+            registerDamage(baseDmg);
+            gameState.rivalHp -= baseDmg;
+            appendLog(`[YOU] Attack and deal <span class="text-accent">${baseDmg} DMG</span>.`);
             checkBattleStatus();
             if (gameState.rivalHp > 0) setTimeout(rivalTurn, 600);
         }
@@ -537,7 +509,13 @@
 
         function playerSpecial() {
             playCyberpunkSound('click');
-            const damage = 55;
+            const cType = userNexus.classType || "balanced";
+            let damage = 50;
+
+            if (cType === 'critical') damage = 65;
+            if (cType === 'berserker') damage = 60;
+            if (cType === 'speed') damage = 55;
+
             registerDamage(damage);
             appendLog(`[YOU] SHADOW STRIKE! Deals <span class="text-accent">${damage} DMG</span>.`);
             gameState.rivalHp -= damage;
@@ -547,14 +525,22 @@
 
         function rivalTurn() {
             const rival = rivalsList[gameState.currentRivalIndex];
+            const cType = userNexus.classType || "balanced";
             let rDamage = gameState.rivalAtk;
+
             if (gameState.isDefending) {
                 rDamage = Math.floor(rDamage * 0.4);
                 gameState.isDefending = false;
                 appendLog(`[RIVAL] Your defense absorbs part of the impact.`);
             } else {
-                appendLog(`[RIVAL] ${rival.name} deals <span class="text-red-500">${rDamage} DMG</span>.`);
+                if (cType === 'agility' && Math.random() < 0.35) {
+                    rDamage = 0;
+                    appendLog(`[EVASION] You agilely dodge the rival attack! (0 DMG)`);
+                } else {
+                    appendLog(`[RIVAL] ${rival.name} deals <span class="text-red-500">${rDamage} DMG</span>.`);
+                }
             }
+
             gameState.playerHp -= rDamage;
             updateHpBars();
             if (gameState.playerHp <= 0) battleOver(false);
@@ -619,7 +605,7 @@
                 if (type === 'click') {
                     osc.type = 'triangle';
                     osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
-                    gain.gain.setValueAtTime(0.002, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.0005, audioCtx.currentTime);
                     osc.start();
                     osc.stop(audioCtx.currentTime + 0.03);
                     osc.connect(gain);
