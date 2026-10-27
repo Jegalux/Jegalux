@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEGALUX | Shadow Arena - Arcade 1v1</title>
+    <title>JEGALUX | Shadow Arena - Global Ranking</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
     <!-- Tailwind CSS -->
@@ -85,13 +85,14 @@
                 <a href="index.html" class="font-tech text-xs tracking-widest text-neutral-400 hover:text-accent transition flex items-center gap-1.5 px-4 py-2 rounded-lg glass-panel">
                     <i data-lucide="arrow-left" class="w-4 h-4"></i> BACK TO STORE
                 </a>
-                <div class="flex items-center gap-2 px-3 py-2 rounded-lg glass-panel text-neutral-300">
+                <!-- BOTÓN DE NIVEL CLICABLE QUE ABRE EL RANKING MUNDIAL -->
+                <button onclick="openRankingModal()" class="flex items-center gap-2 px-3 py-2 rounded-lg glass-panel hover:border-accent transition text-neutral-300 group" title="Click to view Global Ranking">
                     <div class="relative">
                         <div id="headerAvatar" class="w-6 h-6 rounded bg-cover bg-center border border-accent" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
                         <span id="headerLevelBadge" class="absolute -top-1 -right-1 px-1 text-[8px] font-black rounded bg-accent text-black">1</span>
                     </div>
                     <span id="headerName" class="font-tech text-xs text-accent font-bold hidden sm:inline">NEXUS ID</span>
-                </div>
+                </button>
             </div>
         </div>
     </header>
@@ -102,24 +103,24 @@
             <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// NEXUS ARCADE ARENA 1V1</span>
             <h1 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // TOTAL COMBAT</h1>
             <p class="text-neutral-400 font-sans text-xs md:text-sm mt-3">
-                Select your elite operative and conquer the shadow bosses to rank up your Nexus ID account.
+                Select your elite operative and conquer the shadow bosses. Click your level to access the Global Leaderboard.
             </p>
         </div>
 
         <div class="glass-panel rounded-2xl p-6 md:p-10 shadow-2xl border border-accent/40 relative overflow-hidden space-y-8">
             
-            <!-- STATS BAR (Nivel, Puntos, Mayor Daño, Racha de Victorias) -->
+            <!-- STATS BAR (CLICABLE EN EL NIVEL PARA ABRIR RANKING) -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10 font-tech text-xs">
                 <div class="space-y-1">
                     <span class="text-neutral-400 text-[10px] uppercase">OPERATIVE</span>
                     <div id="lblPlayerName" class="text-white font-bold truncate">CYBER_OPERATIVE</div>
                 </div>
-                <div class="space-y-1">
-                    <span class="text-neutral-400 text-[10px] uppercase">LEVEL / PTS</span>
-                    <div><span id="lblLevel" class="px-2 py-0.5 rounded text-black font-extrabold bg-accent">1</span> <span id="lblScore" class="text-accent font-bold ml-1">0 PTS</span></div>
+                <div class="space-y-1 cursor-pointer group" onclick="openRankingModal()" title="Click to open World Ranking">
+                    <span class="text-neutral-400 text-[10px] uppercase group-hover:text-accent transition">LEVEL / PTS (RANKING)</span>
+                    <div><span id="lblLevel" class="px-2 py-0.5 rounded text-black font-extrabold bg-accent shadow">1</span> <span id="lblScore" class="text-accent font-bold ml-1">0 PTS</span></div>
                 </div>
                 <div class="space-y-1">
-                    <span class="text-neutral-400 text-[10px] uppercase">MAX DAMAGE DEALT</span>
+                    <span class="text-neutral-400 text-[10px] uppercase">MAX DAMAGE</span>
                     <div id="statMaxDamage" class="text-accent font-bold text-sm">0 DMG</div>
                 </div>
                 <div class="space-y-1">
@@ -196,7 +197,6 @@
                     </div>
                 </div>
 
-                <!-- CARAS ENFRENTADAS -->
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                     <div class="md:col-span-4 text-center p-4 glass-panel rounded-xl border border-accent/40 relative overflow-hidden">
                         <div class="w-28 h-28 mx-auto rounded-xl fighter-slot border-2 border-accent shadow-lg mb-2" id="arenaPlayerAvatar" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
@@ -248,6 +248,28 @@
         </div>
     </main>
 
+    <!-- MODAL DE RANKING MUNDIAL (GLOBAL LEADERBOARD) -->
+    <div id="rankingModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md hidden">
+        <div class="glass-panel w-full max-w-2xl p-6 md:p-8 rounded-2xl border border-accent/50 space-y-6 shadow-2xl relative max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                <div>
+                    <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider">// GLOBAL RANKING (TOP 100)</h3>
+                    <p class="text-xs font-tech text-neutral-400">Live active operatives across shadow servers</p>
+                </div>
+                <button onclick="closeRankingModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+
+            <!-- Lista de Ranking con Scroll -->
+            <div id="rankingList" class="space-y-2 overflow-y-auto flex-1 pr-2 font-tech text-xs">
+                <!-- Se inyecta por JavaScript -->
+            </div>
+
+            <div class="border-t border-white/10 pt-4 text-center font-tech text-[10px] text-neutral-400">
+                RANKINGS AUTO-SYNC DAILY // ACTIVE CLOUD PROTOCOL
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <footer class="glass-panel border-t border-white/5 py-10 relative z-10 text-center font-tech text-xs text-neutral-400">
         JEGALUX SHADOW ARENA // ARCADE PROTOCOL 2026
@@ -266,6 +288,7 @@
         window.addEventListener('load', () => { 
             if (window.lucide) lucide.createIcons(); 
             loadUserData();
+            initGlobalRanking();
         });
 
         let userNexus = {
@@ -273,7 +296,7 @@
             username: "CYBER_OPERATIVE",
             level: 1,
             xp: 0,
-            points: 0,
+            points: 150,
             maxDamage: 0,
             bossesDefeated: 0,
             avatarImg: "Collage cyberpunk de 15 personajes neón.png"
@@ -318,6 +341,98 @@
             document.getElementById('lblScore').innerText = userNexus.points + ' PTS';
             document.getElementById('statMaxDamage').innerText = (userNexus.maxDamage || 0) + ' DMG';
             document.getElementById('statBossesDefeated').innerText = (userNexus.bossesDefeated || 0) + ' / 5';
+        }
+
+        // GENERADOR DE RANKING MUNDIAL ACTIVO CON CAMBIOS DIARIOS
+        function initGlobalRanking() {
+            let rankingData = JSON.parse(localStorage.getItem('jegalux_global_ranking'));
+            const lastSync = localStorage.getItem('jegalux_ranking_sync_date');
+            const todayStr = new Date().toDateString();
+
+            const randomNames = [
+                "Vex_01", "Kuro_Ghost", "NeonValkyrie", "ZeroX", "CyberNinja", "RiotPulse", "Sovereign_K", 
+                "AeroBlade", "Noxious", "Sektor9", "GlitchMatrix", "AshenPhantom", "VoidWalker", "Orion_99",
+                "BladeRunner", "Hyperion", "Synthia", "Ronin_Dark", "Phreak", "Nyx_Shadow", "ApexPredator",
+                "Zenith_Core", "Vortex_9", "CryptoBlade", "GhostProtocol", "OmegaByte", "Stalker_X"
+            ];
+
+            if (!rankingData || lastSync !== todayStr) {
+                // Crear 99 bots aleatorios activos y realistas
+                rankingData = [];
+                let basePts = 12500;
+                for (let i = 1; i <= 99; i++) {
+                    const randName = randomNames[Math.floor(Math.random() * randomNames.length)] + "_" + Math.floor(Math.random() * 900 + 100);
+                    basePts -= Math.floor(Math.random() * 120 + 20); // Puntos decrecientes escalonados
+                    const botLevel = Math.max(1, Math.floor(basePts / 800));
+                    rankingData.push({
+                        name: randName,
+                        points: Math.max(500, basePts),
+                        level: botLevel
+                    });
+                }
+                localStorage.setItem('jegalux_ranking_sync_date', todayStr);
+            } else {
+                // Simular actividad diaria sumando/restando puntos aleatorios a los bots para parecer activos
+                rankingData.forEach(bot => {
+                    const delta = Math.floor(Math.random() * 75) - 32; // +/- puntos diarios
+                    bot.points = Math.max(200, bot.points + delta);
+                    bot.level = Math.max(1, Math.floor(bot.points / 800));
+                });
+            }
+
+            // Insertar al usuario actual dentro del ranking según sus puntos
+            rankingData.push({
+                name: userNexus.username || "CYBER_OPERATIVE",
+                points: userNexus.points || 150,
+                level: userNexus.level || 1,
+                isUser: true
+            });
+
+            // Ordenar de mayor a menor puntuación
+            rankingData.sort((a, b) => b.points - a.points);
+            localStorage.setItem('jegalux_global_ranking', JSON.stringify(rankingData));
+            renderRankingList(rankingData);
+        }
+
+        function renderRankingList(data) {
+            const listContainer = document.getElementById('rankingList');
+            listContainer.innerHTML = '';
+
+            data.forEach((player, index) => {
+                const rank = index + 1;
+                const isTop3 = rank <= 3;
+                const rankStyle = rank === 1 ? 'text-yellow-400 font-bold border-yellow-400/40 bg-yellow-500/10' : 
+                                  rank === 2 ? 'text-neutral-300 font-bold border-neutral-400/40 bg-neutral-400/10' : 
+                                  rank === 3 ? 'text-amber-600 font-bold border-amber-600/40 bg-amber-600/10' : 
+                                  'text-neutral-400 border-white/5 bg-obsidian/40';
+
+                const userHighlight = player.isUser ? 'border-accent bg-accent/10 text-white font-bold' : '';
+
+                listContainer.innerHTML += `
+                    <div class="flex items-center justify-between p-3 rounded-xl border ${userHighlight || rankStyle} transition">
+                        <div class="flex items-center gap-4">
+                            <span class="w-6 text-center font-display font-bold text-sm">#${rank}</span>
+                            <div>
+                                <div class="text-white flex items-center gap-2">
+                                    ${player.name} ${player.isUser ? '<span class="px-1.5 py-0.5 rounded bg-accent text-black text-[9px] font-black">YOU</span>' : ''}
+                                </div>
+                                <div class="text-[10px] text-neutral-400">Level <span class="text-accent">${player.level}</span></div>
+                            </div>
+                        </div>
+                        <div class="text-accent font-bold">${player.points} PTS</div>
+                    </div>
+                `;
+            });
+        }
+
+        function openRankingModal() {
+            playCyberpunkSound('click');
+            initGlobalRanking(); // Refrescar lista con datos activos
+            document.getElementById('rankingModal').classList.remove('hidden');
+        }
+
+        function closeRankingModal() {
+            document.getElementById('rankingModal').classList.add('hidden');
         }
 
         function addXpAndPoints(xpGain, ptsGain) {
