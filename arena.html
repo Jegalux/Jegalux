@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEGALUX | Shadow Arena - 15 Operatives Roster</title>
+    <title>JEGALUX | Shadow Arena - Full Nexus ID Integration</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
     <!-- Tailwind CSS -->
@@ -85,13 +85,15 @@
                 <a href="index.html" class="font-tech text-xs tracking-widest text-neutral-400 hover:text-accent transition flex items-center gap-1.5 px-4 py-2 rounded-lg glass-panel">
                     <i data-lucide="arrow-left" class="w-4 h-4"></i> BACK TO STORE
                 </a>
-                <div class="flex items-center gap-2 px-3 py-2 rounded-lg glass-panel text-neutral-300">
+                
+                <!-- BOTÓN DE NEXUS ID EN LA ARENA (ABRE EL PERFIL) -->
+                <button onclick="playCyberpunkSound('click'); openProfileModal()" class="flex items-center gap-2 px-3 py-2 rounded-lg glass-panel hover:border-accent transition text-neutral-300 group">
                     <div class="relative">
                         <div id="headerAvatar" class="w-6 h-6 rounded bg-cover bg-center border border-accent" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
-                        <span id="headerLevelBadge" class="absolute -top-1 -right-1 px-1 text-[8px] font-black rounded bg-accent text-black">1</span>
+                        <span id="headerLevelBadge" class="absolute -top-1.5 -right-2 px-1 text-[9px] font-black rounded bg-accent text-black shadow-md">1</span>
                     </div>
                     <span id="headerName" class="font-tech text-xs text-accent font-bold hidden sm:inline">NEXUS ID</span>
-                </div>
+                </button>
             </div>
         </div>
     </header>
@@ -180,63 +182,63 @@
                         <span class="relative z-10">Zane Anarchy</span>
                         <span class="relative z-10 text-[9px] text-yellow-400">Inspect Stats</span>
                     </div>
-                    <!-- 7. Ezel (ezez)[cite: 4] -->
+                    <!-- 7. Ezel (ezez) -->
                     <div onclick="inspectCharacter('Ezel', 'ezez.png', 'balanced', 100, 75, 70, 'Balanced Vanguard', 'Supreme balance across all combat scenarios.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('ezez.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <span class="relative z-10">Ezel</span>
                         <span class="relative z-10 text-[9px] text-neutral-300">Inspect Stats</span>
                     </div>
-                    <!-- 8. Vexia (gtgt)[cite: 4] -->
+                    <!-- 8. Vexia (gtgt) -->
                     <div onclick="inspectCharacter('Vexia', 'gtgt.png', 'critical', 85, 95, 60, 'Neon Assassin', 'Deadly precision with high critical strike rate.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('gtgt.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <span class="relative z-10">Vexia</span>
                         <span class="relative z-10 text-[9px] text-red-400">Inspect Stats</span>
                     </div>
-                    <!-- 9. Zane Punk (yjuk)[cite: 4] -->
+                    <!-- 9. Zane Punk (yjuk) -->
                     <div onclick="inspectCharacter('Zane Punk', 'yjuk.png', 'berserker', 100, 90, 60, 'Anarchy Brawler', 'Unstoppable brute force and heavy striking power.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('yjuk.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <span class="relative z-10">Zane Punk</span>
                         <span class="relative z-10 text-[9px] text-yellow-400">Inspect Stats</span>
                     </div>
-                    <!-- 10. Kuro Spike (jkujk)[cite: 4] -->
+                    <!-- 10. Kuro Spike (jkujk) -->
                     <div onclick="inspectCharacter('Kuro Spike', 'jkujk.png', 'speed', 100, 70, 85, 'Cyber Outlaw', 'Swift execution and agile combo maneuvers.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('jkujk.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <span class="relative z-10">Kuro Spike</span>
                         <span class="relative z-10 text-[9px] text-purple-400">Inspect Stats</span>
                     </div>
-                    <!-- 11. Aiden Volt (etr)[cite: 4] -->
+                    <!-- 11. Aiden Volt (etr) -->
                     <div onclick="inspectCharacter('Aiden Volt', 'etr.png', 'balanced', 105, 72, 75, 'Plasma Enforcer', 'Reinforced cybernetics with balanced offensive gear.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('etr.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <span class="relative z-10">Aiden Volt</span>
                         <span class="relative z-10 text-[9px] text-neutral-300">Inspect Stats</span>
                     </div>
-                    <!-- 12. Nova Zero (emna)[cite: 4] -->
+                    <!-- 12. Nova Zero (emna) -->
                     <div onclick="inspectCharacter('Nova Zero', 'emna.png', 'agility', 95, 70, 95, 'Zero Agent', 'High-speed evasion specialist with razor focus.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('emna.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <span class="relative z-10">Nova Zero</span>
                         <span class="relative z-10 text-[9px] text-cyan-400">Inspect Stats</span>
                     </div>
-                    <!-- 13. Cyber Goggles (elman)[cite: 4] -->
+                    <!-- 13. Cyber Goggles (elman) -->
                     <div onclick="inspectCharacter('Cyber Goggles', 'elman.png', 'critical', 90, 85, 80, 'Tech Sniper', 'Calculated strikes with optical precision.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('elman.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <span class="relative z-10">Cyber Goggles</span>
                         <span class="relative z-10 text-[9px] text-red-400">Inspect Stats</span>
                     </div>
-                    <!-- 14. Scarlet Blade (gilil)[cite: 4] -->
+                    <!-- 14. Scarlet Blade (gilil) -->
                     <div onclick="inspectCharacter('Scarlet Blade', 'gilil.png', 'speed', 95, 80, 85, 'Street Vixen', 'Aggressive fighter with lightning-fast reflexes.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('gilil.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <span class="relative z-10">Scarlet Blade</span>
                         <span class="relative z-10 text-[9px] text-purple-400">Inspect Stats</span>
                     </div>
-                    <!-- 15. Valkyrie Red (ergh)[cite: 4] -->
+                    <!-- 15. Valkyrie Red (ergh) -->
                     <div onclick="inspectCharacter('Valkyrie Red', 'ergh.png', 'tank', 125, 65, 50, 'Heavy Vanguard', 'Ultimate defense and high durability pool.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('ergh.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
@@ -327,6 +329,118 @@
         </div>
     </main>
 
+    <!-- MODAL DE PERFIL // NEXUS ID CON FOTO AMPLIABLE AL CLICAR -->
+    <div id="profileModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
+        <div class="glass-panel w-full max-w-lg p-6 md:p-8 rounded-2xl border border-accent/40 space-y-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                <h3 class="font-display font-bold text-lg text-white uppercase tracking-wider">// JEGALUX NEXUS ID</h3>
+                <button onclick="closeProfileModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+
+            <!-- Vista Sin Conectar -->
+            <div id="loginView" class="space-y-4 text-center py-2">
+                <p class="text-xs font-tech text-neutral-300">Link your account to sync your level, points and operatives in the cloud.</p>
+                <div class="space-y-3 pt-2">
+                    <button onclick="loginUser('Google')" class="w-full py-3.5 rounded bg-white text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-neutral-200 transition flex items-center justify-center gap-2">
+                        <i data-lucide="globe" class="w-4 h-4"></i> CONTINUE WITH GOOGLE
+                    </button>
+                    <button onclick="loginUser('Apple')" class="w-full py-3.5 rounded bg-black border border-white/30 text-white font-tech font-bold text-xs uppercase tracking-widest hover:border-accent transition flex items-center justify-center gap-2">
+                        <i data-lucide="apple" class="w-4 h-4 fill-white"></i> CONTINUE WITH APPLE ID
+                    </button>
+                </div>
+            </div>
+
+            <!-- Vista de Perfil Conectado -->
+            <div id="userProfileView" class="hidden space-y-5 font-tech text-xs">
+                <div class="flex items-center gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10">
+                    <div class="relative group cursor-pointer" onclick="openZoomAvatar()" title="Click to expand avatar">
+                        <div id="profileAvatarBox" class="w-16 h-16 rounded-xl bg-cover bg-center border-2 border-accent shadow-lg group-hover:scale-105 transition" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
+                        <span id="profileLevelBadgeModal" class="absolute -top-2 -right-2 px-1.5 py-0.5 text-[10px] font-black rounded shadow-lg">1</span>
+                        <div class="absolute inset-0 bg-black/40 rounded-xl opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-[9px] text-accent font-bold">ZOOM</div>
+                    </div>
+                    <div class="space-y-1">
+                        <span id="profileUserEmail" class="text-accent font-bold">operative@jegalux.com</span>
+                        <div class="text-neutral-400 text-[10px]" id="profileAuthType">Linked via Google ID</div>
+                    </div>
+                </div>
+
+                <!-- Selector de Avatar -->
+                <div class="space-y-2">
+                    <label class="block text-neutral-400 uppercase tracking-wider text-[10px]">// SELECT OPERATIVE AVATAR</label>
+                    <div class="grid grid-cols-5 gap-2">
+                        <div onclick="setProfileAvatar('Collage cyberpunk de 15 personajes neón.png')" class="cursor-pointer rounded-lg border border-accent fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');" title="Kuro Shadow"></div>
+                        <div onclick="setProfileAvatar('pelirroja.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('pelirroja.png');" title="Scarlet Vixen"></div>
+                        <div onclick="setProfileAvatar('gdrgdgrdgd.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('gdrgdgrdgd.png');" title="Nova Ocular"></div>
+                        <div onclick="setProfileAvatar('señora.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('señora.png');" title="Valkyrie Riot"></div>
+                        <div onclick="setProfileAvatar('htfhfhtff.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('htfhfhtff.png');" title="Specter Assassin"></div>
+                        <div onclick="setProfileAvatar('jgjygjgjgjy.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('jgjygjgjgjy.png');" title="Zane Anarchy"></div>
+                        <div onclick="setProfileAvatar('ezez.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('ezez.png');" title="Ezel"></div>
+                        <div onclick="setProfileAvatar('gtgt.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('gtgt.png');" title="Vexia"></div>
+                        <div onclick="setProfileAvatar('yjuk.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('yjuk.png');" title="Zane Punk"></div>
+                        <div onclick="setProfileAvatar('jkujk.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('jkujk.png');" title="Kuro Spike"></div>
+                        <div onclick="setProfileAvatar('etr.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('etr.png');" title="Aiden Volt"></div>
+                        <div onclick="setProfileAvatar('emna.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('emna.png');" title="Nova Zero"></div>
+                        <div onclick="setProfileAvatar('elman.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('elman.png');" title="Cyber Goggles"></div>
+                        <div onclick="setProfileAvatar('gilil.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('gilil.png');" title="Scarlet Blade"></div>
+                        <div onclick="setProfileAvatar('ergh.png')" class="cursor-pointer rounded-lg border border-white/20 fighter-slot bg-cover bg-center hover:opacity-80 transition" style="background-image: url('ergh.png');" title="Valkyrie Red"></div>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="block text-neutral-400">OPERATIVE NAME</label>
+                    <input type="text" id="editUsername" class="w-full bg-obsidian border border-white/10 rounded p-2.5 text-white focus:border-accent outline-none" value="CYBER_OPERATIVE" />
+                </div>
+
+                <div class="bg-obsidian/60 p-4 rounded-xl flex justify-between items-center border border-white/10 cursor-pointer hover:border-accent transition group" onclick="closeProfileModal(); openRankingModal();" title="Click to view World Leaderboard">
+                    <div>
+                        <div class="text-white font-bold group-hover:text-accent transition">LEVEL <span id="profileLevel" class="px-2 py-0.5 rounded text-black font-extrabold bg-accent">1</span> <span class="text-[9px] text-neutral-400 ml-1">(View Leaderboard)</span></div>
+                        <div class="text-neutral-400 text-[10px] mt-1" id="profileXp">0 / 500 XP</div>
+                    </div>
+                    <div class="text-accent font-bold text-base" id="profilePoints">0 PTS</div>
+                </div>
+
+                <div class="pt-2">
+                    <button onclick="saveProfile()" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
+                        SAVE NEXUS ID CHANGES
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE ZOOM PARA LA FOTO DE PERFIL -->
+    <div id="zoomAvatarModal" class="fixed inset-0 z-[70] flex items-center justify-center bg-black/90 backdrop-blur-lg hidden">
+        <div class="glass-panel p-6 rounded-2xl border border-accent/50 relative max-w-sm w-full text-center space-y-4 shadow-2xl">
+            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                <span class="font-display font-bold text-sm text-white uppercase tracking-wider">// OPERATIVE AVATAR</span>
+                <button onclick="closeZoomAvatar()" class="text-neutral-400 hover:text-white p-1 rounded-lg bg-obsidian border border-white/10"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div id="zoomedAvatarImg" class="w-64 h-64 mx-auto rounded-xl bg-cover bg-center border-2 border-accent shadow-[0_0_30px_rgba(255,85,0,0.4)]"></div>
+            <p class="text-xs font-tech text-neutral-400">Current equipped active operational avatar.</p>
+        </div>
+    </div>
+
+    <!-- MODAL DE RANKING MUNDIAL -->
+    <div id="rankingModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md hidden">
+        <div class="glass-panel w-full max-w-2xl p-6 md:p-8 rounded-2xl border border-accent/50 space-y-6 shadow-2xl relative max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                <div>
+                    <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider">// GLOBAL RANKING (TOP 100)</h3>
+                    <p class="text-xs font-tech text-neutral-400">Live active operatives across shadow servers</p>
+                </div>
+                <button onclick="closeRankingModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+
+            <div id="rankingList" class="space-y-2 overflow-y-auto flex-1 pr-2 font-tech text-xs">
+                <!-- Inyectado por JS -->
+            </div>
+
+            <div class="border-t border-white/10 pt-4 text-center font-tech text-[10px] text-neutral-400">
+                RANKINGS AUTO-SYNC DAILY // ACTIVE CLOUD PROTOCOL
+            </div>
+        </div>
+    </div>
+
     <!-- MODAL DE INSPECCIÓN CON BARRAS GRÁFICAS -->
     <div id="statsModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-md p-6 md:p-8 rounded-2xl border border-accent/50 space-y-5 shadow-2xl relative text-center font-tech text-xs">
@@ -399,10 +513,13 @@
         window.addEventListener('load', () => { 
             if (window.lucide) lucide.createIcons(); 
             loadUserData();
+            initGlobalRanking();
         });
 
         let userNexus = {
             isLoggedIn: false,
+            email: "",
+            provider: "",
             username: "CYBER_OPERATIVE",
             level: 1,
             xp: 0,
@@ -432,22 +549,22 @@
             const saved = localStorage.getItem('jegalux_nexus_id');
             if (saved) {
                 userNexus = JSON.parse(saved);
-                updateStatsUI();
+                updateUIState();
             }
         }
 
         function saveUserData() {
             localStorage.setItem('jegalux_nexus_id', JSON.stringify(userNexus));
-            updateStatsUI();
+            updateUIState();
         }
 
-        function updateStatsUI() {
+        function updateUIState() {
             document.getElementById('headerName').innerText = userNexus.username.toUpperCase();
             document.getElementById('headerAvatar').style.backgroundImage = `url('${userNexus.avatarImg}')`;
             
             const headerBadge = document.getElementById('headerLevelBadge');
             headerBadge.innerText = userNexus.level;
-            headerBadge.className = `absolute -top-1 -right-1 px-1 text-[8px] font-black rounded ${getLevelColor(userNexus.level)}`;
+            headerBadge.className = `absolute -top-1.5 -right-2 px-1 text-[9px] font-black rounded shadow-md ${getLevelColor(userNexus.level)}`;
 
             document.getElementById('arenaPlayerAvatar').style.backgroundImage = `url('${activeCombatant.imgFile}')`;
             document.getElementById('lblPlayerName').innerText = activeCombatant.name.toUpperCase();
@@ -456,9 +573,160 @@
             lvlBadge.innerText = userNexus.level;
             lvlBadge.className = `px-2 py-0.5 rounded text-black font-extrabold ${getLevelColor(userNexus.level)}`;
 
+            const modalBadge = document.getElementById('profileLevelBadgeModal');
+            if(modalBadge) {
+                modalBadge.innerText = userNexus.level;
+                modalBadge.className = `absolute -top-2 -right-2 px-1.5 py-0.5 text-[10px] font-black rounded shadow-lg ${getLevelColor(userNexus.level)}`;
+            }
+
             document.getElementById('lblScore').innerText = userNexus.points + ' PTS';
             document.getElementById('statMaxDamage').innerText = (userNexus.maxDamage || 0) + ' DMG';
             document.getElementById('statBossesDefeated').innerText = (userNexus.bossesDefeated || 0) + ' / 5';
+
+            if (userNexus.isLoggedIn) {
+                document.getElementById('loginView').classList.add('hidden');
+                document.getElementById('userProfileView').classList.remove('hidden');
+                document.getElementById('profileUserEmail').innerText = userNexus.email;
+                document.getElementById('profileAuthType').innerText = `Linked via ${userNexus.provider} ID`;
+                document.getElementById('editUsername').value = userNexus.username;
+                document.getElementById('profileAvatarBox').style.backgroundImage = `url('${userNexus.avatarImg}')`;
+                
+                const profileLvl = document.getElementById('profileLevel');
+                if(profileLvl) {
+                    profileLvl.innerText = userNexus.level;
+                    profileLvl.className = `px-2 py-0.5 rounded text-xs font-extrabold ${getLevelColor(userNexus.level)}`;
+                }
+                document.getElementById('profileXp').innerText = `${userNexus.xp} / ${userNexus.level * 500} XP`;
+                document.getElementById('profilePoints').innerText = userNexus.points + ' PTS';
+            } else {
+                document.getElementById('loginView').classList.remove('hidden');
+                document.getElementById('userProfileView').classList.add('hidden');
+            }
+        }
+
+        function loginUser(provider) {
+            playCyberpunkSound('click');
+            userNexus.isLoggedIn = true;
+            userNexus.provider = provider;
+            userNexus.email = provider === 'Google' ? 'operative.google@jegalux.com' : 'operative.apple@icloud.com';
+            saveUserData();
+            triggerToast(`CONNECTED WITH ${provider.toUpperCase()}! Level ${userNexus.level} synced.`);
+        }
+
+        function setProfileAvatar(imgFile) {
+            playCyberpunkSound('click');
+            userNexus.avatarImg = imgFile;
+            saveUserData();
+            triggerToast('OPERATIVE AVATAR UPDATED!');
+        }
+
+        function openProfileModal() { playCyberpunkSound('click'); document.getElementById('profileModal').classList.remove('hidden'); }
+        function closeProfileModal() { document.getElementById('profileModal').classList.add('hidden'); }
+
+        function saveProfile() {
+            playCyberpunkSound('click');
+            userNexus.username = document.getElementById('editUsername').value || "OPERATIVE";
+            saveUserData();
+            closeProfileModal();
+            triggerToast('NEXUS ID PROFILE UPDATED!');
+        }
+
+        function openZoomAvatar() {
+            playCyberpunkSound('click');
+            document.getElementById('zoomedAvatarImg').style.backgroundImage = `url('${userNexus.avatarImg}')`;
+            document.getElementById('zoomAvatarModal').classList.remove('hidden');
+        }
+
+        function closeZoomAvatar() {
+            playCyberpunkSound('click');
+            document.getElementById('zoomAvatarModal').classList.add('hidden');
+        }
+
+        function initGlobalRanking() {
+            let rankingData = JSON.parse(localStorage.getItem('jegalux_global_ranking'));
+            const lastSync = localStorage.getItem('jegalux_ranking_sync_date');
+            const todayStr = new Date().toDateString();
+
+            const randomNames = [
+                "Vex_01", "Kuro_Ghost", "NeonValkyrie", "ZeroX", "CyberNinja", "RiotPulse", "Sovereign_K", 
+                "AeroBlade", "Noxious", "Sektor9", "GlitchMatrix", "AshenPhantom", "VoidWalker", "Orion_99",
+                "BladeRunner", "Hyperion", "Synthia", "Ronin_Dark", "Phreak", "Nyx_Shadow", "ApexPredator",
+                "Zenith_Core", "Vortex_9", "CryptoBlade", "GhostProtocol", "OmegaByte", "Stalker_X"
+            ];
+
+            if (!rankingData || lastSync !== todayStr) {
+                rankingData = [];
+                let basePts = 12500;
+                for (let i = 1; i <= 99; i++) {
+                    const randName = randomNames[Math.floor(Math.random() * randomNames.length)] + "_" + Math.floor(Math.random() * 900 + 100);
+                    basePts -= Math.floor(Math.random() * 120 + 20);
+                    const botLevel = Math.max(1, Math.floor(basePts / 800));
+                    rankingData.push({
+                        name: randName,
+                        points: Math.max(500, basePts),
+                        level: botLevel
+                    });
+                }
+                localStorage.setItem('jegalux_ranking_sync_date', todayStr);
+            } else {
+                rankingData.forEach(bot => {
+                    const delta = Math.floor(Math.random() * 75) - 32;
+                    bot.points = Math.max(200, bot.points + delta);
+                    bot.level = Math.max(1, Math.floor(bot.points / 800));
+                });
+            }
+
+            rankingData.push({
+                name: userNexus.username || "CYBER_OPERATIVE",
+                points: userNexus.points || 150,
+                level: userNexus.level || 1,
+                isUser: true
+            });
+
+            rankingData.sort((a, b) => b.points - a.points);
+            localStorage.setItem('jegalux_global_ranking', JSON.stringify(rankingData));
+            renderRankingList(rankingData);
+        }
+
+        function renderRankingList(data) {
+            const listContainer = document.getElementById('rankingList');
+            if(!listContainer) return;
+            listContainer.innerHTML = '';
+
+            data.forEach((player, index) => {
+                const rank = index + 1;
+                const rankStyle = rank === 1 ? 'text-yellow-400 font-bold border-yellow-400/40 bg-yellow-500/10' : 
+                                  rank === 2 ? 'text-neutral-300 font-bold border-neutral-400/40 bg-neutral-400/10' : 
+                                  rank === 3 ? 'text-amber-600 font-bold border-amber-600/40 bg-amber-600/10' : 
+                                  'text-neutral-400 border-white/5 bg-obsidian/40';
+
+                const userHighlight = player.isUser ? 'border-accent bg-accent/10 text-white font-bold' : '';
+
+                listContainer.innerHTML += `
+                    <div class="flex items-center justify-between p-3 rounded-xl border ${userHighlight || rankStyle} transition">
+                        <div class="flex items-center gap-4">
+                            <span class="w-6 text-center font-display font-bold text-sm">#${rank}</span>
+                            <div>
+                                <div class="text-white flex items-center gap-2">
+                                    ${player.name} ${player.isUser ? '<span class="px-1.5 py-0.5 rounded bg-accent text-black text-[9px] font-black">YOU</span>' : ''}
+                                </div>
+                                <div class="text-[10px] text-neutral-400">Level <span class="text-accent">${player.level}</span></div>
+                            </div>
+                        </div>
+                        <div class="text-accent font-bold">${player.points} PTS</div>
+                    </div>
+                `;
+            });
+        }
+
+        function openRankingModal() {
+            playCyberpunkSound('click');
+            initGlobalRanking();
+            document.getElementById('rankingModal').classList.remove('hidden');
+        }
+
+        function closeRankingModal() {
+            document.getElementById('rankingModal').classList.add('hidden');
         }
 
         function inspectCharacter(name, imgFile, classType, hpVal, atkVal, agiVal, titleDesc, fullDesc) {
@@ -711,15 +979,19 @@
                 if (audioCtx.state === 'suspended') audioCtx.resume();
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
-                if (type === 'click') {
+                if (type === 'hover') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(320, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.0002, audioCtx.currentTime);
+                } else if (type === 'click') {
                     osc.type = 'triangle';
                     osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
                     gain.gain.setValueAtTime(0.0005, audioCtx.currentTime);
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 0.03);
-                    osc.connect(gain);
-                    gain.connect(audioCtx.destination);
                 }
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.03);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
             } catch (e) {}
         }
     </script>
