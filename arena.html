@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEGALUX | Shadow Arena - 9 Operatives Roster</title>
+    <title>JEGALUX | Shadow Arena - 15 Operatives Roster</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
     <!-- Tailwind CSS -->
@@ -87,7 +87,7 @@
                 </a>
                 <div class="flex items-center gap-2 px-3 py-2 rounded-lg glass-panel text-neutral-300">
                     <div class="relative">
-                        <div id="headerAvatar" class="w-6 h-6 rounded bg-cover bg-center border border-accent" style="background-image: url('ezez.png');"></div>
+                        <div id="headerAvatar" class="w-6 h-6 rounded bg-cover bg-center border border-accent" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
                         <span id="headerLevelBadge" class="absolute -top-1 -right-1 px-1 text-[8px] font-black rounded bg-accent text-black">1</span>
                     </div>
                     <span id="headerName" class="font-tech text-xs text-accent font-bold hidden sm:inline">NEXUS ID</span>
@@ -99,10 +99,10 @@
     <!-- MAIN GAME CONTAINER -->
     <main class="py-16 relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-10">
-            <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// 9 OPERATIVES ROSTER</span>
+            <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// 15 OPERATIVES ROSTER</span>
             <h1 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // ELITE COMBATANTS</h1>
             <p class="text-neutral-400 font-sans text-xs md:text-sm mt-3">
-                Click any of the 9 operatives to inspect their combat stats and deploy into battle.
+                Click any of the 15 operatives to inspect their combat stats and deploy into battle.
             </p>
         </div>
 
@@ -112,7 +112,7 @@
             <div class="grid grid-cols-2 md:grid-cols-5 gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10 font-tech text-xs items-center">
                 <div class="space-y-1">
                     <span class="text-neutral-400 text-[10px] uppercase">OPERATIVE</span>
-                    <div id="lblPlayerName" class="text-white font-bold truncate">EZEL</div>
+                    <div id="lblPlayerName" class="text-white font-bold truncate">KURO SHADOW</div>
                 </div>
                 <div class="space-y-1">
                     <span class="text-neutral-400 text-[10px] uppercase">LEVEL / PTS</span>
@@ -133,73 +133,115 @@
                 </div>
             </div>
 
-            <!-- 1. SELECCIÓN DE LOS 9 PERSONAJES -->
+            <!-- 1. SELECCIÓN DE LOS 15 PERSONAJES -->
             <div id="charSelectScreen" class="space-y-8">
-                <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECT YOUR COMBATANT (9 ELITE OPERATIVES)</h3>
+                <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECT YOUR COMBATANT (15 ELITE OPERATIVES)</h3>
                 
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4">
-                    <!-- 1. ezez -->
-                    <div onclick="inspectCharacter('Ezel', 'ezez.png', 'balanced', 100, 75, 70, 'Balanced Vanguard', 'Supreme balance across all combat scenarios.')" class="cursor-pointer rounded-xl border border-accent/40 fighter-slot glass-panel flex flex-col justify-end p-3 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent" style="aspect-ratio: 16/9;">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                    <!-- 1. Kuro Shadow -->
+                    <div onclick="inspectCharacter('Kuro Shadow', 'Collage cyberpunk de 15 personajes neón.png', 'balanced', 100, 75, 70, 'Balanced All-Rounder', 'Reliable in all combat situations with zero weaknesses.')" class="cursor-pointer rounded-xl border border-accent/40 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <span class="relative z-10 text-accent">Kuro Shadow</span>
+                        <span class="relative z-10 text-[9px] text-neutral-300">Inspect Stats</span>
+                    </div>
+                    <!-- 2. Scarlet Vixen -->
+                    <div onclick="inspectCharacter('Scarlet Vixen', 'pelirroja.png', 'critical', 85, 95, 60, 'Critical Striker', 'Deals devastating critical hits (+40% extra damage chance).')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('pelirroja.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <span class="relative z-10">Scarlet Vixen</span>
+                        <span class="relative z-10 text-[9px] text-red-400">Inspect Stats</span>
+                    </div>
+                    <!-- 3. Nova Ocular -->
+                    <div onclick="inspectCharacter('Nova Ocular', 'gdrgdgrdgd.png', 'agility', 100, 65, 95, 'Agile Evasion Master', 'Possesses 35% passive evasion to completely dodge incoming attacks.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('gdrgdgrdgd.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <span class="relative z-10">Nova Ocular</span>
+                        <span class="relative z-10 text-[9px] text-cyan-400">Inspect Stats</span>
+                    </div>
+                    <!-- 4. Valkyrie Riot -->
+                    <div onclick="inspectCharacter('Valkyrie Riot', 'señora.png', 'tank', 125, 60, 50, 'Tank Vanguard', 'Higher endurance with 125 HP pool to outlast opponents.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('señora.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <span class="relative z-10">Valkyrie Riot</span>
+                        <span class="relative z-10 text-[9px] text-emerald-400">Inspect Stats</span>
+                    </div>
+                    <!-- 5. Specter Assassin -->
+                    <div onclick="inspectCharacter('Specter Assassin', 'htfhfhtff.png', 'speed', 100, 70, 85, 'Stealth Assassin', 'Balanced combatant with rapid strike momentum.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('htfhfhtff.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <span class="relative z-10">Specter Assassin</span>
+                        <span class="relative z-10 text-[9px] text-purple-400">Inspect Stats</span>
+                    </div>
+                    <!-- 6. Zane Anarchy -->
+                    <div onclick="inspectCharacter('Zane Anarchy', 'jgjygjgjgjy.png', 'berserker', 100, 90, 60, 'Berserker Brawler', 'Deals raw heavy damage with every single strike.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('jgjygjgjgjy.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <span class="relative z-10">Zane Anarchy</span>
+                        <span class="relative z-10 text-[9px] text-yellow-400">Inspect Stats</span>
+                    </div>
+                    <!-- 7. Ezel (ezez)[cite: 4] -->
+                    <div onclick="inspectCharacter('Ezel', 'ezez.png', 'balanced', 100, 75, 70, 'Balanced Vanguard', 'Supreme balance across all combat scenarios.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('ezez.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                        <span class="relative z-10 text-accent font-bold text-sm">Ezel (Protagonist)</span>
-                        <span class="relative z-10 text-[10px] text-neutral-300">Inspect Stats</span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <span class="relative z-10">Ezel</span>
+                        <span class="relative z-10 text-[9px] text-neutral-300">Inspect Stats</span>
                     </div>
-                    <!-- 2. gtgt -->
-                    <div onclick="inspectCharacter('Vexia', 'gtgt.png', 'critical', 85, 95, 60, 'Neon Assassin', 'Deadly precision with high critical strike rate.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-3 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent" style="aspect-ratio: 16/9;">
+                    <!-- 8. Vexia (gtgt)[cite: 4] -->
+                    <div onclick="inspectCharacter('Vexia', 'gtgt.png', 'critical', 85, 95, 60, 'Neon Assassin', 'Deadly precision with high critical strike rate.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('gtgt.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                        <span class="relative z-10 text-accent font-bold text-sm">Vexia</span>
-                        <span class="relative z-10 text-[10px] text-red-400">Inspect Stats</span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <span class="relative z-10">Vexia</span>
+                        <span class="relative z-10 text-[9px] text-red-400">Inspect Stats</span>
                     </div>
-                    <!-- 3. yjuk -->
-                    <div onclick="inspectCharacter('Zane Punk', 'yjuk.png', 'berserker', 100, 90, 60, 'Anarchy Brawler', 'Unstoppable brute force and heavy striking power.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-3 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent" style="aspect-ratio: 16/9;">
+                    <!-- 9. Zane Punk (yjuk)[cite: 4] -->
+                    <div onclick="inspectCharacter('Zane Punk', 'yjuk.png', 'berserker', 100, 90, 60, 'Anarchy Brawler', 'Unstoppable brute force and heavy striking power.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('yjuk.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                        <span class="relative z-10 text-accent font-bold text-sm">Zane Punk</span>
-                        <span class="relative z-10 text-[10px] text-yellow-400">Inspect Stats</span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <span class="relative z-10">Zane Punk</span>
+                        <span class="relative z-10 text-[9px] text-yellow-400">Inspect Stats</span>
                     </div>
-                    <!-- 4. jkujk -->
-                    <div onclick="inspectCharacter('Kuro Spike', 'jkujk.png', 'speed', 100, 70, 85, 'Cyber Outlaw', 'Swift execution and agile combo maneuvers.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-3 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent" style="aspect-ratio: 16/9;">
+                    <!-- 10. Kuro Spike (jkujk)[cite: 4] -->
+                    <div onclick="inspectCharacter('Kuro Spike', 'jkujk.png', 'speed', 100, 70, 85, 'Cyber Outlaw', 'Swift execution and agile combo maneuvers.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('jkujk.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                        <span class="relative z-10 text-accent font-bold text-sm">Kuro Spike</span>
-                        <span class="relative z-10 text-[10px] text-purple-400">Inspect Stats</span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <span class="relative z-10">Kuro Spike</span>
+                        <span class="relative z-10 text-[9px] text-purple-400">Inspect Stats</span>
                     </div>
-                    <!-- 5. etr -->
-                    <div onclick="inspectCharacter('Aiden Volt', 'etr.png', 'balanced', 105, 72, 75, 'Plasma Enforcer', 'Reinforced cybernetics with balanced offensive gear.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-3 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent" style="aspect-ratio: 16/9;">
+                    <!-- 11. Aiden Volt (etr)[cite: 4] -->
+                    <div onclick="inspectCharacter('Aiden Volt', 'etr.png', 'balanced', 105, 72, 75, 'Plasma Enforcer', 'Reinforced cybernetics with balanced offensive gear.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('etr.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                        <span class="relative z-10 text-accent font-bold text-sm">Aiden Volt</span>
-                        <span class="relative z-10 text-[10px] text-neutral-300">Inspect Stats</span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <span class="relative z-10">Aiden Volt</span>
+                        <span class="relative z-10 text-[9px] text-neutral-300">Inspect Stats</span>
                     </div>
-                    <!-- 6. emna -->
-                    <div onclick="inspectCharacter('Nova Zero', 'emna.png', 'agility', 95, 70, 95, 'Zero Agent', 'High-speed evasion specialist with razor focus.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-3 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent" style="aspect-ratio: 16/9;">
+                    <!-- 12. Nova Zero (emna)[cite: 4] -->
+                    <div onclick="inspectCharacter('Nova Zero', 'emna.png', 'agility', 95, 70, 95, 'Zero Agent', 'High-speed evasion specialist with razor focus.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('emna.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                        <span class="relative z-10 text-accent font-bold text-sm">Nova Zero</span>
-                        <span class="relative z-10 text-[10px] text-cyan-400">Inspect Stats</span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <span class="relative z-10">Nova Zero</span>
+                        <span class="relative z-10 text-[9px] text-cyan-400">Inspect Stats</span>
                     </div>
-                    <!-- 7. elman -->
-                    <div onclick="inspectCharacter('Cyber Goggles', 'elman.png', 'critical', 90, 85, 80, 'Tech Sniper', 'Calculated strikes with optical precision.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-3 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent" style="aspect-ratio: 16/9;">
+                    <!-- 13. Cyber Goggles (elman)[cite: 4] -->
+                    <div onclick="inspectCharacter('Cyber Goggles', 'elman.png', 'critical', 90, 85, 80, 'Tech Sniper', 'Calculated strikes with optical precision.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('elman.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                        <span class="relative z-10 text-accent font-bold text-sm">Cyber Goggles</span>
-                        <span class="relative z-10 text-[10px] text-red-400">Inspect Stats</span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <span class="relative z-10">Cyber Goggles</span>
+                        <span class="relative z-10 text-[9px] text-red-400">Inspect Stats</span>
                     </div>
-                    <!-- 8. gilil -->
-                    <div onclick="inspectCharacter('Scarlet Blade', 'gilil.png', 'speed', 95, 80, 85, 'Street Vixen', 'Aggressive fighter with lightning-fast reflexes.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-3 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent" style="aspect-ratio: 16/9;">
+                    <!-- 14. Scarlet Blade (gilil)[cite: 4] -->
+                    <div onclick="inspectCharacter('Scarlet Blade', 'gilil.png', 'speed', 95, 80, 85, 'Street Vixen', 'Aggressive fighter with lightning-fast reflexes.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('gilil.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                        <span class="relative z-10 text-accent font-bold text-sm">Scarlet Blade</span>
-                        <span class="relative z-10 text-[10px] text-purple-400">Inspect Stats</span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <span class="relative z-10">Scarlet Blade</span>
+                        <span class="relative z-10 text-[9px] text-purple-400">Inspect Stats</span>
                     </div>
-                    <!-- 9. ergh -->
-                    <div onclick="inspectCharacter('Valkyrie Red', 'ergh.png', 'tank', 125, 65, 50, 'Heavy Vanguard', 'Ultimate defense and high durability pool.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-3 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent" style="aspect-ratio: 16/9;">
+                    <!-- 15. Valkyrie Red (ergh)[cite: 4] -->
+                    <div onclick="inspectCharacter('Valkyrie Red', 'ergh.png', 'tank', 125, 65, 50, 'Heavy Vanguard', 'Ultimate defense and high durability pool.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('ergh.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                        <span class="relative z-10 text-accent font-bold text-sm">Valkyrie Red</span>
-                        <span class="relative z-10 text-[10px] text-emerald-400">Inspect Stats</span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <span class="relative z-10">Valkyrie Red</span>
+                        <span class="relative z-10 text-[9px] text-emerald-400">Inspect Stats</span>
                     </div>
                 </div>
 
@@ -236,7 +278,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                     <div class="md:col-span-4 text-center p-4 glass-panel rounded-xl border border-accent/40 relative overflow-hidden">
-                        <div class="w-28 h-28 mx-auto rounded-xl fighter-slot border-2 border-accent shadow-lg mb-2" id="arenaPlayerAvatar" style="background-image: url('ezez.png');"></div>
+                        <div class="w-28 h-28 mx-auto rounded-xl fighter-slot border-2 border-accent shadow-lg mb-2" id="arenaPlayerAvatar" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
                         <div class="font-tech text-xs text-accent font-bold uppercase" id="arenaPlayerClassTitle">YOUR OPERATIVE</div>
                     </div>
 
@@ -253,7 +295,7 @@
                 </div>
 
                 <div class="glass-panel p-5 rounded-xl h-44 overflow-y-auto font-tech text-xs space-y-2 border border-accent/20" id="battleLog">
-                    <div class="text-accent">[SYSTEM] 9 Operatives Roster loaded. Choose your fighter!</div>
+                    <div class="text-accent">[SYSTEM] 15 Operatives Roster loaded. Choose your fighter!</div>
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 font-tech text-xs">
@@ -361,22 +403,22 @@
 
         let userNexus = {
             isLoggedIn: false,
-            username: "EZEL",
+            username: "CYBER_OPERATIVE",
             level: 1,
             xp: 0,
             points: 150,
             maxDamage: 0,
             bossesDefeated: 0,
-            avatarImg: "ezez.png"
+            avatarImg: "Collage cyberpunk de 15 personajes neón.png"
         };
 
         let activeCombatant = {
-            name: "Ezel",
-            imgFile: "ezez.png",
+            name: "Kuro Shadow",
+            imgFile: "Collage cyberpunk de 15 personajes neón.png",
             classType: "balanced"
         };
 
-        let tempSelected = { name: "Ezel", imgFile: "ezez.png", classType: "balanced" };
+        let tempSelected = { name: "Kuro Shadow", imgFile: "Collage cyberpunk de 15 personajes neón.png", classType: "balanced" };
 
         function getLevelColor(lvl) {
             if (lvl <= 9) return 'bg-accent text-black';
