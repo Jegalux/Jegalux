@@ -302,7 +302,7 @@
         </section>
     </div>
 
-    <!-- ================= PESTAÑA 2: SHADOW ARENA (JUEGO 1V1 SIN TÍTULO MOLESTO) ================= -->
+    <!-- ================= PESTAÑA 2: SHADOW ARENA (JUEGO 1V1) ================= -->
     <div id="arenaView" class="relative z-10 hidden transition-opacity duration-300 py-6">
         
         <!-- CONTENEDOR CON FONDO DINÁMICO DE ARENA -->
@@ -317,8 +317,8 @@
             </div>
 
             <div class="glass-panel rounded-2xl p-5 md:p-8 shadow-2xl border border-accent/40 relative overflow-hidden space-y-6">
-                <!-- STATS BAR LIMPIA Y OPTIMIZADA -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-obsidian/80 p-3 rounded-xl border border-white/10 font-tech text-xs items-center text-center">
+                <!-- STATS BAR -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 bg-obsidian/80 p-3 rounded-xl border border-white/10 font-tech text-xs items-center text-center">
                     <div class="space-y-1">
                         <span class="text-neutral-400 text-[10px] uppercase">OPERATIVE</span>
                         <div id="lblPlayerName" class="text-accent font-bold truncate">KURO SHADOW</div>
@@ -330,11 +330,6 @@
                     <div class="space-y-1">
                         <span class="text-neutral-400 text-[10px] uppercase">MAX DAMAGE</span>
                         <div id="statMaxDamage" class="text-accent font-bold text-sm">0 DMG</div>
-                    </div>
-                    <div>
-                        <button onclick="returnToCharSelect()" class="w-full py-2 px-2 rounded bg-accent/20 border border-accent text-accent font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-1 uppercase text-[10px]">
-                            <i data-lucide="refresh-cw" class="w-3 h-3"></i> CHANGE
-                        </button>
                     </div>
                 </div>
 
@@ -427,9 +422,9 @@
                     </div>
                 </div>
 
-                <!-- PANTALLA DE COMBATE 1V1 -->
+                <!-- PANTALLA DE COMBATE 1V1 (AQUÍ APARECE EL BOTÓN CHANGE) -->
                 <div id="battleScreen" class="hidden space-y-5">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center bg-obsidian/60 p-4 rounded-xl border border-white/10">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center bg-obsidian/60 p-4 rounded-xl border border-white/10">
                         <div class="space-y-2">
                             <div class="flex justify-between font-tech text-xs">
                                 <span id="battlePlayerName" class="text-accent font-bold">OPERATIVE</span>
@@ -448,6 +443,12 @@
                             <div class="w-full bg-neutral-800 h-3 rounded-full overflow-hidden p-0.5 border border-white/10">
                                 <div id="rivalHpBar" class="bg-red-500 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
                             </div>
+                        </div>
+
+                        <div>
+                            <button onclick="returnToCharSelect()" class="w-full py-2.5 px-3 rounded bg-accent/20 border border-accent text-accent font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-1.5 uppercase text-[10px]">
+                                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> CHANGE OPERATIVE
+                            </button>
                         </div>
                     </div>
 
