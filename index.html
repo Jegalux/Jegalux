@@ -627,7 +627,7 @@
         </div>
     </div>
 
-    <!-- MODAL DE INSPECCIÓN CON BOTÓN SELECT (CIERRA AUTOMÁTICAMENTE) -->
+    <!-- MODAL DE INSPECCIÓN CON BOTÓN SELECT CORREGIDO -->
     <div id="statsModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-md p-6 md:p-8 rounded-2xl border border-accent/50 space-y-5 shadow-2xl relative text-center font-tech text-xs">
             <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -671,7 +671,7 @@
             <p id="statModalDesc" class="text-xs font-sans text-neutral-300 leading-relaxed"></p>
 
             <div class="pt-2">
-                <button onclick="confirmSelectFromModal()" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
+                <button onclick="playCyberpunkSound('click'); activeCombatant = { name: tempSelected.name, imgFile: tempSelected.imgFile, classType: tempSelected.classType }; updateStatsUI(); closeStatsModal(); triggerToast('COMBATANT SELECTED: ' + tempSelected.name);" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
                     SELECT
                 </button>
             </div>
@@ -964,14 +964,6 @@
         }
 
         function closeStatsModal() { document.getElementById('statsModal').classList.add('hidden'); }
-
-        function confirmSelectFromModal() {
-            playCyberpunkSound('click');
-            activeCombatant = { name: tempSelected.name, imgFile: tempSelected.imgFile, classType: tempSelected.classType };
-            updateStatsUI();
-            closeStatsModal(); // Cierra automáticamente la pantallita flotante de estadísticas
-            triggerToast(`COMBATANT SELECTED: ${tempSelected.name}`);
-        }
 
         function returnToCharSelect() {
             playCyberpunkSound('click');
