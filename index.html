@@ -302,7 +302,7 @@
         </section>
     </div>
 
-    <!-- ================= PESTAÑA 2: SHADOW ARENA (JUEGO 1V1 CON FONDO DINÁMICO) ================= -->
+    <!-- ================= PESTAÑA 2: SHADOW ARENA (JUEGO 1V1 CON FONDOS DINÁMICOS) ================= -->
     <div id="arenaView" class="relative z-10 hidden transition-opacity duration-300 py-16">
         
         <!-- CONTENEDOR CON FONDO DINÁMICO DE ARENA -->
@@ -319,11 +319,11 @@
             </div>
 
             <div class="glass-panel rounded-2xl p-6 md:p-10 shadow-2xl border border-accent/40 relative overflow-hidden space-y-8">
-                <!-- STATS BAR -->
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10 font-tech text-xs items-center">
+                <!-- STATS BAR OPTIMIZADA -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10 font-tech text-xs items-center text-center">
                     <div class="space-y-1">
                         <span class="text-neutral-400 text-[10px] uppercase">OPERATIVE</span>
-                        <div id="lblPlayerName" class="text-white font-bold truncate">KURO SHADOW</div>
+                        <div id="lblPlayerName" class="text-accent font-bold truncate">KURO SHADOW</div>
                     </div>
                     <div class="space-y-1">
                         <span class="text-neutral-400 text-[10px] uppercase">LEVEL / PTS</span>
@@ -333,13 +333,9 @@
                         <span class="text-neutral-400 text-[10px] uppercase">MAX DAMAGE</span>
                         <div id="statMaxDamage" class="text-accent font-bold text-sm">0 DMG</div>
                     </div>
-                    <div class="space-y-1">
-                        <span class="text-neutral-400 text-[10px] uppercase">BOSSES</span>
-                        <div id="statBossesDefeated" class="text-white font-bold text-sm">0 / 5</div>
-                    </div>
                     <div>
                         <button onclick="returnToCharSelect()" class="w-full py-2.5 px-3 rounded bg-accent/20 border border-accent text-accent font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-1.5 uppercase text-[10px]">
-                            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> CHANGE
+                            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> CHANGE OPERATIVE
                         </button>
                     </div>
                 </div>
@@ -678,7 +674,7 @@
             <p id="statModalDesc" class="text-xs font-sans text-neutral-300 leading-relaxed"></p>
 
             <div class="pt-2">
-                <button onclick="playCyberpunkSound('click'); activeCombatant = { name: tempSelected.name, imgFile: tempSelected.imgFile, classType: tempSelected.classType }; updateStatsUI(); closeStatsModal(); triggerToast('COMBATANT SELECTED: ' + tempSelected.name);" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
+                <button onclick="playCyberpunkSound('click'); activeCombatant = { name: tempSelected.name, imgFile: tempSelected.imgFile, classType: tempSelected.classType }; updateUIState(); closeStatsModal(); triggerToast('COMBATANT SELECTED: ' + tempSelected.name);" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
                     SELECT
                 </button>
             </div>
@@ -749,7 +745,7 @@
         </div>
     </div>
 
-    <!-- SCRIPTS UNIFICADOS CON FONDOS DINÁMICOS -->
+    <!-- SCRIPTS UNIFICADOS -->
     <script>
         window.addEventListener('load', () => { 
             if (window.lucide) lucide.createIcons(); 
@@ -781,7 +777,6 @@
         let activeCombatant = { name: "Kuro Shadow", imgFile: "Collage cyberpunk de 15 personajes neón.png", classType: "balanced" };
         let tempSelected = { name: "Kuro Shadow", imgFile: "Collage cyberpunk de 15 personajes neón.png", classType: "balanced" };
 
-        // LISTA DE FONDOS DINÁMICOS PARA CADA PARTIDA O RONDA
         const arenaBackgrounds = [
             { name: "Mística entre islas flotantes", file: "Arena mística entre islas flotantes.png" },
             { name: "Celestial de Islas Flotantes", file: "Arena Celestial de Islas Flotantes.png" },
@@ -839,7 +834,6 @@
 
             document.getElementById('lblScore').innerText = userNexus.points + ' PTS';
             document.getElementById('statMaxDamage').innerText = (userNexus.maxDamage || 0) + ' DMG';
-            document.getElementById('statBossesDefeated').innerText = (userNexus.bossesDefeated || 0) + ' / 5';
 
             if (userNexus.isLoggedIn) {
                 document.getElementById('loginView').classList.add('hidden');
@@ -1021,7 +1015,7 @@
 
         function startGame() {
             playCyberpunkSound('click');
-            setRandomArenaBackground(); // Cambia el fondo dinámicamente al iniciar partida
+            setRandomArenaBackground();
             document.getElementById('charSelectScreen').classList.add('hidden');
             document.getElementById('battleScreen').classList.remove('hidden');
             loadRival();
@@ -1130,7 +1124,7 @@
 
         function nextBattle() { 
             playCyberpunkSound('click'); 
-            setRandomArenaBackground(); // Cambia de fondo al pasar al siguiente jefe
+            setRandomArenaBackground(); 
             gameState.playerHp = gameState.playerMaxHp; 
             document.getElementById('endGameScreen').classList.add('hidden'); 
             document.getElementById('battleScreen').classList.remove('hidden'); 
