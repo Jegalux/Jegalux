@@ -627,7 +627,7 @@
         </div>
     </div>
 
-    <!-- MODAL DE INSPECCIÓN DE ESTADÍSTICAS EN ARENA -->
+    <!-- MODAL DE INSPECCIÓN CON BOTÓN SELECT -->
     <div id="statsModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-md p-6 md:p-8 rounded-2xl border border-accent/50 space-y-5 shadow-2xl relative text-center font-tech text-xs">
             <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -672,7 +672,7 @@
 
             <div class="pt-2">
                 <button onclick="confirmSelectFromModal()" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
-                    DEPLOY THIS COMBATANT
+                    SELECT
                 </button>
             </div>
         </div>
@@ -970,7 +970,7 @@
             activeCombatant = { name: tempSelected.name, imgFile: tempSelected.imgFile, classType: tempSelected.classType };
             updateStatsUI();
             closeStatsModal();
-            triggerToast(`COMBATANT DEPLOYED: ${tempSelected.name}`);
+            triggerToast(`COMBATANT SELECTED: ${tempSelected.name}`);
         }
 
         function returnToCharSelect() {
