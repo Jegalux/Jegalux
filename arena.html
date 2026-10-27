@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,7 +74,7 @@
         <div id="cloudInfinite" class="cloud-bg-tile"></div>
     </div>
 
-    <!-- HEADER DE LA PÁGINA DE JUEGO -->
+    <!-- HEADER -->
     <header class="sticky top-0 z-50 glass-panel border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center group py-2" aria-label="JEGALUX Home">
@@ -83,45 +83,54 @@
 
             <div class="flex items-center space-x-4">
                 <a href="index.html" class="font-tech text-xs tracking-widest text-neutral-400 hover:text-accent transition flex items-center gap-1.5 px-4 py-2 rounded-lg glass-panel">
-                    <i data-lucide="arrow-left" class="w-4 h-4"></i> VOLVER A TIENDA
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> BACK TO STORE
                 </a>
                 <div class="flex items-center gap-2 px-3 py-2 rounded-lg glass-panel text-neutral-300">
-                    <div id="headerAvatar" class="w-6 h-6 rounded bg-cover bg-center border border-accent" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
+                    <div class="relative">
+                        <div id="headerAvatar" class="w-6 h-6 rounded bg-cover bg-center border border-accent" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
+                        <span id="headerLevelBadge" class="absolute -top-1 -right-1 px-1 text-[8px] font-black rounded bg-accent text-black">1</span>
+                    </div>
                     <span id="headerName" class="font-tech text-xs text-accent font-bold hidden sm:inline">NEXUS ID</span>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- SECCIÓN DE JUEGO COMPLETO SHADOW ARENA -->
+    <!-- MAIN GAME CONTAINER -->
     <main class="py-16 relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="text-center max-w-3xl mx-auto mb-10">
             <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// NEXUS ARCADE ARENA 1V1</span>
-            <h1 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // COMBATE TOTAL</h1>
+            <h1 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // TOTAL COMBAT</h1>
             <p class="text-neutral-400 font-sans text-xs md:text-sm mt-3">
-                Selecciona tu operativo entre los 6 combatientes de élite y enfréntate a los 5 jefes de la sombra para consagrar tu Nexus ID.
+                Select your elite operative and conquer the shadow bosses to rank up your Nexus ID account.
             </p>
         </div>
 
-        <div class="glass-panel rounded-2xl p-6 md:p-10 shadow-2xl border border-accent/40 relative overflow-hidden">
-            <div id="gameStatsHeader" class="flex flex-wrap justify-between items-center bg-obsidian/80 p-4 rounded-xl border border-white/10 mb-8 font-tech text-xs">
-                <div class="flex items-center gap-3">
-                    <span class="text-accent font-bold">OPERATIVO:</span> <span id="lblPlayerName" class="text-white">CYBER_OPERATIVE</span>
+        <div class="glass-panel rounded-2xl p-6 md:p-10 shadow-2xl border border-accent/40 relative overflow-hidden space-y-8">
+            
+            <!-- STATS BAR (Nivel, Puntos, Mayor Daño, Racha de Victorias) -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10 font-tech text-xs">
+                <div class="space-y-1">
+                    <span class="text-neutral-400 text-[10px] uppercase">OPERATIVE</span>
+                    <div id="lblPlayerName" class="text-white font-bold truncate">CYBER_OPERATIVE</div>
                 </div>
-                <div class="flex items-center gap-3">
-                    <span class="text-accent font-bold">NIVEL:</span> <span id="lblLevel" class="text-white bg-accent/20 px-2 py-0.5 rounded">1</span>
+                <div class="space-y-1">
+                    <span class="text-neutral-400 text-[10px] uppercase">LEVEL / PTS</span>
+                    <div><span id="lblLevel" class="px-2 py-0.5 rounded text-black font-extrabold bg-accent">1</span> <span id="lblScore" class="text-accent font-bold ml-1">0 PTS</span></div>
                 </div>
-                <div class="flex items-center gap-3">
-                    <span class="text-accent font-bold">PUNTOS:</span> <span id="lblScore" class="text-white font-bold">0 PTS</span>
+                <div class="space-y-1">
+                    <span class="text-neutral-400 text-[10px] uppercase">MAX DAMAGE DEALT</span>
+                    <div id="statMaxDamage" class="text-accent font-bold text-sm">0 DMG</div>
                 </div>
-                <div class="flex items-center gap-3">
-                    <span class="text-accent font-bold">RIVAL:</span> <span id="lblRivalCount" class="text-white">1 / 5</span>
+                <div class="space-y-1">
+                    <span class="text-neutral-400 text-[10px] uppercase">BOSSES DEFEATED</span>
+                    <div id="statBossesDefeated" class="text-white font-bold text-sm">0 / 5</div>
                 </div>
             </div>
 
-            <!-- 1. SELECCIÓN DE PERSONAJES (6 CASILLAS CON NOMBRES MEJORADOS) -->
+            <!-- 1. SELECCIÓN DE PERSONAJES -->
             <div id="charSelectScreen" class="space-y-8">
-                <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECCIONA TU OPERATIVO</h3>
+                <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECT YOUR OPERATIVE</h3>
                 
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
                     <div onclick="selectCharacter('Kuro Shadow', 'Collage cyberpunk de 15 personajes neón.png')" class="cursor-pointer rounded-xl border border-accent/40 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
@@ -158,17 +167,17 @@
 
                 <div class="text-center pt-6">
                     <button onclick="startGame()" class="px-10 py-4 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg shadow-accent/40">
-                        INICIAR DUELO 1V1
+                        START 1V1 DUEL
                     </button>
                 </div>
             </div>
 
-            <!-- 2. PANTALLA DE COMBATE 1V1 CON FOTOS DE JUGADOR Y RIVAL -->
+            <!-- 2. PANTALLA DE COMBATE 1V1 -->
             <div id="battleScreen" class="hidden space-y-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-obsidian/60 p-6 rounded-xl border border-white/10">
                     <div class="space-y-3">
                         <div class="flex justify-between font-tech text-xs">
-                            <span id="battlePlayerName" class="text-accent font-bold">OPERATIVO</span>
+                            <span id="battlePlayerName" class="text-accent font-bold">OPERATIVE</span>
                             <span id="playerHpText" class="text-white">100 / 100 HP</span>
                         </div>
                         <div class="w-full bg-neutral-800 h-4 rounded-full overflow-hidden p-0.5 border border-white/10">
@@ -187,37 +196,38 @@
                     </div>
                 </div>
 
-                <!-- CONTENEDOR VISUAL CON LAS FOTOS Y NOMBRES DE LOS LUCHADORES -->
+                <!-- CARAS ENFRENTADAS -->
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                     <div class="md:col-span-4 text-center p-4 glass-panel rounded-xl border border-accent/40 relative overflow-hidden">
                         <div class="w-28 h-28 mx-auto rounded-xl fighter-slot border-2 border-accent shadow-lg mb-2" id="arenaPlayerAvatar" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
-                        <div class="font-tech text-xs text-accent font-bold uppercase">TU OPERATIVO</div>
+                        <div class="font-tech text-xs text-accent font-bold uppercase">YOUR OPERATIVE</div>
                     </div>
 
                     <div class="md:col-span-4 text-center">
                         <div class="font-display font-bold text-4xl text-white tracking-widest drop-shadow-[0_0_15px_rgba(255,85,0,0.6)] mb-2">VS</div>
-                        <div id="arenaRivalTitle" class="font-display font-bold text-sm text-red-400 uppercase">OPONENTE</div>
+                        <div id="arenaRivalTitle" class="font-display font-bold text-sm text-red-400 uppercase">OPPONENT</div>
+                        <div class="text-[11px] text-neutral-400 font-tech mt-1" id="lblRivalCount">Boss 1 / 5</div>
                     </div>
 
                     <div class="md:col-span-4 text-center p-4 glass-panel rounded-xl border border-red-500/40 relative overflow-hidden">
                         <div class="w-28 h-28 mx-auto rounded-xl fighter-slot border-2 border-red-500 shadow-lg mb-2" id="arenaRivalAvatar" style="background-image: url('pelirroja.png');"></div>
-                        <div class="font-tech text-xs text-red-500 font-bold uppercase">RIVAL ACTUAL</div>
+                        <div class="font-tech text-xs text-red-500 font-bold uppercase">CURRENT BOSS</div>
                     </div>
                 </div>
 
                 <div class="glass-panel p-5 rounded-xl h-44 overflow-y-auto font-tech text-xs space-y-2 border border-accent/20" id="battleLog">
-                    <div class="text-accent">[SISTEMA] Duelo 1v1 iniciado. Selecciona tu movimiento estratégico.</div>
+                    <div class="text-accent">[SYSTEM] 1v1 duel started. Select your strategic move.</div>
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 font-tech text-xs">
                     <button onclick="playerAttack('light')" class="py-3.5 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2">
-                        <i data-lucide="sword" class="w-4 h-4 text-accent"></i> GOLPE LIGERO
+                        <i data-lucide="sword" class="w-4 h-4 text-accent"></i> LIGHT STRIKE
                     </button>
                     <button onclick="playerAttack('heavy')" class="py-3.5 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2">
-                        <i data-lucide="zap" class="w-4 h-4 text-accent"></i> GOLPE PESADO
+                        <i data-lucide="zap" class="w-4 h-4 text-accent"></i> HEAVY STRIKE
                     </button>
                     <button onclick="playerDefend()" class="py-3.5 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2">
-                        <i data-lucide="shield" class="w-4 h-4 text-accent"></i> CUBRIRSE
+                        <i data-lucide="shield" class="w-4 h-4 text-accent"></i> DEFEND
                     </button>
                     <button onclick="playerSpecial()" class="py-3.5 rounded bg-accent/20 border border-accent text-accent font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2">
                         <i data-lucide="star" class="w-4 h-4"></i> SHADOW STRIKE
@@ -227,11 +237,11 @@
 
             <!-- 3. VICTORIA / DERROTA -->
             <div id="endGameScreen" class="hidden text-center space-y-6 py-8">
-                <h3 id="endGameTitle" class="font-display font-bold text-3xl text-accent uppercase">¡VICTORIA EN EL DUELO!</h3>
-                <p id="endGameDesc" class="text-sm text-neutral-300">Has derrotado al oponente y ganado XP para tu Nexus ID.</p>
+                <h3 id="endGameTitle" class="font-display font-bold text-3xl text-accent uppercase">VICTORY IN DUEL!</h3>
+                <p id="endGameDesc" class="text-sm text-neutral-300">You defeated the opponent and earned XP for your Nexus ID.</p>
                 <div>
                     <button onclick="nextBattle()" class="px-8 py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
-                        SIGUIENTE RIVAL
+                        NEXT RIVAL
                     </button>
                 </div>
             </div>
@@ -251,7 +261,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT DE JUEGO Y NEXUS ID -->
+    <!-- SCRIPTS -->
     <script>
         window.addEventListener('load', () => { 
             if (window.lucide) lucide.createIcons(); 
@@ -264,24 +274,50 @@
             level: 1,
             xp: 0,
             points: 0,
+            maxDamage: 0,
+            bossesDefeated: 0,
             avatarImg: "Collage cyberpunk de 15 personajes neón.png"
         };
+
+        function getLevelColor(lvl) {
+            if (lvl <= 9) return 'bg-accent text-black';
+            if (lvl >= 10 && lvl <= 19) return 'bg-cyan-400 text-black';
+            if (lvl >= 20 && lvl <= 29) return 'bg-emerald-400 text-black';
+            if (lvl >= 30 && lvl <= 39) return 'bg-purple-500 text-white';
+            return 'bg-yellow-400 text-black font-black animate-pulse';
+        }
 
         function loadUserData() {
             const saved = localStorage.getItem('jegalux_nexus_id');
             if (saved) {
                 userNexus = JSON.parse(saved);
-                document.getElementById('headerName').innerText = userNexus.username.toUpperCase();
-                document.getElementById('headerAvatar').style.backgroundImage = `url('${userNexus.avatarImg}')`;
-                document.getElementById('arenaPlayerAvatar').style.backgroundImage = `url('${userNexus.avatarImg}')`;
-                document.getElementById('lblPlayerName').innerText = userNexus.username.toUpperCase();
-                document.getElementById('lblLevel').innerText = userNexus.level;
-                document.getElementById('lblScore').innerText = userNexus.points + ' PTS';
+                updateStatsUI();
             }
         }
 
         function saveUserData() {
             localStorage.setItem('jegalux_nexus_id', JSON.stringify(userNexus));
+            updateStatsUI();
+        }
+
+        function updateStatsUI() {
+            document.getElementById('headerName').innerText = userNexus.username.toUpperCase();
+            document.getElementById('headerAvatar').style.backgroundImage = `url('${userNexus.avatarImg}')`;
+            
+            const headerBadge = document.getElementById('headerLevelBadge');
+            headerBadge.innerText = userNexus.level;
+            headerBadge.className = `absolute -top-1 -right-1 px-1 text-[8px] font-black rounded ${getLevelColor(userNexus.level)}`;
+
+            document.getElementById('arenaPlayerAvatar').style.backgroundImage = `url('${userNexus.avatarImg}')`;
+            document.getElementById('lblPlayerName').innerText = userNexus.username.toUpperCase();
+            
+            const lvlBadge = document.getElementById('lblLevel');
+            lvlBadge.innerText = userNexus.level;
+            lvlBadge.className = `px-2 py-0.5 rounded text-black font-extrabold ${getLevelColor(userNexus.level)}`;
+
+            document.getElementById('lblScore').innerText = userNexus.points + ' PTS';
+            document.getElementById('statMaxDamage').innerText = (userNexus.maxDamage || 0) + ' DMG';
+            document.getElementById('statBossesDefeated').innerText = (userNexus.bossesDefeated || 0) + ' / 5';
         }
 
         function addXpAndPoints(xpGain, ptsGain) {
@@ -291,20 +327,17 @@
             if (userNexus.xp >= xpNeeded) {
                 userNexus.level += 1;
                 userNexus.xp -= xpNeeded;
-                triggerToast(`¡HAS SUBIDO AL NIVEL ${userNexus.level}! 🎉`);
+                triggerToast(`YOU REACHED LEVEL ${userNexus.level}! 🎉`);
             }
             saveUserData();
-            document.getElementById('lblLevel').innerText = userNexus.level;
-            document.getElementById('lblScore').innerText = userNexus.points + ' PTS';
         }
 
-        // NOMBRES DE JEFES MEJORADOS
         const rivalsList = [
-            { name: "Viper Stryke", hp: 100, atk: 22, avatar: "pelirroja.png", desc: "Reina del caos callejero con púas de plasma." },
-            { name: "Ghost Geisha", hp: 90, atk: 28, avatar: "gdrgdgrdgd.png", desc: "Asesina cibernética de alta precisión sigilosa." },
-            { name: "Valkyrie Blade", hp: 110, atk: 20, avatar: "señora.png", desc: "Guerrera letal con fibra óptica reforzada." },
-            { name: "Riot Titan", hp: 130, atk: 18, avatar: "htfhfhtff.png", desc: "Coloso callejero de fuerza bruta desmedida." },
-            { name: "JEGALUX PRIME", hp: 160, atk: 33, avatar: "jgjygjgjgjy.png", desc: "El reflejo oscuro supremo. Tu prueba final." }
+            { name: "Viper Stryke", hp: 100, atk: 22, avatar: "pelirroja.png", desc: "Street chaos queen with plasma spikes." },
+            { name: "Ghost Geisha", hp: 90, atk: 28, avatar: "gdrgdgrdgd.png", desc: "High-precision stealth cyber assassin." },
+            { name: "Valkyrie Blade", hp: 110, atk: 20, avatar: "señora.png", desc: "Deadly warrior with reinforced fiber optics." },
+            { name: "Riot Titan", hp: 130, atk: 18, avatar: "htfhfhtff.png", desc: "Unmatched brute force street colossus." },
+            { name: "JEGALUX PRIME", hp: 160, atk: 33, avatar: "jgjygjgjgjy.png", desc: "The supreme dark reflection. Your final test." }
         ];
 
         let gameState = {
@@ -322,11 +355,7 @@
             userNexus.avatarImg = imgFile;
             userNexus.username = name;
             saveUserData();
-            document.getElementById('headerName').innerText = name.toUpperCase();
-            document.getElementById('headerAvatar').style.backgroundImage = `url('${imgFile}')`;
-            document.getElementById('arenaPlayerAvatar').style.backgroundImage = `url('${imgFile}')`;
-            document.getElementById('lblPlayerName').innerText = name.toUpperCase();
-            triggerToast(`OPERATIVO SELECCIONADO: ${name}`);
+            triggerToast(`OPERATIVE SELECTED: ${name}`);
         }
 
         function startGame() {
@@ -346,10 +375,10 @@
             document.getElementById('battleRivalName').innerText = rival.name.toUpperCase();
             document.getElementById('arenaRivalTitle').innerText = rival.name;
             document.getElementById('arenaRivalAvatar').style.backgroundImage = `url('${rival.avatar}')`;
-            document.getElementById('lblRivalCount').innerText = `${gameState.currentRivalIndex + 1} / 5`;
+            document.getElementById('lblRivalCount').innerText = `Boss ${gameState.currentRivalIndex + 1} / 5`;
 
             updateHpBars();
-            appendLog(`[ARENA] ¡Duelo iniciado contra ${rival.name}!`);
+            appendLog(`[ARENA] Duel started against ${rival.name}!`);
         }
 
         function updateHpBars() {
@@ -367,11 +396,19 @@
             log.scrollTop = log.scrollHeight;
         }
 
+        function registerDamage(damage) {
+            if (damage > (userNexus.maxDamage || 0)) {
+                userNexus.maxDamage = damage;
+                saveUserData();
+            }
+        }
+
         function playerAttack(type) {
             playCyberpunkSound('click');
             let damage = type === 'light' ? 20 : 35;
+            registerDamage(damage);
             gameState.rivalHp -= damage;
-            appendLog(`[TÚ] Atacas e infliges <span class="text-accent">${damage} DAÑO</span>.`);
+            appendLog(`[YOU] Attack and deal <span class="text-accent">${damage} DMG</span>.`);
             checkBattleStatus();
             if (gameState.rivalHp > 0) setTimeout(rivalTurn, 600);
         }
@@ -379,14 +416,15 @@
         function playerDefend() {
             playCyberpunkSound('click');
             gameState.isDefending = true;
-            appendLog(`[TÚ] Postura defensiva adoptada.`);
+            appendLog(`[YOU] Defensive stance adopted.`);
             setTimeout(rivalTurn, 600);
         }
 
         function playerSpecial() {
             playCyberpunkSound('click');
             const damage = 55;
-            appendLog(`[TÚ] ¡SHADOW STRIKE! <span class="text-accent">${damage} DAÑO</span>.`);
+            registerDamage(damage);
+            appendLog(`[YOU] SHADOW STRIKE! Deals <span class="text-accent">${damage} DMG</span>.`);
             gameState.rivalHp -= damage;
             checkBattleStatus();
             if (gameState.rivalHp > 0) setTimeout(rivalTurn, 600);
@@ -398,9 +436,9 @@
             if (gameState.isDefending) {
                 rDamage = Math.floor(rDamage * 0.4);
                 gameState.isDefending = false;
-                appendLog(`[RIVAL] Tu defensa absorbe parte del impacto.`);
+                appendLog(`[RIVAL] Your defense absorbs part of the impact.`);
             } else {
-                appendLog(`[RIVAL] ${rival.name} causa <span class="text-red-500">${rDamage} DAÑO</span>.`);
+                appendLog(`[RIVAL] ${rival.name} deals <span class="text-red-500">${rDamage} DMG</span>.`);
             }
             gameState.playerHp -= rDamage;
             updateHpBars();
@@ -419,17 +457,19 @@
             const desc = document.getElementById('endGameDesc');
 
             if (isVictory) {
+                userNexus.bossesDefeated = (userNexus.bossesDefeated || 0) + 1;
                 addXpAndPoints(300, 150);
                 title.className = "font-display font-bold text-3xl text-accent uppercase";
-                title.innerText = "¡VICTORIA EN EL DUELO!";
-                desc.innerText = `¡Has ganado el combate! +300 XP añadidos a tu Nexus ID.`;
+                title.innerText = "VICTORY IN DUEL!";
+                desc.innerText = `Combat won! +300 XP added to your Nexus ID.`;
                 gameState.currentRivalIndex++;
             } else {
                 title.className = "font-display font-bold text-3xl text-red-500 uppercase";
-                title.innerText = "¡HAS SIDO DERROTADO!";
-                desc.innerText = "La sombra te ha consumido. Vuelve a intentarlo.";
+                title.innerText = "YOU HAVE BEEN DEFEATED!";
+                desc.innerText = "The shadow has consumed you. Try again.";
                 gameState.playerHp = gameState.playerMaxHp;
             }
+            saveUserData();
         }
 
         function nextBattle() {
