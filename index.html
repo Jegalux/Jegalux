@@ -97,7 +97,7 @@
                 <a href="#manifesto" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playCyberpunkSound('hover')">
                     <span class="text-accent/60 text-[10px]">03//</span>MANIFESTO
                 </a>
-                <a href="arena.html" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1 text-accent font-bold" onmouseenter="playCyberpunkSound('hover')">
+                <a href="arena.html" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1 text-accent font-bold" onmouseenter="playCyberpunkSound('hover')">
                     <span class="text-accent/60 text-[10px]">04//</span>SHADOW ARENA
                 </a>
             </nav>
@@ -141,7 +141,7 @@
                 <a href="#product" class="w-full sm:w-auto px-8 py-3.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_25px_rgba(255,85,0,0.4)]" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
                     ORDER NOW
                 </a>
-                <a href="arena.html" class="w-full sm:w-auto px-8 py-3.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                <a href="arena.html" target="_blank" class="w-full sm:w-auto px-8 py-3.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
                     PLAY SHADOW ARENA
                 </a>
             </div>
@@ -294,7 +294,7 @@
         </div>
     </section>
 
-    <!-- 6. SECCIÓN SHADOW ARENA // CARÁTULA Y BOTÓN PLAY HACIA ARENA.HTML -->
+    <!-- 6. SECCIÓN SHADOW ARENA // CARÁTULA (Arena.png) Y BOTÓN QUE ABRE ARENA.HTML EN OTRA PESTAÑA -->
     <section id="arena" class="py-24 relative z-10 border-b border-white/5 bg-void/80 backdrop-blur-xl">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
@@ -310,7 +310,7 @@
                 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
                     <div class="lg:col-span-7 rounded-xl overflow-hidden border border-white/20 shadow-2xl relative group/img">
-                        <img src="Arena de sombras, fuego y hielo.png" alt="Shadow Arena Carátula" class="w-full h-[380px] md:h-[440px] object-cover group-hover/img:scale-105 transition-transform duration-700" />
+                        <img src="Arena.png" alt="Shadow Arena Carátula" class="w-full h-[380px] md:h-[440px] object-cover group-hover/img:scale-105 transition-transform duration-700" onerror="this.onerror=null; this.src='https://placehold.co/800x500/0d0d11/ff5500?text=SHADOW+ARENA';" />
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                     </div>
 
@@ -323,7 +323,7 @@
                             Escoge entre 6 operativos exclusivos de la colección, enfréntate a poderosos jefes callejeros y sube de nivel en tu cuenta Google o Apple ID.
                         </p>
                         <div class="pt-4">
-                            <a href="arena.html" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs uppercase tracking-[0.2em] transition-all duration-300 shadow-[0_0_35px_rgba(255,85,0,0.5)] transform hover:-translate-y-1" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                            <a href="arena.html" target="_blank" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs uppercase tracking-[0.2em] transition-all duration-300 shadow-[0_0_35px_rgba(255,85,0,0.5)] transform hover:-translate-y-1" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
                                 <i data-lucide="play" class="w-4 h-4 fill-black"></i> JUGAR SHADOW ARENA
                             </a>
                         </div>
@@ -340,7 +340,6 @@
                 <h3 class="font-display font-bold text-lg text-white uppercase tracking-wider">// JEGALUX NEXUS ID</h3>
                 <button onclick="closeProfileModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
-
             <div id="loginView" class="space-y-4 text-center py-2">
                 <p class="text-xs font-tech text-neutral-300">Vincula tu cuenta para guardar tu nivel, puntos y progreso en la nube.</p>
                 <div class="space-y-3 pt-2">
@@ -352,7 +351,6 @@
                     </button>
                 </div>
             </div>
-
             <div id="userProfileView" class="hidden space-y-4 font-tech text-xs">
                 <div class="flex items-center gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10">
                     <div id="profileAvatarBox" class="w-16 h-16 rounded-xl bg-cover bg-center border-2 border-accent shadow-lg" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
@@ -361,12 +359,10 @@
                         <div class="text-neutral-400 text-[10px]" id="profileAuthType">Vinculado vía Google</div>
                     </div>
                 </div>
-
                 <div class="space-y-2">
                     <label class="block text-neutral-400">NOMBRE DE OPERATIVO</label>
                     <input type="text" id="editUsername" class="w-full bg-obsidian border border-white/10 rounded p-2.5 text-white focus:border-accent outline-none" value="CYBER_OPERATIVE" />
                 </div>
-
                 <div class="bg-obsidian/60 p-3 rounded-lg flex justify-between items-center border border-white/10">
                     <div>
                         <div class="text-white font-bold">NIVEL <span id="profileLevel">1</span></div>
@@ -374,7 +370,6 @@
                     </div>
                     <div class="text-accent font-bold text-sm" id="profilePoints">0 PTS</div>
                 </div>
-
                 <div class="pt-2">
                     <button onclick="saveProfile()" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
                         GUARDAR CAMBIOS
