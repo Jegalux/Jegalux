@@ -163,7 +163,7 @@
                 </div>
             </div>
 
-            <!-- 2. PANTALLA DE COMBATE 1V1 -->
+            <!-- 2. PANTALLA DE COMBATE 1V1 CON FOTOS DE JUGADOR Y RIVAL -->
             <div id="battleScreen" class="hidden space-y-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-obsidian/60 p-6 rounded-xl border border-white/10">
                     <div class="space-y-3">
@@ -187,15 +187,29 @@
                     </div>
                 </div>
 
+                <!-- CONTENEDOR VISUAL CON LAS FOTOS DEL JUGADOR Y EL RIVAL ENFRENTADOS -->
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                    <div class="md:col-span-5 text-center p-6 glass-panel rounded-xl">
-                        <div class="text-accent font-tech text-xs mb-2">VS</div>
-                        <h3 id="arenaRivalTitle" class="font-display font-bold text-xl text-white uppercase">OPONENTE</h3>
-                        <p id="arenaRivalDesc" class="text-xs text-neutral-400 mt-1">Preparado para el combate callejero.</p>
+                    <!-- Foto del Operativo Seleccionado -->
+                    <div class="md:col-span-4 text-center p-4 glass-panel rounded-xl border border-accent/40 relative overflow-hidden group">
+                        <div class="w-28 h-28 mx-auto rounded-xl fighter-slot border-2 border-accent shadow-lg mb-2" id="arenaPlayerAvatar" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
+                        <div class="font-tech text-xs text-accent font-bold uppercase">TU OPERATIVO</div>
                     </div>
-                    <div class="md:col-span-7 glass-panel p-5 rounded-xl h-44 overflow-y-auto font-tech text-xs space-y-2 border border-accent/20" id="battleLog">
-                        <div class="text-accent">[SISTEMA] Duelo 1v1 iniciado. Selecciona tu movimiento estratégico.</div>
+
+                    <!-- Indicador VS y Log de Combate -->
+                    <div class="md:col-span-4 text-center">
+                        <div class="font-display font-bold text-4xl text-white tracking-widest drop-shadow-[0_0_15px_rgba(255,85,0,0.6)] mb-2">VS</div>
+                        <div id="arenaRivalTitle" class="font-display font-bold text-sm text-red-400 uppercase">OPONENTE</div>
                     </div>
+
+                    <!-- Foto del Rival (Usando los avatares rotativos del juego) -->
+                    <div class="md:col-span-4 text-center p-4 glass-panel rounded-xl border border-red-500/40 relative overflow-hidden group">
+                        <div class="w-28 h-28 mx-auto rounded-xl fighter-slot border-2 border-red-500 shadow-lg mb-2" id="arenaRivalAvatar" style="background-image: url('pelirroja.png');"></div>
+                        <div class="font-tech text-xs text-red-500 font-bold uppercase">RIVAL ACTUAL</div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-5 rounded-xl h-44 overflow-y-auto font-tech text-xs space-y-2 border border-accent/20" id="battleLog">
+                    <div class="text-accent">[SISTEMA] Duelo 1v1 iniciado. Selecciona tu movimiento estratégico.</div>
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 font-tech text-xs">
@@ -262,6 +276,7 @@
                 userNexus = JSON.parse(saved);
                 document.getElementById('headerName').innerText = userNexus.username.toUpperCase();
                 document.getElementById('headerAvatar').style.backgroundImage = `url('${userNexus.avatarImg}')`;
+                document.getElementById('arenaPlayerAvatar').style.backgroundImage = `url('${userNexus.avatarImg}')`;
                 document.getElementById('lblPlayerName').innerText = userNexus.username.toUpperCase();
                 document.getElementById('lblLevel').innerText = userNexus.level;
                 document.getElementById('lblScore').innerText = userNexus.points + ' PTS';
@@ -286,35 +301,12 @@
             document.getElementById('lblScore').innerText = userNexus.points + ' PTS';
         }
 
-        let audioCtx = null;
-        function playCyberpunkSound(type) {
-            try {
-                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                if (audioCtx.state === 'suspended') audioCtx.resume();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                if (type === 'hover') {
-                    osc.type = 'sawtooth';
-                    osc.frequency.setValueAtTime(320, audioCtx.currentTime);
-                    gain.gain.setValueAtTime(0.00001, audioCtx.currentTime);
-                } else if (type === 'click') {
-                    osc.type = 'triangle';
-                    osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
-                    gain.gain.setValueAtTime(0.002, audioCtx.currentTime);
-                }
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.03);
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-            } catch (e) {}
-        }
-
         const rivalsList = [
-            { name: "Viper Punk", hp: 100, atk: 22, desc: "Reina del caos callejero con púas de plasma." },
-            { name: "Cyber Geisha", hp: 90, atk: 28, desc: "Asesina cibernética de alta precisión." },
-            { name: "Neon Valkyrie", hp: 110, atk: 20, desc: "Guerrera con trenzas de fibra óptica letal." },
-            { name: "Riot Brawler", hp: 130, atk: 18, desc: "Luchador sin camiseta de fuerza bruta." },
-            { name: "JEGALUX BOSS", hp: 160, atk: 33, desc: "El reflejo oscuro supremo. Tu prueba final." }
+            { name: "Viper Punk", hp: 100, atk: 22, avatar: "pelirroja.png", desc: "Reina del caos callejero con púas de plasma." },
+            { name: "Cyber Geisha", hp: 90, atk: 28, avatar: "gdrgdgrdgd.png", desc: "Asesina cibernética de alta precisión." },
+            { name: "Neon Valkyrie", hp: 110, atk: 20, avatar: "señora.png", desc: "Guerrera con trenzas de fibra óptica letal." },
+            { name: "Riot Brawler", hp: 130, atk: 18, avatar: "htfhfhtff.png", desc: "Luchador sin camiseta de fuerza bruta." },
+            { name: "JEGALUX BOSS", hp: 160, atk: 33, avatar: "jgjygjgjgjy.png", desc: "El reflejo oscuro supremo. Tu prueba final." }
         ];
 
         let gameState = {
@@ -332,6 +324,7 @@
             userNexus.avatarImg = imgFile;
             saveUserData();
             document.getElementById('headerAvatar').style.backgroundImage = `url('${imgFile}')`;
+            document.getElementById('arenaPlayerAvatar').style.backgroundImage = `url('${imgFile}')`;
             triggerToast(`OPERATIVO SELECCIONADO: ${name}`);
         }
 
@@ -351,7 +344,7 @@
 
             document.getElementById('battleRivalName').innerText = rival.name.toUpperCase();
             document.getElementById('arenaRivalTitle').innerText = rival.name;
-            document.getElementById('arenaRivalDesc').innerText = rival.desc;
+            document.getElementById('arenaRivalAvatar').style.backgroundImage = `url('${rival.avatar}')`;
             document.getElementById('lblRivalCount').innerText = `${gameState.currentRivalIndex + 1} / 5`;
 
             updateHpBars();
@@ -458,6 +451,25 @@
                     toast.classList.add('translate-y-24', 'opacity-0');
                 }, 3200);
             }
+        }
+
+        let audioCtx = null;
+        function playCyberpunkSound(type) {
+            try {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                if (type === 'click') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.002, audioCtx.currentTime);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.03);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                }
+            } catch (e) {}
         }
     </script>
 </body>
