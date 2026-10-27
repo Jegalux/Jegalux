@@ -99,7 +99,7 @@
             <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// NEXUS ARCADE ARENA 1V1</span>
             <h1 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // COMBATE TOTAL</h1>
             <p class="text-neutral-400 font-sans text-xs md:text-sm mt-3">
-                Selecciona tu operativo entre los 6 combatientes y enfréntate a los 5 jefes de la sombra para consagrar tu Nexus ID.
+                Selecciona tu operativo entre los 6 combatientes de élite y enfréntate a los 5 jefes de la sombra para consagrar tu Nexus ID.
             </p>
         </div>
 
@@ -119,40 +119,40 @@
                 </div>
             </div>
 
-            <!-- 1. SELECCIÓN DE PERSONAJES (6 CASILLAS) -->
+            <!-- 1. SELECCIÓN DE PERSONAJES (6 CASILLAS CON NOMBRES MEJORADOS) -->
             <div id="charSelectScreen" class="space-y-8">
                 <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECCIONA TU OPERATIVO</h3>
                 
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-                    <div onclick="selectCharacter('Protagonist Hood', 'Collage cyberpunk de 15 personajes neón.png')" class="cursor-pointer rounded-xl border border-accent/40 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
+                    <div onclick="selectCharacter('Kuro Shadow', 'Collage cyberpunk de 15 personajes neón.png')" class="cursor-pointer rounded-xl border border-accent/40 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <span class="relative z-10 text-accent">Protagonist</span>
+                        <span class="relative z-10 text-accent">Kuro Shadow</span>
                     </div>
-                    <div onclick="selectCharacter('Red Hair Bun', 'pelirroja.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
+                    <div onclick="selectCharacter('Scarlet Vixen', 'pelirroja.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('pelirroja.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <span class="relative z-10">Pelirroja Moño</span>
+                        <span class="relative z-10">Scarlet Vixen</span>
                     </div>
-                    <div onclick="selectCharacter('Cyber Glasses', 'gdrgdgrdgd.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
+                    <div onclick="selectCharacter('Nova Ocular', 'gdrgdgrdgd.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('gdrgdgrdgd.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <span class="relative z-10">Cyber Goggles</span>
+                        <span class="relative z-10">Nova Ocular</span>
                     </div>
-                    <div onclick="selectCharacter('Combat Ready', 'señora.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
+                    <div onclick="selectCharacter('Valkyrie Riot', 'señora.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('señora.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <span class="relative z-10">Combat Ready</span>
+                        <span class="relative z-10">Valkyrie Riot</span>
                     </div>
-                    <div onclick="selectCharacter('Shadow Assassin', 'htfhfhtff.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
+                    <div onclick="selectCharacter('Specter Assassin', 'htfhfhtff.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('htfhfhtff.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <span class="relative z-10">Shadow Mask</span>
+                        <span class="relative z-10">Specter Assassin</span>
                     </div>
-                    <div onclick="selectCharacter('Punk Brawler', 'jgjygjgjgjy.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
+                    <div onclick="selectCharacter('Zane Anarchy', 'jgjygjgjgjy.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
                         <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('jgjygjgjgjy.png');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <span class="relative z-10">Punk Brawler</span>
+                        <span class="relative z-10">Zane Anarchy</span>
                     </div>
                 </div>
 
@@ -187,22 +187,19 @@
                     </div>
                 </div>
 
-                <!-- CONTENEDOR VISUAL CON LAS FOTOS DEL JUGADOR Y EL RIVAL ENFRENTADOS -->
+                <!-- CONTENEDOR VISUAL CON LAS FOTOS Y NOMBRES DE LOS LUCHADORES -->
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                    <!-- Foto del Operativo Seleccionado -->
-                    <div class="md:col-span-4 text-center p-4 glass-panel rounded-xl border border-accent/40 relative overflow-hidden group">
+                    <div class="md:col-span-4 text-center p-4 glass-panel rounded-xl border border-accent/40 relative overflow-hidden">
                         <div class="w-28 h-28 mx-auto rounded-xl fighter-slot border-2 border-accent shadow-lg mb-2" id="arenaPlayerAvatar" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
                         <div class="font-tech text-xs text-accent font-bold uppercase">TU OPERATIVO</div>
                     </div>
 
-                    <!-- Indicador VS y Log de Combate -->
                     <div class="md:col-span-4 text-center">
                         <div class="font-display font-bold text-4xl text-white tracking-widest drop-shadow-[0_0_15px_rgba(255,85,0,0.6)] mb-2">VS</div>
                         <div id="arenaRivalTitle" class="font-display font-bold text-sm text-red-400 uppercase">OPONENTE</div>
                     </div>
 
-                    <!-- Foto del Rival (Usando los avatares rotativos del juego) -->
-                    <div class="md:col-span-4 text-center p-4 glass-panel rounded-xl border border-red-500/40 relative overflow-hidden group">
+                    <div class="md:col-span-4 text-center p-4 glass-panel rounded-xl border border-red-500/40 relative overflow-hidden">
                         <div class="w-28 h-28 mx-auto rounded-xl fighter-slot border-2 border-red-500 shadow-lg mb-2" id="arenaRivalAvatar" style="background-image: url('pelirroja.png');"></div>
                         <div class="font-tech text-xs text-red-500 font-bold uppercase">RIVAL ACTUAL</div>
                     </div>
@@ -301,12 +298,13 @@
             document.getElementById('lblScore').innerText = userNexus.points + ' PTS';
         }
 
+        // NOMBRES DE JEFES MEJORADOS
         const rivalsList = [
-            { name: "Viper Punk", hp: 100, atk: 22, avatar: "pelirroja.png", desc: "Reina del caos callejero con púas de plasma." },
-            { name: "Cyber Geisha", hp: 90, atk: 28, avatar: "gdrgdgrdgd.png", desc: "Asesina cibernética de alta precisión." },
-            { name: "Neon Valkyrie", hp: 110, atk: 20, avatar: "señora.png", desc: "Guerrera con trenzas de fibra óptica letal." },
-            { name: "Riot Brawler", hp: 130, atk: 18, avatar: "htfhfhtff.png", desc: "Luchador sin camiseta de fuerza bruta." },
-            { name: "JEGALUX BOSS", hp: 160, atk: 33, avatar: "jgjygjgjgjy.png", desc: "El reflejo oscuro supremo. Tu prueba final." }
+            { name: "Viper Stryke", hp: 100, atk: 22, avatar: "pelirroja.png", desc: "Reina del caos callejero con púas de plasma." },
+            { name: "Ghost Geisha", hp: 90, atk: 28, avatar: "gdrgdgrdgd.png", desc: "Asesina cibernética de alta precisión sigilosa." },
+            { name: "Valkyrie Blade", hp: 110, atk: 20, avatar: "señora.png", desc: "Guerrera letal con fibra óptica reforzada." },
+            { name: "Riot Titan", hp: 130, atk: 18, avatar: "htfhfhtff.png", desc: "Coloso callejero de fuerza bruta desmedida." },
+            { name: "JEGALUX PRIME", hp: 160, atk: 33, avatar: "jgjygjgjgjy.png", desc: "El reflejo oscuro supremo. Tu prueba final." }
         ];
 
         let gameState = {
@@ -322,9 +320,12 @@
         function selectCharacter(name, imgFile) {
             playCyberpunkSound('click');
             userNexus.avatarImg = imgFile;
+            userNexus.username = name;
             saveUserData();
+            document.getElementById('headerName').innerText = name.toUpperCase();
             document.getElementById('headerAvatar').style.backgroundImage = `url('${imgFile}')`;
             document.getElementById('arenaPlayerAvatar').style.backgroundImage = `url('${imgFile}')`;
+            document.getElementById('lblPlayerName').innerText = name.toUpperCase();
             triggerToast(`OPERATIVO SELECCIONADO: ${name}`);
         }
 
