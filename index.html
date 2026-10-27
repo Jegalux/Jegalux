@@ -302,25 +302,23 @@
         </section>
     </div>
 
-    <!-- ================= PESTAÑA 2: SHADOW ARENA (JUEGO 1V1 CON FONDOS DINÁMICOS) ================= -->
-    <div id="arenaView" class="relative z-10 hidden transition-opacity duration-300 py-16">
+    <!-- ================= PESTAÑA 2: SHADOW ARENA (JUEGO 1V1 SIN TÍTULO MOLESTO) ================= -->
+    <div id="arenaView" class="relative z-10 hidden transition-opacity duration-300 py-6">
         
         <!-- CONTENEDOR CON FONDO DINÁMICO DE ARENA -->
         <div id="dynamicArenaBg" class="absolute inset-0 -z-10 w-full h-full bg-cover bg-center transition-all duration-700 filter brightness-[0.35] contrast-[1.1]" style="background-image: url('Arena mística entre islas flotantes.png');"></div>
         <div class="absolute inset-0 -z-10 bg-gradient-to-b from-void/90 via-void/50 to-void/95"></div>
 
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10">
-                <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// DYNAMIC BATTLEGROUNDS</span>
-                <h1 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // ELITE COMBATANTS</h1>
-                <p class="text-neutral-300 font-sans text-xs md:text-sm mt-3" id="arenaBgTitle">
-                    Current Arena: Mística entre islas flotantes
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-4">
+                <p class="text-neutral-400 font-tech text-xs tracking-widest" id="arenaBgTitle">
+                    // CURRENT ARENA: Mística entre islas flotantes
                 </p>
             </div>
 
-            <div class="glass-panel rounded-2xl p-6 md:p-10 shadow-2xl border border-accent/40 relative overflow-hidden space-y-8">
-                <!-- STATS BAR OPTIMIZADA -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10 font-tech text-xs items-center text-center">
+            <div class="glass-panel rounded-2xl p-5 md:p-8 shadow-2xl border border-accent/40 relative overflow-hidden space-y-6">
+                <!-- STATS BAR LIMPIA Y OPTIMIZADA -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-obsidian/80 p-3 rounded-xl border border-white/10 font-tech text-xs items-center text-center">
                     <div class="space-y-1">
                         <span class="text-neutral-400 text-[10px] uppercase">OPERATIVE</span>
                         <div id="lblPlayerName" class="text-accent font-bold truncate">KURO SHADOW</div>
@@ -334,184 +332,169 @@
                         <div id="statMaxDamage" class="text-accent font-bold text-sm">0 DMG</div>
                     </div>
                     <div>
-                        <button onclick="returnToCharSelect()" class="w-full py-2.5 px-3 rounded bg-accent/20 border border-accent text-accent font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-1.5 uppercase text-[10px]">
-                            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> CHANGE OPERATIVE
+                        <button onclick="returnToCharSelect()" class="w-full py-2 px-2 rounded bg-accent/20 border border-accent text-accent font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-1 uppercase text-[10px]">
+                            <i data-lucide="refresh-cw" class="w-3 h-3"></i> CHANGE
                         </button>
                     </div>
                 </div>
 
                 <!-- SELECCIÓN DE LOS 15 PERSONAJES -->
-                <div id="charSelectScreen" class="space-y-8">
-                    <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECT YOUR COMBATANT (15 ELITE OPERATIVES)</h3>
+                <div id="charSelectScreen" class="space-y-6">
+                    <h3 class="font-display font-bold text-sm text-white uppercase tracking-wider text-center">// SELECT YOUR COMBATANT (15 ELITE OPERATIVES)</h3>
                     
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-                        <div onclick="inspectCharacter('Kuro Shadow', 'Collage cyberpunk de 15 personajes neón.png', 'balanced', 100, 75, 70, 'Balanced All-Rounder', 'Reliable in all combat situations.')" class="cursor-pointer rounded-xl border border-accent/40 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                    <div class="grid grid-cols-3 sm:grid-cols-5 gap-3">
+                        <div onclick="inspectCharacter('Kuro Shadow', 'Collage cyberpunk de 15 personajes neón.png', 'balanced', 100, 75, 70, 'Balanced All-Rounder', 'Reliable in all combat situations.')" class="cursor-pointer rounded-xl border border-accent/40 fighter-slot glass-panel flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                             <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10 text-accent">Kuro Shadow</span>
-                            <span class="relative z-10 text-[9px] text-neutral-300">Inspect Stats</span>
                         </div>
-                        <div onclick="inspectCharacter('Scarlet Vixen', 'pelirroja.png', 'critical', 85, 95, 60, 'Critical Striker', 'Devastating critical hits.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div onclick="inspectCharacter('Scarlet Vixen', 'pelirroja.png', 'critical', 85, 95, 60, 'Critical Striker', 'Devastating critical hits.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                             <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('pelirroja.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10">Scarlet Vixen</span>
-                            <span class="relative z-10 text-[9px] text-red-400">Inspect Stats</span>
                         </div>
-                        <div onclick="inspectCharacter('Nova Ocular', 'gdrgdgrdgd.png', 'agility', 100, 65, 95, 'Agile Evasion Master', '35% passive evasion.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div onclick="inspectCharacter('Nova Ocular', 'gdrgdgrdgd.png', 'agility', 100, 65, 95, 'Agile Evasion Master', '35% passive evasion.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                             <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('gdrgdgrdgd.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10">Nova Ocular</span>
-                            <span class="relative z-10 text-[9px] text-cyan-400">Inspect Stats</span>
                         </div>
-                        <div onclick="inspectCharacter('Valkyrie Riot', 'señora.png', 'tank', 125, 60, 50, 'Tank Vanguard', 'High endurance pool.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div onclick="inspectCharacter('Valkyrie Riot', 'señora.png', 'tank', 125, 60, 50, 'Tank Vanguard', 'High endurance pool.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                             <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('señora.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10">Valkyrie Riot</span>
-                            <span class="relative z-10 text-[9px] text-emerald-400">Inspect Stats</span>
                         </div>
-                        <div onclick="inspectCharacter('Specter Assassin', 'htfhfhtff.png', 'speed', 100, 70, 85, 'Stealth Assassin', 'Rapid strike momentum.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div onclick="inspectCharacter('Specter Assassin', 'htfhfhtff.png', 'speed', 100, 70, 85, 'Stealth Assassin', 'Rapid strike momentum.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                             <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('htfhfhtff.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10">Specter Assassin</span>
-                            <span class="relative z-10 text-[9px] text-purple-400">Inspect Stats</span>
                         </div>
-                        <div onclick="inspectCharacter('Zane Anarchy', 'jgjygjgjgjy.png', 'berserker', 100, 90, 60, 'Berserker Brawler', 'Raw heavy damage.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div onclick="inspectCharacter('Zane Anarchy', 'jgjygjgjgjy.png', 'berserker', 100, 90, 60, 'Berserker Brawler', 'Raw heavy damage.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                             <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('jgjygjgjgjy.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10">Zane Anarchy</span>
-                            <span class="relative z-10 text-[9px] text-yellow-400">Inspect Stats</span>
                         </div>
-                        <div onclick="inspectCharacter('Ezel', 'ezez.png', 'balanced', 100, 75, 70, 'Balanced Vanguard', 'Supreme balance.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div onclick="inspectCharacter('Ezel', 'ezez.png', 'balanced', 100, 75, 70, 'Balanced Vanguard', 'Supreme balance.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                             <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('ezez.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10">Ezel</span>
-                            <span class="relative z-10 text-[9px] text-neutral-300">Inspect Stats</span>
                         </div>
-                        <div onclick="inspectCharacter('Vexia', 'gtgt.png', 'critical', 85, 95, 60, 'Neon Assassin', 'High critical strike rate.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div onclick="inspectCharacter('Vexia', 'gtgt.png', 'critical', 85, 95, 60, 'Neon Assassin', 'High critical strike rate.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                             <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('gtgt.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10">Vexia</span>
-                            <span class="relative z-10 text-[9px] text-red-400">Inspect Stats</span>
                         </div>
-                        <div onclick="inspectCharacter('Zane Punk', 'yjuk.png', 'berserker', 100, 90, 60, 'Anarchy Brawler', 'Heavy striking power.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div onclick="inspectCharacter('Zane Punk', 'yjuk.png', 'berserker', 100, 90, 60, 'Anarchy Brawler', 'Heavy striking power.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                             <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('yjuk.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10">Zane Punk</span>
-                            <span class="relative z-10 text-[9px] text-yellow-400">Inspect Stats</span>
                         </div>
-                        <div onclick="inspectCharacter('Kuro Spike', 'jkujk.png', 'speed', 100, 70, 85, 'Cyber Outlaw', 'Agile combo maneuvers.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div onclick="inspectCharacter('Kuro Spike', 'jkujk.png', 'speed', 100, 70, 85, 'Cyber Outlaw', 'Agile combo maneuvers.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                             <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('jkujk.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10">Kuro Spike</span>
-                            <span class="relative z-10 text-[9px] text-purple-400">Inspect Stats</span>
                         </div>
-                        <div onclick="inspectCharacter('Aiden Volt', 'etr.png', 'balanced', 105, 72, 75, 'Plasma Enforcer', 'Balanced offensive gear.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div onclick="inspectCharacter('Aiden Volt', 'etr.png', 'balanced', 105, 72, 75, 'Plasma Enforcer', 'Balanced offensive gear.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                             <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('etr.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10">Aiden Volt</span>
-                            <span class="relative z-10 text-[9px] text-neutral-300">Inspect Stats</span>
                         </div>
-                        <div onclick="inspectCharacter('Nova Zero', 'emna.png', 'agility', 95, 70, 95, 'Zero Agent', 'High-speed evasion.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div onclick="inspectCharacter('Nova Zero', 'emna.png', 'agility', 95, 70, 95, 'Zero Agent', 'High-speed evasion.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                             <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('emna.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10">Nova Zero</span>
-                            <span class="relative z-10 text-[9px] text-cyan-400">Inspect Stats</span>
                         </div>
-                        <div onclick="inspectCharacter('Cyber Goggles', 'elman.png', 'critical', 90, 85, 80, 'Tech Sniper', 'Calculated strikes.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div onclick="inspectCharacter('Cyber Goggles', 'elman.png', 'critical', 90, 85, 80, 'Tech Sniper', 'Calculated strikes.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                             <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('elman.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10">Cyber Goggles</span>
-                            <span class="relative z-10 text-[9px] text-red-400">Inspect Stats</span>
                         </div>
-                        <div onclick="inspectCharacter('Scarlet Blade', 'gilil.png', 'speed', 95, 80, 85, 'Street Vixen', 'Lightning-fast reflexes.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div onclick="inspectCharacter('Scarlet Blade', 'gilil.png', 'speed', 95, 80, 85, 'Street Vixen', 'Lightning-fast reflexes.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                             <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('gilil.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10">Scarlet Blade</span>
-                            <span class="relative z-10 text-[9px] text-purple-400">Inspect Stats</span>
                         </div>
-                        <div onclick="inspectCharacter('Valkyrie Red', 'ergh.png', 'tank', 125, 65, 50, 'Heavy Vanguard', 'Ultimate defense pool.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
+                        <div onclick="inspectCharacter('Valkyrie Red', 'ergh.png', 'tank', 125, 65, 50, 'Heavy Vanguard', 'Ultimate defense pool.')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2 text-[10px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden hover:border-accent">
                             <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('ergh.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10">Valkyrie Red</span>
-                            <span class="relative z-10 text-[9px] text-emerald-400">Inspect Stats</span>
                         </div>
                     </div>
 
-                    <div class="text-center pt-6">
-                        <button onclick="startGame()" class="px-10 py-4 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg shadow-accent/40">
+                    <div class="text-center pt-2">
+                        <button onclick="startGame()" class="px-8 py-3 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg shadow-accent/40">
                             START 1V1 DUEL
                         </button>
                     </div>
                 </div>
 
                 <!-- PANTALLA DE COMBATE 1V1 -->
-                <div id="battleScreen" class="hidden space-y-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-obsidian/60 p-6 rounded-xl border border-white/10">
-                        <div class="space-y-3">
+                <div id="battleScreen" class="hidden space-y-5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center bg-obsidian/60 p-4 rounded-xl border border-white/10">
+                        <div class="space-y-2">
                             <div class="flex justify-between font-tech text-xs">
                                 <span id="battlePlayerName" class="text-accent font-bold">OPERATIVE</span>
                                 <span id="playerHpText" class="text-white">100 / 100 HP</span>
                             </div>
-                            <div class="w-full bg-neutral-800 h-4 rounded-full overflow-hidden p-0.5 border border-white/10">
+                            <div class="w-full bg-neutral-800 h-3 rounded-full overflow-hidden p-0.5 border border-white/10">
                                 <div id="playerHpBar" class="bg-accent h-full rounded-full transition-all duration-300" style="width: 100%"></div>
                             </div>
                         </div>
 
-                        <div class="space-y-3">
+                        <div class="space-y-2">
                             <div class="flex justify-between font-tech text-xs">
                                 <span id="battleRivalName" class="text-red-500 font-bold">RIVAL</span>
                                 <span id="rivalHpText" class="text-white">100 / 100 HP</span>
                             </div>
-                            <div class="w-full bg-neutral-800 h-4 rounded-full overflow-hidden p-0.5 border border-white/10">
+                            <div class="w-full bg-neutral-800 h-3 rounded-full overflow-hidden p-0.5 border border-white/10">
                                 <div id="rivalHpBar" class="bg-red-500 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                        <div class="md:col-span-4 text-center p-4 glass-panel rounded-xl border border-accent/40 relative overflow-hidden">
-                            <div class="w-28 h-28 mx-auto rounded-xl fighter-slot border-2 border-accent shadow-lg mb-2" id="arenaPlayerAvatar" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
-                            <div class="font-tech text-xs text-accent font-bold uppercase" id="arenaPlayerClassTitle">YOUR OPERATIVE</div>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                        <div class="md:col-span-4 text-center p-3 glass-panel rounded-xl border border-accent/40 relative overflow-hidden">
+                            <div class="w-20 h-20 mx-auto rounded-xl fighter-slot border-2 border-accent shadow-lg mb-1" id="arenaPlayerAvatar" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
+                            <div class="font-tech text-[10px] text-accent font-bold uppercase" id="arenaPlayerClassTitle">YOUR OPERATIVE</div>
                         </div>
 
                         <div class="md:col-span-4 text-center">
-                            <div class="font-display font-bold text-4xl text-white tracking-widest drop-shadow-[0_0_15px_rgba(255,85,0,0.6)] mb-2">VS</div>
-                            <div id="arenaRivalTitle" class="font-display font-bold text-sm text-red-400 uppercase">OPPONENT</div>
-                            <div class="text-[11px] text-neutral-400 font-tech mt-1" id="lblRivalCount">Boss 1 / 5</div>
+                            <div class="font-display font-bold text-2xl text-white tracking-widest drop-shadow-[0_0_10px_rgba(255,85,0,0.6)]">VS</div>
+                            <div id="arenaRivalTitle" class="font-display font-bold text-xs text-red-400 uppercase mt-1">OPPONENT</div>
+                            <div class="text-[10px] text-neutral-400 font-tech" id="lblRivalCount">Boss 1 / 5</div>
                         </div>
 
-                        <div class="md:col-span-4 text-center p-4 glass-panel rounded-xl border border-red-500/40 relative overflow-hidden">
-                            <div class="w-28 h-28 mx-auto rounded-xl fighter-slot border-2 border-red-500 shadow-lg mb-2" id="arenaRivalAvatar" style="background-image: url('pelirroja.png');"></div>
-                            <div class="font-tech text-xs text-red-500 font-bold uppercase">CURRENT BOSS</div>
+                        <div class="md:col-span-4 text-center p-3 glass-panel rounded-xl border border-red-500/40 relative overflow-hidden">
+                            <div class="w-20 h-20 mx-auto rounded-xl fighter-slot border-2 border-red-500 shadow-lg mb-1" id="arenaRivalAvatar" style="background-image: url('pelirroja.png');"></div>
+                            <div class="font-tech text-[10px] text-red-500 font-bold uppercase">CURRENT BOSS</div>
                         </div>
                     </div>
 
-                    <div class="glass-panel p-5 rounded-xl h-44 overflow-y-auto font-tech text-xs space-y-2 border border-accent/20" id="battleLog">
+                    <div class="glass-panel p-3 rounded-xl h-28 overflow-y-auto font-tech text-xs space-y-1.5 border border-accent/20" id="battleLog">
                         <div class="text-accent">[SYSTEM] 15 Operatives Roster loaded. Choose your fighter!</div>
                     </div>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 font-tech text-xs">
-                        <button onclick="playerAttack('light')" class="py-3.5 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2">
-                            <i data-lucide="sword" class="w-4 h-4 text-accent"></i> LIGHT STRIKE
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 font-tech text-xs">
+                        <button onclick="playerAttack('light')" class="py-2.5 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-1.5">
+                            <i data-lucide="sword" class="w-3.5 h-3.5 text-accent"></i> LIGHT STRIKE
                         </button>
-                        <button onclick="playerAttack('heavy')" class="py-3.5 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2">
-                            <i data-lucide="zap" class="w-4 h-4 text-accent"></i> HEAVY STRIKE
+                        <button onclick="playerAttack('heavy')" class="py-2.5 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-1.5">
+                            <i data-lucide="zap" class="w-3.5 h-3.5 text-accent"></i> HEAVY STRIKE
                         </button>
-                        <button onclick="playerDefend()" class="py-3.5 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2">
-                            <i data-lucide="shield" class="w-4 h-4 text-accent"></i> DEFEND
+                        <button onclick="playerDefend()" class="py-2.5 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-1.5">
+                            <i data-lucide="shield" class="w-3.5 h-3.5 text-accent"></i> DEFEND
                         </button>
-                        <button onclick="playerSpecial()" class="py-3.5 rounded bg-accent/20 border border-accent text-accent font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2">
-                            <i data-lucide="star" class="w-4 h-4"></i> SHADOW STRIKE
+                        <button onclick="playerSpecial()" class="py-2.5 rounded bg-accent/20 border border-accent text-accent font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-1.5">
+                            <i data-lucide="star" class="w-3.5 h-3.5"></i> SHADOW STRIKE
                         </button>
                     </div>
                 </div>
 
                 <!-- VICTORIA / DERROTA -->
-                <div id="endGameScreen" class="hidden text-center space-y-6 py-8">
-                    <h3 id="endGameTitle" class="font-display font-bold text-3xl text-accent uppercase">VICTORY IN DUEL!</h3>
-                    <p id="endGameDesc" class="text-sm text-neutral-300">You defeated the opponent and earned XP for your Nexus ID.</p>
+                <div id="endGameScreen" class="hidden text-center space-y-4 py-6">
+                    <h3 id="endGameTitle" class="font-display font-bold text-2xl text-accent uppercase">VICTORY IN DUEL!</h3>
+                    <p id="endGameDesc" class="text-xs text-neutral-300">You defeated the opponent and earned XP for your Nexus ID.</p>
                     <div>
-                        <button onclick="nextBattle()" class="px-8 py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
+                        <button onclick="nextBattle()" class="px-6 py-3 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
                             NEXT RIVAL
                         </button>
                     </div>
@@ -790,7 +773,7 @@
         function setRandomArenaBackground() {
             const randomBg = arenaBackgrounds[Math.floor(Math.random() * arenaBackgrounds.length)];
             document.getElementById('dynamicArenaBg').style.backgroundImage = `url('${randomBg.file}')`;
-            document.getElementById('arenaBgTitle').innerText = `Current Arena: ${randomBg.name}`;
+            document.getElementById('arenaBgTitle').innerText = `// CURRENT ARENA: ${randomBg.name}`;
         }
 
         function getLevelColor(lvl) {
@@ -1109,12 +1092,12 @@
             if (isVictory) {
                 userNexus.bossesDefeated = (userNexus.bossesDefeated || 0) + 1;
                 addXpAndPoints(300, 150);
-                title.className = "font-display font-bold text-3xl text-accent uppercase";
+                title.className = "font-display font-bold text-2xl text-accent uppercase";
                 title.innerText = "VICTORY IN DUEL!";
                 desc.innerText = `Combat won! +300 XP added to your Nexus ID.`;
                 gameState.currentRivalIndex++;
             } else {
-                title.className = "font-display font-bold text-3xl text-red-500 uppercase";
+                title.className = "font-display font-bold text-2xl text-red-500 uppercase";
                 title.innerText = "YOU HAVE BEEN DEFEATED!";
                 desc.innerText = "The shadow has consumed you. Try again.";
                 gameState.playerHp = gameState.playerMaxHp;
