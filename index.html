@@ -72,7 +72,7 @@
             transform-style: preserve-3d; perspective: 1000px;
             transition: transform 0.15s cubic-bezier(0.03, 0.98, 0.52, 0.99), border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        /* Casillas perfectamente cuadradas para los 6 luchadores */
+        /* Casillas perfectamente cuadradas y uniformes */
         .fighter-slot {
             aspect-ratio: 1 / 1;
             background-size: cover;
@@ -235,7 +235,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN SHADOW ARENA // 6 LUCHADORES INDIVIDUALES -->
+    <!-- SECCIÓN SHADOW ARENA // 6 LUCHADORES EXACTOS -->
     <section id="arena" class="py-24 relative z-10 border-b border-white/5 bg-void/80 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
@@ -262,20 +262,20 @@
                     </div>
                 </div>
 
-                <!-- SELECCIÓN DE PERSONAJES (6 CASILLAS PERFECTAMENTE CUADRADAS CON TUS FOTOS) -->
+                <!-- SELECCIÓN DE PERSONAJES (6 CASILLAS PERFECTAMENTE CUADRADAS CON FOTOS CORREGIDAS) -->
                 <div id="charSelectScreen" class="space-y-8">
                     <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECCIONA TU OPERATIVO (6 LUCHADORES)</h3>
                     
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
                         
-                        <!-- 1. Collage cyberpunk (Protagonista Sudadera) -->
+                        <!-- 1. Protagonista Sudadera -->
                         <div onclick="selectCharacter('Protagonist Hood', 'Collage cyberpunk de 15 personajes neón.png')" class="cursor-pointer rounded-xl border border-accent/40 fighter-slot glass-panel glass-panel-hover flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
                             <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                             <span class="relative z-10 text-accent">Protagonist</span>
                         </div>
 
-                        <!-- 2. Pelirroja Moño -->
+                        <!-- 2. Pelirroja Moño (Nombre corregido) -->
                         <div onclick="selectCharacter('Red Hair Bun', 'gdgrgdgdr.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel glass-panel-hover flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
                             <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('gdgrgdgdr.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
@@ -289,7 +289,7 @@
                             <span class="relative z-10">Cyber Goggles</span>
                         </div>
 
-                        <!-- 4. Combatiente con Botellas -->
+                        <!-- 4. Combatiente con Botellas (Nombre corregido) -->
                         <div onclick="selectCharacter('Combat Ready', 'htfhfhhf.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel glass-panel-hover flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
                             <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('htfhfhhf.png');"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
