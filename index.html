@@ -596,7 +596,7 @@
         </div>
     </div>
 
-    <!-- MODAL DE RANKING MUNDIAL -->
+    <!-- MODAL DE RANKING MUNDIAL (GLOBAL RANKING) CON TODOS LOS JUGADORES -->
     <div id="rankingModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-2xl p-6 md:p-8 rounded-2xl border border-accent/50 space-y-6 shadow-2xl relative max-h-[85vh] flex flex-col">
             <div class="flex justify-between items-center border-b border-white/10 pb-4">
@@ -790,14 +790,14 @@
             { name: "Valkyrie Red", avatar: "ergh.png" }
         ];
 
-        let currentRival = { name: "Viper Stryke", level: 1, hp: 100, maxHp: 100, atk: 20, avatar: "pelirroja.png" };
+        let currentRival = { name: "VoidWalker", level: 1, hp: 100, maxHp: 100, atk: 20, avatar: "pelirroja.png" };
 
         function setRandomArenaBackground() {
             const randomBg = arenaBackgrounds[Math.floor(Math.random() * arenaBackgrounds.length)];
             document.getElementById('dynamicArenaBg').style.backgroundImage = `url('${randomBg.file}')`;
         }
 
-        // MATCHMAKING INTELIGENTE (RANGO DE NIVEL CERCANO)
+        // MATCHMAKING INTELIGENTE CON NOMBRES REALES DEL RANKING GLOBAL
         function findMatchmakingRival() {
             let rankingData = JSON.parse(localStorage.getItem('jegalux_live_ranking')) || [];
             let eligibleRivals = rankingData.filter(p => !p.isUser && Math.abs(p.level - userNexus.level) <= 2);
@@ -921,29 +921,31 @@
             document.getElementById('zoomAvatarModal').classList.add('hidden');
         }
 
-        // RANKING VIVO E INFINITO
+        // GLOBAL RANKING INFINITO Y VIVO (NOMBRES MODERNOS Y NATURALES)
         function initGlobalRanking() {
             let rankingData = JSON.parse(localStorage.getItem('jegalux_live_ranking'));
 
-            const cyberpunkFirstNames = ["Vex", "Kuro", "Neon", "Zero", "Cyber", "Riot", "Sovereign", "Aero", "Nox", "Sektor", "Glitch", "Ashen", "Void", "Orion", "Blade", "Hyper", "Syn", "Ronin", "Phreak", "Nyx"];
-            const cyberpunkLastNames = ["Stryke", "Ghost", "Valkyrie", "X", "Ninja", "Pulse", "K", "Blade", "ious", "9", "Matrix", "Phantom", "Walker", "99", "Runner", "ion", "thia", "Dark", "Shadow", "Predator"];
+            const firstNames = ["Zero", "Sektor", "Phreak", "Cyber", "Ronin", "Apex", "Vortex", "Void", "Orion", "Blade", "Hyper", "Synthia", "Ghost", "Stalker", "Echo", "Matrix", "Pulse", "Riot", "Kuro", "Vex"];
+            const lastNames = ["Core", "Syndicate", "Protocol", "Byte", "Shadow", "Predator", "Nexus", "Runner", "Assassin", "Vanguard", "Titan", "Specter", "Anarchy", "Vixen", "Ocular"];
 
-            if (!rankingData || rankingData.length < 50) {
+            if (!rankingData || rankingData.length < 150) {
                 rankingData = [];
-                let basePts = 15000;
-                for (let i = 1; i <= 150; i++) {
-                    const fName = cyberpunkFirstNames[Math.floor(Math.random() * cyberpunkFirstNames.length)];
-                    const lName = cyberpunkLastNames[Math.floor(Math.random() * cyberpunkLastNames.length)];
-                    const randName = `${fName}_${lName}${Math.floor(Math.random() * 90 + 10)}`;
-                    basePts -= Math.floor(Math.random() * 90 + 10);
-                    const botLevel = Math.max(1, Math.floor(basePts / 700));
+                let basePts = 18000;
+                for (let i = 1; i <= 250; i++) {
+                    const fName = firstNames[Math.floor(Math.random() * firstNames.length)];
+                    const lName = lastNames[Math.floor(Math.random() * lastNames.length)];
+                    // Añadir números de vez en cuando de forma natural
+                    const addNum = Math.random() > 0.4 ? ` ${Math.floor(Math.random() * 85 + 10)}` : '';
+                    const randName = `${fName} ${lName}${addNum}`;
+                    basePts -= Math.floor(Math.random() * 70 + 10);
+                    const botLevel = Math.max(1, Math.floor(basePts / 650));
                     rankingData.push({ name: randName, points: Math.max(200, basePts), level: botLevel });
                 }
             } else {
                 rankingData.forEach(bot => {
-                    const delta = Math.floor(Math.random() * 100) - 48;
+                    const delta = Math.floor(Math.random() * 80) - 38;
                     bot.points = Math.max(100, bot.points + delta);
-                    bot.level = Math.max(1, Math.floor(bot.points / 700));
+                    bot.level = Math.max(1, Math.floor(bot.points / 650));
                 });
             }
 
