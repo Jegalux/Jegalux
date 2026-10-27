@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEGALUX | Shadow Arena - Arcade 1v1</title>
+    <title>JEGALUX | Obscure Luxury Streetwear & Arena</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
     <!-- Tailwind CSS -->
@@ -61,10 +61,16 @@
             border: 1px solid rgba(255, 255, 255, 0.09);
             box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
         }
-        .fighter-slot {
-            aspect-ratio: 1 / 1;
-            background-size: cover;
-            background-position: center;
+        .glass-panel-hover {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-panel-hover:hover {
+            border-color: rgba(255, 85, 0, 0.45);
+            box-shadow: 0 20px 50px 0 rgba(255, 85, 0, 0.18), inset 0 1px 0 0 rgba(255, 85, 0, 0.3);
+        }
+        .tilt-card {
+            transform-style: preserve-3d; perspective: 1000px;
+            transition: transform 0.15s cubic-bezier(0.03, 0.98, 0.52, 0.99), border-color 0.3s ease, box-shadow 0.3s ease;
         }
     </style>
 </head>
@@ -74,165 +80,367 @@
         <div id="cloudInfinite" class="cloud-bg-tile"></div>
     </div>
 
-    <!-- HEADER DE LA PÁGINA DE JUEGO -->
+    <!-- 1. HEADER / NAVIGATION -->
     <header class="sticky top-0 z-50 glass-panel border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center group py-2" aria-label="JEGALUX Home" onmouseenter="playCyberpunkSound('hover')">
-                <img src="logo.png" alt="JEGALUX Logo" class="h-9 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_8px_rgba(255,85,0,0.3)]" />
+            <a href="#" class="flex items-center group py-2" aria-label="JEGALUX Home" onmouseenter="playCyberpunkSound('hover')">
+                <img src="logo.png" alt="JEGALUX Logo" class="h-9 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_8px_rgba(255,85,0,0.3)]" onerror="this.onerror=null; this.src='https://placehold.co/180x44/0d0d11/ff5500?text=J+E+G+A+L+U+X';" />
             </a>
 
-            <div class="flex items-center space-x-4">
-                <a href="index.html" class="font-tech text-xs tracking-widest text-neutral-400 hover:text-accent transition flex items-center gap-1.5">
-                    <i data-lucide="arrow-left" class="w-4 h-4"></i> VOLVER A TIENDA
+            <nav class="hidden md:flex items-center space-x-8 font-tech text-xs tracking-[0.22em] text-neutral-400">
+                <a href="#product" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playCyberpunkSound('hover')">
+                    <span class="text-accent/60 text-[10px]">01//</span>PRODUCTS
                 </a>
-                <button onclick="playCyberpunkSound('click'); openProfileModal()" class="flex items-center gap-2 px-3 py-2 rounded-lg glass-panel text-neutral-300 hover:text-white transition-all">
+                <a href="#process" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playCyberpunkSound('hover')">
+                    <span class="text-accent/60 text-[10px]">02//</span>PROCESS
+                </a>
+                <a href="#manifesto" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1" onmouseenter="playCyberpunkSound('hover')">
+                    <span class="text-accent/60 text-[10px]">03//</span>MANIFESTO
+                </a>
+                <a href="arena.html" class="hover:text-accent transition-colors flex items-center gap-1.5 py-1 text-accent font-bold" onmouseenter="playCyberpunkSound('hover')">
+                    <span class="text-accent/60 text-[10px]">04//</span>SHADOW ARENA
+                </a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <button onclick="playCyberpunkSound('click'); openProfileModal()" class="flex items-center gap-2 px-3 py-2 rounded-lg glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200" onmouseenter="playCyberpunkSound('hover')">
                     <div id="headerAvatar" class="w-6 h-6 rounded bg-cover bg-center border border-accent" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
                     <span id="headerName" class="font-tech text-xs text-accent font-bold hidden sm:inline">NEXUS ID</span>
+                </button>
+
+                <button onclick="playCyberpunkSound('click'); openCartModal()" class="relative p-2.5 rounded-lg glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200" aria-label="View Cart" onmouseenter="playCyberpunkSound('hover')">
+                    <i data-lucide="shopping-bag" class="w-4 h-4 text-accent"></i>
+                    <span id="cartItemCount" class="absolute -top-1 -right-1 w-4 h-4 bg-accent text-black font-tech font-bold text-[10px] rounded-full flex items-center justify-center">1</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- SECCIÓN DE JUEGO COMPLETO SHADOW ARENA -->
-    <main class="py-16 relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-12">
-            <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// NEXUS ARCADE ARENA 1V1</span>
-            <h1 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA // COMBATE TOTAL</h1>
-            <p class="text-neutral-400 font-sans text-xs md:text-sm mt-3">
-                Selecciona tu operativo entre los 6 combatientes y enfréntate a los 5 jefes de la sombra para consagrar tu Nexus ID.
+    <!-- 2. HERO BANNER -->
+    <section id="heroBanner" class="relative z-10 w-full border-b border-white/10 py-24 md:py-36 overflow-hidden bg-void/40 backdrop-blur-md">
+        <div class="absolute inset-0 -z-10 overflow-hidden w-full h-full">
+            <img src="Gemini_Generated_Image_34mrde34mrde34mr.jpg" alt="Banner" class="w-full h-full object-cover filter brightness-[0.35] contrast-[1.2] opacity-80 scale-105 will-change-transform" onerror="this.onerror=null; this.src='https://placehold.co/1920x800/08080a/222222?text=JEGALUX';" />
+            <div class="absolute inset-0 bg-gradient-to-b from-void/85 via-void/40 to-void/95"></div>
+        </div>
+
+        <div id="bannerContainer" class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative tilt-card will-change-transform glass-panel rounded-2xl py-12 md:py-16 shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-white/10 overflow-hidden" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-accent/30 text-accent font-tech text-[10px] uppercase tracking-widest mb-6">
+                <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                AUTUMN/WINTER PROTOCOL — CLOUD SYNC ACTIVE
+            </div>
+
+            <div class="flex justify-center mb-6">
+                <img src="logo.png" alt="Emblem" class="h-36 md:h-52 w-auto object-contain opacity-95 drop-shadow-[0_0_40px_rgba(255,85,0,0.5)] transition-transform duration-300 hover:scale-105" />
+            </div>
+
+            <p class="max-w-xl mx-auto text-neutral-300 font-sans text-sm md:text-base leading-relaxed tracking-wide mb-8">
+                Underground silhouettes, obscure textures and absolute progress synced via Google & Apple Nexus ID.
             </p>
-        </div>
 
-        <div class="glass-panel rounded-2xl p-6 md:p-10 shadow-2xl border border-accent/40 relative overflow-hidden">
-            <div id="gameStatsHeader" class="flex flex-wrap justify-between items-center bg-obsidian/80 p-4 rounded-xl border border-white/10 mb-8 font-tech text-xs">
-                <div class="flex items-center gap-3">
-                    <span class="text-accent font-bold">OPERATIVO:</span> <span id="lblPlayerName" class="text-white">CYBER_OPERATIVE</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <span class="text-accent font-bold">NIVEL:</span> <span id="lblLevel" class="text-white bg-accent/20 px-2 py-0.5 rounded">1</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <span class="text-accent font-bold">PUNTOS:</span> <span id="lblScore" class="text-white font-bold">0 PTS</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <span class="text-accent font-bold">RIVAL:</span> <span id="lblRivalCount" class="text-white">1 / 5</span>
-                </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 font-tech text-xs tracking-widest">
+                <a href="#product" class="w-full sm:w-auto px-8 py-3.5 rounded bg-accent text-black font-semibold hover:bg-accent-glow transition-all duration-200 shadow-[0_0_25px_rgba(255,85,0,0.4)]" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                    ORDER NOW
+                </a>
+                <a href="arena.html" class="w-full sm:w-auto px-8 py-3.5 rounded glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                    PLAY SHADOW ARENA
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. PRODUCT SHOWCASE -->
+    <section id="product" class="py-20 md:py-28 relative z-10 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-3 mb-10 font-tech text-xs text-accent uppercase tracking-widest">
+                <span class="w-8 h-px bg-accent"></span>
+                JEGALUX // JEGALUX OSCURO
             </div>
 
-            <!-- 1. SELECCIÓN DE PERSONAJES (6 CASILLAS) -->
-            <div id="charSelectScreen" class="space-y-8">
-                <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider text-center">// SELECCIONA TU OPERATIVO</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 relative group tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-accent/20 to-transparent rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative glass-panel rounded-xl overflow-hidden shadow-2xl">
+                        <img 
+                            src="Sudadera EGALUX en showroom futurista.png" 
+                            alt="Sudadera EGALUX en showroom futurista" 
+                            class="w-full h-[520px] md:h-[620px] object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
+                            onerror="this.onerror=null; this.src='https://placehold.co/900x1200/121217/ff5500?text=JEGALUX+SHOWROOM';"
+                        />
+                        <div class="absolute bottom-4 left-4 right-4 glass-panel p-3 rounded-lg flex items-center justify-between font-tech text-xs">
+                            <span class="text-neutral-400">SHOWROOM FUTURISTA</span>
+                            <span class="text-accent">+1,000 XP AL COMPRAR</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 space-y-6 glass-panel p-8 rounded-2xl tilt-card relative overflow-hidden shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                    <div class="border-b border-white/10 pb-5">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h2 class="text-2xl md:text-3xl font-display font-bold tracking-tight text-white uppercase">JEGALUX OSCURO</h2>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="font-display text-2xl text-accent font-bold">$37.22 USD</span>
+                            <span class="px-2 py-0.5 rounded bg-accent/20 text-accent font-tech text-[10px] tracking-wider uppercase">GRANTS 1,000 XP</span>
+                        </div>
+                    </div>
+
+                    <p class="text-neutral-300 text-sm leading-relaxed">
+                        Unisex heavy blend hoodie integrated directly from your catalog. Purchasing this item instantly ranks up your Nexus ID account.
+                    </p>
+
+                    <div class="pt-2">
+                        <div class="flex justify-between items-center mb-2 font-tech text-xs text-neutral-400">
+                            <span>SELECT FIT:</span>
+                            <span id="selectedSizeLabel" class="text-[11px] text-accent">M</span>
+                        </div>
+                        <div class="grid grid-cols-5 gap-2 font-tech text-xs">
+                            <button onclick="playCyberpunkSound('click'); selectSize('S', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">S</button>
+                            <button onclick="playCyberpunkSound('click'); selectSize('M', this)" class="size-btn py-2.5 border border-accent rounded bg-accent/10 text-accent font-bold transition" onmouseenter="playCyberpunkSound('hover')">M</button>
+                            <button onclick="playCyberpunkSound('click'); selectSize('L', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">L</button>
+                            <button onclick="playCyberpunkSound('click'); selectSize('XL', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">XL</button>
+                            <button onclick="playCyberpunkSound('click'); selectSize('2XL', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition" onmouseenter="playCyberpunkSound('hover')">2XL</button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 pt-3">
+                        <button 
+                            onclick="playCyberpunkSound('click'); addToCart()" 
+                            class="w-full py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 shadow-lg shadow-accent/20"
+                            onmouseenter="playCyberpunkSound('hover')"
+                        >
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                            ADD TO CART ($37.22)
+                        </button>
+                        <button 
+                            onclick="playCyberpunkSound('click'); openCheckoutModal('Apple Pay')" 
+                            class="w-full py-3.5 rounded bg-black border border-white/30 text-white font-tech text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 hover:border-accent shadow-xl"
+                            onmouseenter="playCyberpunkSound('hover')"
+                        >
+                            <i data-lucide="apple" class="w-4 h-4 fill-white"></i>
+                            PAY WITH APPLE PAY (+1000 XP)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PROCESS -->
+    <section id="process" class="py-20 md:py-28 relative z-10 border-b border-white/5 bg-black/40 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16" onmouseenter="playCyberpunkSound('cyber')">
+                <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// RIGOROUS PRODUCTION ARCHITECTURE</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold uppercase text-white tracking-tight">CRAFTED WITH INTENT</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="1e85e61a-723b-4751-b081-961a9c9bf287.jpg" alt="Embroidery" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                        <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 01</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">INDUSTRIAL EMBROIDERY</h3>
+                            <p class="text-neutral-300 text-xs leading-relaxed">Precision computerized micro-stitching guarantees millimeter-perfect tension across heavy textiles.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="ea5e7534-dd0e-4d1c-84c2-a8f7543243a1.jpg" alt="Obscure Atelier Studio" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                        <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 02</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">OBSCURE ATELIER</h3>
+                            <p class="text-neutral-300 text-xs leading-relaxed">Developed within shadow and controlled light setups to balance deep matte absorption.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="accb1452-469b-4746-9017-64ce56cf296b.jpg" alt="Detail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                        <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 03</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase tracking-wide">ABSOLUTE DETAIL</h3>
+                            <p class="text-neutral-300 text-xs leading-relaxed">Individual numbered authenticity tags, reinforced drop-shoulder seam bindings, and raw artisan touches.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. MANIFESTO -->
+    <section id="manifesto" class="py-20 md:py-28 relative z-10 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel rounded-2xl p-8 md:p-14 relative overflow-hidden tilt-card shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)" onmouseenter="playCyberpunkSound('cyber')">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    <div class="lg:col-span-6 space-y-6">
+                        <span class="font-tech text-xs text-accent tracking-widest uppercase">// CORE MANIFESTO</span>
+                        <h2 class="text-3xl md:text-5xl font-display font-bold uppercase text-white leading-tight">LUXURY BUILT IN THE DARK</h2>
+                        <p class="text-neutral-300 text-sm md:text-base leading-relaxed font-sans">JEGALUX does not participate in fast cycles. We craft timeless darkness for an elite cohort who prioritize presence over superficial noise.</p>
+                    </div>
+                    <div class="lg:col-span-6">
+                        <div class="relative rounded-xl overflow-hidden border border-accent/30 shadow-[0_0_35px_rgba(255,85,0,0.15)] group">
+                            <img src="Sudadera JEGALUX de lujo oscuro (1).png" alt="Atelier Sanctum" class="w-full h-[420px] object-cover group-hover:scale-105 transition-transform duration-700" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SECCIÓN SHADOW ARENA // CARÁTULA Y BOTÓN PLAY HACIA ARENA.HTML -->
+    <section id="arena" class="py-24 relative z-10 border-b border-white/5 bg-void/80 backdrop-blur-xl">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="font-tech text-xs text-accent uppercase tracking-widest block mb-2">// NEXUS ARCADE ARENA</span>
+                <h2 class="text-3xl md:text-5xl font-display font-bold uppercase text-white tracking-tight">SHADOW ARENA</h2>
+                <p class="text-neutral-400 font-sans text-xs md:text-sm mt-3">
+                    Entra en la arena de combate 1v1, selecciona tu operativo y acumula XP sincronizada con tu Nexus ID.
+                </p>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-6 md:p-8 shadow-2xl border border-accent/40 relative overflow-hidden group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-accent/20 to-transparent rounded-2xl blur-2xl opacity-40 group-hover:opacity-80 transition-opacity pointer-events-none"></div>
                 
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-                    <div onclick="selectCharacter('Protagonist Hood', 'Collage cyberpunk de 15 personajes neón.png')" class="cursor-pointer rounded-xl border border-accent/40 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
-                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <span class="relative z-10 text-accent">Protagonist</span>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                    <div class="lg:col-span-7 rounded-xl overflow-hidden border border-white/20 shadow-2xl relative group/img">
+                        <img src="Arena de sombras, fuego y hielo.png" alt="Shadow Arena Carátula" class="w-full h-[380px] md:h-[440px] object-cover group-hover/img:scale-105 transition-transform duration-700" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                     </div>
-                    <div onclick="selectCharacter('Red Hair Bun', 'pelirroja.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
-                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('pelirroja.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <span class="relative z-10">Pelirroja Moño</span>
-                    </div>
-                    <div onclick="selectCharacter('Cyber Glasses', 'gdrgdgrdgd.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
-                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('gdrgdgrdgd.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <span class="relative z-10">Cyber Goggles</span>
-                    </div>
-                    <div onclick="selectCharacter('Combat Ready', 'señora.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
-                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('señora.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <span class="relative z-10">Combat Ready</span>
-                    </div>
-                    <div onclick="selectCharacter('Shadow Assassin', 'htfhfhtff.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
-                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('htfhfhtff.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <span class="relative z-10">Shadow Mask</span>
-                    </div>
-                    <div onclick="selectCharacter('Punk Brawler', 'jgjygjgjgjy.png')" class="cursor-pointer rounded-xl border border-white/20 fighter-slot glass-panel flex flex-col justify-end p-2.5 text-[11px] font-tech text-white font-bold bg-black/60 shadow-lg relative group overflow-hidden">
-                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('jgjygjgjgjy.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <span class="relative z-10">Punk Brawler</span>
+
+                    <div class="lg:col-span-5 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-accent/30 text-accent font-tech text-[10px] uppercase tracking-widest">
+                            <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span> JUEGO 1V1 DISPONIBLE
+                        </div>
+                        <h3 class="text-2xl md:text-4xl font-display font-bold text-white uppercase tracking-tight">DUELOS DE SOMBRA, FUEGO Y HIELO</h3>
+                        <p class="text-neutral-300 text-xs md:text-sm leading-relaxed">
+                            Escoge entre 6 operativos exclusivos de la colección, enfréntate a poderosos jefes callejeros y sube de nivel en tu cuenta Google o Apple ID.
+                        </p>
+                        <div class="pt-4">
+                            <a href="arena.html" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs uppercase tracking-[0.2em] transition-all duration-300 shadow-[0_0_35px_rgba(255,85,0,0.5)] transform hover:-translate-y-1" onmouseenter="playCyberpunkSound('hover')" onclick="playCyberpunkSound('click')">
+                                <i data-lucide="play" class="w-4 h-4 fill-black"></i> JUGAR SHADOW ARENA
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="text-center pt-6">
-                    <button onclick="startGame()" class="px-10 py-4 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg shadow-accent/40">
-                        INICIAR DUELO 1V1
+    <!-- MODAL DE PERFIL / NEXUS ID -->
+    <div id="profileModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
+        <div class="glass-panel w-full max-w-md p-6 rounded-2xl border border-accent/40 space-y-6 shadow-2xl">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                <h3 class="font-display font-bold text-lg text-white uppercase tracking-wider">// JEGALUX NEXUS ID</h3>
+                <button onclick="closeProfileModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+
+            <div id="loginView" class="space-y-4 text-center py-2">
+                <p class="text-xs font-tech text-neutral-300">Vincula tu cuenta para guardar tu nivel, puntos y progreso en la nube.</p>
+                <div class="space-y-3 pt-2">
+                    <button onclick="loginUser('Google')" class="w-full py-3.5 rounded bg-white text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-neutral-200 transition flex items-center justify-center gap-2">
+                        <i data-lucide="globe" class="w-4 h-4"></i> CONTINUAR CON GOOGLE
+                    </button>
+                    <button onclick="loginUser('Apple')" class="w-full py-3.5 rounded bg-black border border-white/30 text-white font-tech font-bold text-xs uppercase tracking-widest hover:border-accent transition flex items-center justify-center gap-2">
+                        <i data-lucide="apple" class="w-4 h-4 fill-white"></i> CONTINUAR CON APPLE ID
                     </button>
                 </div>
             </div>
 
-            <!-- 2. PANTALLA DE COMBATE 1V1 -->
-            <div id="battleScreen" class="hidden space-y-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-obsidian/60 p-6 rounded-xl border border-white/10">
-                    <div class="space-y-3">
-                        <div class="flex justify-between font-tech text-xs">
-                            <span id="battlePlayerName" class="text-accent font-bold">OPERATIVO</span>
-                            <span id="playerHpText" class="text-white">100 / 100 HP</span>
-                        </div>
-                        <div class="w-full bg-neutral-800 h-4 rounded-full overflow-hidden p-0.5 border border-white/10">
-                            <div id="playerHpBar" class="bg-accent h-full rounded-full transition-all duration-300" style="width: 100%"></div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-3">
-                        <div class="flex justify-between font-tech text-xs">
-                            <span id="battleRivalName" class="text-red-500 font-bold">RIVAL</span>
-                            <span id="rivalHpText" class="text-white">100 / 100 HP</span>
-                        </div>
-                        <div class="w-full bg-neutral-800 h-4 rounded-full overflow-hidden p-0.5 border border-white/10">
-                            <div id="rivalHpBar" class="bg-red-500 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
-                        </div>
+            <div id="userProfileView" class="hidden space-y-4 font-tech text-xs">
+                <div class="flex items-center gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10">
+                    <div id="profileAvatarBox" class="w-16 h-16 rounded-xl bg-cover bg-center border-2 border-accent shadow-lg" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
+                    <div class="space-y-1">
+                        <span id="profileUserEmail" class="text-accent font-bold">operativo@jegalux.com</span>
+                        <div class="text-neutral-400 text-[10px]" id="profileAuthType">Vinculado vía Google</div>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                    <div class="md:col-span-5 text-center p-6 glass-panel rounded-xl">
-                        <div class="text-accent font-tech text-xs mb-2">VS</div>
-                        <h3 id="arenaRivalTitle" class="font-display font-bold text-xl text-white uppercase">OPONENTE</h3>
-                        <p id="arenaRivalDesc" class="text-xs text-neutral-400 mt-1">Preparado para el combate callejero.</p>
-                    </div>
-                    <div class="md:col-span-7 glass-panel p-5 rounded-xl h-44 overflow-y-auto font-tech text-xs space-y-2 border border-accent/20" id="battleLog">
-                        <div class="text-accent">[SISTEMA] Duelo 1v1 iniciado. Selecciona tu movimiento estratégico.</div>
-                    </div>
+                <div class="space-y-2">
+                    <label class="block text-neutral-400">NOMBRE DE OPERATIVO</label>
+                    <input type="text" id="editUsername" class="w-full bg-obsidian border border-white/10 rounded p-2.5 text-white focus:border-accent outline-none" value="CYBER_OPERATIVE" />
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 font-tech text-xs">
-                    <button onclick="playerAttack('light')" class="py-3.5 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2">
-                        <i data-lucide="sword" class="w-4 h-4 text-accent"></i> GOLPE LIGERO
-                    </button>
-                    <button onclick="playerAttack('heavy')" class="py-3.5 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2">
-                        <i data-lucide="zap" class="w-4 h-4 text-accent"></i> GOLPE PESADO
-                    </button>
-                    <button onclick="playerDefend()" class="py-3.5 rounded glass-panel border border-accent/40 text-white font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2">
-                        <i data-lucide="shield" class="w-4 h-4 text-accent"></i> CUBRIRSE
-                    </button>
-                    <button onclick="playerSpecial()" class="py-3.5 rounded bg-accent/20 border border-accent text-accent font-bold hover:bg-accent hover:text-black transition flex items-center justify-center gap-2">
-                        <i data-lucide="star" class="w-4 h-4"></i> SHADOW STRIKE
-                    </button>
+                <div class="bg-obsidian/60 p-3 rounded-lg flex justify-between items-center border border-white/10">
+                    <div>
+                        <div class="text-white font-bold">NIVEL <span id="profileLevel">1</span></div>
+                        <div class="text-neutral-400 text-[10px]" id="profileXp">0 / 500 XP</div>
+                    </div>
+                    <div class="text-accent font-bold text-sm" id="profilePoints">0 PTS</div>
                 </div>
-            </div>
 
-            <!-- 3. VICTORIA / DERROTA -->
-            <div id="endGameScreen" class="hidden text-center space-y-6 py-8">
-                <h3 id="endGameTitle" class="font-display font-bold text-3xl text-accent uppercase">¡VICTORIA EN EL DUELO!</h3>
-                <p id="endGameDesc" class="text-sm text-neutral-300">Has derrotado al oponente y ganado XP para tu Nexus ID.</p>
-                <div>
-                    <button onclick="nextBattle()" class="px-8 py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
-                        SIGUIENTE RIVAL
+                <div class="pt-2">
+                    <button onclick="saveProfile()" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
+                        GUARDAR CAMBIOS
                     </button>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+
+    <!-- MODAL DE CARRITO -->
+    <div id="cartModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden">
+        <div class="glass-panel w-full max-w-md p-6 rounded-2xl border border-accent/40 space-y-6 shadow-2xl">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                <h3 class="font-display font-bold text-lg text-white uppercase tracking-wider">// TU CARRITO DE COMPRAS</h3>
+                <button onclick="closeCartModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div id="cartItemsList" class="space-y-4 max-h-60 overflow-y-auto"></div>
+            <div class="border-t border-white/10 pt-4 flex justify-between font-tech text-sm">
+                <span class="text-neutral-300">TOTAL:</span>
+                <span id="cartTotalPrice" class="text-accent font-bold">$37.22 USD</span>
+            </div>
+            <div class="space-y-3 pt-2">
+                <button onclick="openCheckoutModal('Apple Pay')" class="w-full py-3.5 rounded bg-black border border-white/30 text-white font-tech text-xs tracking-widest uppercase hover:border-accent transition flex items-center justify-center gap-2">
+                    <i data-lucide="apple" class="w-4 h-4 fill-white"></i> PAY WITH APPLE PAY (+1000 XP)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE CHECKOUT -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
+        <div class="glass-panel w-full max-w-lg p-8 rounded-2xl border border-accent/50 space-y-6 shadow-2xl relative">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                <h3 id="checkoutTitle" class="font-display font-bold text-xl text-white uppercase tracking-wider">PASARELA DE PAGO</h3>
+                <button onclick="closeCheckoutModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <form id="paymentForm" onsubmit="processPayment(event)" class="space-y-4 font-tech text-xs">
+                <div>
+                    <label class="block text-neutral-400 mb-1">CORREO ELECTRÓNICO</label>
+                    <input type="email" id="checkoutEmail" required placeholder="operativo@jegalux.com" class="w-full bg-obsidian border border-white/10 rounded p-3 text-white focus:border-accent outline-none" />
+                </div>
+                <div class="p-4 bg-black/60 rounded-lg text-center border border-white/20 text-white font-tech text-xs">
+                    <i data-lucide="apple" class="w-8 h-8 mx-auto mb-2 fill-white"></i>
+                    <span>Autorización instantánea con Apple Pay // Otorga +1,000 XP en tu Nexus ID.</span>
+                </div>
+                <div class="pt-4">
+                    <button type="submit" class="w-full py-4 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg shadow-accent/30">
+                        CONFIRMAR PAGO ($37.22 USD)
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- FOOTER -->
-    <footer class="glass-panel border-t border-white/5 py-10 relative z-10 text-center font-tech text-xs text-neutral-400">
-        JEGALUX SHADOW ARENA // ARCADE PROTOCOL 2026
+    <footer class="glass-panel border-t border-white/5 py-12 relative z-10 shadow-2xl" onmouseenter="playCyberpunkSound('cyber')">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="JEGALUX" class="h-7 w-auto object-contain" />
+                <span class="text-neutral-400 font-tech text-xs">/ SHADOW ATELIER 2026</span>
+            </div>
+            <div class="font-tech text-xs text-neutral-400">ALL RIGHTS RESERVED // SECURED BY PROVENANCE</div>
+        </div>
     </footer>
 
-    <!-- TOAST -->
+    <!-- Toast Notification -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
         <div class="glass-panel border-accent text-white px-5 py-3 rounded-lg shadow-2xl flex items-center gap-3 font-tech text-xs">
             <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
@@ -240,7 +448,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT DE JUEGO Y NEXUS ID -->
+    <!-- SCRIPTS -->
     <script>
         window.addEventListener('load', () => { 
             if (window.lucide) lucide.createIcons(); 
@@ -249,6 +457,8 @@
 
         let userNexus = {
             isLoggedIn: false,
+            email: "",
+            provider: "",
             username: "CYBER_OPERATIVE",
             level: 1,
             xp: 0,
@@ -260,16 +470,53 @@
             const saved = localStorage.getItem('jegalux_nexus_id');
             if (saved) {
                 userNexus = JSON.parse(saved);
-                document.getElementById('headerName').innerText = userNexus.username.toUpperCase();
-                document.getElementById('headerAvatar').style.backgroundImage = `url('${userNexus.avatarImg}')`;
-                document.getElementById('lblPlayerName').innerText = userNexus.username.toUpperCase();
-                document.getElementById('lblLevel').innerText = userNexus.level;
-                document.getElementById('lblScore').innerText = userNexus.points + ' PTS';
+                updateUIState();
             }
         }
 
         function saveUserData() {
             localStorage.setItem('jegalux_nexus_id', JSON.stringify(userNexus));
+            updateUIState();
+        }
+
+        function updateUIState() {
+            document.getElementById('headerName').innerText = userNexus.username.toUpperCase();
+            document.getElementById('headerAvatar').style.backgroundImage = `url('${userNexus.avatarImg}')`;
+
+            if (userNexus.isLoggedIn) {
+                document.getElementById('loginView').classList.add('hidden');
+                document.getElementById('userProfileView').classList.remove('hidden');
+                document.getElementById('profileUserEmail').innerText = userNexus.email;
+                document.getElementById('profileAuthType').innerText = `Vinculado vía ${userNexus.provider} ID`;
+                document.getElementById('editUsername').value = userNexus.username;
+                document.getElementById('profileAvatarBox').style.backgroundImage = `url('${userNexus.avatarImg}')`;
+                document.getElementById('profileLevel').innerText = userNexus.level;
+                document.getElementById('profileXp').innerText = `${userNexus.xp} / ${userNexus.level * 500} XP`;
+                document.getElementById('profilePoints').innerText = userNexus.points + ' PTS';
+            } else {
+                document.getElementById('loginView').classList.remove('hidden');
+                document.getElementById('userProfileView').classList.add('hidden');
+            }
+        }
+
+        function loginUser(provider) {
+            playCyberpunkSound('click');
+            userNexus.isLoggedIn = true;
+            userNexus.provider = provider;
+            userNexus.email = provider === 'Google' ? 'operativo.google@jegalux.com' : 'operativo.apple@icloud.com';
+            saveUserData();
+            triggerToast(`¡CONECTADO CON ${provider.toUpperCase()}! Nivel ${userNexus.level} sincronizado.`);
+        }
+
+        function openProfileModal() { playCyberpunkSound('click'); document.getElementById('profileModal').classList.remove('hidden'); }
+        function closeProfileModal() { document.getElementById('profileModal').classList.add('hidden'); }
+
+        function saveProfile() {
+            playCyberpunkSound('click');
+            userNexus.username = document.getElementById('editUsername').value || "OPERATIVO";
+            saveUserData();
+            closeProfileModal();
+            triggerToast('¡PERFIL DE NEXUS ID ACTUALIZADO!');
         }
 
         function addXpAndPoints(xpGain, ptsGain) {
@@ -282,8 +529,6 @@
                 triggerToast(`¡HAS SUBIDO AL NIVEL ${userNexus.level}! 🎉`);
             }
             saveUserData();
-            document.getElementById('lblLevel').innerText = userNexus.level;
-            document.getElementById('lblScore').innerText = userNexus.points + ' PTS';
         }
 
         let audioCtx = null;
@@ -293,6 +538,7 @@
                 if (audioCtx.state === 'suspended') audioCtx.resume();
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
+
                 if (type === 'hover') {
                     osc.type = 'sawtooth';
                     osc.frequency.setValueAtTime(320, audioCtx.currentTime);
@@ -309,142 +555,57 @@
             } catch (e) {}
         }
 
-        const rivalsList = [
-            { name: "Viper Punk", hp: 100, atk: 22, desc: "Reina del caos callejero con púas de plasma." },
-            { name: "Cyber Geisha", hp: 90, atk: 28, desc: "Asesina cibernética de alta precisión." },
-            { name: "Neon Valkyrie", hp: 110, atk: 20, desc: "Guerrera con trenzas de fibra óptica letal." },
-            { name: "Riot Brawler", hp: 130, atk: 18, desc: "Luchador sin camiseta de fuerza bruta." },
-            { name: "JEGALUX BOSS", hp: 160, atk: 33, desc: "El reflejo oscuro supremo. Tu prueba final." }
-        ];
+        let cart = { item: "JEGALUX OSCURO", price: 37.22, size: "M", quantity: 1 };
 
-        let gameState = {
-            playerMaxHp: 100,
-            playerHp: 100,
-            currentRivalIndex: 0,
-            rivalHp: 100,
-            rivalMaxHp: 100,
-            rivalAtk: 22,
-            isDefending: false
-        };
+        function selectSize(size, btn) {
+            cart.size = size;
+            document.getElementById('selectedSizeLabel').innerText = size;
+            document.querySelectorAll('.size-btn').forEach(b => {
+                b.className = 'size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition';
+            });
+            btn.className = 'size-btn py-2.5 border border-accent rounded bg-accent/10 text-accent font-bold transition';
+            triggerToast(`TALLA SELECCIONADA: ${size}`);
+        }
 
-        function selectCharacter(name, imgFile) {
+        function addToCart() {
+            document.getElementById('cartItemCount').innerText = cart.quantity;
+            triggerToast(`¡AGREGADO AL CARRITO! (${cart.item} - Talla ${cart.size})`);
+            openCartModal();
+        }
+
+        function openCartModal() {
+            const list = document.getElementById('cartItemsList');
+            list.innerHTML = `
+                <div class="flex justify-between items-center bg-obsidian/80 p-3 rounded-lg border border-white/10 font-tech text-xs">
+                    <div>
+                        <div class="text-white font-bold">${cart.item}</div>
+                        <div class="text-neutral-400">Talla: ${cart.size} | Otorga +1,000 XP</div>
+                    </div>
+                    <div class="text-accent font-bold">$${cart.price} USD</div>
+                </div>
+            `;
+            document.getElementById('cartModal').classList.remove('hidden');
+        }
+
+        function closeCartModal() { document.getElementById('cartModal').classList.add('hidden'); }
+        function openCheckoutModal(method) { closeCartModal(); document.getElementById('checkoutTitle').innerText = `PAGO SEGURO VÍA ${method.toUpperCase()}`; document.getElementById('checkoutModal').classList.remove('hidden'); }
+        function closeCheckoutModal() { document.getElementById('checkoutModal').classList.add('hidden'); }
+
+        function processPayment(e) {
+            e.preventDefault();
             playCyberpunkSound('click');
-            userNexus.avatarImg = imgFile;
-            saveUserData();
-            document.getElementById('headerAvatar').style.backgroundImage = `url('${imgFile}')`;
-            triggerToast(`OPERATIVO SELECCIONADO: ${name}`);
+            closeCheckoutModal();
+            addXpAndPoints(1000, 370);
+            triggerToast('¡COMPRA EXITOSA! +1,000 XP AÑADIDOS A TU NEXUS ID');
         }
 
-        function startGame() {
-            playCyberpunkSound('click');
-            document.getElementById('charSelectScreen').classList.add('hidden');
-            document.getElementById('battleScreen').classList.remove('hidden');
-            loadRival();
-        }
-
-        function loadRival() {
-            if (gameState.currentRivalIndex >= rivalsList.length) gameState.currentRivalIndex = 0;
-            const rival = rivalsList[gameState.currentRivalIndex];
-            gameState.rivalMaxHp = rival.hp + (userNexus.level * 5);
-            gameState.rivalHp = gameState.rivalMaxHp;
-            gameState.rivalAtk = rival.atk + userNexus.level;
-
-            document.getElementById('battleRivalName').innerText = rival.name.toUpperCase();
-            document.getElementById('arenaRivalTitle').innerText = rival.name;
-            document.getElementById('arenaRivalDesc').innerText = rival.desc;
-            document.getElementById('lblRivalCount').innerText = `${gameState.currentRivalIndex + 1} / 5`;
-
-            updateHpBars();
-            appendLog(`[ARENA] ¡Duelo iniciado contra ${rival.name}!`);
-        }
-
-        function updateHpBars() {
-            const pPct = Math.max(0, (gameState.playerHp / gameState.playerMaxHp) * 100);
-            const rPct = Math.max(0, (gameState.rivalHp / gameState.rivalMaxHp) * 100);
-            document.getElementById('playerHpBar').style.width = pPct + '%';
-            document.getElementById('playerHpText').innerText = `${Math.ceil(gameState.playerHp)} / ${gameState.playerMaxHp} HP`;
-            document.getElementById('rivalHpBar').style.width = rPct + '%';
-            document.getElementById('rivalHpText').innerText = `${Math.ceil(gameState.rivalHp)} / ${gameState.rivalMaxHp} HP`;
-        }
-
-        function appendLog(text) {
-            const log = document.getElementById('battleLog');
-            log.innerHTML += `<div>${text}</div>`;
-            log.scrollTop = log.scrollHeight;
-        }
-
-        function playerAttack(type) {
-            playCyberpunkSound('click');
-            let damage = type === 'light' ? 20 : 35;
-            gameState.rivalHp -= damage;
-            appendLog(`[TÚ] Atacas e infliges <span class="text-accent">${damage} DAÑO</span>.`);
-            checkBattleStatus();
-            if (gameState.rivalHp > 0) setTimeout(rivalTurn, 600);
-        }
-
-        function playerDefend() {
-            playCyberpunkSound('click');
-            gameState.isDefending = true;
-            appendLog(`[TÚ] Postura defensiva adoptada.`);
-            setTimeout(rivalTurn, 600);
-        }
-
-        function playerSpecial() {
-            playCyberpunkSound('click');
-            const damage = 55;
-            appendLog(`[TÚ] ¡SHADOW STRIKE! <span class="text-accent">${damage} DAÑO</span>.`);
-            gameState.rivalHp -= damage;
-            checkBattleStatus();
-            if (gameState.rivalHp > 0) setTimeout(rivalTurn, 600);
-        }
-
-        function rivalTurn() {
-            const rival = rivalsList[gameState.currentRivalIndex];
-            let rDamage = gameState.rivalAtk;
-            if (gameState.isDefending) {
-                rDamage = Math.floor(rDamage * 0.4);
-                gameState.isDefending = false;
-                appendLog(`[RIVAL] Tu defensa absorbe parte del impacto.`);
-            } else {
-                appendLog(`[RIVAL] ${rival.name} causa <span class="text-red-500">${rDamage} DAÑO</span>.`);
-            }
-            gameState.playerHp -= rDamage;
-            updateHpBars();
-            if (gameState.playerHp <= 0) battleOver(false);
-        }
-
-        function checkBattleStatus() {
-            updateHpBars();
-            if (gameState.rivalHp <= 0) battleOver(true);
-        }
-
-        function battleOver(isVictory) {
-            document.getElementById('battleScreen').classList.add('hidden');
-            document.getElementById('endGameScreen').classList.remove('hidden');
-            const title = document.getElementById('endGameTitle');
-            const desc = document.getElementById('endGameDesc');
-
-            if (isVictory) {
-                addXpAndPoints(300, 150);
-                title.className = "font-display font-bold text-3xl text-accent uppercase";
-                title.innerText = "¡VICTORIA EN EL DUELO!";
-                desc.innerText = `¡Has ganado el combate! +300 XP añadidos a tu Nexus ID.`;
-                gameState.currentRivalIndex++;
-            } else {
-                title.className = "font-display font-bold text-3xl text-red-500 uppercase";
-                title.innerText = "¡HAS SIDO DERROTADO!";
-                desc.innerText = "La sombra te ha consumido. Vuelve a intentarlo.";
-                gameState.playerHp = gameState.playerMaxHp;
-            }
-        }
-
-        function nextBattle() {
-            playCyberpunkSound('click');
-            gameState.playerHp = gameState.playerMaxHp;
-            document.getElementById('endGameScreen').classList.add('hidden');
-            document.getElementById('battleScreen').classList.remove('hidden');
-            loadRival();
-        }
+        window.addEventListener('scroll', () => {
+            const scrollY = window.pageYOffset;
+            const cloudInfinite = document.getElementById('cloudInfinite');
+            const bannerContainer = document.getElementById('bannerContainer');
+            if (cloudInfinite) cloudInfinite.style.backgroundPosition = `center ${scrollY * 0.4}px`;
+            if (bannerContainer) bannerContainer.style.transform = `translateY(${scrollY * 0.3}px)`;
+        });
 
         function triggerToast(message) {
             const toast = document.getElementById('toast');
@@ -458,6 +619,18 @@
                     toast.classList.add('translate-y-24', 'opacity-0');
                 }, 3200);
             }
+        }
+
+        function handleTilt(e, card) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left, y = e.clientY - rect.top;
+            const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -2.2;
+            const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 2.2;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        }
+
+        function resetTilt(card) {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
         }
     </script>
 </body>
