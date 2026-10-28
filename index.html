@@ -420,38 +420,38 @@
             <!-- 2. PANTALLA DE COMBATE -->
             <div id="battleScreen" class="hidden space-y-4">
                 
-                <!-- ARENA DE COMBATE VISUAL -->
+                <!-- ARENA DE COMBATE VISUAL (BARRAS DE VIDA SÚPER VISIBLES Y ÉPICAS) -->
                 <div class="relative h-64 md:h-72 w-full glass-panel rounded-2xl border border-white/10 p-6 flex flex-col justify-between overflow-hidden shadow-2xl">
                     
-                    <!-- RIVAL (ARRIBA A LA DERECHA) - CLICABLE PARA VER PERFIL -->
-                    <div onclick="openRivalProfileModal()" class="self-end w-72 glass-panel p-4 rounded-xl border border-red-500/50 font-tech text-xs space-y-2 shadow-2xl bg-black/90 cursor-pointer group hover:border-red-400 transition click-pulse" title="Click to inspect rival profile" onmouseenter="playCyberpunkSound('hover')">
+                    <!-- RIVAL (ARRIBA A LA DERECHA) - ROJO INTENSO BRILLANTE -->
+                    <div onclick="openRivalProfileModal()" class="self-end w-72 glass-panel p-4 rounded-xl border border-red-500/60 font-tech text-xs space-y-2 shadow-[0_0_20px_rgba(239,68,68,0.25)] bg-black/90 cursor-pointer group hover:border-red-400 transition click-pulse" title="Click to inspect rival profile" onmouseenter="playCyberpunkSound('hover')">
                         <div class="flex justify-between items-center text-white font-bold text-sm">
                             <span id="battleRivalName" class="text-red-400 group-hover:underline">RIVAL</span>
                             <span class="text-xs text-neutral-200">Lv.<span id="rivalLevelDisplay">1</span></span>
                         </div>
                         <div class="space-y-1">
                             <div class="flex justify-between text-[11px] font-bold">
-                                <span class="text-red-500">HP (Inspect Profile)</span>
+                                <span class="text-red-500 uppercase tracking-widest">Rival HP (Inspect)</span>
                             </div>
-                            <div class="w-full bg-neutral-900 h-4 rounded-full overflow-hidden p-0.5 border-2 border-red-500/60 shadow-[0_0_12px_rgba(239,68,68,0.5)]">
-                                <div id="rivalHpBar" class="bg-gradient-to-r from-red-600 to-red-400 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
+                            <div class="w-full bg-neutral-950 h-5 rounded-full overflow-hidden p-0.5 border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.7)]">
+                                <div id="rivalHpBar" class="bg-gradient-to-r from-red-600 via-red-500 to-rose-400 h-full rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(239,68,68,0.9)]" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- TU OPERATIVO (ABAJO A LA IZQUIERDA) -->
-                    <div class="self-start w-72 glass-panel p-4 rounded-xl border border-emerald-500/50 font-tech text-xs space-y-2 shadow-2xl bg-black/90">
+                    <!-- TU OPERATIVO (ABAJO A LA IZQUIERDA) - VERDE ESMERALDA BRILLANTE -->
+                    <div class="self-start w-72 glass-panel p-4 rounded-xl border border-emerald-500/60 font-tech text-xs space-y-2 shadow-[0_0_20px_rgba(16,185,129,0.25)] bg-black/90">
                         <div class="flex justify-between items-center text-white font-bold text-sm">
                             <span id="battlePlayerName" class="text-emerald-400">OPERATIVE</span>
                             <span class="text-xs text-neutral-200">Lv.<span id="lblLevelBattle">1</span></span>
                         </div>
                         <div class="space-y-1">
                             <div class="flex justify-between text-[11px] font-bold">
-                                <span class="text-emerald-400">HP</span>
-                                <span class="text-white" id="playerHpText">100 / 100</span>
+                                <span class="text-emerald-400 uppercase tracking-widest">Your HP</span>
+                                <span class="text-white font-extrabold" id="playerHpText">100 / 100</span>
                             </div>
-                            <div class="w-full bg-neutral-900 h-4 rounded-full overflow-hidden p-0.5 border-2 border-emerald-500/60 shadow-[0_0_12px_rgba(16,185,129,0.5)]">
-                                <div id="playerHpBar" class="bg-emerald-500 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
+                            <div class="w-full bg-neutral-950 h-5 rounded-full overflow-hidden p-0.5 border-2 border-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.7)]">
+                                <div id="playerHpBar" class="bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 h-full rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(16,185,129,0.9)]" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
@@ -752,7 +752,7 @@
         </div>
     </div>
 
-    <!-- MODAL DE CHECKOUT (PASARELA DE PAGO ARREGLADA) -->
+    <!-- MODAL DE CHECKOUT -->
     <div id="checkoutModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-lg p-8 rounded-2xl border border-accent/50 space-y-6 shadow-2xl relative">
             <div class="flex justify-between items-center border-b border-white/10 pb-4">
@@ -796,7 +796,7 @@
         </div>
     </div>
 
-    <!-- SCRIPTS UNIFICADOS CON EFECTOS 3D, SONIDOS Y PASARELA DE PAGO ARREGLADA -->
+    <!-- SCRIPTS UNIFICADOS -->
     <script>
         window.addEventListener('load', () => { 
             if (window.lucide) lucide.createIcons(); 
@@ -1322,7 +1322,7 @@
             card.style.transform = `rotateY(0deg) rotateX(0deg) translateY(0px)`;
         }
 
-        // SONIDOS SUTILES FUTURISTAS CON WEB AUDIO API
+        // CONTROLADOR DE AUDIO SUTIL Y FÁCIL DE ESCUCHAR
         let audioCtx = null;
         function playCyberpunkSound(type) {
             try {
@@ -1332,15 +1332,15 @@
                 const gain = audioCtx.createGain();
                 if (type === 'hover') { 
                     osc.type = 'sawtooth'; 
-                    osc.frequency.setValueAtTime(280, audioCtx.currentTime); 
-                    gain.gain.setValueAtTime(0.0001, audioCtx.currentTime); 
+                    osc.frequency.setValueAtTime(320, audioCtx.currentTime); 
+                    gain.gain.setValueAtTime(0.0003, audioCtx.currentTime); 
                 } else if (type === 'click') { 
                     osc.type = 'triangle'; 
-                    osc.frequency.setValueAtTime(800, audioCtx.currentTime); 
-                    gain.gain.setValueAtTime(0.0003, audioCtx.currentTime); 
+                    osc.frequency.setValueAtTime(1200, audioCtx.currentTime); 
+                    gain.gain.setValueAtTime(0.0006, audioCtx.currentTime); 
                 }
                 osc.start(); 
-                osc.stop(audioCtx.currentTime + 0.02); 
+                osc.stop(audioCtx.currentTime + 0.04); 
                 osc.connect(gain); 
                 gain.connect(audioCtx.destination);
             } catch (e) {}
@@ -1362,7 +1362,6 @@
         function openCheckoutModal(method) { closeCartModal(); document.getElementById('checkoutTitle').innerText = `SECURE PAYMENT VIA ${method.toUpperCase()}`; document.getElementById('checkoutModal').classList.remove('hidden'); }
         function closeCheckoutModal() { document.getElementById('checkoutModal').classList.add('hidden'); }
         
-        // PASARELA DE PAGO ARREGLADA (PROCESA COMPRA, AÑADE XP Y CIERRA MODAL)
         function processPayment(e) { 
             e.preventDefault(); 
             playCyberpunkSound('click'); 
