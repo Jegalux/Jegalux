@@ -652,7 +652,7 @@
         </div>
     </div>
 
-    <!-- MODAL DE INSPECCIÓN -->
+    <!-- MODAL DE INSPECCIÓN (CON SELECT 100% FUNCIONAL Y CIERRE AUTOMÁTICO) -->
     <div id="statsModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-md p-6 md:p-8 rounded-2xl border border-accent/50 space-y-5 shadow-2xl relative text-center font-tech text-xs">
             <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -963,7 +963,7 @@
 
         function saveProfile() {
             playCyberpunkSound('click');
-            userNexus.username = document.getElementById('editUsername').value || "CYBER_OPERATIVE";
+            userNexus.username = document.getElementById('editUsername').value || "OPERATIVE";
             saveUserData();
             closeProfileModal();
             triggerToast('NEXUS ID PROFILE UPDATED!');
@@ -981,7 +981,6 @@
             document.getElementById('zoomAvatarModal').classList.add('hidden');
         }
 
-        // GLOBAL RANKING TOP 500 CON JUGADORES SUPERIORES E INFERIORES
         function initGlobalRanking() {
             let rankingData = [];
             const firstNames = ["Neon", "Ghost", "Apex", "Void", "Orion", "Blade", "Hyper", "Synthia", "Stalker", "Echo", "Matrix", "Pulse", "Riot", "Kuro", "Vex", "Nova", "Specter", "Zane", "Aiden", "Valkyrie"];
@@ -990,7 +989,6 @@
             let userPoints = userNexus.points || 150;
             let userLevel = userNexus.level || 1;
 
-            // 1. Generar contrincantes MEJORES que tú por encima en el ranking (Top superior)
             let topBotPts = userPoints + 15000;
             for (let i = 1; i <= 250; i++) {
                 const fName = firstNames[Math.floor(Math.random() * firstNames.length)];
@@ -1002,7 +1000,6 @@
                 rankingData.push({ name: randName, points: Math.max(userPoints + 10, topBotPts), level: botLevel, wins: Math.floor(botLevel * 5) });
             }
 
-            // 2. Insertar tu usuario en la tabla
             rankingData.push({ 
                 name: userNexus.username || "CYBER_OPERATIVE", 
                 points: userPoints, 
@@ -1011,7 +1008,6 @@
                 isUser: true 
             });
 
-            // 3. Generar contrincantes por debajo de ti hasta completar el Top 500
             let currentBotPts = userPoints;
             for (let i = 1; i <= 249; i++) {
                 const fName = firstNames[Math.floor(Math.random() * firstNames.length)];
@@ -1023,7 +1019,6 @@
                 rankingData.push({ name: randName, points: Math.max(50, currentBotPts), level: botLevel, wins: Math.floor(botLevel * 4) });
             }
 
-            // Ordenar de mayor a menor puntuación
             rankingData.sort((a, b) => b.points - a.points);
             localStorage.setItem('jegalux_live_ranking', JSON.stringify(rankingData));
             renderRankingList(rankingData);
