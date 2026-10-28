@@ -498,7 +498,7 @@
         </div>
     </div>
 
-    <!-- MODAL DE PERFIL // NEXUS ID -->
+    <!-- MODAL DE PERFIL // NEXUS ID (REACTIVADO Y CONECTADO) -->
     <div id="profileModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-lg p-6 md:p-8 rounded-2xl border border-accent/40 space-y-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-white/10 pb-4">
@@ -519,7 +519,7 @@
                 </div>
             </div>
 
-            <!-- Vista de Perfil Conectado -->
+            <!-- Vista de Perfil Conectado (Reactivada correctamente) -->
             <div id="userProfileView" class="hidden space-y-5 font-tech text-xs">
                 <div class="flex items-center gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10">
                     <div class="relative group cursor-pointer" onclick="openZoomAvatar()" title="Click to expand avatar">
@@ -777,7 +777,7 @@
         }
 
         let userNexus = {
-            isLoggedIn: false, email: "", provider: "", username: "CYBER_OPERATIVE",
+            isLoggedIn: true, email: "operative@jegalux.com", provider: "Google", username: "CYBER_OPERATIVE",
             level: 1, xp: 0, points: 150, maxDamage: 0, wins: 0, streak: 0,
             avatarImg: "Collage cyberpunk de 15 personajes neón.png"
         };
@@ -813,14 +813,13 @@
             { name: "Valkyrie Red", avatar: "ergh.png" }
         ];
 
-        let currentRival = { name: "VoidWalker", level: 1, hp: 100, maxHp: 100, atk: 15, avatar: "pelirroja.png" };
+        let currentRival = { name: "VoidWalker", level: 1, hp: 100, maxHp: 100, atk: 20, avatar: "pelirroja.png" };
 
         function setRandomArenaBackground() {
             const randomBg = arenaBackgrounds[Math.floor(Math.random() * arenaBackgrounds.length)];
             document.getElementById('dynamicArenaBg').style.backgroundImage = `url('${randomBg.file}')`;
         }
 
-        // MATCHMAKING INTELIGENTE HASTA NIVEL 1000
         function findMatchmakingRival() {
             let rankingData = JSON.parse(localStorage.getItem('jegalux_live_ranking')) || [];
             let eligibleRivals = rankingData.filter(p => !p.isUser && Math.abs(p.level - userNexus.level) <= 5);
@@ -840,7 +839,6 @@
             };
         }
 
-        // NOMBRES DE RANGOS ÉPICOS
         function getRankTitle(lvl) {
             if (lvl <= 9) return "Novato Sombrío";
             if (lvl <= 19) return "Cazador Neón";
@@ -853,7 +851,6 @@
             return "Soberano Infinito";
         }
 
-        // COLORES POR RANGO (CADA 10 NIVELES)
         function getLevelColor(lvl) {
             if (lvl <= 9) return 'text-orange-400 border-orange-400 bg-orange-500/20';
             if (lvl <= 19) return 'text-cyan-400 border-cyan-400 bg-cyan-500/20';
@@ -869,6 +866,7 @@
         function loadUserData() {
             const saved = localStorage.getItem('jegalux_nexus_id');
             if (saved) { userNexus = JSON.parse(saved); updateUIState(); }
+            else { saveUserData(); }
         }
 
         function saveUserData() {
@@ -907,24 +905,19 @@
             document.getElementById('profileStreak').innerText = (userNexus.streak || 0) + ' 🔥';
             document.getElementById('profileRankTitle').innerText = getRankTitle(userNexus.level);
 
-            if (userNexus.isLoggedIn) {
-                document.getElementById('loginView').classList.add('hidden');
-                document.getElementById('userProfileView').classList.remove('hidden');
-                document.getElementById('profileUserEmail').innerText = userNexus.email;
-                document.getElementById('profileAuthType').innerText = `Linked via ${userNexus.provider} ID`;
-                document.getElementById('editUsername').value = userNexus.username;
-                document.getElementById('profileAvatarBox').style.backgroundImage = `url('${userNexus.avatarImg}')`;
-                
-                const profileLvl = document.getElementById('profileLevel');
-                if(profileLvl) {
-                    profileLvl.innerText = userNexus.level;
-                }
-                document.getElementById('profileXp').innerText = `${userNexus.xp} / ${userNexus.level * 650} XP (Click to view Leaderboard)`;
-                document.getElementById('profilePoints').innerText = userNexus.points + ' PTS';
-            } else {
-                document.getElementById('loginView').classList.remove('hidden');
-                document.getElementById('userProfileView').classList.add('hidden');
+            document.getElementById('loginView').classList.add('hidden');
+            document.getElementById('userProfileView').classList.remove('hidden');
+            document.getElementById('profileUserEmail').innerText = userNexus.email;
+            document.getElementById('profileAuthType').innerText = `Linked via ${userNexus.provider} ID`;
+            document.getElementById('editUsername').value = userNexus.username;
+            document.getElementById('profileAvatarBox').style.backgroundImage = `url('${userNexus.avatarImg}')`;
+            
+            const profileLvl = document.getElementById('profileLevel');
+            if(profileLvl) {
+                profileLvl.innerText = userNexus.level;
             }
+            document.getElementById('profileXp').innerText = `${userNexus.xp} / ${userNexus.level * 650} XP (Click to view Leaderboard)`;
+            document.getElementById('profilePoints').innerText = userNexus.points + ' PTS';
         }
 
         function loginUser(provider) {
@@ -965,7 +958,6 @@
             document.getElementById('zoomAvatarModal').classList.add('hidden');
         }
 
-        // GLOBAL RANKING SOPORTE HASTA NIVEL 1000
         function initGlobalRanking() {
             let rankingData = JSON.parse(localStorage.getItem('jegalux_live_ranking'));
             const lastSync = localStorage.getItem('jegalux_ranking_sync_date');
@@ -1210,10 +1202,10 @@
             const desc = document.getElementById('endGameDesc');
             if (isVictory) {
                 userNexus.bossesDefeated = (userNexus.bossesDefeated || 0) + 1;
-                addXpAndPoints(400, 250, true);
+                addXpAndPoints(350, 200, true);
                 title.className = "font-display font-bold text-3xl text-accent uppercase";
                 title.innerText = "VICTORY IN DUEL!";
-                desc.innerText = `Defeated ${currentRival.name} (Lv.${currentRival.level})! +400 XP & +250 PTS added. Streak increased 🔥`;
+                desc.innerText = `Defeated ${currentRival.name} (Lv.${currentRival.level})! +350 XP & +200 PTS added. Streak increased 🔥`;
             } else {
                 userNexus.streak = 0;
                 addXpAndPoints(50, 0, false);
