@@ -588,15 +588,22 @@
         </div>
     </div>
 
-    <!-- MODAL DE RANKING MUNDIAL -->
+    <!-- MODAL DE RANKING MUNDIAL CON EL BOTÓN "IR A DONDE ESTÁS TÚ" -->
     <div id="rankingModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-2xl p-6 md:p-8 rounded-2xl border border-accent/50 space-y-6 shadow-2xl relative max-h-[85vh] flex flex-col">
             <div class="flex justify-between items-center border-b border-white/10 pb-4">
                 <div>
-                    <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider">// GLOBAL RANKING (TOP 250)</h3>
-                    <p class="text-xs font-tech text-neutral-400">Click any operative to inspect their combat stats</p>
+                    <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider">// GLOBAL RANKING</h3>
+                    <p class="text-xs font-tech text-neutral-400">Live active operatives (Always 50 challengers below you)</p>
                 </div>
                 <button onclick="closeRankingModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+
+            <!-- BOTÓN PARA IR DIRECTAMENTE A TU POSICIÓN EN EL RANKING -->
+            <div>
+                <button onclick="scrollToMyPosition()" class="w-full py-2.5 rounded bg-accent/20 border border-accent text-accent font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent hover:text-black transition flex items-center justify-center gap-2 shadow-md">
+                    <i data-lucide="crosshair" class="w-4 h-4"></i> IR A DONDE ESTÁS TÚ
+                </button>
             </div>
 
             <div id="rankingList" class="space-y-2 overflow-y-auto flex-1 pr-2 font-tech text-xs"></div>
@@ -646,7 +653,7 @@
         </div>
     </div>
 
-    <!-- MODAL DE INSPECCIÓN CON EL BOTÓN SELECT FUNCIONANDO -->
+    <!-- MODAL DE INSPECCIÓN -->
     <div id="statsModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-md p-6 md:p-8 rounded-2xl border border-accent/50 space-y-5 shadow-2xl relative text-center font-tech text-xs">
             <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -690,7 +697,6 @@
             <p id="statModalDesc" class="text-xs font-sans text-neutral-300 leading-relaxed"></p>
 
             <div class="pt-2">
-                <!-- BOTÓN SELECT CORREGIDO Y FUNCIONAL -->
                 <button onclick="playCyberpunkSound('click'); activeCombatant = { name: tempSelected.name, imgFile: tempSelected.imgFile, classType: tempSelected.classType }; updateUIState(); closeStatsModal(); triggerToast('COMBATANT SELECTED: ' + tempSelected.name);" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
                     SELECT
                 </button>
@@ -975,46 +981,34 @@
             document.getElementById('zoomAvatarModal').classList.add('hidden');
         }
 
+        // RANKING CON 50 PERSONAS SIEMPRE DEBAJO DE TI Y NOMBRES ORIGINALES
         function initGlobalRanking() {
-            let rankingData = JSON.parse(localStorage.getItem('jegalux_live_ranking'));
-            const lastSync = localStorage.getItem('jegalux_ranking_sync_date');
-            const todayStr = new Date().toDateString();
+            let rankingData = [];
+            const firstNames = ["Neon", "Ghost", "Apex", "Void", "Orion", "Blade", "Hyper", "Synthia", "Stalker", "Echo", "Matrix", "Pulse", "Riot", "Kuro", "Vex", "Nova", "Specter", "Zane", "Aiden", "Valkyrie"];
+            const lastNames = ["Phantom", "Syndicate", "Protocol", "Byte", "Shadow", "Predator", "Nexus", "Runner", "Assassin", "Vanguard", "Titan", "Specter", "Anarchy", "Vixen", "Ocular", "Stryke", "Ghost", "X", "Ninja", "Core"];
 
-            const firstNames = ["Zero", "Sektor", "Phreak", "Cyber", "Ronin", "Apex", "Vortex", "Void", "Orion", "Blade", "Hyper", "Synthia", "Ghost", "Stalker", "Echo", "Matrix", "Pulse", "Riot", "Kuro", "Vex"];
-            const lastNames = ["Core", "Syndicate", "Protocol", "Byte", "Shadow", "Predator", "Nexus", "Runner", "Assassin", "Vanguard", "Titan", "Specter", "Anarchy", "Vixen", "Ocular"];
+            // 1. Tu usuario siempre encabeza o compite en la cima de su grupo
+            rankingData.push({ 
+                name: userNexus.username || "CYBER_OPERATIVE", 
+                points: userNexus.points || 150, 
+                level: userNexus.level || 1, 
+                wins: userNexus.wins || 0, 
+                isUser: true 
+            });
 
-            if (!rankingData || rankingData.length < 200 || lastSync !== todayStr) {
-                rankingData = [];
-                let basePts = 45000;
-                for (let i = 1; i <= 500; i++) {
-                    const fName = firstNames[Math.floor(Math.random() * firstNames.length)];
-                    const lName = lastNames[Math.floor(Math.random() * lastNames.length)];
-                    const addNum = Math.random() > 0.3 ? ` ${Math.floor(Math.random() * 900 + 10)}` : '';
-                    const randName = `${fName} ${lName}${addNum}`;
-                    basePts -= Math.floor(Math.random() * 80 + 10);
-                    const botLevel = Math.max(1, Math.min(1000, Math.floor(basePts / 450)));
-                    rankingData.push({ name: randName, points: Math.max(200, basePts), level: botLevel, wins: Math.floor(botLevel * 6) });
-                }
-                localStorage.setItem('jegalux_ranking_sync_date', todayStr);
-            } else {
-                rankingData.forEach(bot => {
-                    const delta = Math.floor(Math.random() * 120) - 55;
-                    bot.points = Math.max(100, bot.points + delta);
-                    bot.level = Math.max(1, Math.min(1000, Math.floor(bot.points / 450)));
-                });
+            // 2. Generar exactamente 50 bots por debajo de ti con nombres originales y naturales
+            let currentBotPts = userNexus.points || 150;
+            for (let i = 1; i <= 50; i++) {
+                const fName = firstNames[Math.floor(Math.random() * firstNames.length)];
+                const lName = lastNames[Math.floor(Math.random() * lastNames.length)];
+                const addNum = Math.random() > 0.3 ? ` ${Math.floor(Math.random() * 90 + 10)}` : '';
+                const randName = `${fName} ${lName}${addNum}`;
+                
+                currentBotPts -= Math.floor(Math.random() * 45 + 10);
+                const botLevel = Math.max(1, Math.min(1000, Math.floor(currentBotPts / 450)));
+                rankingData.push({ name: randName, points: Math.max(50, currentBotPts), level: botLevel, wins: Math.floor(botLevel * 4) });
             }
 
-            let userIndex = rankingData.findIndex(p => p.isUser);
-            if (userIndex !== -1) {
-                rankingData[userIndex].points = userNexus.points;
-                rankingData[userIndex].level = userNexus.level;
-                rankingData[userIndex].name = userNexus.username;
-                rankingData[userIndex].wins = userNexus.wins;
-            } else {
-                rankingData.push({ name: userNexus.username || "CYBER_OPERATIVE", points: userNexus.points, level: userNexus.level, wins: userNexus.wins || 0, isUser: true });
-            }
-
-            rankingData.sort((a, b) => b.points - a.points);
             localStorage.setItem('jegalux_live_ranking', JSON.stringify(rankingData));
             renderRankingList(rankingData);
         }
@@ -1033,7 +1027,7 @@
                 const userHighlight = player.isUser ? 'border-accent bg-accent/10 text-white font-bold' : '';
 
                 listContainer.innerHTML += `
-                    <div onclick="inspectRankingPlayer('${player.name}', ${player.level}, ${player.points}, ${player.wins || 0})" class="flex items-center justify-between p-3 rounded-xl border ${userHighlight || rankStyle} transition cursor-pointer hover:border-accent">
+                    <div id="rankItem_${index}" onclick="inspectRankingPlayer('${player.name}', ${player.level}, ${player.points}, ${player.wins || 0})" class="flex items-center justify-between p-3 rounded-xl border ${userHighlight || rankStyle} transition cursor-pointer hover:border-accent">
                         <div class="flex items-center gap-4">
                             <span class="w-8 text-center font-display font-bold text-sm">#${rank}</span>
                             <div>
@@ -1047,6 +1041,25 @@
                     </div>
                 `;
             });
+        }
+
+        // FUNCIÓN PARA IR AUTOMÁTICAMENTE A TU POSICIÓN EN EL RANKING
+        function scrollToMyPosition() {
+            playCyberpunkSound('click');
+            let rankingData = JSON.parse(localStorage.getItem('jegalux_live_ranking')) || [];
+            let userIndex = rankingData.findIndex(p => p.isUser);
+            if (userIndex !== -1) {
+                const targetElement = document.getElementById(`rankItem_${userIndex}`);
+                const container = document.getElementById('rankingList');
+                if (targetElement && container) {
+                    container.scrollTo({
+                        top: targetElement.offsetTop - container.offsetTop,
+                        behavior: 'smooth'
+                    });
+                    targetElement.classList.add('ring-2', 'ring-accent');
+                    setTimeout(() => targetElement.classList.remove('ring-2', 'ring-accent'), 2000);
+                }
+            }
         }
 
         function inspectRankingPlayer(name, level, points, wins) {
