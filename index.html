@@ -498,7 +498,7 @@
         </div>
     </div>
 
-    <!-- MODAL DE PERFIL // NEXUS ID -->
+    <!-- MODAL DE PERFIL // NEXUS ID (CON LOGIN GOOGLE / APPLE Y PERFIL) -->
     <div id="profileModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-lg p-6 md:p-8 rounded-2xl border border-accent/40 space-y-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-white/10 pb-4">
@@ -506,8 +506,21 @@
                 <button onclick="closeProfileModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
 
-            <!-- Vista de Perfil Conectado Directo -->
-            <div id="userProfileView" class="space-y-5 font-tech text-xs">
+            <!-- Vista Sin Conectar (Login Google / Apple) -->
+            <div id="loginView" class="space-y-4 text-center py-2">
+                <p class="text-xs font-tech text-neutral-300">Link your account to sync your level, points, victories and win streak in the cloud.</p>
+                <div class="space-y-3 pt-2">
+                    <button onclick="loginUser('Google')" class="w-full py-3.5 rounded bg-white text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-neutral-200 transition flex items-center justify-center gap-2">
+                        <i data-lucide="globe" class="w-4 h-4"></i> CONTINUE WITH GOOGLE
+                    </button>
+                    <button onclick="loginUser('Apple')" class="w-full py-3.5 rounded bg-black border border-white/30 text-white font-tech font-bold text-xs uppercase tracking-widest hover:border-accent transition flex items-center justify-center gap-2">
+                        <i data-lucide="apple" class="w-4 h-4 fill-white"></i> CONTINUE WITH APPLE ID
+                    </button>
+                </div>
+            </div>
+
+            <!-- Vista de Perfil Conectado -->
+            <div id="userProfileView" class="hidden space-y-5 font-tech text-xs">
                 <div class="flex items-center gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10">
                     <div class="relative group cursor-pointer" onclick="openZoomAvatar()" title="Click to expand avatar">
                         <div id="profileAvatarBox" class="w-16 h-16 rounded-xl bg-cover bg-center border-2 border-accent shadow-lg group-hover:scale-105 transition" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
@@ -567,9 +580,12 @@
                     <div class="text-accent font-bold text-base" id="profilePoints">0 PTS</div>
                 </div>
 
-                <div class="pt-2">
-                    <button onclick="saveProfile()" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
-                        SAVE NEXUS ID CHANGES
+                <div class="flex gap-2 pt-2">
+                    <button onclick="saveProfile()" class="flex-1 py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
+                        SAVE CHANGES
+                    </button>
+                    <button onclick="logoutUser()" class="px-4 py-3.5 rounded bg-red-500/20 border border-red-500/50 text-red-400 font-tech font-bold text-xs uppercase tracking-widest hover:bg-red-500 hover:text-white transition">
+                        LOGOUT
                     </button>
                 </div>
             </div>
@@ -652,7 +668,7 @@
         </div>
     </div>
 
-    <!-- MODAL DE INSPECCIÓN (CON SELECT Y CIERRE AUTOMÁTICO 100% FUNCIONAL) -->
+    <!-- MODAL DE INSPECCIÓN -->
     <div id="statsModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-md p-6 md:p-8 rounded-2xl border border-accent/50 space-y-5 shadow-2xl relative text-center font-tech text-xs">
             <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -791,7 +807,7 @@
         }
 
         let userNexus = {
-            isLoggedIn: true, email: "operative@jegalux.com", provider: "Google", username: "CYBER_OPERATIVE",
+            isLoggedIn: false, email: "", provider: "", username: "CYBER_OPERATIVE",
             level: 1, xp: 0, points: 150, maxDamage: 0, wins: 0, streak: 0,
             avatarImg: "Collage cyberpunk de 15 personajes neón.png"
         };
@@ -888,8 +904,10 @@
 
         function loadUserData() {
             const saved = localStorage.getItem('jegalux_nexus_id');
-            if (saved) { userNexus = JSON.parse(saved); updateUIState(); }
-            else { saveUserData(); }
+            if (saved) { 
+                userNexus = JSON.parse(saved); 
+                updateUIState(); 
+            }
         }
 
         function saveUserData() {
@@ -905,8 +923,10 @@
             if(streakBadge) streakBadge.innerText = `🔥${userNexus.streak || 0}`;
 
             const headerBadge = document.getElementById('headerLevelBadge');
-            headerBadge.innerText = userNexus.level;
-            headerBadge.className = `absolute -top-1.5 -right-2 px-1 text-[9px] font-black rounded shadow-md border ${getLevelColor(userNexus.level)}`;
+            if(headerBadge) {
+                headerBadge.innerText = userNexus.level;
+                headerBadge.className = `absolute -top-1.5 -right-2 px-1 text-[9px] font-black rounded shadow-md border ${getLevelColor(userNexus.level)}`;
+            }
 
             document.getElementById('arenaPlayerAvatar').style.backgroundImage = `url('${activeCombatant.imgFile}')`;
             
@@ -928,18 +948,17 @@
             document.getElementById('profileStreak').innerText = (userNexus.streak || 0) + ' 🔥';
             document.getElementById('profileRankTitle').innerText = getRankTitle(userNexus.level);
 
-            document.getElementById('userProfileView').classList.remove('hidden');
-            document.getElementById('profileUserEmail').innerText = userNexus.email;
-            document.getElementById('profileAuthType').innerText = `Linked via ${userNexus.provider} ID`;
-            document.getElementById('editUsername').value = userNexus.username;
-            document.getElementById('profileAvatarBox').style.backgroundImage = `url('${userNexus.avatarImg}')`;
-            
-            const profileLvl = document.getElementById('profileLevel');
-            if(profileLvl) {
-                profileLvl.innerText = userNexus.level;
+            if (userNexus.isLoggedIn) {
+                document.getElementById('loginView').classList.add('hidden');
+                document.getElementById('userProfileView').classList.remove('hidden');
+                document.getElementById('profileUserEmail').innerText = userNexus.email;
+                document.getElementById('profileAuthType').innerText = `Linked via ${userNexus.provider} ID`;
+                document.getElementById('editUsername').value = userNexus.username;
+                document.getElementById('profileAvatarBox').style.backgroundImage = `url('${userNexus.avatarImg}')`;
+            } else {
+                document.getElementById('loginView').classList.remove('hidden');
+                document.getElementById('userProfileView').classList.add('hidden');
             }
-            document.getElementById('profileXp').innerText = `${userNexus.xp} / ${userNexus.level * 650} XP (Click to view Leaderboard)`;
-            document.getElementById('profilePoints').innerText = userNexus.points + ' PTS';
         }
 
         function loginUser(provider) {
@@ -949,6 +968,13 @@
             userNexus.email = provider === 'Google' ? 'operative.google@jegalux.com' : 'operative.apple@icloud.com';
             saveUserData();
             triggerToast(`CONNECTED WITH ${provider.toUpperCase()}! Level ${userNexus.level} synced.`);
+        }
+
+        function logoutUser() {
+            playCyberpunkSound('click');
+            userNexus.isLoggedIn = false;
+            saveUserData();
+            triggerToast('LOGGED OUT OF NEXUS ID');
         }
 
         function setProfileAvatar(imgFile) {
@@ -1292,10 +1318,10 @@
         function addToCart() { document.getElementById('cartItemCount').innerText = cart.quantity; triggerToast(`ADDED TO CART! (${cart.item} - Fit ${cart.size})`); openCartModal(); }
         function openCartModal() {
             document.getElementById('cartItemsList').innerHTML = `<div class="flex justify-between items-center bg-obsidian/80 p-3 rounded-lg border border-white/10 font-tech text-xs"><div><div class="text-white font-bold">${cart.item}</div><div class="text-neutral-400">Fit: ${cart.size} | +1,000 XP</div></div><div class="text-accent font-bold">$${cart.price} USD</div></div>`;
-            document.getElementById('cartModal').classList.remove('hidden');
+            document.getElementById('cartModal').classList.add('hidden');
         }
         function closeCartModal() { document.getElementById('cartModal').classList.add('hidden'); }
-        function openCheckoutModal(method) { closeCartModal(); document.getElementById('checkoutTitle').innerText = `SECURE PAYMENT VIA ${method.toUpperCase()}`; document.getElementById('checkoutModal').classList.remove('hidden'); }
+        function openCheckoutModal(method) { closeCartModal(); document.getElementById('checkoutTitle').innerText = `SECURE PAYMENT VIA ${method.toUpperCase()}`; document.getElementById('checkoutModal').classList.add('hidden'); }
         function closeCheckoutModal() { document.getElementById('checkoutModal').classList.add('hidden'); }
         function processPayment(e) { e.preventDefault(); playCyberpunkSound('click'); closeCheckoutModal(); addXpAndPoints(1000, 370, true); triggerToast('SUCCESSFUL PURCHASE! +1,000 XP ADDED'); }
 
