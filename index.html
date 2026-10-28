@@ -404,13 +404,13 @@
                 </div>
             </div>
 
-            <!-- 2. PANTALLA DE COMBATE -->
+            <!-- 2. PANTALLA DE COMBATE (BARRAS DE VIDA CLÁSICAS VERDE Y ROJA BIEN VISIBLES) -->
             <div id="battleScreen" class="hidden space-y-4">
                 
                 <!-- ARENA DE COMBATE VISUAL -->
                 <div class="relative h-64 md:h-72 w-full glass-panel rounded-2xl border border-white/10 p-6 flex flex-col justify-between overflow-hidden shadow-2xl">
                     
-                    <!-- RIVAL (ARRIBA A LA DERECHA) - CLICABLE PARA VER PERFIL -->
+                    <!-- RIVAL (ARRIBA A LA DERECHA) - ROJO INTENSO -->
                     <div onclick="openRivalProfileModal()" class="self-end w-72 glass-panel p-4 rounded-xl border border-red-500/50 font-tech text-xs space-y-2 shadow-2xl bg-black/90 cursor-pointer group hover:border-red-400 transition" title="Click to inspect rival profile">
                         <div class="flex justify-between items-center text-white font-bold text-sm">
                             <span id="battleRivalName" class="text-red-400 group-hover:underline">RIVAL</span>
@@ -418,34 +418,34 @@
                         </div>
                         <div class="space-y-1">
                             <div class="flex justify-between text-[11px] font-bold">
-                                <span class="text-red-500">HP (Inspect)</span>
+                                <span class="text-red-500">HP (Inspect Profile)</span>
                             </div>
                             <div class="w-full bg-neutral-900 h-4 rounded-full overflow-hidden p-0.5 border-2 border-red-500/60 shadow-[0_0_12px_rgba(239,68,68,0.5)]">
-                                <div id="rivalHpBar" class="bg-gradient-to-r from-red-600 to-red-400 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
+                                <div id="rivalHpBar" class="bg-red-600 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- TU OPERATIVO (ABAJO A LA IZQUIERDA) -->
-                    <div class="self-start w-72 glass-panel p-4 rounded-xl border border-accent/50 font-tech text-xs space-y-2 shadow-2xl bg-black/90">
+                    <!-- TU OPERATIVO (ABAJO A LA IZQUIERDA) - VERDE BRILLANTE -->
+                    <div class="self-start w-72 glass-panel p-4 rounded-xl border border-emerald-500/50 font-tech text-xs space-y-2 shadow-2xl bg-black/90">
                         <div class="flex justify-between items-center text-white font-bold text-sm">
-                            <span id="battlePlayerName" class="text-accent">OPERATIVE</span>
+                            <span id="battlePlayerName" class="text-emerald-400">OPERATIVE</span>
                             <span class="text-xs text-neutral-200">Lv.<span id="lblLevelBattle">1</span></span>
                         </div>
                         <div class="space-y-1">
                             <div class="flex justify-between text-[11px] font-bold">
-                                <span class="text-accent">HP</span>
+                                <span class="text-emerald-400">HP</span>
                                 <span class="text-white" id="playerHpText">100 / 100</span>
                             </div>
-                            <div class="w-full bg-neutral-900 h-4 rounded-full overflow-hidden p-0.5 border-2 border-accent/60 shadow-[0_0_12px_rgba(255,85,0,0.5)]">
-                                <div id="playerHpBar" class="bg-gradient-to-r from-accent to-amber-400 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
+                            <div class="w-full bg-neutral-900 h-4 rounded-full overflow-hidden p-0.5 border-2 border-emerald-500/60 shadow-[0_0_12px_rgba(16,185,129,0.5)]">
+                                <div id="playerHpBar" class="bg-emerald-500 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- FOTOS CON BRILLO NORMAL EN EL CAMPO DE BATALLA -->
                     <div class="absolute inset-0 pointer-events-none flex justify-between items-center px-10">
-                        <div class="w-24 h-24 rounded-2xl bg-cover bg-center border-2 border-accent shadow-[0_0_20px_rgba(255,85,0,0.4)]" id="arenaPlayerAvatar" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
+                        <div class="w-24 h-24 rounded-2xl bg-cover bg-center border-2 border-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.4)]" id="arenaPlayerAvatar" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
                         <div class="w-24 h-24 rounded-2xl bg-cover bg-center border-2 border-red-500 shadow-[0_0_20px_rgba(239,68,68,0.4)]" id="arenaRivalAvatar" style="background-image: url('pelirroja.png');"></div>
                     </div>
                 </div>
@@ -498,7 +498,7 @@
         </div>
     </div>
 
-    <!-- MODAL DE PERFIL // NEXUS ID (REACTIVADO Y CONECTADO) -->
+    <!-- MODAL DE PERFIL // NEXUS ID -->
     <div id="profileModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-lg p-6 md:p-8 rounded-2xl border border-accent/40 space-y-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-white/10 pb-4">
@@ -519,7 +519,7 @@
                 </div>
             </div>
 
-            <!-- Vista de Perfil Conectado (Reactivada correctamente) -->
+            <!-- Vista de Perfil Conectado -->
             <div id="userProfileView" class="hidden space-y-5 font-tech text-xs">
                 <div class="flex items-center gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10">
                     <div class="relative group cursor-pointer" onclick="openZoomAvatar()" title="Click to expand avatar">
@@ -620,21 +620,42 @@
         </div>
     </div>
 
-    <!-- MODAL DE INSPECCIÓN DE JUGADORES DEL RANKING O RIVALES -->
+    <!-- MODAL DE INSPECCIÓN DE JUGADORES -->
     <div id="inspectPlayerModal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
-        <div class="glass-panel w-full max-w-md p-6 rounded-2xl border border-accent/50 space-y-4 shadow-2xl text-center font-tech text-xs">
-            <div class="flex justify-between items-center border-b border-white/10 pb-3">
-                <h3 id="inspectPlayerTitle" class="font-display font-bold text-lg text-accent uppercase tracking-wider">OPERATIVE DOSSIER</h3>
-                <button onclick="closeInspectPlayerModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <div class="glass-panel w-full max-w-md p-6 md:p-8 rounded-2xl border border-accent/60 space-y-6 shadow-2xl text-center font-tech text-xs relative overflow-hidden">
+            <div class="absolute -inset-1 bg-gradient-to-r from-accent/20 to-cyan-500/10 rounded-2xl blur-xl opacity-50 pointer-events-none"></div>
+            
+            <div class="flex justify-between items-center border-b border-white/10 pb-3 relative z-10">
+                <h3 class="font-display font-bold text-sm text-accent uppercase tracking-widest">// OPERATIVE DOSSIER</h3>
+                <button onclick="closeInspectPlayerModal()" class="text-neutral-400 hover:text-white p-1 rounded-lg bg-obsidian border border-white/10"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
-            <div id="inspectPlayerAvatar" class="w-24 h-24 mx-auto rounded-xl bg-cover bg-center border-2 border-accent shadow-lg bg-black"></div>
-            <div class="space-y-2 bg-obsidian/80 p-4 rounded-xl border border-white/10 text-left">
-                <div class="flex justify-between"><span class="text-neutral-400">OPERATIVE:</span> <span id="inspectName" class="text-white font-bold">---</span></div>
-                <div class="flex justify-between"><span class="text-neutral-400">LEVEL / RANK:</span> <span id="inspectLevel" class="text-accent font-bold">---</span></div>
-                <div class="flex justify-between"><span class="text-neutral-400">POINTS:</span> <span id="inspectPoints" class="text-white font-bold">--- PTS</span></div>
-                <div class="flex justify-between"><span class="text-neutral-400">STATUS:</span> <span class="text-emerald-400 font-bold">ACTIVE IN SHADOW ARENA</span></div>
+            
+            <div class="relative z-10">
+                <div id="inspectPlayerAvatar" class="w-32 h-32 mx-auto rounded-2xl bg-cover bg-center border-2 border-accent shadow-[0_0_25px_rgba(255,85,0,0.5)]"></div>
             </div>
-            <button onclick="closeInspectPlayerModal()" class="w-full py-3 rounded bg-accent text-black font-bold uppercase tracking-widest">CLOSE DOSSIER</button>
+
+            <div class="space-y-3 bg-obsidian/90 p-5 rounded-xl border border-white/10 text-left relative z-10 shadow-inner">
+                <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                    <span class="text-neutral-400 text-[11px]">OPERATIVE:</span> 
+                    <span id="inspectName" class="text-white font-bold text-sm">---</span>
+                </div>
+                <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                    <span class="text-neutral-400 text-[11px]">LEVEL / RANK:</span> 
+                    <span id="inspectLevel" class="text-accent font-bold text-xs">---</span>
+                </div>
+                <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                    <span class="text-neutral-400 text-[11px]">POINTS:</span> 
+                    <span id="inspectPoints" class="text-white font-bold text-xs">--- PTS</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-neutral-400 text-[11px]">COMBAT STATUS:</span> 
+                    <span class="text-emerald-400 font-bold text-xs">ACTIVE IN SHADOW ARENA</span>
+                </div>
+            </div>
+
+            <div class="relative z-10 pt-2">
+                <button onclick="closeInspectPlayerModal()" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">CLOSE DOSSIER</button>
+            </div>
         </div>
     </div>
 
@@ -820,6 +841,15 @@
             document.getElementById('dynamicArenaBg').style.backgroundImage = `url('${randomBg.file}')`;
         }
 
+        function getAvatarForName(name) {
+            let hash = 0;
+            for (let i = 0; i < name.length; i++) {
+                hash = name.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            const index = Math.abs(hash) % rosterPool.length;
+            return rosterPool[index].avatar;
+        }
+
         function findMatchmakingRival() {
             let rankingData = JSON.parse(localStorage.getItem('jegalux_live_ranking')) || [];
             let eligibleRivals = rankingData.filter(p => !p.isUser && Math.abs(p.level - userNexus.level) <= 5);
@@ -827,7 +857,7 @@
                 eligibleRivals = rankingData.filter(p => !p.isUser);
             }
             const chosenBot = eligibleRivals[Math.floor(Math.random() * eligibleRivals.length)];
-            const matchedRosterItem = rosterPool[Math.floor(Math.random() * rosterPool.length)];
+            const fixedAvatar = getAvatarForName(chosenBot.name);
 
             currentRival = {
                 name: chosenBot.name,
@@ -835,7 +865,7 @@
                 hp: 100 + Math.floor(chosenBot.level * 5),
                 maxHp: 100 + Math.floor(chosenBot.level * 5),
                 atk: 12 + Math.floor(chosenBot.level * 0.8),
-                avatar: matchedRosterItem.avatar
+                avatar: fixedAvatar
             };
         }
 
@@ -1034,11 +1064,11 @@
 
         function inspectRankingPlayer(name, level, points, wins) {
             playCyberpunkSound('click');
-            const randAvatar = rosterPool[Math.floor(Math.random() * rosterPool.length)].avatar;
+            const fixedAvatar = getAvatarForName(name);
             document.getElementById('inspectName').innerText = name;
             document.getElementById('inspectLevel').innerText = `Lv.${level} (${getRankTitle(level)})`;
             document.getElementById('inspectPoints').innerText = points + ' PTS';
-            document.getElementById('inspectPlayerAvatar').style.backgroundImage = `url('${randAvatar}')`;
+            document.getElementById('inspectPlayerAvatar').style.backgroundImage = `url('${fixedAvatar}')`;
             document.getElementById('inspectPlayerModal').classList.remove('hidden');
         }
 
@@ -1162,9 +1192,9 @@
             playCyberpunkSound('click');
             const cType = activeCombatant.classType || "balanced";
             let baseDmg = type === 'light' ? 30 : 48;
-            if (cType === 'critical' && Math.random() < 0.4) { baseDmg = Math.floor(baseDmg * 1.5); appendLog(`A critical hit! Deals <span class="text-accent">${baseDmg} DMG</span>.`); }
-            else if (cType === 'berserker') { baseDmg += 10; appendLog(`Brute strike! Deals <span class="text-accent">${baseDmg} DMG</span>.`); }
-            else { appendLog(`Attack hits for <span class="text-accent">${baseDmg} DMG</span>.`); }
+            if (cType === 'critical' && Math.random() < 0.4) { baseDmg = Math.floor(baseDmg * 1.5); appendLog(`A critical hit! Deals <span class="text-emerald-400">${baseDmg} DMG</span>.`); }
+            else if (cType === 'berserker') { baseDmg += 10; appendLog(`Brute strike! Deals <span class="text-emerald-400">${baseDmg} DMG</span>.`); }
+            else { appendLog(`Attack hits for <span class="text-emerald-400">${baseDmg} DMG</span>.`); }
             
             registerDamage(baseDmg);
             currentRival.hp -= baseDmg;
@@ -1178,7 +1208,7 @@
             playCyberpunkSound('click');
             let damage = 80;
             registerDamage(damage);
-            appendLog(`SHADOW STRIKE unleashes <span class="text-accent">${damage} DMG</span>!`);
+            appendLog(`SHADOW STRIKE unleashes <span class="text-emerald-400">${damage} DMG</span>!`);
             currentRival.hp -= damage;
             checkBattleStatus();
             if (currentRival.hp > 0) setTimeout(rivalTurn, 900);
@@ -1203,7 +1233,7 @@
             if (isVictory) {
                 userNexus.bossesDefeated = (userNexus.bossesDefeated || 0) + 1;
                 addXpAndPoints(350, 200, true);
-                title.className = "font-display font-bold text-3xl text-accent uppercase";
+                title.className = "font-display font-bold text-3xl text-emerald-400 uppercase";
                 title.innerText = "VICTORY IN DUEL!";
                 desc.innerText = `Defeated ${currentRival.name} (Lv.${currentRival.level})! +350 XP & +200 PTS added. Streak increased 🔥`;
             } else {
@@ -1253,7 +1283,7 @@
             document.getElementById('cartModal').classList.remove('hidden');
         }
         function closeCartModal() { document.getElementById('cartModal').classList.add('hidden'); }
-        function openCheckoutModal(method) { closeCartModal(); document.getElementById('checkoutTitle').innerText = `SECURE PAYMENT VIA ${method.toUpperCase()}`; document.getElementById('checkoutModal').classList.add('hidden'); }
+        function openCheckoutModal(method) { closeCartModal(); document.getElementById('checkoutTitle').innerText = `SECURE PAYMENT VIA ${method.toUpperCase()}`; document.getElementById('checkoutModal').classList.remove('hidden'); }
         function closeCheckoutModal() { document.getElementById('checkoutModal').classList.add('hidden'); }
         function processPayment(e) { e.preventDefault(); playCyberpunkSound('click'); closeCheckoutModal(); addXpAndPoints(1000, 370, true); triggerToast('SUCCESSFUL PURCHASE! +1,000 XP ADDED'); }
 
