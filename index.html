@@ -404,13 +404,13 @@
                 </div>
             </div>
 
-            <!-- 2. PANTALLA DE COMBATE (BARRAS DE VIDA CLÁSICAS VERDE Y ROJA BIEN VISIBLES) -->
+            <!-- 2. PANTALLA DE COMBATE -->
             <div id="battleScreen" class="hidden space-y-4">
                 
                 <!-- ARENA DE COMBATE VISUAL -->
                 <div class="relative h-64 md:h-72 w-full glass-panel rounded-2xl border border-white/10 p-6 flex flex-col justify-between overflow-hidden shadow-2xl">
                     
-                    <!-- RIVAL (ARRIBA A LA DERECHA) - ROJO INTENSO -->
+                    <!-- RIVAL (ARRIBA A LA DERECHA) - CLICABLE PARA VER PERFIL -->
                     <div onclick="openRivalProfileModal()" class="self-end w-72 glass-panel p-4 rounded-xl border border-red-500/50 font-tech text-xs space-y-2 shadow-2xl bg-black/90 cursor-pointer group hover:border-red-400 transition" title="Click to inspect rival profile">
                         <div class="flex justify-between items-center text-white font-bold text-sm">
                             <span id="battleRivalName" class="text-red-400 group-hover:underline">RIVAL</span>
@@ -421,12 +421,12 @@
                                 <span class="text-red-500">HP (Inspect Profile)</span>
                             </div>
                             <div class="w-full bg-neutral-900 h-4 rounded-full overflow-hidden p-0.5 border-2 border-red-500/60 shadow-[0_0_12px_rgba(239,68,68,0.5)]">
-                                <div id="rivalHpBar" class="bg-red-600 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
+                                <div id="rivalHpBar" class="bg-gradient-to-r from-red-600 to-red-400 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- TU OPERATIVO (ABAJO A LA IZQUIERDA) - VERDE BRILLANTE -->
+                    <!-- TU OPERATIVO (ABAJO A LA IZQUIERDA) -->
                     <div class="self-start w-72 glass-panel p-4 rounded-xl border border-emerald-500/50 font-tech text-xs space-y-2 shadow-2xl bg-black/90">
                         <div class="flex justify-between items-center text-white font-bold text-sm">
                             <span id="battlePlayerName" class="text-emerald-400">OPERATIVE</span>
@@ -506,21 +506,8 @@
                 <button onclick="closeProfileModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
 
-            <!-- Vista Sin Conectar -->
-            <div id="loginView" class="space-y-4 text-center py-2">
-                <p class="text-xs font-tech text-neutral-300">Link your account to sync your level, points, victories and win streak in the cloud.</p>
-                <div class="space-y-3 pt-2">
-                    <button onclick="loginUser('Google')" class="w-full py-3.5 rounded bg-white text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-neutral-200 transition flex items-center justify-center gap-2">
-                        <i data-lucide="globe" class="w-4 h-4"></i> CONTINUE WITH GOOGLE
-                    </button>
-                    <button onclick="loginUser('Apple')" class="w-full py-3.5 rounded bg-black border border-white/30 text-white font-tech font-bold text-xs uppercase tracking-widest hover:border-accent transition flex items-center justify-center gap-2">
-                        <i data-lucide="apple" class="w-4 h-4 fill-white"></i> CONTINUE WITH APPLE ID
-                    </button>
-                </div>
-            </div>
-
-            <!-- Vista de Perfil Conectado -->
-            <div id="userProfileView" class="hidden space-y-5 font-tech text-xs">
+            <!-- Vista de Perfil Conectado Directo -->
+            <div id="userProfileView" class="space-y-5 font-tech text-xs">
                 <div class="flex items-center gap-4 bg-obsidian/80 p-4 rounded-xl border border-white/10">
                     <div class="relative group cursor-pointer" onclick="openZoomAvatar()" title="Click to expand avatar">
                         <div id="profileAvatarBox" class="w-16 h-16 rounded-xl bg-cover bg-center border-2 border-accent shadow-lg group-hover:scale-105 transition" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
@@ -659,7 +646,7 @@
         </div>
     </div>
 
-    <!-- MODAL DE INSPECCIÓN -->
+    <!-- MODAL DE INSPECCIÓN CON EL BOTÓN SELECT FUNCIONANDO -->
     <div id="statsModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-md p-6 md:p-8 rounded-2xl border border-accent/50 space-y-5 shadow-2xl relative text-center font-tech text-xs">
             <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -703,6 +690,7 @@
             <p id="statModalDesc" class="text-xs font-sans text-neutral-300 leading-relaxed"></p>
 
             <div class="pt-2">
+                <!-- BOTÓN SELECT CORREGIDO Y FUNCIONAL -->
                 <button onclick="playCyberpunkSound('click'); activeCombatant = { name: tempSelected.name, imgFile: tempSelected.imgFile, classType: tempSelected.classType }; updateUIState(); closeStatsModal(); triggerToast('COMBATANT SELECTED: ' + tempSelected.name);" class="w-full py-3.5 rounded bg-accent text-black font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent-glow transition shadow-lg">
                     SELECT
                 </button>
@@ -935,7 +923,6 @@
             document.getElementById('profileStreak').innerText = (userNexus.streak || 0) + ' 🔥';
             document.getElementById('profileRankTitle').innerText = getRankTitle(userNexus.level);
 
-            document.getElementById('loginView').classList.add('hidden');
             document.getElementById('userProfileView').classList.remove('hidden');
             document.getElementById('profileUserEmail').innerText = userNexus.email;
             document.getElementById('profileAuthType').innerText = `Linked via ${userNexus.provider} ID`;
