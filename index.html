@@ -97,8 +97,9 @@
             <div class="flex items-center space-x-3">
                 <button onclick="playCyberpunkSound('click'); openProfileModal()" class="flex items-center gap-2 px-3 py-2 rounded-lg glass-panel glass-panel-hover text-neutral-300 hover:text-white transition-all duration-200" onmouseenter="playCyberpunkSound('hover')">
                     <div class="relative">
-                        <div id="headerAvatar" class="w-7 h-7 rounded bg-cover bg-center border border-accent" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');"></div>
-                        <span id="headerLevelBadge" class="absolute -top-1.5 -right-2 px-1 text-[9px] font-black rounded bg-accent text-black shadow-md">1</span>
+                        <div id="headerAvatar" class="w-9 h-9 rounded-lg bg-cover bg-center border border-accent relative" style="background-image: url('Collage cyberpunk de 15 personajes neón.png');">
+                            <span id="headerStreakBadge" class="absolute -bottom-2 -right-1 bg-black/90 border border-emerald-500 text-emerald-400 font-black text-[9px] px-1 rounded shadow-md">🔥0</span>
+                        </div>
                     </div>
                     <span id="headerName" class="font-tech text-xs text-accent font-bold hidden sm:inline">NEXUS ID</span>
                 </button>
@@ -403,23 +404,22 @@
                 </div>
             </div>
 
-            <!-- 2. PANTALLA DE COMBATE (BARRAS DE VIDA MUY VISIBLES Y GROSSAS) -->
+            <!-- 2. PANTALLA DE COMBATE -->
             <div id="battleScreen" class="hidden space-y-4">
                 
                 <!-- ARENA DE COMBATE VISUAL -->
                 <div class="relative h-64 md:h-72 w-full glass-panel rounded-2xl border border-white/10 p-6 flex flex-col justify-between overflow-hidden shadow-2xl">
                     
-                    <!-- RIVAL (ARRIBA A LA DERECHA) -->
-                    <div class="self-end w-72 glass-panel p-4 rounded-xl border border-red-500/50 font-tech text-xs space-y-2 shadow-2xl bg-black/90">
+                    <!-- RIVAL (ARRIBA A LA DERECHA) - CLICABLE PARA VER PERFIL -->
+                    <div onclick="openRivalProfileModal()" class="self-end w-72 glass-panel p-4 rounded-xl border border-red-500/50 font-tech text-xs space-y-2 shadow-2xl bg-black/90 cursor-pointer group hover:border-red-400 transition" title="Click to inspect rival profile">
                         <div class="flex justify-between items-center text-white font-bold text-sm">
-                            <span id="battleRivalName" class="text-red-400">RIVAL</span>
+                            <span id="battleRivalName" class="text-red-400 group-hover:underline">RIVAL</span>
                             <span class="text-xs text-neutral-200">Lv.<span id="rivalLevelDisplay">1</span></span>
                         </div>
                         <div class="space-y-1">
                             <div class="flex justify-between text-[11px] font-bold">
-                                <span class="text-red-500">HP</span>
+                                <span class="text-red-500">HP (Inspect)</span>
                             </div>
-                            <!-- BARRITA DE VIDA MÁS VISIBLE, GRUESA Y BRILLANTE -->
                             <div class="w-full bg-neutral-900 h-4 rounded-full overflow-hidden p-0.5 border-2 border-red-500/60 shadow-[0_0_12px_rgba(239,68,68,0.5)]">
                                 <div id="rivalHpBar" class="bg-gradient-to-r from-red-600 to-red-400 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
                             </div>
@@ -437,7 +437,6 @@
                                 <span class="text-accent">HP</span>
                                 <span class="text-white" id="playerHpText">100 / 100</span>
                             </div>
-                            <!-- BARRITA DE VIDA MÁS VISIBLE, GRUESA Y BRILLANTE -->
                             <div class="w-full bg-neutral-900 h-4 rounded-full overflow-hidden p-0.5 border-2 border-accent/60 shadow-[0_0_12px_rgba(255,85,0,0.5)]">
                                 <div id="playerHpBar" class="bg-gradient-to-r from-accent to-amber-400 h-full rounded-full transition-all duration-300" style="width: 100%"></div>
                             </div>
@@ -575,8 +574,8 @@
 
                 <div class="bg-obsidian/60 p-4 rounded-xl flex justify-between items-center border border-white/10 cursor-pointer hover:border-accent transition group" onclick="closeProfileModal(); openRankingModal();" title="Click to view World Leaderboard">
                     <div>
-                        <div class="text-white font-bold group-hover:text-accent transition">LEVEL <span id="profileLevel" class="px-2 py-0.5 rounded text-black font-extrabold bg-accent">1</span> <span class="text-[9px] text-neutral-400 ml-1">(View Leaderboard)</span></div>
-                        <div class="text-neutral-400 text-[10px] mt-1" id="profileXp">0 / 500 XP</div>
+                        <div class="text-white font-bold group-hover:text-accent transition">RANK: <span id="profileRankTitle" class="text-accent uppercase font-black">Novato Sombrío</span> (Level <span id="profileLevel">1</span>)</div>
+                        <div class="text-neutral-400 text-[10px] mt-1" id="profileXp">0 / 500 XP (Click to view Leaderboard)</div>
                     </div>
                     <div class="text-accent font-bold text-base" id="profilePoints">0 PTS</div>
                 </div>
@@ -607,8 +606,8 @@
         <div class="glass-panel w-full max-w-2xl p-6 md:p-8 rounded-2xl border border-accent/50 space-y-6 shadow-2xl relative max-h-[85vh] flex flex-col">
             <div class="flex justify-between items-center border-b border-white/10 pb-4">
                 <div>
-                    <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider">// GLOBAL RANKING (TOP 100)</h3>
-                    <p class="text-xs font-tech text-neutral-400">Live active operatives across shadow servers</p>
+                    <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider">// GLOBAL RANKING (TOP 250)</h3>
+                    <p class="text-xs font-tech text-neutral-400">Click any operative to inspect their combat stats</p>
                 </div>
                 <button onclick="closeRankingModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
@@ -616,8 +615,26 @@
             <div id="rankingList" class="space-y-2 overflow-y-auto flex-1 pr-2 font-tech text-xs"></div>
 
             <div class="border-t border-white/10 pt-4 text-center font-tech text-[10px] text-neutral-400">
-                RANKINGS AUTO-SYNC DAILY // ACTIVE CLOUD PROTOCOL
+                DAILY SYNC ACTIVE // CLICK ANY OPERATIVE TO INSPECT
             </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE INSPECCIÓN DE JUGADORES DEL RANKING O RIVALES -->
+    <div id="inspectPlayerModal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/85 backdrop-blur-md hidden">
+        <div class="glass-panel w-full max-w-md p-6 rounded-2xl border border-accent/50 space-y-4 shadow-2xl text-center font-tech text-xs">
+            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                <h3 id="inspectPlayerTitle" class="font-display font-bold text-lg text-accent uppercase tracking-wider">OPERATIVE DOSSIER</h3>
+                <button onclick="closeInspectPlayerModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div id="inspectPlayerAvatar" class="w-24 h-24 mx-auto rounded-xl bg-cover bg-center border-2 border-accent shadow-lg bg-black"></div>
+            <div class="space-y-2 bg-obsidian/80 p-4 rounded-xl border border-white/10 text-left">
+                <div class="flex justify-between"><span class="text-neutral-400">OPERATIVE:</span> <span id="inspectName" class="text-white font-bold">---</span></div>
+                <div class="flex justify-between"><span class="text-neutral-400">LEVEL / RANK:</span> <span id="inspectLevel" class="text-accent font-bold">---</span></div>
+                <div class="flex justify-between"><span class="text-neutral-400">POINTS:</span> <span id="inspectPoints" class="text-white font-bold">--- PTS</span></div>
+                <div class="flex justify-between"><span class="text-neutral-400">STATUS:</span> <span class="text-emerald-400 font-bold">ACTIVE IN SHADOW ARENA</span></div>
+            </div>
+            <button onclick="closeInspectPlayerModal()" class="w-full py-3 rounded bg-accent text-black font-bold uppercase tracking-widest">CLOSE DOSSIER</button>
         </div>
     </div>
 
@@ -796,17 +813,17 @@
             { name: "Valkyrie Red", avatar: "ergh.png" }
         ];
 
-        let currentRival = { name: "VoidWalker", level: 1, hp: 100, maxHp: 100, atk: 12, avatar: "pelirroja.png" };
+        let currentRival = { name: "VoidWalker", level: 1, hp: 100, maxHp: 100, atk: 15, avatar: "pelirroja.png" };
 
         function setRandomArenaBackground() {
             const randomBg = arenaBackgrounds[Math.floor(Math.random() * arenaBackgrounds.length)];
             document.getElementById('dynamicArenaBg').style.backgroundImage = `url('${randomBg.file}')`;
         }
 
-        // MATCHMAKING CON DIFICULTAD REDUCIDA (BARRAS DE VIDA Y DAÑO ACCESIBLE)
+        // MATCHMAKING INTELIGENTE HASTA NIVEL 1000
         function findMatchmakingRival() {
             let rankingData = JSON.parse(localStorage.getItem('jegalux_live_ranking')) || [];
-            let eligibleRivals = rankingData.filter(p => !p.isUser && Math.abs(p.level - userNexus.level) <= 2);
+            let eligibleRivals = rankingData.filter(p => !p.isUser && Math.abs(p.level - userNexus.level) <= 5);
             if (eligibleRivals.length === 0) {
                 eligibleRivals = rankingData.filter(p => !p.isUser);
             }
@@ -816,19 +833,37 @@
             currentRival = {
                 name: chosenBot.name,
                 level: chosenBot.level,
-                hp: 100,
-                maxHp: 100,
-                atk: 10 + Math.floor(chosenBot.level * 1.2), // Daño equilibrado y suave
+                hp: 100 + Math.floor(chosenBot.level * 5),
+                maxHp: 100 + Math.floor(chosenBot.level * 5),
+                atk: 12 + Math.floor(chosenBot.level * 0.8),
                 avatar: matchedRosterItem.avatar
             };
         }
 
+        // NOMBRES DE RANGOS ÉPICOS
+        function getRankTitle(lvl) {
+            if (lvl <= 9) return "Novato Sombrío";
+            if (lvl <= 19) return "Cazador Neón";
+            if (lvl <= 29) return "Vanguardia Cibernética";
+            if (lvl <= 49) return "Maestro Cuántico";
+            if (lvl <= 99) return "Señor del Tiempo";
+            if (lvl <= 249) return "Dios del Vacío";
+            if (lvl <= 499) return "Titán Omnipotente";
+            if (lvl <= 999) return "Monarca Astral";
+            return "Soberano Infinito";
+        }
+
+        // COLORES POR RANGO (CADA 10 NIVELES)
         function getLevelColor(lvl) {
-            if (lvl <= 9) return 'bg-accent text-black';
-            if (lvl >= 10 && lvl <= 19) return 'bg-cyan-400 text-black';
-            if (lvl >= 20 && lvl <= 29) return 'bg-emerald-400 text-black';
-            if (lvl >= 30 && lvl <= 39) return 'bg-purple-500 text-white';
-            return 'bg-yellow-400 text-black font-black animate-pulse';
+            if (lvl <= 9) return 'text-orange-400 border-orange-400 bg-orange-500/20';
+            if (lvl <= 19) return 'text-cyan-400 border-cyan-400 bg-cyan-500/20';
+            if (lvl <= 29) return 'text-emerald-400 border-emerald-400 bg-emerald-500/20';
+            if (lvl <= 49) return 'text-purple-400 border-purple-400 bg-purple-500/20';
+            if (lvl <= 99) return 'text-pink-400 border-pink-400 bg-pink-500/20';
+            if (lvl <= 249) return 'text-red-500 border-red-500 bg-red-500/20';
+            if (lvl <= 499) return 'text-amber-300 border-amber-300 bg-amber-500/30';
+            if (lvl <= 999) return 'text-blue-300 border-blue-300 bg-blue-500/30 animate-pulse';
+            return 'text-yellow-200 border-yellow-200 bg-yellow-400/40 animate-bounce';
         }
 
         function loadUserData() {
@@ -845,15 +880,18 @@
             document.getElementById('headerName').innerText = userNexus.username.toUpperCase();
             document.getElementById('headerAvatar').style.backgroundImage = `url('${userNexus.avatarImg}')`;
 
+            const streakBadge = document.getElementById('headerStreakBadge');
+            if(streakBadge) streakBadge.innerText = `🔥${userNexus.streak || 0}`;
+
             const headerBadge = document.getElementById('headerLevelBadge');
             headerBadge.innerText = userNexus.level;
-            headerBadge.className = `absolute -top-1.5 -right-2 px-1 text-[9px] font-black rounded shadow-md ${getLevelColor(userNexus.level)}`;
+            headerBadge.className = `absolute -top-1.5 -right-2 px-1 text-[9px] font-black rounded shadow-md border ${getLevelColor(userNexus.level)}`;
 
             document.getElementById('arenaPlayerAvatar').style.backgroundImage = `url('${activeCombatant.imgFile}')`;
             
             const lvlBadge = document.getElementById('lblLevel');
             lvlBadge.innerText = userNexus.level;
-            lvlBadge.className = `px-2 py-0.5 rounded text-black font-extrabold ${getLevelColor(userNexus.level)}`;
+            lvlBadge.className = `px-2 py-0.5 rounded font-extrabold border ${getLevelColor(userNexus.level)}`;
             
             const lvlBattle = document.getElementById('lblLevelBattle');
             if(lvlBattle) lvlBattle.innerText = userNexus.level;
@@ -861,12 +899,13 @@
             const modalBadge = document.getElementById('profileLevelBadgeModal');
             if(modalBadge) {
                 modalBadge.innerText = userNexus.level;
-                modalBadge.className = `absolute -top-2 -right-2 px-1.5 py-0.5 text-[10px] font-black rounded shadow-lg ${getLevelColor(userNexus.level)}`;
+                modalBadge.className = `absolute -top-2 -right-2 px-1.5 py-0.5 text-[10px] font-black rounded shadow-lg border ${getLevelColor(userNexus.level)}`;
             }
 
             document.getElementById('lblScore').innerText = userNexus.points + ' PTS';
             document.getElementById('profileWins').innerText = userNexus.wins || 0;
             document.getElementById('profileStreak').innerText = (userNexus.streak || 0) + ' 🔥';
+            document.getElementById('profileRankTitle').innerText = getRankTitle(userNexus.level);
 
             if (userNexus.isLoggedIn) {
                 document.getElementById('loginView').classList.add('hidden');
@@ -879,9 +918,8 @@
                 const profileLvl = document.getElementById('profileLevel');
                 if(profileLvl) {
                     profileLvl.innerText = userNexus.level;
-                    profileLvl.className = `px-2 py-0.5 rounded text-xs font-extrabold ${getLevelColor(userNexus.level)}`;
                 }
-                document.getElementById('profileXp').innerText = `${userNexus.xp} / ${userNexus.level * 500} XP`;
+                document.getElementById('profileXp').innerText = `${userNexus.xp} / ${userNexus.level * 650} XP (Click to view Leaderboard)`;
                 document.getElementById('profilePoints').innerText = userNexus.points + ' PTS';
             } else {
                 document.getElementById('loginView').classList.remove('hidden');
@@ -927,29 +965,33 @@
             document.getElementById('zoomAvatarModal').classList.add('hidden');
         }
 
+        // GLOBAL RANKING SOPORTE HASTA NIVEL 1000
         function initGlobalRanking() {
             let rankingData = JSON.parse(localStorage.getItem('jegalux_live_ranking'));
+            const lastSync = localStorage.getItem('jegalux_ranking_sync_date');
+            const todayStr = new Date().toDateString();
 
             const firstNames = ["Zero", "Sektor", "Phreak", "Cyber", "Ronin", "Apex", "Vortex", "Void", "Orion", "Blade", "Hyper", "Synthia", "Ghost", "Stalker", "Echo", "Matrix", "Pulse", "Riot", "Kuro", "Vex"];
             const lastNames = ["Core", "Syndicate", "Protocol", "Byte", "Shadow", "Predator", "Nexus", "Runner", "Assassin", "Vanguard", "Titan", "Specter", "Anarchy", "Vixen", "Ocular"];
 
-            if (!rankingData || rankingData.length < 150) {
+            if (!rankingData || rankingData.length < 200 || lastSync !== todayStr) {
                 rankingData = [];
-                let basePts = 18000;
-                for (let i = 1; i <= 250; i++) {
+                let basePts = 45000;
+                for (let i = 1; i <= 500; i++) {
                     const fName = firstNames[Math.floor(Math.random() * firstNames.length)];
                     const lName = lastNames[Math.floor(Math.random() * lastNames.length)];
-                    const addNum = Math.random() > 0.4 ? ` ${Math.floor(Math.random() * 85 + 10)}` : '';
+                    const addNum = Math.random() > 0.3 ? ` ${Math.floor(Math.random() * 900 + 10)}` : '';
                     const randName = `${fName} ${lName}${addNum}`;
-                    basePts -= Math.floor(Math.random() * 70 + 10);
-                    const botLevel = Math.max(1, Math.floor(basePts / 650));
-                    rankingData.push({ name: randName, points: Math.max(200, basePts), level: botLevel });
+                    basePts -= Math.floor(Math.random() * 80 + 10);
+                    const botLevel = Math.max(1, Math.min(1000, Math.floor(basePts / 450)));
+                    rankingData.push({ name: randName, points: Math.max(200, basePts), level: botLevel, wins: Math.floor(botLevel * 6) });
                 }
+                localStorage.setItem('jegalux_ranking_sync_date', todayStr);
             } else {
                 rankingData.forEach(bot => {
-                    const delta = Math.floor(Math.random() * 80) - 38;
+                    const delta = Math.floor(Math.random() * 120) - 55;
                     bot.points = Math.max(100, bot.points + delta);
-                    bot.level = Math.max(1, Math.floor(bot.points / 650));
+                    bot.level = Math.max(1, Math.min(1000, Math.floor(bot.points / 450)));
                 });
             }
 
@@ -958,8 +1000,9 @@
                 rankingData[userIndex].points = userNexus.points;
                 rankingData[userIndex].level = userNexus.level;
                 rankingData[userIndex].name = userNexus.username;
+                rankingData[userIndex].wins = userNexus.wins;
             } else {
-                rankingData.push({ name: userNexus.username || "CYBER_OPERATIVE", points: userNexus.points, level: userNexus.level, isUser: true });
+                rankingData.push({ name: userNexus.username || "CYBER_OPERATIVE", points: userNexus.points, level: userNexus.level, wins: userNexus.wins || 0, isUser: true });
             }
 
             rankingData.sort((a, b) => b.points - a.points);
@@ -981,14 +1024,14 @@
                 const userHighlight = player.isUser ? 'border-accent bg-accent/10 text-white font-bold' : '';
 
                 listContainer.innerHTML += `
-                    <div class="flex items-center justify-between p-3 rounded-xl border ${userHighlight || rankStyle} transition">
+                    <div onclick="inspectRankingPlayer('${player.name}', ${player.level}, ${player.points}, ${player.wins || 0})" class="flex items-center justify-between p-3 rounded-xl border ${userHighlight || rankStyle} transition cursor-pointer hover:border-accent">
                         <div class="flex items-center gap-4">
-                            <span class="w-6 text-center font-display font-bold text-sm">#${rank}</span>
+                            <span class="w-8 text-center font-display font-bold text-sm">#${rank}</span>
                             <div>
                                 <div class="text-white flex items-center gap-2">
                                     ${player.name} ${player.isUser ? '<span class="px-1.5 py-0.5 rounded bg-accent text-black text-[9px] font-black">YOU</span>' : ''}
                                 </div>
-                                <div class="text-[10px] text-neutral-400">Level <span class="text-accent">${player.level}</span></div>
+                                <div class="text-[10px] text-neutral-400">Level <span class="text-accent">${player.level}</span> (${getRankTitle(player.level)})</div>
                             </div>
                         </div>
                         <div class="text-accent font-bold">${player.points} PTS</div>
@@ -997,8 +1040,34 @@
             });
         }
 
-        function openRankingModal() { playCyberpunkSound('click'); initGlobalRanking(); document.getElementById('rankingModal').classList.add('hidden'); }
-        function closeRankingModal() { document.getElementById('rankingModal').classList.add('hidden'); }
+        function inspectRankingPlayer(name, level, points, wins) {
+            playCyberpunkSound('click');
+            const randAvatar = rosterPool[Math.floor(Math.random() * rosterPool.length)].avatar;
+            document.getElementById('inspectName').innerText = name;
+            document.getElementById('inspectLevel').innerText = `Lv.${level} (${getRankTitle(level)})`;
+            document.getElementById('inspectPoints').innerText = points + ' PTS';
+            document.getElementById('inspectPlayerAvatar').style.backgroundImage = `url('${randAvatar}')`;
+            document.getElementById('inspectPlayerModal').classList.remove('hidden');
+        }
+
+        function openRivalProfileModal() {
+            playCyberpunkSound('click');
+            inspectRankingPlayer(currentRival.name, currentRival.level, currentRival.level * 650, currentRival.level * 3);
+        }
+
+        function closeInspectPlayerModal() {
+            document.getElementById('inspectPlayerModal').classList.add('hidden');
+        }
+
+        function openRankingModal() { 
+            playCyberpunkSound('click'); 
+            initGlobalRanking(); 
+            document.getElementById('rankingModal').classList.remove('hidden'); 
+        }
+        
+        function closeRankingModal() { 
+            document.getElementById('rankingModal').classList.add('hidden'); 
+        }
 
         function inspectCharacter(name, imgFile, classType, hpVal, atkVal, agiVal, titleDesc, fullDesc) {
             playCyberpunkSound('click');
@@ -1029,6 +1098,7 @@
         }
 
         function addXpAndPoints(xpGain, ptsGain, isWin) {
+            const oldRank = getRankTitle(userNexus.level);
             userNexus.xp += xpGain;
             userNexus.points += ptsGain;
             if (isWin) {
@@ -1038,11 +1108,16 @@
                 userNexus.streak = 0;
             }
 
-            const xpNeeded = userNexus.level * 500;
-            if (userNexus.xp >= xpNeeded) {
+            const xpNeeded = userNexus.level * 650;
+            if (userNexus.xp >= xpNeeded && userNexus.level < 1000) {
                 userNexus.level += 1;
                 userNexus.xp -= xpNeeded;
-                triggerToast(`YOU REACHED LEVEL ${userNexus.level}! 🎉`);
+                const newRank = getRankTitle(userNexus.level);
+                if (newRank !== oldRank) {
+                    triggerToast(`🚀 RANGO ALCANZADO: ${newRank} (Lv.${userNexus.level})!`);
+                } else {
+                    triggerToast(`YOU REACHED LEVEL ${userNexus.level}! 🎉`);
+                }
             }
             saveUserData();
             initGlobalRanking();
@@ -1094,9 +1169,9 @@
         function playerAttack(type) {
             playCyberpunkSound('click');
             const cType = activeCombatant.classType || "balanced";
-            let baseDmg = type === 'light' ? 25 : 42; // Ataques del jugador más contundentes para facilitar la victoria
+            let baseDmg = type === 'light' ? 30 : 48;
             if (cType === 'critical' && Math.random() < 0.4) { baseDmg = Math.floor(baseDmg * 1.5); appendLog(`A critical hit! Deals <span class="text-accent">${baseDmg} DMG</span>.`); }
-            else if (cType === 'berserker') { baseDmg += 8; appendLog(`Brute strike! Deals <span class="text-accent">${baseDmg} DMG</span>.`); }
+            else if (cType === 'berserker') { baseDmg += 10; appendLog(`Brute strike! Deals <span class="text-accent">${baseDmg} DMG</span>.`); }
             else { appendLog(`Attack hits for <span class="text-accent">${baseDmg} DMG</span>.`); }
             
             registerDamage(baseDmg);
@@ -1109,8 +1184,7 @@
 
         function playerSpecial() {
             playCyberpunkSound('click');
-            const cType = activeCombatant.classType || "balanced";
-            let damage = 70;
+            let damage = 80;
             registerDamage(damage);
             appendLog(`SHADOW STRIKE unleashes <span class="text-accent">${damage} DMG</span>!`);
             currentRival.hp -= damage;
@@ -1119,8 +1193,8 @@
         }
 
         function rivalTurn() {
-            let rDamage = Math.max(8, currentRival.atk - 5); // Rival más fácil y blando
-            if (gameState.isDefending) { rDamage = Math.floor(rDamage * 0.3); gameState.isDefending = false; appendLog(`Defense completely absorbed rival impact (${rDamage} DMG).`); }
+            let rDamage = Math.max(5, currentRival.atk - 10);
+            if (gameState.isDefending) { rDamage = Math.floor(rDamage * 0.2); gameState.isDefending = false; appendLog(`Defense completely absorbed rival impact (${rDamage} DMG).`); }
             else { appendLog(`${currentRival.name} strikes back for <span class="text-red-500">${rDamage} DMG</span>.`); }
             gameState.playerHp -= rDamage;
             updateHpBars();
@@ -1136,10 +1210,10 @@
             const desc = document.getElementById('endGameDesc');
             if (isVictory) {
                 userNexus.bossesDefeated = (userNexus.bossesDefeated || 0) + 1;
-                addXpAndPoints(350, 200, true);
+                addXpAndPoints(400, 250, true);
                 title.className = "font-display font-bold text-3xl text-accent uppercase";
                 title.innerText = "VICTORY IN DUEL!";
-                desc.innerText = `Defeated ${currentRival.name} (Lv.${currentRival.level})! +350 XP & +200 PTS added. Streak increased 🔥`;
+                desc.innerText = `Defeated ${currentRival.name} (Lv.${currentRival.level})! +400 XP & +250 PTS added. Streak increased 🔥`;
             } else {
                 userNexus.streak = 0;
                 addXpAndPoints(50, 0, false);
@@ -1187,7 +1261,7 @@
             document.getElementById('cartModal').classList.remove('hidden');
         }
         function closeCartModal() { document.getElementById('cartModal').classList.add('hidden'); }
-        function openCheckoutModal(method) { closeCartModal(); document.getElementById('checkoutTitle').innerText = `SECURE PAYMENT VIA ${method.toUpperCase()}`; document.getElementById('checkoutModal').classList.remove('hidden'); }
+        function openCheckoutModal(method) { closeCartModal(); document.getElementById('checkoutTitle').innerText = `SECURE PAYMENT VIA ${method.toUpperCase()}`; document.getElementById('checkoutModal').classList.add('hidden'); }
         function closeCheckoutModal() { document.getElementById('checkoutModal').classList.add('hidden'); }
         function processPayment(e) { e.preventDefault(); playCyberpunkSound('click'); closeCheckoutModal(); addXpAndPoints(1000, 370, true); triggerToast('SUCCESSFUL PURCHASE! +1,000 XP ADDED'); }
 
