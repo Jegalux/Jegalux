@@ -588,18 +588,17 @@
         </div>
     </div>
 
-    <!-- MODAL DE RANKING MUNDIAL CON EL BOTÓN "IR A DONDE ESTÁS TÚ" -->
+    <!-- MODAL DE RANKING MUNDIAL TOP 500 -->
     <div id="rankingModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-2xl p-6 md:p-8 rounded-2xl border border-accent/50 space-y-6 shadow-2xl relative max-h-[85vh] flex flex-col">
             <div class="flex justify-between items-center border-b border-white/10 pb-4">
                 <div>
-                    <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider">// GLOBAL RANKING</h3>
-                    <p class="text-xs font-tech text-neutral-400">Live active operatives (Always 50 challengers below you)</p>
+                    <h3 class="font-display font-bold text-xl text-white uppercase tracking-wider">// GLOBAL RANKING (TOP 500)</h3>
+                    <p class="text-xs font-tech text-neutral-400">Live active operatives across shadow servers</p>
                 </div>
                 <button onclick="closeRankingModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
 
-            <!-- BOTÓN PARA IR DIRECTAMENTE A TU POSICIÓN EN EL RANKING -->
             <div>
                 <button onclick="scrollToMyPosition()" class="w-full py-2.5 rounded bg-accent/20 border border-accent text-accent font-tech font-bold text-xs uppercase tracking-widest hover:bg-accent hover:text-black transition flex items-center justify-center gap-2 shadow-md">
                     <i data-lucide="crosshair" class="w-4 h-4"></i> IR A DONDE ESTÁS TÚ
@@ -964,10 +963,11 @@
 
         function saveProfile() {
             playCyberpunkSound('click');
-            userNexus.username = document.getElementById('editUsername').value || "OPERATIVE";
+            userNexus.username = document.getElementById('editUsername').value || "CYBER_OPERATIVE";
             saveUserData();
             closeProfileModal();
             triggerToast('NEXUS ID PROFILE UPDATED!');
+            initGlobalRanking();
         }
 
         function openZoomAvatar() {
@@ -981,34 +981,50 @@
             document.getElementById('zoomAvatarModal').classList.add('hidden');
         }
 
-        // RANKING CON 50 PERSONAS SIEMPRE DEBAJO DE TI Y NOMBRES ORIGINALES
+        // GLOBAL RANKING TOP 500 CON JUGADORES SUPERIORES E INFERIORES
         function initGlobalRanking() {
             let rankingData = [];
             const firstNames = ["Neon", "Ghost", "Apex", "Void", "Orion", "Blade", "Hyper", "Synthia", "Stalker", "Echo", "Matrix", "Pulse", "Riot", "Kuro", "Vex", "Nova", "Specter", "Zane", "Aiden", "Valkyrie"];
             const lastNames = ["Phantom", "Syndicate", "Protocol", "Byte", "Shadow", "Predator", "Nexus", "Runner", "Assassin", "Vanguard", "Titan", "Specter", "Anarchy", "Vixen", "Ocular", "Stryke", "Ghost", "X", "Ninja", "Core"];
 
-            // 1. Tu usuario siempre encabeza o compite en la cima de su grupo
-            rankingData.push({ 
-                name: userNexus.username || "CYBER_OPERATIVE", 
-                points: userNexus.points || 150, 
-                level: userNexus.level || 1, 
-                wins: userNexus.wins || 0, 
-                isUser: true 
-            });
+            let userPoints = userNexus.points || 150;
+            let userLevel = userNexus.level || 1;
 
-            // 2. Generar exactamente 50 bots por debajo de ti con nombres originales y naturales
-            let currentBotPts = userNexus.points || 150;
-            for (let i = 1; i <= 50; i++) {
+            // 1. Generar contrincantes MEJORES que tú por encima en el ranking (Top superior)
+            let topBotPts = userPoints + 15000;
+            for (let i = 1; i <= 250; i++) {
                 const fName = firstNames[Math.floor(Math.random() * firstNames.length)];
                 const lName = lastNames[Math.floor(Math.random() * lastNames.length)];
                 const addNum = Math.random() > 0.3 ? ` ${Math.floor(Math.random() * 90 + 10)}` : '';
                 const randName = `${fName} ${lName}${addNum}`;
-                
+                topBotPts -= Math.floor(Math.random() * 55 + 10);
+                const botLevel = Math.max(1, Math.min(1000, Math.floor(topBotPts / 450)));
+                rankingData.push({ name: randName, points: Math.max(userPoints + 10, topBotPts), level: botLevel, wins: Math.floor(botLevel * 5) });
+            }
+
+            // 2. Insertar tu usuario en la tabla
+            rankingData.push({ 
+                name: userNexus.username || "CYBER_OPERATIVE", 
+                points: userPoints, 
+                level: userLevel, 
+                wins: userNexus.wins || 0, 
+                isUser: true 
+            });
+
+            // 3. Generar contrincantes por debajo de ti hasta completar el Top 500
+            let currentBotPts = userPoints;
+            for (let i = 1; i <= 249; i++) {
+                const fName = firstNames[Math.floor(Math.random() * firstNames.length)];
+                const lName = lastNames[Math.floor(Math.random() * lastNames.length)];
+                const addNum = Math.random() > 0.3 ? ` ${Math.floor(Math.random() * 90 + 10)}` : '';
+                const randName = `${fName} ${lName}${addNum}`;
                 currentBotPts -= Math.floor(Math.random() * 45 + 10);
                 const botLevel = Math.max(1, Math.min(1000, Math.floor(currentBotPts / 450)));
                 rankingData.push({ name: randName, points: Math.max(50, currentBotPts), level: botLevel, wins: Math.floor(botLevel * 4) });
             }
 
+            // Ordenar de mayor a menor puntuación
+            rankingData.sort((a, b) => b.points - a.points);
             localStorage.setItem('jegalux_live_ranking', JSON.stringify(rankingData));
             renderRankingList(rankingData);
         }
@@ -1029,7 +1045,7 @@
                 listContainer.innerHTML += `
                     <div id="rankItem_${index}" onclick="inspectRankingPlayer('${player.name}', ${player.level}, ${player.points}, ${player.wins || 0})" class="flex items-center justify-between p-3 rounded-xl border ${userHighlight || rankStyle} transition cursor-pointer hover:border-accent">
                         <div class="flex items-center gap-4">
-                            <span class="w-8 text-center font-display font-bold text-sm">#${rank}</span>
+                            <span class="w-10 text-center font-display font-bold text-sm">#${rank}</span>
                             <div>
                                 <div class="text-white flex items-center gap-2">
                                     ${player.name} ${player.isUser ? '<span class="px-1.5 py-0.5 rounded bg-accent text-black text-[9px] font-black">YOU</span>' : ''}
@@ -1043,7 +1059,6 @@
             });
         }
 
-        // FUNCIÓN PARA IR AUTOMÁTICAMENTE A TU POSICIÓN EN EL RANKING
         function scrollToMyPosition() {
             playCyberpunkSound('click');
             let rankingData = JSON.parse(localStorage.getItem('jegalux_live_ranking')) || [];
