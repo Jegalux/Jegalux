@@ -191,19 +191,19 @@
                                 <span id="selectedSizeLabel" class="text-[11px] text-accent">M</span>
                             </div>
                             <div class="grid grid-cols-5 gap-2 font-tech text-xs">
-                                <button onclick="selectSize('S', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition click-pulse" onmouseenter="playCyberpunkSound('hover')">S</button>
-                                <button onclick="selectSize('M', this)" class="size-btn py-2.5 border border-accent rounded bg-accent/10 text-accent font-bold transition click-pulse" onmouseenter="playCyberpunkSound('hover')">M</button>
-                                <button onclick="selectSize('L', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition click-pulse" onmouseenter="playCyberpunkSound('hover')">L</button>
-                                <button onclick="selectSize('XL', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition click-pulse" onmouseenter="playCyberpunkSound('hover')">XL</button>
-                                <button onclick="selectSize('2XL', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition click-pulse" onmouseenter="playCyberpunkSound('hover')">2XL</button>
+                                <button onclick="selectSize('S', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition click-pulse">S</button>
+                                <button onclick="selectSize('M', this)" class="size-btn py-2.5 border border-accent rounded bg-accent/10 text-accent font-bold transition click-pulse">M</button>
+                                <button onclick="selectSize('L', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition click-pulse">L</button>
+                                <button onclick="selectSize('XL', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition click-pulse">XL</button>
+                                <button onclick="selectSize('2XL', this)" class="size-btn py-2.5 border border-white/10 rounded glass-panel hover:border-accent text-neutral-300 transition click-pulse">2XL</button>
                             </div>
                         </div>
 
                         <div class="space-y-3 pt-3">
-                            <button onclick="addToCart()" class="w-full py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 shadow-lg shadow-accent/20 click-pulse" onmouseenter="playCyberpunkSound('hover')">
+                            <button onclick="addToCart()" class="w-full py-4 rounded bg-accent hover:bg-accent-glow text-black font-tech font-bold text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 shadow-lg shadow-accent/20">
                                 <i data-lucide="plus" class="w-4 h-4"></i> ADD TO CART ($37.22)
                             </button>
-                            <button onclick="openCheckoutModal('Apple Pay')" class="w-full py-3.5 rounded bg-black border border-white/30 text-white font-tech text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 hover:border-accent shadow-xl click-pulse" onmouseenter="playCyberpunkSound('hover')">
+                            <button onclick="openCheckoutModal('Apple Pay')" class="w-full py-3.5 rounded bg-black border border-white/30 text-white font-tech text-xs tracking-[0.2em] uppercase transition duration-200 flex items-center justify-center gap-2 hover:border-accent shadow-xl">
                                 <i data-lucide="apple" class="w-4 h-4 fill-white"></i> PAY WITH APPLE PAY (+1000 XP)
                             </button>
                         </div>
@@ -220,7 +220,7 @@
                     <h2 class="text-3xl md:text-4xl font-display font-bold uppercase text-white tracking-tight">CRAFTED WITH INTENT</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                    <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl">
                         <div class="h-64 overflow-hidden relative">
                             <img src="1e85e61a-723b-4751-b081-961a9c9bf287.jpg" alt="Embroidery" class="w-full h-full object-cover" />
                             <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 01</div>
@@ -230,7 +230,7 @@
                             <p class="text-neutral-300 text-xs leading-relaxed">Precision computerized micro-stitching guarantees millimeter-perfect tension across heavy textiles.</p>
                         </div>
                     </div>
-                    <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                    <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl">
                         <div class="h-64 overflow-hidden relative">
                             <img src="ea5e7534-dd0e-4d1c-84c2-a8f7543243a1.jpg" alt="Studio" class="w-full h-full object-cover" />
                             <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 02</div>
@@ -240,7 +240,7 @@
                             <p class="text-neutral-300 text-xs leading-relaxed">Developed within shadow and controlled light setups to balance deep matte absorption.</p>
                         </div>
                     </div>
-                    <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                    <div class="glass-panel rounded-xl overflow-hidden flex flex-col tilt-card glass-panel-hover shadow-2xl">
                         <div class="h-64 overflow-hidden relative">
                             <img src="accb1452-469b-4746-9017-64ce56cf296b.jpg" alt="Detail" class="w-full h-full object-cover" />
                             <div class="absolute top-3 left-3 glass-panel px-2.5 py-1 rounded font-tech text-[10px] text-accent border border-accent/30">STAGE 03</div>
@@ -431,13 +431,14 @@
                             <div class="flex justify-between text-[11px] font-bold">
                                 <span class="text-red-500 uppercase tracking-widest">Rival HP (Inspect)</span>
                             </div>
-                            <div class="w-full bg-neutral-950 h-5 rounded-full overflow-hidden p-0.5 border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.7)]">
+                            <!-- CONTENEDOR DE BARRA RIVAL GARANTIZADO -->
+                            <div class="w-full bg-neutral-950 h-5 rounded-full overflow-hidden p-0.5 border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.7)] relative">
                                 <div id="rivalHpBar" class="bg-gradient-to-r from-red-600 via-red-500 to-rose-400 h-full rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(239,68,68,0.9)]" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- TU OPERATIVO (ABAJO A LA IZQUIERDA) - BARRA DE SALUD 100% VISIBLE Y BRILLANTE -->
+                    <!-- TU OPERATIVO (ABAJO A LA IZQUIERDA) - BARRA DE SALUD 100% VISIBLE Y GARANTIZADA -->
                     <div class="self-start w-72 glass-panel p-4 rounded-xl border border-emerald-500/60 font-tech text-xs space-y-2 shadow-[0_0_20px_rgba(16,185,129,0.25)] bg-black/90">
                         <div class="flex justify-between items-center text-white font-bold text-sm">
                             <span id="battlePlayerName" class="text-emerald-400">OPERATIVE</span>
@@ -448,7 +449,8 @@
                                 <span class="text-emerald-400 uppercase tracking-widest">Your HP</span>
                                 <span class="text-white font-extrabold" id="playerHpText">100 / 100</span>
                             </div>
-                            <div class="w-full bg-neutral-950 h-5 rounded-full overflow-hidden p-0.5 border-2 border-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.7)]">
+                            <!-- CONTENEDOR DE BARRA PROPIA GARANTIZADO -->
+                            <div class="w-full bg-neutral-950 h-5 rounded-full overflow-hidden p-0.5 border-2 border-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.7)] relative">
                                 <div id="playerHpBar" class="bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 h-full rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(16,185,129,0.9)]" style="width: 100%"></div>
                             </div>
                         </div>
@@ -878,14 +880,14 @@
             const chosenBot = eligibleRivals[Math.floor(Math.random() * eligibleRivals.length)];
             const fixedAvatar = getAvatarForName(chosenBot.name);
 
-            const scaledLevel = Math.max(1, chosenBot.level + Math.floor((userNexus.level - 1) * 0.4));
+            const scaledLevel = Math.max(1, chosenBot.level + Math.floor((userNexus.level - 1) * 0.3));
             
             currentRival = {
                 name: chosenBot.name,
                 level: scaledLevel,
-                hp: 100 + (scaledLevel * 18),
-                maxHp: 100 + (scaledLevel * 18),
-                atk: 14 + (scaledLevel * 2.5),
+                hp: 80 + (scaledLevel * 12),
+                maxHp: 80 + (scaledLevel * 12),
+                atk: 10 + (scaledLevel * 1.8),
                 avatar: fixedAvatar
             };
         }
@@ -1206,7 +1208,7 @@
 
         function loadRival() {
             const type = activeCombatant.classType || "balanced";
-            gameState.playerMaxHp = type === 'critical' ? 85 : (type === 'tank' ? 125 : 100);
+            gameState.playerMaxHp = type === 'critical' ? 110 : (type === 'tank' ? 140 : 120);
             gameState.playerHp = gameState.playerMaxHp;
 
             document.getElementById('battleRivalName').innerText = currentRival.name.toUpperCase();
@@ -1239,14 +1241,14 @@
         function playerAttack(type) {
             playCyberpunkSound('attack');
             const cType = activeCombatant.classType || "balanced";
-            let baseDmg = type === 'light' ? 32 : 52; // Daño ajustado para mejor equilibrio
+            let baseDmg = type === 'light' ? 35 : 55;
 
             if (cType === 'critical' && Math.random() < 0.4) { 
                 baseDmg = Math.floor(baseDmg * 1.6); 
                 playCyberpunkSound('critical');
                 appendLog(`Critical strike! Deals <span class="text-emerald-400">${baseDmg} DMG</span>.`); 
             } else if (cType === 'berserker') { 
-                baseDmg += 10; 
+                baseDmg += 12; 
                 appendLog(`Brute strike! Deals <span class="text-emerald-400">${baseDmg} DMG</span>.`); 
             } else { 
                 appendLog(`Attack hits for <span class="text-emerald-400">${baseDmg} DMG</span>.`); 
@@ -1267,7 +1269,7 @@
 
         function playerSpecial() {
             playCyberpunkSound('special');
-            let damage = 85;
+            let damage = 90;
             registerDamage(damage);
             appendLog(`SHADOW STRIKE unleashes <span class="text-emerald-400">${damage} DMG</span>!`);
             currentRival.hp -= damage;
@@ -1276,12 +1278,12 @@
         }
 
         function rivalTurn() {
-            let rDamage = Math.max(6, currentRival.atk - 10);
+            let rDamage = Math.max(5, currentRival.atk - 12);
 
             if (gameState.isDefending) { 
-                rDamage = Math.floor(rDamage * 0.15); 
+                rDamage = Math.floor(rDamage * 0.1); 
                 gameState.isDefending = false; 
-                appendLog(`Defense heavily absorbed rival impact (${rDamage} DMG).`); 
+                appendLog(`Defense successfully blocked rival impact (${rDamage} DMG).`); 
             } else { 
                 playCyberpunkSound('hurt');
                 appendLog(`${currentRival.name} strikes back for <span class="text-red-500">${rDamage} DMG</span>.`); 
@@ -1301,8 +1303,8 @@
             if (isVictory) {
                 playCyberpunkSound('victory');
                 userNexus.bossesDefeated = (userNexus.bossesDefeated || 0) + 1;
-                let rewardXp = 350 + (currentRival.level * 25);
-                let rewardPts = 200 + (currentRival.level * 12);
+                let rewardXp = 400 + (currentRival.level * 30);
+                let rewardPts = 250 + (currentRival.level * 15);
                 addXpAndPoints(rewardXp, rewardPts, true);
                 title.className = "font-display font-bold text-3xl text-emerald-400 uppercase";
                 title.innerText = "VICTORY IN DUEL!";
@@ -1310,7 +1312,7 @@
             } else {
                 playCyberpunkSound('defeat');
                 userNexus.streak = 0;
-                addXpAndPoints(50, 0, false);
+                addXpAndPoints(60, 0, false);
                 title.className = "font-display font-bold text-3xl text-red-500 uppercase";
                 title.innerText = "YOU HAVE BEEN DEFEATED!";
                 desc.innerText = `Overpowered by ${currentRival.name}. Win streak reset. Try again.`;
