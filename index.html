@@ -46,20 +46,20 @@
         
         .cloud-bg-container {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none; z-index: 0; overflow: hidden; background: #050507;
+            pointer-events: none; z-index: 0; overflow: hidden; background: #030305;
         }
         .cloud-bg-tile {
             position: absolute; top: -50%; left: 0; width: 100vw; height: 200vh;
             background-image: url('view-apocalyptic-dark-stormy-clouds_23-2151065786.jpg');
             background-repeat: repeat; background-size: cover; background-position: center top;
-            filter: blur(6px) brightness(0.28) contrast(1.2); will-change: background-position;
+            filter: blur(12px) brightness(0.18) contrast(1.3); will-change: background-position;
         }
 
         .glass-panel {
-            background: linear-gradient(135deg, rgba(18, 18, 26, 0.82) 0%, rgba(9, 9, 13, 0.9) 100%);
-            backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
-            border: 1px solid rgba(255, 255, 255, 0.09);
-            box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, rgba(14, 14, 20, 0.88) 0%, rgba(5, 5, 8, 0.95) 100%);
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
         }
         .glass-panel-hover { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
         .glass-panel-hover:hover {
@@ -67,13 +67,11 @@
             box-shadow: 0 20px 50px 0 rgba(255, 85, 0, 0.18), inset 0 1px 0 0 rgba(255, 85, 0, 0.3);
         }
         
-        /* EFECTO TILT 3D CON EL CURSOR */
         .tilt-card {
             transform-style: preserve-3d; perspective: 1000px;
             transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* EFECTO DE PULSO AL CLICAR */
         @keyframes clickPulse {
             0% { transform: scale(0.96); box-shadow: 0 0 0 0 rgba(255, 85, 0, 0.7); }
             70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(255, 85, 0, 0); }
@@ -127,14 +125,14 @@
 
     <!-- ================= PESTAÑA 1: TIENDA (STORE VIEW) ================= -->
     <div id="storeView" class="relative z-10 transition-opacity duration-300">
-        <!-- HERO BANNER CON TILT 3D -->
-        <section id="heroBanner" class="w-full border-b border-white/10 py-24 md:py-36 overflow-hidden bg-void/40 backdrop-blur-md">
+        <!-- HERO BANNER CON NUBES NEGRAS MUY BORROSAS -->
+        <section id="heroBanner" class="w-full border-b border-white/10 py-24 md:py-36 overflow-hidden bg-void/70 backdrop-blur-md">
             <div class="absolute inset-0 -z-10 overflow-hidden w-full h-full">
-                <img src="Gemini_Generated_Image_34mrde34mrde34mr.jpg" alt="Banner" class="w-full h-full object-cover filter brightness-[0.35] contrast-[1.2] opacity-80 scale-105 will-change-transform" />
-                <div class="absolute inset-0 bg-gradient-to-b from-void/85 via-void/40 to-void/95"></div>
+                <img src="Gemini_Generated_Image_34mrde34mrde34mr.jpg" alt="Banner" class="w-full h-full object-cover filter brightness-[0.25] contrast-[1.3] blur-[4px] opacity-70 scale-105 will-change-transform" />
+                <div class="absolute inset-0 bg-gradient-to-b from-black/90 via-black/50 to-black/95"></div>
             </div>
 
-            <div id="bannerContainer" class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative tilt-card glass-panel rounded-2xl py-12 md:py-16 shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-white/10 overflow-hidden" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+            <div id="bannerContainer" class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative tilt-card glass-panel rounded-2xl py-12 md:py-16 shadow-[0_20px_60px_rgba(0,0,0,0.9)] border border-white/10 overflow-hidden" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-accent/30 text-accent font-tech text-[10px] uppercase tracking-widest mb-6">
                     <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
                     AUTUMN/WINTER PROTOCOL — CLOUD SYNC ACTIVE
@@ -423,7 +421,7 @@
                 <!-- ARENA DE COMBATE VISUAL -->
                 <div class="relative h-64 md:h-72 w-full glass-panel rounded-2xl border border-white/10 p-6 flex flex-col justify-between overflow-hidden shadow-2xl">
                     
-                    <!-- RIVAL (ARRIBA A LA DERECHA) - CLICABLE PARA VER PERFIL (BARRAS DE SALUD MÁS VISIBLES Y ESTÉTICAS) -->
+                    <!-- RIVAL (ARRIBA A LA DERECHA) - CLICABLE PARA VER PERFIL -->
                     <div onclick="openRivalProfileModal()" id="rivalCardBox" class="self-end w-72 glass-panel p-4 rounded-xl border border-red-500/60 font-tech text-xs space-y-2 shadow-[0_0_20px_rgba(239,68,68,0.25)] bg-black/90 cursor-pointer group hover:border-red-400 transition click-pulse" title="Click to inspect rival profile" onmouseenter="playCyberpunkSound('hover')">
                         <div class="flex justify-between items-center text-white font-bold text-sm">
                             <span id="battleRivalName" class="text-red-400 group-hover:underline">RIVAL</span>
@@ -439,7 +437,7 @@
                         </div>
                     </div>
 
-                    <!-- TU OPERATIVO (ABAJO A LA IZQUIERDA) - BARRA DE SALUD VERDE BRILLANTE 100% VISIBLE -->
+                    <!-- TU OPERATIVO (ABAJO A LA IZQUIERDA) - BARRA DE SALUD 100% VISIBLE Y BRILLANTE -->
                     <div class="self-start w-72 glass-panel p-4 rounded-xl border border-emerald-500/60 font-tech text-xs space-y-2 shadow-[0_0_20px_rgba(16,185,129,0.25)] bg-black/90">
                         <div class="flex justify-between items-center text-white font-bold text-sm">
                             <span id="battlePlayerName" class="text-emerald-400">OPERATIVE</span>
@@ -1241,14 +1239,14 @@
         function playerAttack(type) {
             playCyberpunkSound('attack');
             const cType = activeCombatant.classType || "balanced";
-            let baseDmg = type === 'light' ? 28 : 45;
+            let baseDmg = type === 'light' ? 32 : 52; // Daño ajustado para mejor equilibrio
 
-            if (cType === 'critical' && Math.random() < 0.35) { 
-                baseDmg = Math.floor(baseDmg * 1.5); 
+            if (cType === 'critical' && Math.random() < 0.4) { 
+                baseDmg = Math.floor(baseDmg * 1.6); 
                 playCyberpunkSound('critical');
                 appendLog(`Critical strike! Deals <span class="text-emerald-400">${baseDmg} DMG</span>.`); 
             } else if (cType === 'berserker') { 
-                baseDmg += 8; 
+                baseDmg += 10; 
                 appendLog(`Brute strike! Deals <span class="text-emerald-400">${baseDmg} DMG</span>.`); 
             } else { 
                 appendLog(`Attack hits for <span class="text-emerald-400">${baseDmg} DMG</span>.`); 
@@ -1269,7 +1267,7 @@
 
         function playerSpecial() {
             playCyberpunkSound('special');
-            let damage = 75;
+            let damage = 85;
             registerDamage(damage);
             appendLog(`SHADOW STRIKE unleashes <span class="text-emerald-400">${damage} DMG</span>!`);
             currentRival.hp -= damage;
@@ -1278,12 +1276,12 @@
         }
 
         function rivalTurn() {
-            let rDamage = Math.max(8, currentRival.atk - 8 + Math.floor(Math.random() * 6));
+            let rDamage = Math.max(6, currentRival.atk - 10);
 
             if (gameState.isDefending) { 
-                rDamage = Math.floor(rDamage * 0.25); 
+                rDamage = Math.floor(rDamage * 0.15); 
                 gameState.isDefending = false; 
-                appendLog(`Defense absorbed rival impact (${rDamage} DMG).`); 
+                appendLog(`Defense heavily absorbed rival impact (${rDamage} DMG).`); 
             } else { 
                 playCyberpunkSound('hurt');
                 appendLog(`${currentRival.name} strikes back for <span class="text-red-500">${rDamage} DMG</span>.`); 
@@ -1303,8 +1301,8 @@
             if (isVictory) {
                 playCyberpunkSound('victory');
                 userNexus.bossesDefeated = (userNexus.bossesDefeated || 0) + 1;
-                let rewardXp = 300 + (currentRival.level * 20);
-                let rewardPts = 180 + (currentRival.level * 10);
+                let rewardXp = 350 + (currentRival.level * 25);
+                let rewardPts = 200 + (currentRival.level * 12);
                 addXpAndPoints(rewardXp, rewardPts, true);
                 title.className = "font-display font-bold text-3xl text-emerald-400 uppercase";
                 title.innerText = "VICTORY IN DUEL!";
@@ -1312,7 +1310,7 @@
             } else {
                 playCyberpunkSound('defeat');
                 userNexus.streak = 0;
-                addXpAndPoints(40, 0, false);
+                addXpAndPoints(50, 0, false);
                 title.className = "font-display font-bold text-3xl text-red-500 uppercase";
                 title.innerText = "YOU HAVE BEEN DEFEATED!";
                 desc.innerText = `Overpowered by ${currentRival.name}. Win streak reset. Try again.`;
